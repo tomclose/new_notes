@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>session1</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="title"><a href="/">Learn to Code</a></h1>
+      <a class="extra" href="/">home</a>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_command_line" data-toggle="tab">Intro to the command line </a></li>
+		
+	
+		
+		<li><a href="#2_using_git" data-toggle="tab">Intro to Git </a></li>
+		
+	
+		
+		<li><a href="#3_css" data-toggle="tab">CSS </a></li>
+		
+	
+		
+		<li><a href="#4_pushing_to_github" data-toggle="tab">Pusing code to Github </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_command_line">
+	
+
+		<h2>Intro to the command line</h2>
+		<p>If you are using a mac, open Terminal.app. If you are on windows, as part of the package you downloaded from <a href='www.railsinstaller.org'>RailsInstaller</a> you should now have a program called <code>gitbash</code>. Open that!</p>
+
+<p>These terminals are a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the terminal, as many of the programmes you will use will be run from the terminal, instead of by clicking an icon.</p>
+
+<p>The first thing you will need to get used to is moving around. Start by printing the name of the directory you are in:</p>
+
+<pre><code>$ pwd</code></pre>
+
+<p>Then have a look at what&#8217;s in that directory ( <em>list</em> the contents):</p>
+
+<pre><code>$ ls</code></pre>
+
+<p>To move up a directory ( <em>change directory</em> ) do</p>
+
+<pre><code>$ cd ..</code></pre>
+
+<p>To move back do</p>
+
+<pre><code>$ cd name_of_the_directory</code></pre>
+
+<p>Your commandline will help you: <kbd>tab</kbd> can often be used to auto-complete names of files, the up arrow can be used to cycle through previous commands that you have typed.</p>
+
+<p>You should navigate to your <code>coding_course</code> folder that you created last week, using <code>cd</code>. When you get there create a new directory (_make directory_) for your site:</p>
+
+<pre><code>$ mkdir first_site</code></pre>
+
+<p>Note: choosing names without spaces makes command line navigation easier.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="2_using_git">
+	
+
+		<h2>Intro to Git</h2>
+		<p>Git is a version control system. It allows you to keep the entire history of your code, and makes it easy to share and collaborate with others.</p>
+
+<p>We will enable our new folder to work with git:</p>
+
+<pre><code>$ git init</code></pre>
+
+<p>To see what this has done do:</p>
+
+<pre><code>$ ls -a</code></pre>
+
+<p>The <code>-a</code> is a flag which tells the <code>ls</code> command to show hidden files and folders. You should see a folder called <code>.git</code> in the results. Move into this folder, and have a look around:</p>
+
+<pre><code>$ cd .git
+$ ls</code></pre>
+
+<p>All the data to allow git to version control your code will be stored inside this hidden folder. If you ever want to &#8216;un-version-control&#8217; your code all you have to do is delete this folder.</p>
+
+<p>Apart from this hidden git folder, the first_site folder currently empty. We&#8217;ll add the html file you created last week:</p>
+
+<pre><code>$ mv ../first_html_page.html .</code></pre>
+
+<p><code>mv</code> is for move. The line above assumes that your homework is stored in the directory above - just like <code>cd ..</code> moves up a directory, <code>..</code> is used to specify the directory above in a file path. The <code>.</code> refers to the current directory and tells <code>mv</code> where to move the file to.</p>
+
+<p>To see what git thinks about this do</p>
+
+<pre><code>$ git status</code></pre>
+
+<p>It should tell you that you have an &#8216;untracked file&#8217;.</p>
+
+<p>We&#8217;ll now add this file to the git repository:</p>
+
+<pre><code>$ git add .
+$ git commit -m &quot;Imported first_html_page&quot;</code></pre>
+
+<p>Adding to a git repo is a two stage process, but most of the time we will perform these two steps together. The <code>add .</code> tells git to add everything in the current folder (<code>.</code> = current folder, just like in <code>mv</code>) into the local index. The <code>git commit</code> adds everything in the local index into the repository.</p>
+
+<p>You can see your commit by doing</p>
+
+<pre><code>$ git log</code></pre>
+
+<p>or you can get a nice diagram showing your repo by doing</p>
+
+<pre><code>$ gitk --all</code></pre>
+	</div>
+
+	
+	<div class="tab-pane " id="3_css">
+	
+
+		<h2>CSS</h2>
+		<p>Last week we looked at HTML, and saw how this was used to mark up the information in a webpage. Right now, your HTML pages don&#8217;t look very good, as you haven&#8217;t given any styling information. The way to do this is using CSS (Cascading Style Sheets).</p>
+
+<p>There are a few ways to include CSS in an HTML file: the proper way is to link to a separate <code>.css</code> file in the <code>&lt;head&gt;</code>. This allows web browsers to download the <code>.css</code> file once for the entire site, which speeds up loading times. You can also put the css inline, or write it directly into the <code>&lt;head&gt;</code>. For simplicity we&#8217;ll do this:</p>
+
+<p>Make your html header look like this:</p>
+
+<pre><code>&lt;head&gt;
+  &lt;title&gt;Some title&lt;/title&gt;
+  &lt;style&gt;
+    h1 { color: red; }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+<p>The bit inside the <code>&lt;style&gt;</code> tags is CSS. The <code>h1</code> bit specifies the tag that will be styled. The bit inside the <code>{ ... }</code> specifies the styles that will be applied. Here we change the colour of the <code>h1</code> text red.</p>
+
+<p>If you save the changes to the html file, then open (or refresh) the page in your browser you should see the changes. By opening the developer tools, and hovering over the <code>h1</code> you should be able to see your css rule at the side.</p>
+
+<p>Try out the following:</p>
+
+<pre><code>p { color: blue; }
+div { background-color: pink; }
+div#lists { background-color: green; }</code></pre>
+
+<p>The <code>div#lists</code> bit selects only the div with the lists id: <code>&lt;div id=&quot;lists&quot;&gt;</code>.</p>
+
+<p>If anything, these changes will have made your site look a lot worse - but I hope you get the idea!</p>
+
+<p>Now go back to the command line, commit these changes, and have a look at the repo:</p>
+
+<pre><code>$ git add .
+$ git commit -m &quot;Added some css&quot;
+$ gitk --all</code></pre>
+	</div>
+
+	
+	<div class="tab-pane " id="4_pushing_to_github">
+	
+
+		<h2>Pusing code to Github</h2>
+		<p>Github is a site which will host a git repo online for you, making it easy to collaborate with others. We&#8217;ll now put the first website online.</p>
+
+<p>Go to github, login, and click &#8220;Create New Repo&#8221; in the top left hand corner. Follow the instructions, calling it something like <code>first_site</code>. You&#8217;ll get to a page when it&#8217;ll describe how to get your code online. You want to follow the instructions for &#8220;Pushing an existing repository to github&#8221;. It&#8217;s probably best to use the http option, instead of ssh. You should end up doing something like:</p>
+
+<pre><code>$ git remote add origin https://github.com/yourusername/first_site.git
+$ git push -u origin master</code></pre>
+
+<p>You should now be prompted to add your github username and password. If all goes well, when you go to github you should see the <code>first_site</code> folder containing your html file.</p>
+	</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>session3</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="title"><a href="/">Learn to Code</a></h1>
+      <a class="extra" href="/">home</a>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#4_twitter_bootstrap" data-toggle="tab">Twitter Bootstrap </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="4_twitter_bootstrap">
+	
+
+		<h2>Twitter Bootstrap</h2>
+		<p>Last time we looked at how you can use CSS to change the appearance of your site. Making things look good with CSS is a bit of an art, which is only really acquired over time (or not, in my case!). Thankfully there are pre-existing solutions out there to make your life easier.</p>
+
+<p><a href='http://twitter.github.com/bootstrap/'>Twitter bootstrap</a> is set of CSS (&amp; Javascript) files, released by the makers of twitter. It makes a lot easier to produce websites that won&#8217;t make you want to sick up into your mouth everytime you look at them. We&#8217;ll now look at adding twitter bootstrap to your <code>first_site/index.html</code> page (you should have renamed your page to this as part of the homework).</p>
+
+<p>To start with go to the <a href='http://twitter.github.com/bootstrap'>twitter bootstrap</a> website (notice that it&#8217;s hosted at github, like ours is!) and click the download button. When you&#8217;ve downloaded and unzipped the file, copy the <code>bootstrap</code> folder into your <code>first_site</code> folder.</p>
+
+<p>When we covered CSS last time I mentioned that there are a few different ways of including it in your webpage. We did it by putting the css inside a <code>&lt;style&gt;..&lt;/style&gt;</code> tags in the <code>&lt;head&gt;</code> of your page. This time we&#8217;re going to do it by linking to a separate css file. This is more efficient, as it means that when someone&#8217;s browsing your site they don&#8217;t have to download the css file for each new page. In the head section of your <code>first_site/index.html</code> put the following line:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;link</span> <span class='na'>href=</span><span class='s'>&#39;bootstrap/css/bootstrap.css&#39;</span> <span class='na'>rel=</span><span class='s'>&#39;stylesheet&#39;</span><span class='nt'>&gt;</span>
+</code></pre></div>
+<p>You can also remove the <code>&lt;style&gt;..&lt;/style&gt;</code> tags and delete your css from last time if you want.</p>
+
+<p>When you go to your browser and press refresh, things should look slightly better - bootstrap chooses slightly nicer fonts than the browser does by default. To get the full effects of bootstrap we need to tweak our html.</p>
+	</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
