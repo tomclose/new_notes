@@ -19,7 +19,7 @@ module Jekyll
     end
 
     def get_tasks
-      Dir.entries(File.join(@base, '_sessions', @dir)).reject{|x| %w{. ..}.include?(x)}.sort.map do |n|
+      Dir.entries(File.join(@base, '_sessions', @dir)).reject{|x| %w{. .. info.yml}.include?(x)}.sort.map do |n|
         t = TaskPage.new(@site, @base, @dir, n)
         #t.render
         t
