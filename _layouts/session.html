@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+<div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	{% for task in page.tasks %}
 		{% if forloop.first %}
@@ -24,5 +24,7 @@ layout: default
 		{{ task.output }}
 	</div>
 {% endfor %}
+</div>
+
 </div>
 

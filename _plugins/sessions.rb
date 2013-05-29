@@ -10,7 +10,12 @@ module Jekyll
       self.process(@name)
       self.read_yaml(File.join(base, '_layouts'), 'session.html')
       self.data['tasks'] = get_tasks
-      self.data['title'] = dir
+      # load other options
+      if File.exists?(File.join(base, '_sessions', dir, 'info.yml'))
+        self.data.merge!(YAML.load_file(File.join(base, '_sessions', dir, 'info.yml')))
+      end
+
+      self.data['title'] ||= dir
     end
 
     def get_tasks
@@ -37,6 +42,7 @@ module Jekyll
         if Dir.exists?('_sessions')
           subdirs = Dir.entries('_sessions').reject{|x| %w{. ..}.include?(x)}
           subdirs.each do |dir_name|
+
 
  
             site.pages << SessionPage.new(site, site.source, dir_name)
