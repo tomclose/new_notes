@@ -8,7 +8,7 @@ There are two things you need to do to get your domain name working with your gi
 Github explains this [here](https://help.github.com/articles/setting-up-a-custom-domain-with-pages)
 
 The second bit is easy:
-- Open Sublime Text and create a new file
+- Open Sublime Text and create a new file 
 - Write your domain name on the first line of the new file e.g:
 
          mydomain.com
