@@ -11,7 +11,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'session.html')
       self.data['tasks'] = get_tasks
       # load other options
-      if File.exists?(File.join(base, '_sessions', dir, 'info.yml'))
+      if File.exists?(File.join(base, '_sessions', dir, '_info.yml'))
         self.data.merge!(YAML.load_file(File.join(base, '_sessions', dir, 'info.yml')))
       end
 
