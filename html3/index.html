@@ -38,11 +38,15 @@
 		
 	
 		
-		<li><a href="#3_separate_css_file" data-toggle="tab">Linking to an extenal stylesheet </a></li>
+		<li><a href="#3_separate_css_file" data-toggle="tab">Linking to an external stylesheet </a></li>
 		
 	
 		
 		<li><a href="#4_twitter_bootstrap" data-toggle="tab">Twitter Bootstrap </a></li>
+		
+	
+		
+		<li><a href="#5_github_pages_custom_domain" data-toggle="tab">Set-up your domain name </a></li>
 		
 	
 </ul>
@@ -162,8 +166,60 @@ git commit -m &quot;Description of changes&quot;</code></pre>
 	<div class="tab-pane " id="3_separate_css_file">
 	
 
-		<h2>Linking to an extenal stylesheet</h2>
-		
+		<h2>Linking to an external stylesheet</h2>
+		<p>So far you have written your CSS rules directly in the <code>head</code> section of your html page:</p>
+<div class='highlight'><pre><code class='html'><span class='cp'>&lt;!DOCTYPE html&gt;</span>
+<span class='nt'>&lt;html&gt;</span>
+  <span class='nt'>&lt;head&gt;</span>
+  	<span class='nt'>&lt;title&gt;</span>My page<span class='nt'>&lt;/title&gt;</span>
+  	<span class='nt'>&lt;style </span><span class='na'>type=</span><span class='s'>&quot;text/css&quot;</span><span class='nt'>&gt;</span>
+  	  <span class='nt'>h1</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>red</span><span class='p'>;</span> <span class='p'>}</span>
+  	<span class='nt'>&lt;/style&gt;</span>
+  <span class='nt'>&lt;/head&gt;</span>
+
+  <span class='c'>&lt;!-- body goes here --&gt;</span>
+
+<span class='nt'>&lt;/html&gt;</span>
+</code></pre></div>
+<p>We did this to make your first experiments with CSS quick an easy. In a live site it is considered bad practice to put your CSS inside the <code>head</code> section: Typically a site will have one set of styles that apply to all the pages. By separating these CSS rules into their own file you (a) reduce repetition in your code and (b) reduce the amount of information that has to be sent to the browser for each page - if the CSS file applies to the whole site, it only needs to be sent to the visitor once.</p>
+
+<p>To link to an external CSS file you can do the following:</p>
+<div class='highlight'><pre><code class='html'><span class='cp'>&lt;!DOCTYPE html&gt;</span>
+<span class='nt'>&lt;html&gt;</span>
+  <span class='nt'>&lt;head&gt;</span>
+  	<span class='nt'>&lt;title&gt;</span>My page<span class='nt'>&lt;/title&gt;</span>
+  	<span class='nt'>&lt;link</span> <span class='na'>rel=</span><span class='s'>&#39;stylesheet&#39;</span> <span class='na'>type=</span><span class='s'>&#39;text/css&#39;</span> <span class='na'>href=</span><span class='s'>&#39;path/to/my_css_file.css&#39;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;/head&gt;</span>
+
+  <span class='c'>&lt;!-- body goes here --&gt;</span>
+
+<span class='nt'>&lt;/html&gt;</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Exercise:</p>
+</strong>
+<ol>
+<li>
+<p>If you have previously made changes to the <code>learning_css</code> folder, save and commit them:</p>
+
+<pre><code>git add .
+git commit -m &quot;Description of changes&quot;</code></pre>
+</li>
+
+<li>
+<p>Switch to the <code>ex3</code> branch:</p>
+
+<pre><code>git checkout ex3</code></pre>
+</li>
+
+<li>
+<p>Check you can see where the CSS file is linked in.</p>
+</li>
+
+<li>
+<p>Check that changes you make to the CSS file are reflected in the browser.</p>
+</li>
+</ol>
+</div>
 	</div>
 
 	
@@ -183,6 +239,60 @@ git commit -m &quot;Description of changes&quot;</code></pre>
 <p>You can also remove the <code>&lt;style&gt;..&lt;/style&gt;</code> tags and delete your css from last time if you want.</p>
 
 <p>When you go to your browser and press refresh, things should look slightly better - bootstrap chooses slightly nicer fonts than the browser does by default. To get the full effects of bootstrap we need to tweak our html.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="5_github_pages_custom_domain">
+	
+
+		<h2>Set-up your domain name</h2>
+		<p>There are two things you need to do to get your domain name working with your github pages site</p>
+
+<ol>
+<li>Tell your domain registrar (e.g 123-reg or godaddy) to point towards github</li>
+
+<li>Tell github that your site should be matched with that domain name when the request gets to github Github explains this <a href='https://help.github.com/articles/setting-up-a-custom-domain-with-pages'>here</a></li>
+</ol>
+
+<p>The second bit is easy:</p>
+
+<ul>
+<li>
+<p>Open Sublime Text and create a new file</p>
+</li>
+
+<li>
+<p>Write your domain name on the first line of the new file e.g:</p>
+
+<pre><code>   mydomain.com</code></pre>
+</li>
+
+<li>
+<p>Save that file as <code>CNAME</code> (with no extension) in your <code>first_site</code> folder</p>
+</li>
+
+<li>
+<p>Add and commit your changes locally, then push to github:</p>
+
+<pre><code>   git add .
+   git commit -m &quot;Added CNAME&quot;
+   git push</code></pre>
+</li>
+</ul>
+
+<p>For the first bit you need to log in to your domain registrar and change the DNS settings. You want an <em>A-record</em> pointing to <code>204.232.175.78</code> (which is github.com). Note that it can take up to a couple of days for DNS changes to propagate.</p>
+
+<p>If you&#8217;re using 123-reg, your should log in, select your domain from the list, and click &#8220;Manage&#8221;. You should then go to &#8220;Manage DNS&#8221;.</p>
+
+<p><img alt='123-reg DNS Settings' src='./assets/dns_settings.png' /></p>
+
+<p>(The @ dns entry stands for the root or bare domain.)</p>
+
+<p>Your changes won&#8217;t take effect immediately. You can check by visiting your url (which should end you up at github), or by running</p>
+
+<pre><code>$ host yourdomain.com</code></pre>
+
+<p>at the command prompt (or <code>nslookup</code> on windows).</p>
 	</div>
 
 </div>
