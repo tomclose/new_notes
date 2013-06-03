@@ -3,38 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>session1</title>
+  <title>html2</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
-  <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
 
   <!-- syntax highlighting CSS -->
-  <link rel="stylesheet" href="./css/syntax.css">
+  <link rel="stylesheet" href="/css/syntax.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
 
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-  <script type="text/javascript" src='./bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
 
 </head>
 <body>
 
   <div class="container">
-    <div class="header">
-      <h1 class="title"><a href="/">Learn to Code</a></h1>
-      <a class="extra" href="/">home</a>
+    <div class="page-header">
+      <h1 class="title">html2</h1>
     </div>
 
-    <ul class="nav nav-tabs" id="myTab">
+    <div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#0_overview" data-toggle="tab">Course Overview </a></li>
-		
-	
-		
-		<li><a href="#1_command_line" data-toggle="tab">Intro to the command line </a></li>
+		<li class="active"><a href="#1_command_line" data-toggle="tab">Intro to the command line </a></li>
 		
 	
 		
@@ -46,7 +42,7 @@
 		
 	
 		
-		<li><a href="#4_pushing_to_github" data-toggle="tab">Pusing code to Github </a></li>
+		<li><a href="#4_pushing_to_github" data-toggle="tab">Pushing code to Github </a></li>
 		
 	
 </ul>
@@ -54,43 +50,7 @@
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="0_overview">
-	
-
-		<h2>Course Overview</h2>
-		<h3 id='who_is_this_course_for'>Who is this course for?</h3>
-
-<ul>
-<li>You want to start a start-up and be your own technical cofounder</li>
-
-<li>You want to have your own blog and understand how it works</li>
-
-<li>You want to have the foundations to teach yourself more</li>
-</ul>
-
-<h3 id='what_will_we_learn'> What will we learn</h3>
-
-<ul>
-<li>How to inspect and learn from other sites</li>
-
-<li>How to put up a webpage</li>
-
-<li>Basic skills and tools that will be useful for any coding you do</li>
-</ul>
-
-<p>Hope you will become curious about how the internet works and will look at websites in a different way.</p>
-
-<p>It&#8217;s worth pointing out that this is <em>not</em> the easiest way to put up a website. There are many site builders/blogging platforms which will allow you to put up a website quickly and easily in a point-and-click manner (eg. <a href='http://www.weebly.com/'>weebly</a> or <a href='http://wordpress.com/'>wordpress</a>). The focus of this course is learning the basics of how and why things work and to provide the basis to build upon in future courses.</p>
-
-<h3 id='how_to_study'> How to study</h3>
-
-<p>The hardest thing about learning to program is knowing where to start and what to learn. The course aims to provide a basic overview of the technologies used, along with the tools and resources to discover more. We do not aim to cover anything in great depth or comprehensive detail.</p>
-
-<p>The lectures will be as hands-on and practical as possible. Each week there will be a number of tasks to do in between the sessions to reinforce what you have learnt. It&#8217;s up to you whether you do the tasks or not, but the more you put in the more you will get out!</p>
-	</div>
-
-	
-	<div class="tab-pane " id="1_command_line">
+	<div class="tab-pane active" id="1_command_line">
 	
 
 		<h2>Intro to the command line</h2>
@@ -183,24 +143,22 @@ $ git commit -m &quot;Imported first_html_page&quot;</code></pre>
 <p>There are a few ways to include CSS in an HTML file: the proper way is to link to a separate <code>.css</code> file in the <code>&lt;head&gt;</code>. This allows web browsers to download the <code>.css</code> file once for the entire site, which speeds up loading times. You can also put the css inline, or write it directly into the <code>&lt;head&gt;</code>. For simplicity we&#8217;ll do this:</p>
 
 <p>Make your html header look like this:</p>
-
-<pre><code>&lt;head&gt;
-  &lt;title&gt;Some title&lt;/title&gt;
-  &lt;style&gt;
-    h1 { color: red; }
-  &lt;/style&gt;
-&lt;/head&gt;</code></pre>
-
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;head&gt;</span>
+  <span class='nt'>&lt;title&gt;</span>Some title<span class='nt'>&lt;/title&gt;</span>
+  <span class='nt'>&lt;style&gt;</span>
+    <span class='nt'>h1</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>red</span><span class='p'>;</span> <span class='p'>}</span>
+  <span class='nt'>&lt;/style&gt;</span>
+<span class='nt'>&lt;/head&gt;</span>
+</code></pre></div>
 <p>The bit inside the <code>&lt;style&gt;</code> tags is CSS. The <code>h1</code> bit specifies the tag that will be styled. The bit inside the <code>{ ... }</code> specifies the styles that will be applied. Here we change the colour of the <code>h1</code> text red.</p>
 
 <p>If you save the changes to the html file, then open (or refresh) the page in your browser you should see the changes. By opening the developer tools, and hovering over the <code>h1</code> you should be able to see your css rule at the side.</p>
 
 <p>Try out the following:</p>
-
-<pre><code>p { color: blue; }
-div { background-color: pink; }
-div#lists { background-color: green; }</code></pre>
-
+<div class='highlight'><pre><code class='css'><span class='nt'>p</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>blue</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='nt'>div</span> <span class='p'>{</span> <span class='k'>background-color</span><span class='o'>:</span> <span class='nb'>pink</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='nt'>div</span><span class='nf'>#lists</span> <span class='p'>{</span> <span class='k'>background-color</span><span class='o'>:</span> <span class='nb'>green</span><span class='p'>;</span> <span class='p'>}</span>
+</code></pre></div>
 <p>The <code>div#lists</code> bit selects only the div with the lists id: <code>&lt;div id=&quot;lists&quot;&gt;</code>.</p>
 
 <p>If anything, these changes will have made your site look a lot worse - but I hope you get the idea!</p>
@@ -216,7 +174,7 @@ $ gitk --all</code></pre>
 	<div class="tab-pane " id="4_pushing_to_github">
 	
 
-		<h2>Pusing code to Github</h2>
+		<h2>Pushing code to Github</h2>
 		<p>Github is a site which will host a git repo online for you, making it easy to collaborate with others. We&#8217;ll now put the first website online.</p>
 
 <p>Go to github, login, and click &#8220;Create New Repo&#8221; in the top left hand corner. Follow the instructions, calling it something like <code>first_site</code>. You&#8217;ll get to a page when it&#8217;ll describe how to get your code online. You want to follow the instructions for &#8220;Pushing an existing repository to github&#8221;. It&#8217;s probably best to use the http option, instead of ssh. You should end up doing something like:</p>
@@ -226,6 +184,8 @@ $ git push -u origin master</code></pre>
 
 <p>You should now be prompted to add your github username and password. If all goes well, when you go to github you should see the <code>first_site</code> folder containing your html file.</p>
 	</div>
+
+</div>
 
 </div>
 

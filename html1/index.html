@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Session 1</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="title">Session 1</h1>
+    </div>
+
+    <div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#0_overview" data-toggle="tab">Course Overview </a></li>
+		
+	
+		
+		<li><a href="#1_urls" data-toggle="tab">Introducing the URL </a></li>
+		
+	
+		
+		<li><a href="#2_dns_and_servers" data-toggle="tab">Domain Names and Servers </a></li>
+		
+	
+		
+		<li><a href="#3_web_technologies" data-toggle="tab">Web technologies </a></li>
+		
+	
+		
+		<li><a href="#4_investigating_html" data-toggle="tab">Investigating HTML </a></li>
+		
+	
+		
+		<li><a href="#5_first_page" data-toggle="tab">Creating an HTML page </a></li>
+		
+	
+		
+		<li><a href="#6_more_html" data-toggle="tab">More HTML </a></li>
+		
+	
+		
+		<li><a href="#follow-up" data-toggle="tab">Follow-up </a></li>
+		
+	
+		
+		<li><a href="#preparation" data-toggle="tab">Preparation </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="0_overview">
+	
+
+		<h2>Course Overview</h2>
+		<h3 id='who_is_this_course_for'>Who is this course for?</h3>
+
+<ul>
+<li>You want to start a start-up and be your own technical cofounder</li>
+
+<li>You want to have your own blog and understand how it works</li>
+
+<li>You want to have the foundations to teach yourself more</li>
+</ul>
+
+<h3 id='what_will_we_learn'> What will we learn</h3>
+
+<ul>
+<li>How to inspect and learn from other sites</li>
+
+<li>How to put up a webpage</li>
+
+<li>Basic skills and tools that will be useful for any coding you do</li>
+</ul>
+
+<p>Hope you will become curious about how the internet works and will look at websites in a different way.</p>
+
+<p>It&#8217;s worth pointing out that this is <em>not</em> the easiest way to put up a website. There are many site builders/blogging platforms which will allow you to put up a website quickly and easily in a point-and-click manner (eg. <a href='http://www.weebly.com/'>weebly</a> or <a href='http://wordpress.com/'>wordpress</a>). The focus of this course is learning the basics of how and why things work and to provide the basis to build upon in future courses.</p>
+
+<h3 id='how_to_study'> How to study</h3>
+
+<p>The hardest thing about learning to program is knowing where to start and what to learn. The course aims to provide a basic overview of the technologies used, along with the tools and resources to discover more. We do not aim to cover anything in great depth or comprehensive detail.</p>
+
+<p>The lectures will be as hands-on and practical as possible. Each week there will be a number of tasks to do in between the sessions to reinforce what you have learnt. It&#8217;s up to you whether you do the tasks or not, but the more you put in the more you will get out!</p>
+	</div>
+
+	
+	<div class="tab-pane " id="1_urls">
+	
+
+		<h2>Introducing the URL</h2>
+		<p>Many of our web interactions begin with a URL (_uniform resource locator_) being typed into our web browser address bar. Let&#8217;s look at an example: <code>http://www.bbc.co.uk/news/</code>.</p>
+
+<p>This URL has several different parts to it:</p>
+
+<ul>
+<li><code>http</code> : the <em>protocol</em> or <em>the how</em></li>
+
+<li><code>www.bbc.co.uk</code> : the <em>host</em> or <em>the where</em></li>
+
+<li><code>/news</code> : the <em>path</em> or <em>the what</em></li>
+</ul>
+
+<p>When we type the URL into the address bar a request is sent over the internet and some information is returned to us.</p>
+
+<p>The protocol describes how the information is transmitted. Other possibilities include <code>https</code> for secured communication, <code>ftp</code> for file transfer and <code>git</code> which we&#8217;ll learn about later.</p>
+
+<p>The host describes where the information should come from and the path tells that location precisely what information to send.</p>
+
+<p>In general a URL can be more complicated than this. URLs can also contain <em>query parameters</em>, <em>fragments</em> and <em>port information</em>. We will leave these for now but will point them out when we meet them later. Instead we will focus on exactly what information is being sent and who is sending it.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="2_dns_and_servers">
+	
+
+		<h2>Domain Names and Servers</h2>
+		<p>You can think of the internet as a massive network of computers that can send files to one another. The computers that hold web pages are called <em>servers</em>. In general they are large, specialised computers that are permanently connected to the internet.</p>
+
+<p>Each computer on the internet has an address (an <em>IP address</em>) so that requests can be sent to it and files returned - much like a telephone number. The backbone of the internet is a network of <em>routers</em> that are responsible for routing files from one IP address to another.</p>
+
+<p>IP addresses are a sequence of numbers and &#8217;.&#8217;s such as <code>212.58.244.67</code>. These aren&#8217;t very easy to remember. Instead the internet works on a domain name system, that matches domain names such as <code>bbc.co.uk</code> to IP addresses.</p>
+<div class='exercise'>
+<p>Type <code>212.58.244.67</code> into your browser&#8217;s address bar. What happens?</p>
+</div>
+<p>One of the first things that happens when you type a URL into your browser is a <em>DNS lookup</em>: your computer contacts a DNS server (_Domain Name System server_), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. <code>bbc.co.uk</code>) into an address for a server (such as <code>212.57.244.67</code>).</p>
+
+<p>If you want to put up your own website at your own domain name you need two things:</p>
+
+<ol>
+<li>A web server to serve your site</li>
+
+<li>A domain name to point towards it</li>
+</ol>
+
+<p>There are many options for web servers - you don&#8217;t have to physically have your own one. There are many companies that will offer web hosting, often providing you with space on a shared server. Later in the course we will use the free hosting offered by GitHub through GitHub Pages.</p>
+
+<p>To buy a domain name you need to use a domain registrar. Examples include <span>123-reg.co.uk</span>, <span>godaddy.com</span> and <span>namecheap.com</span>. You pay the registrar to contact the body who manages a TLD (e.g. .com, .org., .co.uk) and put your server&#8217;s IP address in their DNS address book. If someone else already owns the domain you might be able to buy it off them, but this can be expensive!</p>
+
+<p>Many domain registrars will try to sell you hosting and other site building tools when you buy a domain. It&#8217;s important to remember that the domain name is completely separate from the hosting and you don&#8217;t need to do them both through the same company - don&#8217;t buy anything you&#8217;re not going to use.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="3_web_technologies">
+	
+
+		<h2>Web technologies</h2>
+		<p>Once the address of the web server has been found your request is forwarded on to it. The web server will interpret your request and send back one or more files. We now look at the technology involved in this process.</p>
+
+<p>When talking about web technology it is useful to split things up into server-side technology and client-side technology. Server-side relates to anything that happens on the web server. Client-side is anything the server sends back to your browser.</p>
+
+<p>The main three client-side technologies are HTML, CSS and Javascript. Client-side stuff has to be interpreted by your browser, so there are relatively few possibilities.</p>
+
+<p>HTML (_HyperText Markup Language_) encodes the information that is sent back from the server. CSS (_Cascading Style Sheets_) tell your browser how to display that information. Javascript is a programming language that can be used to provide client-side interactivity. We&#8217;ll look at these in more detail later in the course.</p>
+
+<p>There are two main possibilities server-side: either your site is static or dynamic. In a static site all the pages are pre-prepared and the web server just sends them to the browser. In a dynamic site the pages are prepared on-the-fly pulling information out of a database depending on what the user asked for. Most of the sites you can think of will be dynamic sites (e.g. <span>facebook.com</span>, <span>reddit.com</span>, <span>amazon.com</span>, ..).</p>
+
+<p>There are many options for building a dynamic server-side site - you&#8217;re pretty much free to do what you like. Some common choices are:</p>
+
+<ul>
+<li>Ruby on Rails</li>
+
+<li>php</li>
+
+<li>python</li>
+
+<li>Node.js</li>
+
+<li>Wordpress</li>
+</ul>
+
+<p>We will now look in more detail at HTML</p>
+	</div>
+
+	
+	<div class="tab-pane " id="4_investigating_html">
+	
+
+		<h2>Investigating HTML</h2>
+		<p>HTML (_HyperText Markup Language_) is a way of writing information so that it can be interpreted by a web browser. It is <em>not</em> a programming language - you can&#8217;t do calculations in it - it is a <em>markup</em> language.</p>
+
+<p>Back in the early days of the web HTML would both store the information and tell the browser how to display it. People then realised that this was a bad idea - making a small change such as changing the colour of a heading would require edits all over the place, which made sites hard to maintain. HTML is now used just to display the information (text etc.) that is stored in the page.</p>
+<div class='exercise'>
+<ol>
+<li>
+<p>Open Google Chrome</p>
+
+<ol>
+<li>Go to any web site (eg. <a href='/'>this one</a>)</li>
+
+<li>View the page source (View &gt; Developer &gt; View Source)</li>
+</ol>
+</li>
+</ol>
+</div>
+<p>HTML probably won&#8217;t make a lot of sense to you at first but you might be able to see some of the words from the page.</p>
+
+<p>A slightly nicer way to look at HTML is to use the Chrome Developer Tools.</p>
+<div class='exercise'>
+<ol>
+<li>
+<p>Open Google Chrome</p>
+
+<ol>
+<li>Go to any web site</li>
+
+<li>Look at the page using developer tools (View &gt; Developer &gt; Developer Tools)</li>
+</ol>
+</li>
+</ol>
+</div>
+<p>Using the magnifying glass (bottom left) You can hover over the bits of the page and it will show you the relevant bits of HTML. We will use Chrome Developer Tools a lot throughout the course.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="5_first_page">
+	
+
+		<h2>Creating an HTML page</h2>
+		<p>We&#8217;ll now create our first HTML page.</p>
+<div class='exercise'>
+<ol>
+<li>
+<p>Create a new folder in your documents called &#8216;coding_course&#8217;</p>
+
+<ol>
+<li>Inside that create another folder called &#8216;first_site&#8217;</li>
+
+<li>Open Sublime Text</li>
+
+<li>Write &#8220;Hello&#8221;</li>
+
+<li>Save the file as &#8216;index.html&#8217; in the &#8216;first_site&#8217; folder</li>
+
+<li>Open &#8216;index.html&#8217; in Chrome (File &gt; Open &#8230;)</li>
+</ol>
+</li>
+</ol>
+</div>
+<p>Sublime Text is a text editor. When writing HTML (and code in general) it&#8217;s important to use a program that doesn&#8217;t add any formatting of its own. For example, if you wrote &#8220;hello&#8221; and saved it in Microsoft Word it would create a complicated file which would include a load of formatting information and other stuff. We want files to be saved exactly how we see them.</p>
+
+<p>There are many different possibilities for text editors. You probably already have one of Notepad or TextEdit on your computer. Sublime Text (and other editors such as NotePad++, Vim, gEdit, ..) will add <em>syntax highlighting</em> for you - they&#8217;ll colour different bits of your progamming language to make it easier to read.</p>
+<div class='exercise'>
+<ol>
+<li>Go back to &#8216;index.html&#8217; in Sublime Text.</li>
+
+<li>Change the text to</li>
+</ol>
+<h1>
+<p>Hello</p>
+</h1>
+<ol>
+<li>Go back to &#8216;index.html&#8217; in Chrome and press the refresh button.</li>
+</ol>
+</div>
+<p>This is your first real html tag. It has an open and a close. It tells it to be a heading.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="6_more_html">
+	
+
+		<h2>More HTML</h2>
+		<div class='exercise'>
+<ol>
+<li>
+<p>Go to <span>github.com/TomClose/first_site/blob/master/index.html</span></p>
+
+<ol>
+<li>Click the &#8216;Copy to Clipboard&#8217; button (just underneath &#8216;Files&#8217;)</li>
+
+<li>Go to Sublime Text and create a new file</li>
+
+<li>Paste the contents into the new file</li>
+
+<li>Save it as &#8216;toms_page.html&#8217; in &#8216;first_site&#8217;</li>
+</ol>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="follow-up">
+	
+
+		<h2>Follow-up</h2>
+		
+	</div>
+
+	
+	<div class="tab-pane " id="preparation">
+	
+
+		<h2>Preparation</h2>
+		<ul>
+<li>Do the &#8220;1 Introduction to HTML&#8221; from the <a href='http://www.codecademy.com/tracks/web'>Codecademy web track</a></li>
+</ul>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>html3</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="title">html3</h1>
+    </div>
+
+    <div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_css_recap" data-toggle="tab">CSS Recap </a></li>
+		
+	
+		
+		<li><a href="#2_selectors" data-toggle="tab">Selectors and Attributes </a></li>
+		
+	
+		
+		<li><a href="#3_separate_css_file" data-toggle="tab">Linking to an extenal stylesheet </a></li>
+		
+	
+		
+		<li><a href="#4_twitter_bootstrap" data-toggle="tab">Twitter Bootstrap </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_css_recap">
+	
+
+		<h2>CSS Recap</h2>
+		<p>CSS stands for Cascading Style Sheets. It is used to tell the web browser how to display the HTML it receives. Using CSS you can specify everything:</p>
+
+<ul>
+<li>fonts</li>
+
+<li>colours</li>
+
+<li>background images</li>
+
+<li>layout/positioning</li>
+
+<li>&#8230; and much more</li>
+</ul>
+
+<p>Last session we looked at adding CSS directly to the <code>&lt;head&gt;</code> section of the webpage. Later in this session we will see how to put the css in a different file, which is more efficient and easier to maintain.</p>
+
+<p>To remind yourself of what we did last week:</p>
+
+<ol>
+<li>Go to the folder <code>coding_course/learning_css</code></li>
+
+<li>Open <code>notes.html</code> in Sublime Text and also in Chrome</li>
+
+<li>See if you can change all the paragraph text to green</li>
+</ol>
+	</div>
+
+	
+	<div class="tab-pane " id="2_selectors">
+	
+
+		<h2>Selectors and Attributes</h2>
+		<p>So far you have used html tags to specify CSS rules. For example,</p>
+<div class='highlight'><pre><code class='css'><span class='nt'>h2</span> <span class='p'>{</span> 
+  <span class='n'>fontsize</span><span class='o'>:</span> <span class='m'>40px</span><span class='p'>;</span>
+  <span class='k'>color</span><span class='o'>:</span> <span class='nb'>pink</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>will turn all your <code>&lt;h2&gt;</code> massive and pink.</p>
+
+<p>It is often useful to be able to make CSS rules more specific, so you can apply different styles to different parts of the page. One common way to do this is to target specific html attributes - in particular <code>id</code> and <code>class</code>.</p>
+
+<h3 id='the__and__attributes'>The <code>id</code> and <code>class</code> attributes</h3>
+
+<p>HTML tags can have <em>attributes</em> which provide additional information about the element. You&#8217;ve aready seen some examples of this:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;a</span> <span class='na'>href=</span><span class='s'>&quot;http://www.facebook.com&quot;</span><span class='nt'>&gt;</span>
+<span class='nt'>&lt;img</span> <span class='na'>src=</span><span class='s'>&quot;cat_pic.png&quot;</span><span class='nt'>&gt;</span>
+</code></pre></div>
+<p>Both <code>href</code> and <code>src</code> are examples of html attributes. They are written in pairs with their values: <code>attribute=&quot;value&quot;</code>.</p>
+
+<p>There are some attributes that can be added to any tag. Two examples of these are <code>id</code> and <code>class</code>:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;h2</span> <span class='na'>id=</span><span class='s'>&quot;products_title&quot;</span><span class='nt'>&gt;</span>Our scrumptious puddings<span class='nt'>&lt;/h2&gt;</span>
+
+<span class='nt'>&lt;ul</span> <span class='na'>id=</span><span class='s'>&quot;products_list&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;li</span> <span class='na'>class=</span><span class='s'>&quot;product_item&quot;</span><span class='nt'>&gt;</span>Black forrest gateau<span class='nt'>&lt;/li&gt;</span>
+  <span class='nt'>&lt;li</span> <span class='na'>class=</span><span class='s'>&quot;product_item&quot;</span><span class='nt'>&gt;</span>Rasberry lemon swirl cheesecake<span class='nt'>&lt;/li&gt;</span>
+  <span class='nt'>&lt;li</span> <span class='na'>class=</span><span class='s'>&quot;product_item&quot;</span><span class='nt'>&gt;</span>Sticky toffee pudding<span class='nt'>&lt;/li&gt;</span>
+  <span class='nt'>&lt;li</span> <span class='na'>class=</span><span class='s'>&quot;product_item&quot;</span><span class='nt'>&gt;</span>Death-by-chocolate cake<span class='nt'>&lt;/li&gt;</span>
+<span class='nt'>&lt;/uk&gt;</span>
+</code></pre></div>
+<p>Both <code>id</code> and <code>class</code> are used to add some information to the HTML tags. The key difference is that <code>id</code> should specify a <em>unique element on the page</em>, whereas multiple elements can share the same <code>class</code>.</p>
+
+<p>CSS lets you target the <code>id</code> and <code>class</code> attributes in special ways:</p>
+<div class='highlight'><pre><code class='css'><span class='c'>/* make the h2 with id=&quot;products_title&quot; purple */</span>
+<span class='nt'>h2</span><span class='nf'>#products_title</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>purple</span><span class='p'>;</span> <span class='p'>}</span>
+
+<span class='c'>/* remove the bullets from all li with class=&quot;product_item&quot; */</span>
+<span class='nt'>li</span><span class='nc'>.product_item</span> <span class='p'>{</span> <span class='k'>list-style-type</span><span class='o'>:</span> <span class='k'>none</span><span class='p'>;</span> <span class='p'>}</span>
+</code></pre></div>
+<p>The <code>id</code> is targeted by adding <code>#id_value</code> to the tag and the <code>class</code> is targeted by adding <code>.class_value</code> to the tag.</p>
+
+<p>It is also possible to target any items with a given <code>class</code> or <code>id</code> by leaving out the HTML tag:</p>
+<div class='highlight'><pre><code class='css'><span class='c'>/* make any element with id=&quot;products_title&quot; purple */</span>
+<span class='nf'>#products_title</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>purple</span><span class='p'>;</span> <span class='p'>}</span>
+
+<span class='c'>/* make any element with class=&quot;product_item blue&quot; */</span>
+<span class='nc'>.product_item</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>blue</span><span class='p'>;</span> <span class='p'>}</span>
+</code></pre></div><!-- <div class='exercise alert alert-info' markdown="1">
+ --><div class='exercise alert alert-info'><strong>
+<p>Exercise:</p>
+</strong>
+<ol>
+<li>
+<p>If you haven&#8217;t already, clone the git repository <a href='https://github.com/TomClose/learning_css'>https://github.com/TomClose/learning_css</a> into your <code>coding_course</code> folder:</p>
+
+<pre><code>git clone git://github.com/TomClose/learning_css.git</code></pre>
+</li>
+
+<li>
+<p>If you have previously made changes to the <code>learning_css</code> folder, save and commit them:</p>
+
+<pre><code>git add .
+git commit -m &quot;Description of changes&quot;</code></pre>
+</li>
+
+<li>
+<p>Switch to the <code>ex2</code> branch:</p>
+
+<pre><code>git checkout ex2</code></pre>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_separate_css_file">
+	
+
+		<h2>Linking to an extenal stylesheet</h2>
+		
+	</div>
+
+	
+	<div class="tab-pane " id="4_twitter_bootstrap">
+	
+
+		<h2>Twitter Bootstrap</h2>
+		<p>Last time we looked at how you can use CSS to change the appearance of your site. Making things look good with CSS is a bit of an art, which is only really acquired over time (or not, in my case!). Thankfully there are pre-existing solutions out there to make your life easier.</p>
+
+<p><a href='http://twitter.github.com/bootstrap/'>Twitter bootstrap</a> is set of CSS (&amp; Javascript) files, released by the makers of twitter. It makes a lot easier to produce websites that won&#8217;t make you want to sick up into your mouth everytime you look at them. We&#8217;ll now look at adding twitter bootstrap to your <code>first_site/index.html</code> page (you should have renamed your page to this as part of the homework).</p>
+
+<p>To start with go to the <a href='http://twitter.github.com/bootstrap'>twitter bootstrap</a> website (notice that it&#8217;s hosted at github, like ours is!) and click the download button. When you&#8217;ve downloaded and unzipped the file, copy the <code>bootstrap</code> folder into your <code>first_site</code> folder.</p>
+
+<p>When we covered CSS last time I mentioned that there are a few different ways of including it in your webpage. We did it by putting the css inside a <code>&lt;style&gt;..&lt;/style&gt;</code> tags in the <code>&lt;head&gt;</code> of your page. This time we&#8217;re going to do it by linking to a separate css file. This is more efficient, as it means that when someone&#8217;s browsing your site they don&#8217;t have to download the css file for each new page. In the head section of your <code>first_site/index.html</code> put the following line:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;link</span> <span class='na'>href=</span><span class='s'>&#39;bootstrap/css/bootstrap.css&#39;</span> <span class='na'>rel=</span><span class='s'>&#39;stylesheet&#39;</span><span class='nt'>&gt;</span>
+</code></pre></div>
+<p>You can also remove the <code>&lt;style&gt;..&lt;/style&gt;</code> tags and delete your css from last time if you want.</p>
+
+<p>When you go to your browser and press refresh, things should look slightly better - bootstrap chooses slightly nicer fonts than the browser does by default. To get the full effects of bootstrap we need to tweak our html.</p>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
