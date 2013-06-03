@@ -87,4 +87,23 @@ module Jekyll
     end
   end
 
+
+
+  class ExerciseTag < Liquid::Block
+    # somehow access converter
+
+    def render(context)
+      content = super
+      parsed_content = Liquid::Template.parse(content)
+      output = context.stack do 
+        parsed_content.render(context)
+      end
+      # how do I convert this thing??? 
+      "<div class='exercise alert alert-info' markdown='1'><strong>Exercise:</strong> " +  output + "</div>"
+    end
+  end
+
+
 end
+
+Liquid::Template.register_tag('exercise', Jekyll::ExerciseTag)
