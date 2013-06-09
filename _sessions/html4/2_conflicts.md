@@ -4,14 +4,18 @@ title: Conflicts
 
 The version on your laptop is stored in a fully functional git repository: you can make changes to the site and commit it if you want. What happens if we both make changes at the same time?
 
-Open `toms_site/index.html` in your code editor, and change the page heading (inside `<h1>`) to something of your choosing. (At the same time I'll also make a change). When you're done, commit your change to the local repository:
+{% exercise %}
+1. Open `toms_site/index.html` in your code editor, and change the page heading (inside `&lt;h1&gt;`) to something of your choosing. (At the same time I'll also make a change). When you're done, commit your change to the local repository:
 
-    git add .
-    git commit -m "Changed heading"
+        git add .
+        git commit -m "Changed heading"
 
-I'll push my change up and you pull it down:
+2. Wait while I push my own change to the `&lt;h1&gt;` element. 
+3. Pull down my changes
 
-    git pull
+        git pull
+
+{% endexercise %}
 
 You should now have a message telling you that you have a merge conflict. This is because our two changes have been made at the same time, so git is unabled to work out which is the up-to-date one to keep. If you look in your file you should see things that look like
 
@@ -27,3 +31,12 @@ To fix the merge conflict you need to edit this by hand, picking the version you
 
     git add .
     git commit -m "Fixed conflicts"
+
+{% exercise %}
+1. Delete the conflict markers (`&lt;&lt;&lt;&lt;`, `=====`, `&gt;&gt;&gt;&gt;`) from `index.html` (using Sublime text)
+2. Delete the version of the heading that you don't want.
+3. On the command line:
+
+        git add .
+        git commit -m "Fixed conflicts"
+{% endexercise %}

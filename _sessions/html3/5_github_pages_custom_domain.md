@@ -24,7 +24,7 @@ For the first bit you need to log in to your domain registrar and change the DNS
 
 If you're using 123-reg, your should log in, select your domain from the list, and click "Manage". You should then go to "Manage DNS".
 
-![123-reg DNS Settings](./assets/dns_settings.png)
+![123-reg DNS Settings](/assets/dns_settings.png)
 
 (The @ dns entry stands for the root or bare domain.)
 

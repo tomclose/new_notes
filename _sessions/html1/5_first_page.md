@@ -17,14 +17,13 @@ Sublime Text is a text editor. When writing HTML (and code in general) it's impo
 
 There are many different possibilities for text editors. You probably already have one of Notepad or TextEdit on your computer. Sublime Text (and other editors such as NotePad++, Vim, gEdit, ..) will add _syntax highlighting_ for you - they'll colour different bits of your progamming language to make it easier to read.
 
-<div class='exercise' markdown="1">
+{% exercise %}
 1. Go back to 'index.html' in Sublime Text.
 2. Change the text to
 
-		<h1>Hello</h1>
+		&lt;h1&gt;Hello&lt;/h1&gt;
 
 3. Go back to 'index.html' in Chrome and press the refresh button.
-
-</div>
+{% endexercise %}
 
 This is your first real html tag. It has an open and a close. It tells it to be a heading.

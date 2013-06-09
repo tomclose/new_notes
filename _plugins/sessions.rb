@@ -11,7 +11,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'session.html')
       self.data['tasks'] = get_tasks
       # load other options
-      if File.exists?(File.join(base, '_sessions', dir, '_info.yml'))
+      if File.exists?(File.join(base, '_sessions', dir, 'info.yml'))
         self.data.merge!(YAML.load_file(File.join(base, '_sessions', dir, 'info.yml')))
       end
 
@@ -93,13 +93,13 @@ module Jekyll
     # somehow access converter
 
     def render(context)
-      content = super
-      parsed_content = Liquid::Template.parse(content)
-      output = context.stack do 
-        parsed_content.render(context)
-      end
+      # content = super
+      # parsed_content = Liquid::Template.parse(content)
+      # output = context.stack do 
+      #   parsed_content.render(context)
+      # end
       # how do I convert this thing??? 
-      "<div class='exercise alert alert-info' markdown='1'><strong>Exercise:</strong> " +  output + "</div>"
+      "<div class='exercise alert alert-info' markdown='1'><strong>Exercise:</strong> " +  super + "</div>"
     end
   end
 
