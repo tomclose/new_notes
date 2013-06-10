@@ -31,11 +31,11 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#3_collaboration_forking" data-toggle="tab">Collaboration: Forking model </a></li>
+		<li class="active"><a href="#1_google_analytics" data-toggle="tab">Google Analytics </a></li>
 		
 	
 		
-		<li><a href="#4_collaboration_sharing" data-toggle="tab">Coallaboration: Sharing model </a></li>
+		<li><a href="#2_mixpanel_analytics" data-toggle="tab">Mixpanel Analytics </a></li>
 		
 	
 </ul>
@@ -43,31 +43,38 @@
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="3_collaboration_forking">
+	<div class="tab-pane active" id="1_google_analytics">
 	
 
-		<h2>Collaboration: Forking model</h2>
-		<p>You&#8217;re now able to get someone else&#8217;s code. What about sharing your changes with them. Try doing:</p>
+		<h2>Google Analytics</h2>
+		<p><a href='http://www.google.co.uk/analytics/'>Google Analytics</a> is a free analytics service from Google. It will allow you to collect information on who is visiting your site and what they are doing there.</p>
 
-<pre><code>git push</code></pre>
+<p>Google Analytics works using javascript: when a user loads your page, some javascript on the page sends a message to Google Analytics containing information about the user. You can then log in via the Google Analytics admin panel to view this information.</p>
 
-<p>You&#8217;ll find that you can&#8217;t push to my repository.</p>
+<h3 id='installing_google_analytics'>Installing Google Analytics</h3>
 
-<p>One of the options for sharing your changes with me, is for you to publish your repository too. I can then pull your changes down just as you pulled mine.</p>
+<p>To install Google Analytics you just need to add some javascript to your html page. Google Analytics even provides this javascript for you, so it as simple as cutting and pasting it in.</p>
 
-<p>Notice that this situation is symmetric - my repositories are equivalent to yours. This makes it a suitable model for many open source projects, where the project maintainer might change over time.</p>
+<ol>
+<li>Sign up/log in at <a href=''>http://www.google.co.uk/analytics/</a></li>
 
-<p>Github makes this model easy by providing a &#8216;forking&#8217; button. Go to <a href='github.com/TomClose/landing_page'>github.com/TomClose/landing_page</a> and press the &#8216;Fork&#8217; button. You now have a copy of my repository that you can push to if you want to. If you want to send me some changes you can do this by going back to <a href='github.com/TomClose/landing_page'>github.com/TomClose/landing_page</a> and submitting a &#8216;pull request&#8217;.</p>
+<li>Create a new account for your site (Admin &gt; + New Account)</li>
+
+<li>Follow the instructions they give to paste the analytics javascript into your page.</li>
+</ol>
 	</div>
 
 	
-	<div class="tab-pane " id="4_collaboration_sharing">
+	<div class="tab-pane " id="2_mixpanel_analytics">
 	
 
-		<h2>Coallaboration: Sharing model</h2>
-		<p>The other way or collaborating with git is the &#8216;sharing&#8217; model: one person puts the repository on github and gives other people permissions, so you can all push to the same place.</p>
-
-<p>To do this on github, go to your forked landing page repository and click on &#8216;Settings&#8217; on the right hand side. Then go to &#8216;Collaborators&#8217; and add your team members&#8217; github usernames.</p>
+		<h2>Mixpanel Analytics</h2>
+		<p><a href='mixpanel.com'>Mixpanel</a> offer a different analytics service to google. Like Google Analytics, you can use the service by including a snippet of javascript on your page.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Exercise:</p>
+</strong>
+<p>See if you can work out how to add Mixpanel analytics to your page</p>
+</div>
 	</div>
 
 </div>
