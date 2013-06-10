@@ -19,7 +19,7 @@ hwk 1.2 | Ruby exercises. Add CSS to site. Practise pushing. Git tutorial.
 hwk 2.1 | Ruby exercises. Read about CSS &amp; and to site. Custom domain to ghp.
 2.2.1   | **html4**: collaboration
 2.2.2   | **ruby3**: iterating, each, arrays (as something you can iterate over), mention blocks
-hwk 2.2 | Ruby exercises. Do more collaboration. 
+hwk 2.2 | Ruby exercises. Do more collaboration. Reading on web form
 3.1.1   | **lp1**: setting up etc., form using github
 3.1.2   | **ruby4**: hashes, converting arrays to hashes, CSV? 
 hwk 3.1 | Ruby exercises. Work on landing page. 
