@@ -31,11 +31,7 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#0_overview" data-toggle="tab">Course Overview </a></li>
-		
-	
-		
-		<li><a href="#1_urls" data-toggle="tab">Introducing the URL </a></li>
+		<li class="active"><a href="#1_urls" data-toggle="tab">Introducing the URL </a></li>
 		
 	
 		
@@ -58,52 +54,12 @@
 		<li><a href="#6_more_html" data-toggle="tab">More HTML </a></li>
 		
 	
-		
-		<li><a href="#preparation" data-toggle="tab">Preparation </a></li>
-		
-	
 </ul>
 
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="0_overview">
-	
-
-		<h2>Course Overview</h2>
-		<h3 id='who_is_this_course_for'>Who is this course for?</h3>
-
-<ul>
-<li>You want to start a start-up and be your own technical cofounder</li>
-
-<li>You want to have your own blog and understand how it works</li>
-
-<li>You want to have the foundations to teach yourself more</li>
-</ul>
-
-<h3 id='what_will_we_learn'> What will we learn</h3>
-
-<ul>
-<li>How to inspect and learn from other sites</li>
-
-<li>How to put up a webpage</li>
-
-<li>Basic skills and tools that will be useful for any coding you do</li>
-</ul>
-
-<p>Hope you will become curious about how the internet works and will look at websites in a different way.</p>
-
-<p>It&#8217;s worth pointing out that this is <em>not</em> the easiest way to put up a website. There are many site builders/blogging platforms which will allow you to put up a website quickly and easily in a point-and-click manner (eg. <a href='http://www.weebly.com/'>weebly</a> or <a href='http://wordpress.com/'>wordpress</a>). The focus of this course is learning the basics of how and why things work and to provide the basis to build upon in future courses.</p>
-
-<h3 id='how_to_study'> How to study</h3>
-
-<p>The hardest thing about learning to program is knowing where to start and what to learn. The course aims to provide a basic overview of the technologies used, along with the tools and resources to discover more. We do not aim to cover anything in great depth or comprehensive detail.</p>
-
-<p>The lectures will be as hands-on and practical as possible. Each week there will be a number of tasks to do in between the sessions to reinforce what you have learnt. It&#8217;s up to you whether you do the tasks or not, but the more you put in the more you will get out!</p>
-	</div>
-
-	
-	<div class="tab-pane " id="1_urls">
+	<div class="tab-pane active" id="1_urls">
 	
 
 		<h2>Introducing the URL</h2>
@@ -197,36 +153,32 @@
 	
 
 		<h2>Investigating HTML</h2>
-		<p>HTML (_HyperText Markup Language_) is a way of writing information so that it can be interpreted by a web browser. It is <em>not</em> a programming language - you can&#8217;t do calculations in it - it is a <em>markup</em> language.</p>
+		<p>HTML (<em>HyperText Markup Language</em>) is a way of writing information so that it can be interpreted by a web browser. It is <em>not</em> a programming language - you can&#8217;t do calculations in it - it is a <em>markup</em> language.</p>
 
 <p>Back in the early days of the web HTML would both store the information and tell the browser how to display it. People then realised that this was a bad idea - making a small change such as changing the colour of a heading would require edits all over the place, which made sites hard to maintain. HTML is now used just to display the information (text etc.) that is stored in the page.</p>
-<div class='exercise'>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
 <ol>
-<li>
-<p>Open Google Chrome</p>
+<li>Open Google Chrome</li>
 
-<ol>
 <li>Go to any web site (eg. <a href='/'>this one</a>)</li>
 
 <li>View the page source (View &gt; Developer &gt; View Source)</li>
-</ol>
-</li>
 </ol>
 </div>
 <p>HTML probably won&#8217;t make a lot of sense to you at first but you might be able to see some of the words from the page.</p>
 
 <p>A slightly nicer way to look at HTML is to use the Chrome Developer Tools.</p>
-<div class='exercise'>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
 <ol>
-<li>
-<p>Open Google Chrome</p>
+<li>Open Google Chrome</li>
 
-<ol>
 <li>Go to any web site</li>
 
 <li>Look at the page using developer tools (View &gt; Developer &gt; Developer Tools)</li>
-</ol>
-</li>
 </ol>
 </div>
 <p>Using the magnifying glass (bottom left) You can hover over the bits of the page and it will show you the relevant bits of HTML. We will use Chrome Developer Tools a lot throughout the course.</p>
@@ -238,12 +190,12 @@
 
 		<h2>Creating an HTML page</h2>
 		<p>We&#8217;ll now create our first HTML page.</p>
-<div class='exercise'>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
 <ol>
-<li>
-<p>Create a new folder in your documents called &#8216;coding_course&#8217;</p>
+<li>Create a new folder in your documents called &#8216;coding_course&#8217;</li>
 
-<ol>
 <li>Inside that create another folder called &#8216;first_site&#8217;</li>
 
 <li>Open Sublime Text</li>
@@ -253,8 +205,6 @@
 <li>Save the file as &#8216;index.html&#8217; in the &#8216;first_site&#8217; folder</li>
 
 <li>Open &#8216;index.html&#8217; in Chrome (File &gt; Open &#8230;)</li>
-</ol>
-</li>
 </ol>
 </div>
 <p>Sublime Text is a text editor. When writing HTML (and code in general) it&#8217;s important to use a program that doesn&#8217;t add any formatting of its own. For example, if you wrote &#8220;hello&#8221; and saved it in Microsoft Word it would create a complicated file which would include a load of formatting information and other stuff. We want files to be saved exactly how we see them.</p>
@@ -275,7 +225,7 @@
 </li>
 
 <li>
-<p>Go back to &#8216;index.html&#8217; in Chrome and press the refresh button.</p>
+<p>Go back to &#8216;index.html&#8217; in Chrome and refresh the page (Cmd-R)</p>
 </li>
 </ol>
 </div>
@@ -289,12 +239,12 @@
 	
 
 		<h2>More HTML</h2>
-		<div class='exercise'>
+		<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
 <ol>
-<li>
-<p>Go to <span>github.com/TomClose/first_site/blob/master/index.html</span></p>
+<li>Go to <span>github.com/TomClose/first_site/blob/master/index.html</span></li>
 
-<ol>
 <li>Click the &#8216;Copy to Clipboard&#8217; button (just underneath &#8216;Files&#8217;)</li>
 
 <li>Go to Sublime Text and create a new file</li>
@@ -303,20 +253,8 @@
 
 <li>Save it as &#8216;toms_page.html&#8217; in &#8216;first_site&#8217;</li>
 </ol>
-</li>
-</ol>
 </div>
 <p>TODO: more about file paths in href</p>
-	</div>
-
-	
-	<div class="tab-pane " id="preparation">
-	
-
-		<h2>Preparation</h2>
-		<ul>
-<li>Do the &#8220;1 Introduction to HTML&#8221; from the <a href='http://www.codecademy.com/tracks/web'>Codecademy web track</a></li>
-</ul>
 	</div>
 
 </div>
