@@ -15,7 +15,7 @@ For this part you will need to be in groups of at least two.
 		git add .
 		git commit -m "Initial import"
 
-3. Person A creates a new repo on github. To do this you need to log in at [github.com](github.com) and select "Create a new repo". You should call the repository `group_project`.
+3. Person A creates a new repo on github. To do this you need to log in at [github.com](http://github.com) and select "Create a new repo". You should call the repository `group_project`.
 4. Person A should then push their code up to github following the instructions on github. You want to "Push an existing repository from the command line" - the instructions at the **bottom** of the page. You should end up pasting a command like
 
 		git remote add origin https://github.com/username/blah.git

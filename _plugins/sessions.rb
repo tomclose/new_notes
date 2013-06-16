@@ -99,7 +99,7 @@ module Jekyll
       #   parsed_content.render(context)
       # end
       # how do I convert this thing??? 
-      "<div class='exercise alert alert-info' markdown='1'><strong>Exercise:</strong> " +  super + "</div>"
+      "<div class='exercise alert alert-info' markdown='1'><strong>Task:</strong> " +  super + "</div>"
     end
   end
 

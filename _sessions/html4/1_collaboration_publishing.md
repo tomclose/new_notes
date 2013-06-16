@@ -21,8 +21,9 @@ Git will help you keep this local copy updated. If I've made some changes and pu
 to pull them down onto your laptop.
 
 {% exercise %}
-1. Wait for me to make a change and push it to gihub
-2. Pull down the changes and make sure you can see them in your browser:
+1. Open `toms_site/index.html` in Sublime Text
+2. Wait for me to make a change and push it to gihub
+3. Pull down the changes and make sure you can see them in your browser:
 
 		git pull
 {% endexercise %}

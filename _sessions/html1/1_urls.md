@@ -2,7 +2,7 @@
 title: Introducing the URL
 ---
 
-Many of our web interactions begin with a URL (_uniform resource locator_) being typed into our web browser address bar. Let's look at an example: `http://www.bbc.co.uk/news/`.
+Many of our web interactions begin with a URL (*uniform resource locator*) being typed into our web browser address bar. Let's look at an example: `http://www.bbc.co.uk/news/`.
 
 This URL has several different parts to it:
 - `http` : the _protocol_ or *the how*

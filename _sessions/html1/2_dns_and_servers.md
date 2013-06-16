@@ -8,9 +8,9 @@ Each computer on the internet has an address (an _IP address_) so that requests 
 
 IP addresses are a sequence of numbers and '.'s such as `212.58.244.67`. These aren't very easy to remember. Instead the internet works on a domain name system, that matches domain names such as `bbc.co.uk` to IP addresses. 
 
-<div class='exercise' markdown="1">
-	Type `212.58.244.67` into your browser's address bar. What happens?
-</div>
+{% exercise %}
+Type `212.58.244.67` into your browser's address bar. What happens?
+{% endexercise %}
 
 One of the first things that happens when you type a URL into your browser is a _DNS lookup_: your computer contacts a DNS server (_Domain Name System server_), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. `bbc.co.uk`) into an address for a server (such as `212.57.244.67`).
 
