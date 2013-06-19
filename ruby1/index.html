@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>ruby1</title>
+  <title>Intro to Ruby 1</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -25,7 +25,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>ruby1 <small></small></h1>
+  <h1>Intro to Ruby 1 <small>Numbers, Strings and Things</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -79,22 +79,22 @@
 <li>
 <p>Clone the repo for this session:</p>
 
-<pre><code>git clone git://github.com/TomClose/ruby1.git</code></pre>
+<pre><code>$ git clone git://github.com/TomClose/ruby1.git</code></pre>
 </li>
 
 <li>
-<p>Open the file <code>coding_course/ruby_1/hello.rb</code> in Sublime Text</p>
+<p>Open the file <code>coding_course/ruby1/hello.rb</code> in Sublime Text</p>
 </li>
 
 <li>
-<p>In the Terminal move into the <code>ruby_1</code> folder and run the <code>hello.rb</code> file:</p>
+<p>In the Terminal move into the <code>ruby1</code> folder and run the <code>hello.rb</code> file:</p>
 
-<pre><code>cd ruby_1
-ruby hello.rb</code></pre>
+<pre><code>$ cd ruby1
+$ ruby hello.rb</code></pre>
 </li>
 </ol>
 </div>
-<p>You should see the word &#8216;Hello&#8217; printed to the terminal.</p>
+<p>You should see the word &#8216;Hello&#8217; displayed in the terminal.</p>
 
 <h3 id='what_just_happened'>What just happened?</h3>
 
@@ -118,7 +118,7 @@ ruby hello.rb</code></pre>
 </code></pre></div>
 <h4 id='puts_and_strings'>Puts and strings</h4>
 
-<p>The second line is where the magic is. <code>puts</code> stands for &#8220;put string&#8221;. A <em>string</em> is a programming term that is used to describe what you would probably call a piece of text. The second line prints the string &#8220;Hello&#8221; to the terminal.</p>
+<p>The second line is where the magic is. <code>puts</code> stands for &#8220;put string&#8221;. A <em>string</em> is a programming term that is used to describe what you would probably call a piece of text. The second line displays the string &#8220;Hello&#8221; in the terminal.</p>
 
 <h4 id='running_the_program'>Running the program</h4>
 
@@ -128,7 +128,7 @@ ruby hello.rb</code></pre>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Modify <code>hello.rb</code>, so that the program will print out &#8220;Hello, your-name&#8221;. Run the program from the command line to check that it works.</p>
+<p>Modify <code>hello.rb</code>, so that the program will display &#8220;Hello, your-name&#8221;. Run the program from the command line to check that it works.</p>
 </div>
 	</div>
 
@@ -152,7 +152,7 @@ ruby hello.rb</code></pre>
 <li>
 <p>Run the program to see if you&#8217;re right:</p>
 
-<pre><code>ruby times.rb</code></pre>
+<pre><code>$ ruby times.rb</code></pre>
 </li>
 </ol>
 </div>
@@ -164,7 +164,7 @@ ruby hello.rb</code></pre>
 
 <p>It is often possible to write ruby in a way that reads a lot like English. Hopefully you found this with the above example - even though you&#8217;ve only just met ruby you were probably able to have a reasonably guess at what the above code did.</p>
 
-<p>Ruby is an incredibly powerful and flexible language. It is a modern language - created in the 1990s by Matzumoto &#8230;. (Matz). A large part of his design philosophy is centered around optimizing for developer happiness - making a language that is a pleasure to program in. If you haven&#8217;t already programmed in another language, you might not fully appreciate this, but - take it from me - ruby is awesome!</p>
+<p>Ruby is an incredibly powerful and flexible language. It is a modern language - created in the 1990s by Yukihiro Matsumoto (Matz). A large part of his design philosophy is centered around optimizing for developer happiness - making a language that is a pleasure to program in. If you haven&#8217;t already programmed in another language, you might not fully appreciate this, but - take it from me - ruby is awesome!</p>
 	</div>
 
 	
@@ -195,7 +195,7 @@ ruby hello.rb</code></pre>
 </strong>
 <ol>
 <li>
-<p>Open the file &#8216;ruby1/arithmetic.rb&#8217; in Sublime Text</p>
+<p>Open the file <code>ruby1/arithmetic.rb</code> in Sublime Text</p>
 </li>
 
 <li>
@@ -240,7 +240,7 @@ ruby hello.rb</code></pre>
 <div class='highlight'><pre><code class='irb'><span class='go'>&gt; 5 % 2</span>
 <span class='go'>=&gt; 1</span>
 </code></pre></div>
-<p>If you want to work with fractions at least one of the numbers in the division must be a fraction:</p>
+<p>If you want your answer to be a decimal at least one of the numbers in the division must be a decimal:</p>
 <div class='highlight'><pre><code class='irb'><span class='go'>&gt; 5.0 / 2</span>
 <span class='go'>=&gt; 2.5</span>
 <span class='go'>&gt; 5 / 2.0</span>
@@ -277,24 +277,35 @@ ruby hello.rb</code></pre>
 	
 
 		<h2>Variables</h2>
-		<p>Like most progamming languages can store values in our program by assigning them to <em>variables</em>.</p>
+		<p>Like most progamming languages, ruby allows you to store values in within program by assigning them to <em>variables</em>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>x</span> <span class='o'>=</span> <span class='mi'>1</span>
 
-<pre><code>	x = 5
-	y = 6
-	x = y
-	x
-	y</code></pre>
+<span class='n'>y</span> <span class='o'>=</span> <span class='mi'>2</span><span class='o'>*</span><span class='n'>x</span>
+
+<span class='n'>x</span> <span class='o'>=</span> <span class='mi'>2</span>
+</code></pre></div>
+<p>In ruby you don&#8217;t need to declare your variables anywhere (unlike in some other languages) - by assigning a value to them you bring them into existence. If the variable already holds a value and you reassign it the new value will overwrite the old.</p>
+
+<p>You also don&#8217;t need to say what sort of object they will hold. This can change over the &#8216;lifetime&#8217; of the variable:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>x</span> <span class='o'>=</span> <span class='mi'>1</span>
+<span class='nb'>puts</span> <span class='n'>x</span>
+<span class='n'>x</span> <span class='o'>=</span> <span class='s2'>&quot;fish&quot;</span>
+<span class='nb'>puts</span> <span class='n'>x</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Type the above examples into irb. Note that all the numeric operations and methods work exactly as before. For example, try <code>y.odd?</code>.</p>
+</div>
+<h3 id='an_impossible_equation'>An impossible equation</h3>
 
 <p>Assignment works by setting the variable on the left to the expression on the right.</p>
-
-<h3 id='an_impossible_equation'>An impossible equation</h3>
 <div class='highlight'><pre><code class='ruby'><span class='n'>x</span> <span class='o'>=</span> <span class='n'>x</span> <span class='o'>+</span> <span class='mi'>1</span>
 </code></pre></div>
-<p>At first the above statement might appear confusing. It looks like it might be an impossible mathematical equation. When you know that</p>
+<p>At first the above statement might appear confusing. It looks like it might be an impossible mathematical equation. The equals <strong>isn&#8217;t like = in maths</strong> - it is an assignment. The statement means &#8216;set the new value of x to be one more than the old value of x&#8217;.</p>
 
 <h3 id='variable_names'>Variable names</h3>
 
-<p>Standard variables start with a lower case letter. That&#8217;s all we&#8217;ll be dealing with for now. They must not have any spaces.</p>
+<p>Local variables start with a lower case letter. That&#8217;s all we&#8217;ll be dealing with for now. They must not have any spaces.</p>
 
 <p>Usual in ruby to use underscored names, e.g. <code>user_name</code> or <code>this_is_a_stupidly_long_variable_name</code>.</p>
 <div class='exercise alert alert-info'><strong>
@@ -323,7 +334,7 @@ ruby hello.rb</code></pre>
 	
 
 		<h2>Strings</h2>
-		<p>We&#8217;ve already</p>
+		<p>We&#8217;ve already seen a string in action in <code>hello.rb</code>. We&#8217;ll now look in more detail at the different ways you can write a string in your code. When a string is written directly in your code (as opposed to being read in from user input) it is referred to as a string literal. We will look at the two most common ways of creating string literals.</p>
 
 <h3 id='singlequoted_string_literals'>Single-quoted string literals</h3>
 
@@ -339,13 +350,19 @@ ruby hello.rb</code></pre>
 </code></pre></div>
 <p>Both of these make sense when you think about them:</p>
 
+<ul>
+<li>
 <p>You need something like <code>\&#39;</code> to become <code>&#39;</code>, otherwise it would be impossible to create a string with a <code>&#39;</code> character in it.</p>
+</li>
 
+<li>
 <p>Once you have <code>\&#39;</code> becoming <code>&#39;</code> you need something like <code>\\</code> to become <code>\</code>, otherwise it would be impossible to create a string ending in <code>\</code>.</p>
+</li>
+</ul>
 
 <p>So, single-quoted strings are boring. They replace the minimum amount of stuff possible.</p>
 
-<h3 id='doublequoted_strings'>Double-quoted strings</h3>
+<h3 id='doublequoted_string_literals'>Double-quoted string literals</h3>
 
 <p>Double-quoted strings are much more exciting. They allow all sorts of special characters, usually <em>escaped</em> with <code>\</code>. For example, <code>\n</code> in a string signifies a new line:</p>
 <div class='highlight'><pre><code class='ruby'><span class='nb'>puts</span> <span class='s2'>&quot;Hello </span><span class='se'>\n</span><span class='s2'> Tom&quot;</span>
@@ -366,7 +383,7 @@ ruby hello.rb</code></pre>
 
 <li>Run the file <code>test_hello_you.rb</code>. You should see that the test fails.</li>
 
-<li>Alter the file <code>heelo_you.rb</code> so that instead of just showing the name you type (e.g. Bob) it instead shows &#8220;Hello Bob&#8221;</li>
+<li>Alter the file <code>hello_you.rb</code> so that instead of just showing the name you type (e.g. Bob) it instead shows &#8220;Hello Bob&#8221;</li>
 
 <li>Run the test file again. Hopefully it should now pass.</li>
 </ol>
@@ -389,6 +406,9 @@ ruby hello.rb</code></pre>
 <li>See if you&#8217;re right in irb.</li>
 </ol>
 </div>
+<h3 id='other_ways_of_creating_strings'>Other ways of creating strings</h3>
+
+<p>There are other ways of creating strings. You probably won&#8217;t need to use them that often. For more information see <a href='http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Literals'>http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Literals</a> .</p>
 	</div>
 
 	
@@ -402,7 +422,7 @@ ruby hello.rb</code></pre>
 
 <p>Ruby strings come with a lot of useful methods, e.g. <code>upcase</code>, <code>downcase</code>, <code>reverse</code>, <code>capitalize</code>. These methods return a new copy of the string with the action applied. The underlying string is unchanged.</p>
 
-<p>These methods also exist in a <code>!</code> form. These are applied to the actual version of the string that you call them on. <strong>They will change the string permanently.</strong> In ruby, the <code>!</code> on the end of a method is often a sign that that method could make lasting changes to the object you&#8217;re calling it on. Sometimes this is what you want, othertimes it isn&#8217;t. Be warned!</p>
+<p>These methods also exist in a <code>!</code> form: <code>upcase!</code>, <code>downcase!</code>, <code>reverse!</code>, <code>capitalize!</code>. These are applied to the actual version of the string that you call them on. <strong>They will change the string permanently.</strong> In ruby, the <code>!</code> on the end of a method is often a sign that that method could make lasting changes to the object you&#8217;re calling it on. Sometimes this is what you want, othertimes it isn&#8217;t. Be warned!</p>
 
 <h3 id='multiplying_strings'>Multiplying strings</h3>
 
