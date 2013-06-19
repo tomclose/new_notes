@@ -43,6 +43,22 @@
 		<li><a href="#3_irb" data-toggle="tab">Interactive ruby </a></li>
 		
 	
+		
+		<li><a href="#4_numbers" data-toggle="tab">Numbers in ruby </a></li>
+		
+	
+		
+		<li><a href="#5_variables" data-toggle="tab">Variables </a></li>
+		
+	
+		
+		<li><a href="#6_strings" data-toggle="tab">Strings </a></li>
+		
+	
+		
+		<li><a href="#7_rounding_up" data-toggle="tab">Rounding up </a></li>
+		
+	
 </ul>
 
 <div class="tab-content">
@@ -63,7 +79,7 @@
 <li>
 <p>Clone the repo for this session:</p>
 
-<pre><code>git clone ...</code></pre>
+<pre><code>git clone git://github.com/TomClose/ruby1.git</code></pre>
 </li>
 
 <li>
@@ -161,6 +177,268 @@ ruby hello.rb</code></pre>
 <p>Task:</p>
 </strong>
 <p>On the command line type <code>irb</code> to enter an interactive ruby session.</p>
+</div>
+<p>Irb stands for <strong>i</strong>nteractive <strong>r</strong>u<strong>b</strong>y. You can write ruby code in it and it will evaluate it.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Write <code>2 + 2</code> into irb and press enter.</p>
+</div>
+<p>You should see something like the following:</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>001: &gt; 2 + 2</span>
+<span class='go'> =&gt; 4 </span>
+<span class='go'>002: &gt; </span>
+</code></pre></div>
+<p><code>2 + 2</code> is a ruby <em>expression</em>. The <code>=&gt;</code> symbol tells you what this expression evaluates to. If you try just typing <code>4</code> at the irb prompt, you will see that <code>4</code> is an expression that evaluates to itself.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Open the file &#8216;ruby1/arithmetic.rb&#8217; in Sublime Text</p>
+</li>
+
+<li>
+<p>For each expression:</p>
+
+<ol>
+<li>See if you guess what it will evaluate to.</li>
+
+<li>Try it in irb to check.</li>
+</ol>
+</li>
+
+<li>
+<p>If you have time, move on to the challenge at the end of the file.</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_numbers">
+	
+
+		<h2>Numbers in ruby</h2>
+		<p>Over the course of the last exercise you learnt a few things about numbers in ruby.</p>
+
+<h3 id='brackets'>Brackets</h3>
+
+<p>Ruby follows the standard laws of arithmetic when it comes to brackets:</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>&gt; 2 + 5 * 3</span>
+<span class='go'>=&gt; 17</span>
+<span class='go'>&gt; (2 + 5) * 3</span>
+<span class='go'>=&gt; 21</span>
+</code></pre></div>
+<h3 id='division'>Division</h3>
+
+<p>If you divide integers (whole numbers) in ruby you might not get the answer you expected:</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>&gt; 5 / 2</span>
+<span class='go'>=&gt; 2</span>
+</code></pre></div>
+<p>This is pretty standard in a lot of programming languages. The sum is interpreted to mean &#8216;how many times will 2 go into 5&#8217;, i.e. two whole times, with a remainder of one. You can use <code>%</code> to find the remainder:</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>&gt; 5 % 2</span>
+<span class='go'>=&gt; 1</span>
+</code></pre></div>
+<p>If you want to work with fractions at least one of the numbers in the division must be a fraction:</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>&gt; 5.0 / 2</span>
+<span class='go'>=&gt; 2.5</span>
+<span class='go'>&gt; 5 / 2.0</span>
+<span class='go'>=&gt; 2.5</span>
+</code></pre></div>
+<h3 id='numbers_as_objects'>Numbers as objects</h3>
+
+<p>Ruby is a &#8216;true object orientated&#8217; language - pretty much everything is an <em>object</em>. We will talk more about object orientated programming in later sessions, but for now you should accept that this is (a) slightly unusual for a programming langauge and (b) lots of fun!</p>
+
+<p>Numbers are no exception: they are objects and therefore have <em>methods</em> that you can call on them. Whereas in other languages you might have to do <code>Math.even?(5)</code>, in ruby you can essentially ask the number itself whether it is even or not:</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>&gt; 5.even?</span>
+<span class='go'>=&gt; false</span>
+<span class='go'>&gt; 5.odd?</span>
+<span class='go'>=&gt; true</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>In irb,</p>
+
+<ol>
+<li>Try <code>5.class</code>, to see what sort of object <code>5</code> is.</li>
+
+<li>Compare this to <code>5.0.class</code>.</li>
+
+<li>Try <code>5.methods</code>, to see what other methods you can call on <code>5</code>.</li>
+
+<li>Try out a few of these methods (e.g. <code>5.abs</code>, <code>5.real?</code>, <code>5.between?(3,6)</code>)</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="5_variables">
+	
+
+		<h2>Variables</h2>
+		<p>Like most progamming languages can store values in our program by assigning them to <em>variables</em>.</p>
+
+<pre><code>	x = 5
+	y = 6
+	x = y
+	x
+	y</code></pre>
+
+<p>Assignment works by setting the variable on the left to the expression on the right.</p>
+
+<h3 id='an_impossible_equation'>An impossible equation</h3>
+<div class='highlight'><pre><code class='ruby'><span class='n'>x</span> <span class='o'>=</span> <span class='n'>x</span> <span class='o'>+</span> <span class='mi'>1</span>
+</code></pre></div>
+<p>At first the above statement might appear confusing. It looks like it might be an impossible mathematical equation. When you know that</p>
+
+<h3 id='variable_names'>Variable names</h3>
+
+<p>Standard variables start with a lower case letter. That&#8217;s all we&#8217;ll be dealing with for now. They must not have any spaces.</p>
+
+<p>Usual in ruby to use underscored names, e.g. <code>user_name</code> or <code>this_is_a_stupidly_long_variable_name</code>.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Consider the expression</p>
+
+<pre><code> x = (2 + 5*x - x**2)/5</code></pre>
+
+<ol>
+<li>Let <code>x = 1.1</code></li>
+
+<li>Write <code>x = (2 + 5*x - x**2)/5</code> and then evaluate this multiple times (using the up arrow in irb)</li>
+
+<li>What happens? Can you explain why?</li>
+
+<li>Let <code>x = 1</code> and do the same thing. What happens and why?</li>
+
+<li>(Pointless extension.) Can you find other examples of parts 3 and 4? Can you prove you have all of them?</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="6_strings">
+	
+
+		<h2>Strings</h2>
+		<p>We&#8217;ve already</p>
+
+<h3 id='singlequoted_string_literals'>Single-quoted string literals</h3>
+
+<p>Single-quoted strings are boring. They look almost exactly as you write them.</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>puts</span> <span class='s1'>&#39;Hello \n Tom&#39;</span>
+<span class='c1'># =&gt; Hello \n Tom</span>
+</code></pre></div>
+<p>There are only two exceptions to this: <code>\&#39;</code> becomes <code>&#39;</code> and <code>\\</code> becomes <code>\</code>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>puts</span> <span class='s1'>&#39;Dave\&#39;s house&#39;</span>
+<span class='c1'># =&gt; Dave&#39;s house</span>
+<span class='nb'>puts</span> <span class='s1'>&#39;Hello \ what is \\ going on?&#39;</span>
+<span class='c1'># =&gt; Hello \ what is \ going on?</span>
+</code></pre></div>
+<p>Both of these make sense when you think about them:</p>
+
+<p>You need something like <code>\&#39;</code> to become <code>&#39;</code>, otherwise it would be impossible to create a string with a <code>&#39;</code> character in it.</p>
+
+<p>Once you have <code>\&#39;</code> becoming <code>&#39;</code> you need something like <code>\\</code> to become <code>\</code>, otherwise it would be impossible to create a string ending in <code>\</code>.</p>
+
+<p>So, single-quoted strings are boring. They replace the minimum amount of stuff possible.</p>
+
+<h3 id='doublequoted_strings'>Double-quoted strings</h3>
+
+<p>Double-quoted strings are much more exciting. They allow all sorts of special characters, usually <em>escaped</em> with <code>\</code>. For example, <code>\n</code> in a string signifies a new line:</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>puts</span> <span class='s2'>&quot;Hello </span><span class='se'>\n</span><span class='s2'> Tom&quot;</span>
+<span class='c1'># =&gt; Hello</span>
+<span class='c1'># =&gt; Tom</span>
+</code></pre></div>
+<p>More importantly double-quoted strings allow you to do <em>string interpolation</em> - baking your own variables into a string, using the <code>#{ }</code> symbol:</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>name</span> <span class='o'>=</span> <span class='s2'>&quot;Tom&quot;</span>
+<span class='nb'>puts</span> <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='c1'># =&gt; Hello Tom</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open the file <code>hello_you.rb</code> in Sublime Text.</li>
+
+<li>Read through the program to see if you can figure out what it does. Run it (<code>ruby hello_you.rb</code>) in the console (<strong>not</strong> irb) to see if you&#8217;re right.</li>
+
+<li>Run the file <code>test_hello_you.rb</code>. You should see that the test fails.</li>
+
+<li>Alter the file <code>heelo_you.rb</code> so that instead of just showing the name you type (e.g. Bob) it instead shows &#8220;Hello Bob&#8221;</li>
+
+<li>Run the test file again. Hopefully it should now pass.</li>
+</ol>
+</div>
+<p>What we&#8217;ve just done is an example of something called <strong>test-driven development</strong> or <strong>TDD</strong> - writing a set of tests and then writing the code so that they pass. Test-driven development is something that some software developers go mad about. I&#8217;m not 100% convinced personally - writing tests before you write the code, necessitates having a pretty good idea of knowing exactly what you&#8217;re writing before you start. Possibly worryingly, I find that this is often not the case. What is really important is having ways to automatically test your code, whether those tests were written before you wrote your code, or immediately after it.</p>
+
+<p>In this course we&#8217;ll often provide pre-written tests so that you can check your solutions to the exercises, TDD-style.</p>
+
+<h3 id='fun_with_strings'>Fun with strings</h3>
+
+<p>Ruby strings have a lot of methods that you can play with.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open the file <code>strings.rb</code></li>
+
+<li>See if you can predict what will happen when you run each line.</li>
+
+<li>See if you&#8217;re right in irb.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="7_rounding_up">
+	
+
+		<h2>Rounding up</h2>
+		<p>You should have learn a few things about strings from the last exercise:</p>
+
+<h3 id='string_methods'>String methods</h3>
+
+<p>Ruby strings come with a lot of useful methods, e.g. <code>upcase</code>, <code>downcase</code>, <code>reverse</code>, <code>capitalize</code>. These methods return a new copy of the string with the action applied. The underlying string is unchanged.</p>
+
+<p>These methods also exist in a <code>!</code> form. These are applied to the actual version of the string that you call them on. <strong>They will change the string permanently.</strong> In ruby, the <code>!</code> on the end of a method is often a sign that that method could make lasting changes to the object you&#8217;re calling it on. Sometimes this is what you want, othertimes it isn&#8217;t. Be warned!</p>
+
+<h3 id='multiplying_strings'>Multiplying strings</h3>
+
+<p>You can multiply strings by numbers:</p>
+<div class='highlight'><pre><code class='ruby'><span class='s2'>&quot;Tom&quot;</span> <span class='o'>*</span> <span class='mi'>3</span>
+<span class='c1'>#=&gt; &quot;TomTomTom&quot;</span>
+</code></pre></div>
+<p>This is nice but, in my experience, largely useless.</p>
+
+<p>What is interesting is that the multiplication is not commutative:</p>
+<div class='highlight'><pre><code class='ruby'><span class='mi'>3</span> <span class='o'>*</span> <span class='s2'>&quot;Tom&quot;</span>
+<span class='c1'># =&gt; Error</span>
+</code></pre></div>
+<p>Actually, it probably isn&#8217;t that interesting. You&#8217;ll probably never multiply any strings anyway.</p>
+
+<h3 id='final_exercises'>Final exercises</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open the file <code>ruby1/advanced_hello.rb</code> in Sublime Text.</li>
+
+<li>Read the desired output and modify the program to make it work.</li>
+
+<li>When you&#8217;re done check your solution by running <code>ruby test_advanced_hello.rb</code></li>
+</ol>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open the file <code>ruby1/divide_cake.rb</code> in Sublime Text.</li>
+
+<li>Read the desired output and modify the program to make it work.</li>
+
+<li>When you&#8217;re done check your solution by running <code>ruby test_divide_cake.rb</code></li>
+</ol>
 </div>
 	</div>
 
