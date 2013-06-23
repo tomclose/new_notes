@@ -31,9 +31,300 @@
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
+		
+		<li class="active"><a href="#1_functions" data-toggle="tab">Functions </a></li>
+		
+	
+		
+		<li><a href="#2_conditionals" data-toggle="tab">Conditionals </a></li>
+		
+	
+		
+		<li><a href="#3_5_more_conditionals" data-toggle="tab">More conditionals </a></li>
+		
+	
+		
+		<li><a href="#4_boolean_ops" data-toggle="tab">Logical operations </a></li>
+		
+	
+		
+		<li><a href="#5_truthy_falsey" data-toggle="tab">Truthy and falsey </a></li>
+		
+	
 </ul>
 
 <div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_functions">
+	
+
+		<h2>Functions</h2>
+		<p>Quite often when writing code you find that you have some operation that you have to do over and over again. As an example consider a simple interactive command line program:</p>
+<div class='highlight'><pre><code class='console'><span class='go'>Enter your name: homer</span>
+<span class='go'>Enter your guest&#39;s name: margE</span>
+<span class='go'>Welcome Homer and Marge!</span>
+</code></pre></div>
+<p>One way of doing this would be to write the following code:</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>print</span> <span class='s2'>&quot;Enter your name: &quot;</span>
+<span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+
+<span class='nb'>print</span> <span class='s2'>&quot;Enter your guest&#39;s name: &quot;</span>
+<span class='n'>guest</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+
+<span class='nb'>puts</span> <span class='s2'>&quot;Welcome </span><span class='si'>#{</span><span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span><span class='si'>}</span><span class='s2'> and </span><span class='si'>#{</span><span class='n'>guest</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span><span class='si'>}</span><span class='s2'>!&quot;</span>
+</code></pre></div>
+<p>You&#8217;ll notice that we call <code>.downcase.capitalize</code> on each input to prepare it for displaying - we do the exact same action in two different places. As it is, this is almost ok, as what we&#8217;re doing is very simple. If this action got much more complicated (for example if we wanted to cope with names like &#8216;Mary-Jane&#8217;) it would be good to separate it out into a different bit of code. Like most languages, Ruby allows you to do this by writing a <em>function</em>.</p>
+
+<h3 id='writing_a_function'>Writing a function</h3>
+
+<p>Writing a function in ruby goes something like this:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>prepare_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+	<span class='k'>return</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The <code>def</code> and <code>end</code> keywords are used to tell the interpreter where the function starts and finishes. Here <code>prepare_name</code> is the name of the function and <code>name</code> is a <em>parameter</em>, which represents the value that we&#8217;ll pass in to the function. The <code>return</code> value tells the function what to give back when it is called.</p>
+
+<p>Notice that, unlike in some other languages, in ruby you don&#8217;t have to tell the function what type of object to expect the parameter to be. All that matters is that the object you pass in has the methods you want to call on it. This idea is called <strong>duck-typing</strong> - it doesn&#8217;t matter what an object is, all that matters is how it behaves: <em>&#8220;When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.&#8221;<a href='http://books.google.co.uk/books?id=j7zds6xx7S0C&amp;pg=PA68&amp;dq=%22james+Riley%22+OR+%22James+Whitcomb+Riley%22+bird++duck&amp;num=100&amp;redir_esc=y#v=onepage&amp;q=%22james%20Riley%22%20OR%20%22James%20Whitcomb%20Riley%22%20bird%20%20duck&amp;f=false'>(James Whitcomb Riley)</a></em>.</p>
+
+<p>The above code can then be re-written:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># define prepare_name</span>
+<span class='k'>def</span> <span class='nf'>prepare_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+	<span class='k'>return</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span>
+<span class='k'>end</span>
+
+<span class='nb'>print</span> <span class='s2'>&quot;Enter your name: &quot;</span>
+<span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+
+<span class='nb'>print</span> <span class='s2'>&quot;Enter your guest&#39;s name: &quot;</span>
+<span class='n'>guest</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+
+<span class='nb'>puts</span> <span class='s2'>&quot;Welcome </span><span class='si'>#{</span><span class='n'>prepare_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span><span class='si'>}</span><span class='s2'> and </span><span class='si'>#{</span><span class='n'>prepare_name</span><span class='p'>(</span><span class='n'>guest</span><span class='p'>)</span><span class='si'>}</span><span class='s2'>!&quot;</span>
+</code></pre></div>
+<p>Note that to call the function we pass it a value inside <code>()</code>: e.g. <code>prepare_name(&#39;tom&#39;)</code>.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Copy and paste the <code>prepare_name</code> function definition into irb. Try calling it on some strings.</p>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Grab the code for this session:</p>
+
+<pre><code>git clone https://github.com/TomClose/ruby2.git</code></pre>
+</li>
+
+<li>
+<p>Open <code>double.rb</code> in Sublime Text</p>
+</li>
+
+<li>
+<p>Run <code>test_double.rb</code> in the console:</p>
+
+<pre><code>ruby test_double.rb</code></pre>
+</li>
+
+<li>
+<p>Complete the code in <code>double.rb</code> so that the test passes.</p>
+</li>
+</ol>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>encode.rb</code> in Sublime Text</li>
+
+<li>Run <code>test_encode.rb</code> in the console</li>
+
+<li>Change the encode to use the bitwise_xor operation (<code>^</code>) for encoding</li>
+
+<li>Write the decode function so that the tests pass</li>
+
+<li>In the code you&#8217;ve been given, the <code>encode</code> function does a bitwise xor with the number 6. Get your partner to write an encode that uses a different (unknown) number and paste it into your irb. How can you find out which number they use? Can you write the <code>decode</code> function so that it will work no matter which function they give you?</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_conditionals">
+	
+
+		<h2>Conditionals</h2>
+		<p>Often when writing code it is useful to test for certain conditions and respond accordingly.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>old_enough?</span><span class='p'>(</span><span class='n'>age</span><span class='p'>)</span>
+	<span class='k'>if</span> <span class='n'>age</span> <span class='o'>&gt;=</span> <span class='mi'>18</span>
+		<span class='nb'>puts</span> <span class='s2'>&quot;You can buy alcohol&quot;</span>
+	<span class='k'>end</span>
+	<span class='k'>return</span> <span class='kp'>nil</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>In the above code we use an <code>if</code> statement to write a function to tell us if someone can buy alcohol. The if statement starts with an <code>if</code> and ends with an <code>end</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>if</span> <span class='n'>some_condition</span>
+	<span class='c1'># do some stuff here ...</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>If the code within the <code>if</code> block will only be run if the statement is true.</p>
+
+<h3 id='comparisons'>Comparisons</h3>
+
+<p>There are some basic comparisons that we will be useful when using if statments</p>
+<table><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td style='text-align: left;'><code>==</code></td><td style='text-align: left;'>Is equal to</td>
+</tr><tr><td style='text-align: left;'><code>&gt;</code></td><td style='text-align: left;'>Greater than</td>
+</tr><tr><td style='text-align: left;'><code>&lt;</code></td><td style='text-align: left;'>Less than</td>
+</tr><tr><td style='text-align: left;'><code>&gt;=</code></td><td style='text-align: left;'>Greater than or equal to</td>
+</tr><tr><td style='text-align: left;'><code>&lt;=</code></td><td style='text-align: left;'>Less than or equal to</td>
+</tr><tr><td style='text-align: left;'><code>!=</code></td><td style='text-align: left;'>Not equal to</td>
+</tr></tbody></table>
+<p>Comparisons evaluate to <code>true</code> or <code>false</code>.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>In irb try each of the above comparisons e.g. <code>4 != 5</code>.</p>
+</div>
+<h3 id='ifelse'>If/else</h3>
+
+<p>It is often useful to have the ability to run some code only if the condition isn&#8217;t true. Ruby allows you to do this with an <code>if .. else</code> statement:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>old_enough?</span><span class='p'>(</span><span class='n'>age</span><span class='p'>)</span>
+	<span class='k'>if</span> <span class='n'>age</span> <span class='o'>&gt;=</span> <span class='mi'>18</span>
+		<span class='nb'>puts</span> <span class='s2'>&quot;You can buy alcohol&quot;</span>
+	<span class='k'>else</span>
+		<span class='nb'>puts</span> <span class='s2'>&quot;No alcohol for you child. Move along please.&quot;</span>
+	<span class='k'>end</span>
+	<span class='k'>return</span> <span class='kp'>nil</span>
+<span class='k'>end</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>pass_fail.rb</code> in Sublime Text</li>
+
+<li>Run <code>test_pass_fail.rb</code> in the console</li>
+
+<li>Complete the function <code>pass_fail</code> in <code>pass_fail.rb</code> using an <code>if</code> statement so that the tests pass</li>
+
+<li>(extension) Complete the function <code>pass_fail2</code>, using <code>test_pass_fail2.rb</code> to test.</li>
+</ol>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>grade.rb</code> in Sublime Text</li>
+
+<li>Complete the function using <code>if</code> statements</li>
+
+<li>Check your solution by running <code>test_grade.rb</code></li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_5_more_conditionals">
+	
+
+		<h2>More conditionals</h2>
+		<h3 id='if_elsif_else'>If, elsif, else</h3>
+<div class='highlight'><pre><code class='ruby'><span class='k'>if</span> <span class='n'>age</span> <span class='o'>&lt;</span> <span class='mi'>1</span>
+	<span class='n'>type</span> <span class='o'>=</span> <span class='s2'>&quot;baby&quot;</span>
+<span class='k'>elsif</span> <span class='n'>age</span> <span class='o'>&lt;</span> <span class='mi'>3</span>
+	<span class='n'>type</span> <span class='o'>=</span> <span class='s2'>&quot;infant&quot;</span>
+<span class='k'>elsif</span> <span class='n'>age</span> <span class='o'>&lt;</span> <span class='mi'>13</span>
+	<span class='n'>type</span> <span class='o'>=</span> <span class='s2'>&quot;child&quot;</span>
+<span class='k'>elsif</span> <span class='n'>age</span> <span class='o'>&lt;</span> <span class='mi'>20</span>
+	<span class='n'>type</span> <span class='o'>=</span> <span class='s2'>&quot;teenager&quot;</span>
+<span class='k'>else</span>
+	<span class='n'>type</span> <span class='o'>=</span> <span class='s2'>&quot;adult&quot;</span>
+<span class='k'>end</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'>
+</code></pre></div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_boolean_ops">
+	
+
+		<h2>Logical operations</h2>
+		<p>It&#8217;s often useful to combine various conditions:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>if</span> <span class='n'>age</span> <span class='o'>&lt;</span> <span class='mi'>12</span> <span class='o'>||</span> <span class='n'>height</span> <span class='o'>&lt;</span> <span class='mi'>1</span><span class='o'>.</span><span class='mi'>2</span>
+	<span class='nb'>puts</span> <span class='s2'>&quot;You are allowed on the ride.&quot;</span>
+<span class='k'>else</span>
+	<span class='nb'>puts</span> <span class='s2'>&quot;Try a different helter-skelter. There&#39;s nothing for you here.&quot;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>It the above snippet of code the <code>||</code> means or. If the person is under 12 or is smaller than 1.2m they are allowed on the ride.</p>
+
+<h3 id='logical_operations'>Logical operations</h3>
+
+<p>Ruby has three ways of combining conditions:</p>
+
+<h4 id='and_'>and (<code>&amp;&amp;</code>)</h4>
+
+<p>If you use an <code>&amp;&amp;</code> the output is true only if both inputs are true. You can write this in terms of a <em>truth table</em>:</p>
+<table><thead><tr><th>x</th><th>y</th><th>x &amp;&amp; y</th></tr></thead><tbody><tr><td style='text-align: left;'>false</td><td style='text-align: left;'>false</td><td style='text-align: left;'>false</td>
+</tr><tr><td style='text-align: left;'>false</td><td style='text-align: left;'>true</td><td style='text-align: left;'>false</td>
+</tr><tr><td style='text-align: left;'>true</td><td style='text-align: left;'>false</td><td style='text-align: left;'>false</td>
+</tr><tr><td style='text-align: left;'>true</td><td style='text-align: left;'>true</td><td style='text-align: left;'>true</td>
+</tr></tbody></table>
+<h4 id='or_'>or (<code>||</code>)</h4>
+
+<p>If you use the <code>||</code> the output is true if at least one of the inputs is true. <code>||</code> means one or the other <strong>or both</strong>:</p>
+<table class='table'>
+	<thead>
+		<tr><th>x</th><th>y</th><th>x || y</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>false</td><td>false</td><td>false</td></tr>
+		<tr><td>false</td><td>true</td><td>true</td></tr>
+		<tr><td>true</td><td>false</td><td>true</td></tr>
+		<tr><td>true</td><td>true</td><td>true</td></tr>
+	</tbody>
+</table>
+<h3 id='not_'>not (<code>!</code>)</h3>
+
+<p>The <code>!</code> is not. It is a quick way of reversing the truth of the condition:</p>
+<table><thead><tr><th>x</th><th>!x</th></tr></thead><tbody><tr><td style='text-align: left;'>false</td><td style='text-align: left;'>true</td>
+</tr><tr><td style='text-align: left;'>true</td><td style='text-align: left;'>false</td>
+</tr></tbody></table><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Open the file <code>boolean_ops.rb</code> in Sublime Text. For each of the expressions discuss with your partner what you think the expression will evaluate to. Check by pasting them in to irb.</p>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="5_truthy_falsey">
+	
+
+		<h2>Truthy and falsey</h2>
+		<p>In the last exercise you found out something interesting:</p>
+<div class='highlight'><pre><code class='ruby'><span class='kp'>true</span> <span class='o'>&amp;&amp;</span> <span class='s2'>&quot;ham&quot;</span> <span class='c1'>#=&gt; &quot;ham&quot;</span>
+</code></pre></div>
+<p>Which is a bit weird. There are actually two things going on here:</p>
+
+<ol>
+<li>The string <code>ham</code> is considered to be <code>true</code></li>
+
+<li>The overall statement evaluates to the last expression in it</li>
+</ol>
+
+<h3 id='truthy_and_falsey'>Truthy and falsey</h3>
+
+<p>In ruby there are only two values that are considered false: <code>false</code> and <code>nil</code>. We say that <code>false</code> and <code>nil</code> are <em>falsey</em>.</p>
+
+<p>Everything else is considered to be true. We say that all other objects are <em>truthy</em>.</p>
+
+<p>What we mean by &#8216;considered to be true&#8217; is that if that value is used as a conditional in an <code>if</code> statement then the if code runs:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>if</span> <span class='mi'>5</span>
+	<span class='n'>x</span> <span class='o'>=</span> <span class='mi'>1</span>
+<span class='k'>else</span>
+	<span class='n'>x</span> <span class='o'>=</span> <span class='mi'>2</span>
+<span class='k'>end</span>
+
+<span class='n'>x</span> <span class='c1'>#=&gt; 1</span>
+</code></pre></div>
+<p>In the above block of code, as <code>5</code> is truthy, the variable <code>x</code> is set to <code>1</code>.</p>
+	</div>
 
 </div>
 
