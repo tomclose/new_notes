@@ -40,7 +40,7 @@
 		
 	
 		
-		<li><a href="#3_5_more_conditionals" data-toggle="tab">More conditionals </a></li>
+		<li><a href="#3_more_conditionals" data-toggle="tab">More conditionals </a></li>
 		
 	
 		
@@ -49,6 +49,10 @@
 	
 		
 		<li><a href="#5_truthy_falsey" data-toggle="tab">Truthy and falsey </a></li>
+		
+	
+		
+		<li><a href="#6_wrapping_up" data-toggle="tab"> </a></li>
 		
 	
 </ul>
@@ -106,7 +110,22 @@
 <p>Task:</p>
 </strong>
 <p>Copy and paste the <code>prepare_name</code> function definition into irb. Try calling it on some strings.</p>
-</div><div class='exercise alert alert-info'><strong>
+</div>
+<h3 id='functions_with_irb'>Functions with irb</h3>
+
+<p>You&#8217;ll often want to try out the functions you are working on in irb. There are two ways of doing this:</p>
+
+<ol>
+<li>copy and paste the function into irb</li>
+
+<li>load in the file that the function is written in</li>
+</ol>
+
+<p>Option 2 is the better option when your functions become bigger and more complicated. To do this do</p>
+<div class='highlight'><pre><code class='irb'><span class='go'>&gt; load &#39;my_file.rb&#39;</span>
+</code></pre></div>
+<p>Irb will look for the file <strong>in the folder that you started irb in</strong> (and then on your path).</p>
+<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
@@ -194,7 +213,9 @@
 	<span class='k'>end</span>
 	<span class='k'>return</span> <span class='kp'>nil</span>
 <span class='k'>end</span>
-</code></pre></div><div class='exercise alert alert-info'><strong>
+</code></pre></div>
+<h1 id='todo_explain_about_'>TODO explain about <code>load &#39;pass_fail.rb&#39;</code></h1>
+<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
@@ -206,21 +227,11 @@
 
 <li>(extension) Complete the function <code>pass_fail2</code>, using <code>test_pass_fail2.rb</code> to test.</li>
 </ol>
-</div><div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<ol>
-<li>Open <code>grade.rb</code> in Sublime Text</li>
-
-<li>Complete the function using <code>if</code> statements</li>
-
-<li>Check your solution by running <code>test_grade.rb</code></li>
-</ol>
 </div>
 	</div>
 
 	
-	<div class="tab-pane " id="3_5_more_conditionals">
+	<div class="tab-pane " id="3_more_conditionals">
 	
 
 		<h2>More conditionals</h2>
@@ -249,14 +260,21 @@
 <span class='k'>when</span> <span class='s2'>&quot;Python&quot;</span>
 	<span class='nb'>puts</span> <span class='s2'>&quot;Not bad. You should try Ruby though&quot;</span>
 <span class='k'>when</span> <span class='s2'>&quot;Javascript&quot;</span>
-	<span class='nb'>puts</span> <span class='s2'>&quot;Javascript is a necessary evil, but not nearly as nice as ruby&quot;</span>
+	<span class='nb'>puts</span> <span class='s2'>&quot;Javascript is a necessary </span>
+<span class='s2'>	evil, but not nearly as nice as ruby&quot;</span>
 <span class='k'>else</span>
 	<span class='nb'>puts</span> <span class='s2'>&quot;Ruby is better!&quot;</span>
 <span class='k'>end</span>
 </code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Rewrite your solution to <code>grade.rb</code> using <code>if ... elsif .. else</code>.</p>
+<ol>
+<li>Open <code>grade.rb</code> in Sublime Text</li>
+
+<li>Complete the function using <code>if</code>, <code>elsif</code> and <code>else</code> statements</li>
+
+<li>Check your solution by running <code>test_grade.rb</code></li>
+</ol>
 </div>
 	</div>
 
@@ -344,6 +362,18 @@
 <span class='n'>x</span> <span class='c1'>#=&gt; 1</span>
 </code></pre></div>
 <p>In the above block of code, as <code>5</code> is truthy, the variable <code>x</code> is set to <code>1</code>.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="6_wrapping_up">
+	
+
+		<h2></h2>
+		<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong> 
+
+</div>
 	</div>
 
 </div>

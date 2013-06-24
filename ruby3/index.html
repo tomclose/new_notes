@@ -31,9 +31,215 @@
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
+		
+		<li class="active"><a href="#1_blocks" data-toggle="tab">Iterators </a></li>
+		
+	
+		
+		<li><a href="#2_arrays" data-toggle="tab">Arrays </a></li>
+		
+	
+		
+		<li><a href="#3_more_arrays" data-toggle="tab">More arrays </a></li>
+		
+	
+		
+		<li><a href="#4_sort_and_filter" data-toggle="tab">Sorting and Filtering </a></li>
+		
+	
+		
+		<li><a href="#5_finishing_off" data-toggle="tab">Bringing together </a></li>
+		
+	
 </ul>
 
 <div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_blocks">
+	
+
+		<h2>Iterators</h2>
+		<p>The following bit of ruby code will print out the numbers 3, 6, &#8230; , 36:</p>
+<div class='highlight'><pre><code class='ruby'> 
+<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>12</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span> <span class='nb'>puts</span> <span class='mi'>3</span> <span class='o'>*</span> <span class='n'>number</span> <span class='p'>}</span>
+</code></pre></div>
+<p>Let&#8217;s split this up into its different pieces:</p>
+
+<ul>
+<li><code>(1..12)</code> is a <code>Range</code> representing the numbers 1 to 12</li>
+
+<li><code>.each</code> is a method on that <code>Range</code> that pulls out the numbers one-by-one</li>
+
+<li><code>{ |number| puts 3 * number }</code> is a <strong>block</strong>. After pulling a number out of the range the <code>each</code> method gives it to the block, which executes the code inside on that number.</li>
+</ul>
+
+<p>Blocks are a very powerful tool in ruby. A different way of thinking about the above example is, instead of considering <code>each</code> as passing values to the block, to consider the block as passing code into the <code>each</code> to change its behaviour. Blocks allow you to write functions that accept code to be executed later.</p>
+
+<h3 id='blocks'>Blocks</h3>
+
+<p>There are two ways of writing blocks in Ruby:</p>
+<div class='highlight'><pre><code class='ruby'> 
+<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>12</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span> <span class='nb'>puts</span> <span class='mi'>3</span> <span class='o'>*</span> <span class='n'>number</span> <span class='p'>}</span>
+
+<span class='c1'># or </span>
+
+<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>12</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span>
+	<span class='nb'>puts</span> <span class='mi'>3</span> <span class='o'>*</span> <span class='n'>number</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The two ways are completely equivalent. The second is useful when your code inside the block becomes more complicated (more than a couple of lines).</p>
+
+<p>Both of them declare the block parameters inside vertical bars <code>|number|</code>. Just like function parameters, when a value is passed to the block it is set to be this variable.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Grab the code for this session:</p>
+
+<pre><code>git clone https://github.com/TomClose/ruby3.git</code></pre>
+</li>
+
+<li>
+<p>Open <code>squares.rb</code> in Sublime Text</p>
+</li>
+
+<li>
+<p>Rewrite the function to use the <code>do .. end</code> block syntax</p>
+</li>
+
+<li>
+<p>Change the function to accept a parameter i.e so <code>display_squares(3)</code> displays 1, 4, 9.</p>
+</li>
+
+<li>
+<p>Check the function by running <code>test_squares</code> in the console.</p>
+</li>
+</ol>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>triangles.rb</code> in Sublime Text</li>
+
+<li>Complete the function <code>display_triangles</code></li>
+
+<li>Check the function by running <code>test_triangles</code></li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_arrays">
+	
+
+		<h2>Arrays</h2>
+		<p>Sometimes we don&#8217;t just want to iterate over numbers:</p>
+<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='s1'>&#39;pizza&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pasta&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>food</span><span class='o'>|</span>
+	<span class='nb'>puts</span> <span class='s2'>&quot;I love </span><span class='si'>#{</span><span class='n'>food</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Ruby provides a collection called an array, which can hold a list of objects. Unlike in some other languages in ruby you don&#8217;t need to specify which sort of object the array will hold - it can even hold objects of different types.</p>
+
+<p>Arrays are written with square brackets.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>my_array</span> <span class='o'>=</span> <span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>3</span><span class='o'>]</span>
+
+<span class='n'>empty_array</span> <span class='o'>=</span> <span class='o'>[]</span>    <span class='c1'># an array with no elements</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>With your partner work through the file <code>array_ops.rb</code>. See if you can guess what each line does, then check in irb.</p>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_more_arrays">
+	
+
+		<h2>More arrays</h2>
+		<h3 id='accessing_elements'>Accessing elements</h3>
+
+<ul>
+<li>Arrays start from 0, so that the first elements is <code>a[0]</code></li>
+
+<li>Arrays also allow indexing from the back, giving the last element as <code>a[-1]</code></li>
+
+<li>If try to access beyond the end of the array it gives <code>nil</code> (instead of an error in other languages)</li>
+
+<li>You can access multiple elements by specifying a range, e.g. <code>a[1..-1]</code> is everything but the first element</li>
+</ul>
+
+<h3 id='array_methods'>Array methods</h3>
+
+<p>Arrays have many useful (and largely self-explanatory) methods, including:</p>
+
+<ul>
+<li><code>empty?</code> - does the array have any elements, or is it the empty array <code>[]</code></li>
+
+<li><code>length</code></li>
+
+<li><code>include?(x)</code> - is <code>x</code> in the array</li>
+
+<li><code>min</code>, <code>max</code></li>
+
+<li><code>reverse</code>, <code>reverse!</code> - as with strings the <code>!</code> permanenty changes the array</li>
+
+<li><code>shuffle</code> - perform a random permutation</li>
+</ul>
+
+<h3 id='adding_to_an_array'> Adding to an array</h3>
+
+<ul>
+<li>
+<p>You can add to an array by setting a given element explicitly <code>a[5] = 6</code></p>
+</li>
+
+<li>
+<p>If the array isn&#8217;t long enough the gaps are filled with <code>nil</code>:</p>
+
+<pre><code>a = [1, 2]
+a[6] = 5
+a #=&gt; [1, 2, nil, nil, nil, nil, 5]</code></pre>
+</li>
+</ul>
+
+<h3 id='strings_to_arrays'> Strings to arrays</h3>
+
+<h3 id='arrays_of_arrays'>Arrays of arrays</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Write a sum function that takes an array (of numbers) and returns the sum of its elements.</p>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open the file <code>marks.rb</code> in Sublime Text</li>
+
+<li>Fix the mistakes in the <code>display_marks</code> function. You&#8217;ll probably want to try some bits out in irb to see what&#8217;s going on.</li>
+
+<li>Check your solution by running <code>test_marks.rb</code> in the console.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_sort_and_filter">
+	
+
+		<h2>Sorting and Filtering</h2>
+		<div class='highlight'><pre><code class='ruby'><span class='n'>array</span><span class='o'>.</span><span class='n'>sort</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>i</span><span class='p'>,</span><span class='n'>j</span><span class='o'>|</span> <span class='n'>i</span> <span class='o'>&lt;=&gt;</span> <span class='n'>j</span><span class='p'>}</span>
+</code></pre></div>
+	</div>
+
+	
+	<div class="tab-pane " id="5_finishing_off">
+	
+
+		<h2>Bringing together</h2>
+		
+	</div>
 
 </div>
 
