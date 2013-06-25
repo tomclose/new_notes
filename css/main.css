@@ -10,6 +10,18 @@ body.homepage {
 	margin-top: 30px;
 }
 
+span.big {
+	vertical-align: bottom;
+	line-height: 60px;
+	font-size: 60px;
+	padding-right: 20px;
+	color: #999;
+}
+
+.page-header.cfg {
+	border-bottom: 2px solid #eee;
+}
+
 .hero-unit h1 {
 	line-height: 120px;
 	font-size: 120px;
