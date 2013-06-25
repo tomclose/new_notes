@@ -24,7 +24,7 @@
   <script type="text/javascript" src='/assets/custom.js'></script>
 
 </head>
-<body>
+<body class="">
 
   <div class="container">
 
@@ -44,23 +44,23 @@
 		
 	
 		
-		<li><a href="#3_github_account" data-toggle="tab">Github account </a></li>
+		<li><a href="#3_github_account" data-toggle="tab">Github & Course Forum </a></li>
 		
 	
 		
-		<li><a href="#4_rails_installer" data-toggle="tab">Ruby/git: the easy way </a></li>
+		<li><a href="#4_rails_installer" data-toggle="tab">Ruby & Git: Easy Way </a></li>
 		
 	
 		
-		<li><a href="#5_homebrew_mac" data-toggle="tab">Ruby/git: the better way </a></li>
+		<li><a href="#5_homebrew_mac" data-toggle="tab">Ruby & Git: Better Way </a></li>
 		
 	
 		
-		<li><a href="#5_ssh_keys" data-toggle="tab">SSH keys </a></li>
+		<li><a href="#6_ssh_keys" data-toggle="tab">SSH keys </a></li>
 		
 	
 		
-		<li><a href="#6_reading" data-toggle="tab">Reading </a></li>
+		<li><a href="#7_reading" data-toggle="tab">Reading </a></li>
 		
 	
 </ul>
@@ -91,7 +91,7 @@
 
 <h3 id='why_sublime_text'>Why Sublime Text?</h3>
 
-<p>There are many text editors available including many excellent free and/or open source ones. Sublime Text is a popular code editor in the web development world at the moment and benefits from an active community of developers contributing add-ons and improvements. Although it isn&#8217;t free or open source, we have chosen it as our recommended editor as it: (1) gives a good user experience on mac, linux and windows; (2) is easy to get started with; and (3) can be easily customised when you get more advanced.</p>
+<p>There are many text editors available including many excellent free and/or open source ones. Sublime Text is a popular code editor in the web development world at the moment and benefits from an active community of developers contributing add-ons and improvements. Although it isn&#8217;t free or open source, we have chosen it as our recommended editor as it: (a) gives a good user experience on mac, linux and windows; (b) is easy to get started with; and (c) can be easily customised when you get more advanced.</p>
 
 <p>If have a different text editor that you are already used to using, feel free to use that instead!</p>
 	</div>
@@ -117,7 +117,7 @@
 	<div class="tab-pane " id="3_github_account">
 	
 
-		<h2>Github account</h2>
+		<h2>Github & Course Forum</h2>
 		<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -125,11 +125,15 @@
 </div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Using your GitHub account, sign up for the course forum at <a href='http://chat.code61.org/'>chat.code61.org/</a>.</p>
+<ol>
+<li>Using your GitHub account, sign up for the course forum at <a href='http://chat.code61.org/'>chat.code61.org/</a>.</li>
+
+<li>Introduce yourself in the &#8216;Welcome and introductions&#8217; post.</li>
+</ol>
 </div>
 <h3 id='what_is_github'>What is GitHub?</h3>
 
-<p>GitHub is a site that allows you to share code with others. It basically allows you to put a <em>git repository</em> online. Git is a program that helps with the management of code. If you want, you can <a href='http://alistapart.com/article/get-started-with-git'>find out a bit more about git</a> now - or you can wait until we cover it in the course.</p>
+<p>GitHub is a site that allows you to share code with others. It basically allows you to put a <em>git repository</em> online. Git is a program that helps with the management of code. If you want, you can find out a bit more about git now by reading the first part (down to Installation) of this <a href='http://alistapart.com/article/get-started-with-git'>Get Started with Git</a> article.</p>
 
 <p>There are several other sites that are similar to GitHub e.g. <a href='https://bitbucket.org'>BitBucket</a>. GitHub is by far the most widely used.</p>
 
@@ -140,46 +144,228 @@
 	<div class="tab-pane " id="4_rails_installer">
 	
 
-		<h2>Ruby/git: the easy way</h2>
-		<p>If you use a Mac you should read &#8220;Installing: the better way&#8221; before deciding which to do.</p>
+		<h2>Ruby & Git: Easy Way</h2>
+		<p>In this step we will be installing git, Ruby and Ruby on Rails. You&#8217;ve already come accross git. Ruby is a programming language that we will be learning in the course. Ruby on Rails is a framework for building web applications quickly and easily, built using Ruby.</p>
 
-<h3 id='ruby_git_and_rails'>Ruby, git and rails</h3>
-
-<p>In this step</p>
+<p>It&#8217;s important to realise that git, Ruby and Ruby on Rails are not &#8216;programs&#8217; in the sense that you are probably used to. <strong>There won&#8217;t be any icons for ruby, git or Ruby on Rails</strong>. They&#8217;re the sort of programs you run from the command line, rather than applications that you click on.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Go to <a href='http://railsinstaller.org/'>http://railsinstaller.org/</a> and follow the instructions for your operating system (choosing all the defaults they give).</p>
+<p>Go to <a href='http://railsinstaller.org/'>http://railsinstaller.org/</a> and follow the instructions for your operating system (choosing all the defaults they give). You want the <strong>Ruby 1.9</strong> version.</p>
 </div>
-<p>On windows:</p>
+<h3 id='windows_notes'>Windows notes:</h3>
 
 <p>At the final stage, there will be a tick box asking if you want to &#8220;Configure git and ssh&#8221;. Make sure this box is ticked. Follow the instructions and fill in your name and email (this is only used for your git commits).</p>
 
-<p>It will also tell you something about having copied your ssh key to the clipboard.</p>
+<p>It will also tell you something about having copied your ssh key to the clipboard. This might or might not be true. In any case, don&#8217;t worry as we&#8217;re moving on to this next.</p>
 
-<p>On Mac:</p>
+<h3 id='mac_notes'>Mac notes:</h3>
 
-<p>You then need to do ssh upload.</p>
+<p>You will need to know which version of OS X you are running: 10.8 (Mountain Lion), 10.7 (Lion), or 10.6 (Snow Leopard). To check this click on the apple symbol in the top left of your screen and select &#8216;About This Mac&#8217;.</p>
 	</div>
 
 	
 	<div class="tab-pane " id="5_homebrew_mac">
 	
 
-		<h2>Ruby/git: the better way</h2>
-		<p>Mac only.</p>
+		<h2>Ruby & Git: Better Way</h2>
+		<p>These instructions are for <strong>Mac only</strong>. On Windows the Easy Way is the Better Way.</p>
+
+<h3 id='whats_better_about_the_better_way'>What&#8217;s better about the Better Way?</h3>
+
+<p>These instructions will take you through installing Ruby and git using an OS X package manager called <a href='http://mxcl.github.io/homebrew/'>Homebrew</a>. Once you have Homebrew set up you will be able to quickly and easily install the vast majority of the (free, open-source) software you will need as a developer. Consider this an investment for the future!</p>
+
+<p>The first parts of the installation procedure is described in a post by Moncef Belyamani <a href='http://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/'>here</a>. <span>Our Steps 1-3 correspond to their Steps 1-5. <strong>We won&#8217;t be doing their steps 6 onwards</strong>.</span> If you get stuck, please check with these instructions. If you find things that don&#8217;t work, let us know in the <a href='http://chat.code61.org'>forum</a>.</p>
+
+<h3 id='step_one_installing_apples_command_line_tools'>Step One: Installing Apple&#8217;s Command Line Tools</h3>
+
+<p>Homebrew works by providing automatic recipies to download and <em>compile</em> software for your computer. In order to compile software you need a compiler. Apple provides you with a compiler but doesn&#8217;t install it on OS X by default. You will need to do this for yourself. Before you do this you should check you don&#8217;t have it already.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Open <code>Terminal</code> (e.g. from your <code>Application</code> folder)</p>
+</li>
+
+<li>
+<p>Type</p>
+
+<pre><code>gcc --version</code></pre>
+</li>
+
+<li>
+<p>If this says something a bit like</p>
+
+<pre><code>i686-apple-darwin10-gcc-4.2.1 (GCC) 4.2.1 (Apple Inc. build 5666)</code></pre>
+
+<p>you have a the gcc compiler installed and can skip to Step Two</p>
+</li>
+
+<li>
+<p>If it says nothing, you need to install it.</p>
+</li>
+</ol>
+</div>
+<p>If you don&#8217;t have a compiler already you need to install Apple&#8217;s Command Line Tools - either directly or by installing XCode. The options for doing this are described in the <a href='http://installfest.railsbridge.org/installfest/install_xcode'>Railsbridge Installfest</a>. Those options are also covered in <a href='http://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/'>Moncef&#8217;s post</a> as Step 1 - note the special instructions for those on Snow Leopard.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>If you don&#8217;t have gcc, install it following one of the sets of instructions above.</p>
+</div>
+<h3 id='step_two_install_homebrew'>Step Two: Install Homebrew</h3>
+
+<p>Once you have the compiler installed it should be mostly plain sailing. To install Homebrew</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Go to the <a href='http://mxcl.github.io/homebrew/'>Homebrew homepage</a></p>
+</li>
+
+<li>
+<p>Scroll down until you find the &#8216;Install Homebrew&#8217; section and follow the instructions. It should be as simple as pasting</p>
+
+<pre><code> ruby -e &quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</code></pre>
+
+<p>into the terminal.</p>
+</li>
+</ol>
+</div>
+<p>If you run into any problems have a check in Step 3 of <a href='http://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/'>Moncef&#8217;s post</a>.</p>
+
+<h3 id='step_three_install_git'>Step Three: Install Git</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>In the terminal type:</p>
+
+<pre><code> brew update
+ brew install git</code></pre>
+</li>
+
+<li>
+<p>Close the terminal and reopen it. Configure your git details by typing</p>
+
+<pre><code>git config --global user.name &quot;Your Full Name&quot;
+git config --global user.email &quot;Your Email Address&quot;</code></pre>
+
+<p>(replacing &#8220;Your Full Name&#8221; and &#8220;Your Email Address&#8221;)</p>
+</li>
+</ol>
+</div>
+<h3 id='step_four_install_rbenv'>Step Four: Install rbenv</h3>
+
+<p>If you have a Mac, you actually already have ruby installed on your system. Unfortunately it&#8217;s a really old version of ruby. As a developer it is useful to be able to have several versions of ruby on your system, so that you can switch versions between projects if necessary. <a href='https://github.com/sstephenson/rbenv'>Rbenv</a> (ruby environment) is a tool to help you do this.</p>
+
+<p>Note: if you have ever installed RVM you will need to uninstall it as it won&#8217;t play well with rbenv. If you&#8217;re following these instructions you probably haven&#8217;t ever installed RVM.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>In the terminal type:</p>
+
+<pre><code>brew install rbenv
+brew install ruby-build
+echo &#39;eval &quot;$(rbenv init -)&quot;&#39; &gt;&gt; ~/.bash_profile</code></pre>
+</li>
+
+<li>
+<p>Close the terminal and reopen it.</p>
+</li>
+</ol>
+</div>
+<h3 id='step_five_install_ruby'>Step Five: Install Ruby</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>In the terminal type:</p>
+
+<pre><code>rbenv install 1.9.3-p329</code></pre>
+
+<p>This will download and install ruby version 1.9.2-p392</p>
+</li>
+
+<li>
+<p>Then type:</p>
+
+<pre><code>rbenv global 1.9.3-p429</code></pre>
+
+<p>This will set your system to use the new version of ruby by default.</p>
+</li>
+</ol>
+</div>
+<h3 id='step_six_install_rails'>Step Six: Install Rails</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>In the terminal type:</p>
+
+<pre><code>gem install rails
+gem install bundler</code></pre>
+</li>
+</ol>
+</div>
 	</div>
 
 	
-	<div class="tab-pane " id="5_ssh_keys">
+	<div class="tab-pane " id="6_ssh_keys">
 	
 
 		<h2>SSH keys</h2>
-		
+		<p>An SSH key gives you a way of connecting to a remote computer without having to type in a password everytime. In the course you will often be pushing code up to GitHub and other locations, and it can get annoying if you continually have to provide your password.</p>
+
+<p>In this step we will guide you through creating an ssh key and uploading it to GitHub. This is probably the most complicated step of the installation instructions. Good luck!</p>
+
+<p>GitHub itself provides excellent instructions for this step: <a href='https://help.github.com/articles/generating-ssh-keys'>Github - Generating SSH Keys</a>. We&#8217;ll be just providing a few notes to go with those instructions here.</p>
+
+<p>(You might see that GitHub recommends using a different connection method: https. We&#8217;re going to stick with ssh as (a) it&#8217;s good to know how to set up an ssh key and (b) it avoids messing around with the credential-helper.)</p>
+
+<h3 id='the_basic_overview'>The basic overview</h3>
+
+<p>What we&#8217;re doing basically has two steps:</p>
+
+<ol>
+<li>Generate the key on your laptop</li>
+
+<li>Upload the public part of the key to GitHub</li>
+</ol>
+
+<p>An SSH key comes in two parts. One part is public and can be given to anyone. The other part is private and should be stored safely on your laptop (when generating the key you can and should use a passphrase to protect it). Working together the two parts can accomplish two different purposes:</p>
+
+<ul>
+<li>Anyone who has the public key can encrypt a message so that it can only be read using your private key.</li>
+
+<li>With your private key you can sign a message such that people with the public key can be sure you sent it.</li>
+</ul>
+
+<p>The keys work using the <a href='http://en.wikipedia.org/wiki/RSA_(algorithm)'>RSA algorithm</a>. The whole system relies on the fact that it&#8217;s easy to multiply large numbers but very hard to factorize them (to undo the multiplication). At least, it will be until someone builds a quantum computer, but that&#8217;s another story &#8230;</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Create and upload an SSH key to GitHub by following the <a href='https://help.github.com/articles/generating-ssh-keys'>instructions on GitHub</a> for your operating system.</p>
+</div>
+<h3 id='notes_for_windows_users'>Notes for Windows users</h3>
+
+<p>If you just ran RailsInstaller <strong>you don&#8217;t need to generate a key</strong> - they did it for you!</p>
+
+<p>You will need to do <strong>Step 1</strong> on the <a href='https://help.github.com/articles/generating-ssh-keys'>GitHub ssh key instructions</a> then continue directly to <strong>Step 3</strong>.</p>
+
+<h3 id='notes_for_mac_users'>Notes for Mac users</h3>
+
+<p>For some reason RailsInstaller doesn&#8217;t seem to generate the key for you on a Mac. You will need to do all the steps from the <a href='https://help.github.com/articles/generating-ssh-keys'>GitHub ssh key instructions</a>.</p>
 	</div>
 
 	
-	<div class="tab-pane " id="6_reading">
+	<div class="tab-pane " id="7_reading">
 	
 
 		<h2>Reading</h2>
