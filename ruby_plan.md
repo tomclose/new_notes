@@ -55,6 +55,13 @@ layout: default
 - using hash to find the frequency of letters in a passage of text, using this to break a cipher?
 - compiling student results? 
 
+## Ruby 5: advanced things
+- functions without return
+- function calling without brackets
+- yield
+
+
+
 ## Ruby 5: classes
 - classes as data and methods
 - characters, setting bart.father= homer, could also set homer.children << bart
