@@ -35,9 +35,46 @@
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
+		
+		<li class="active"><a href="#1_introducing_hash" data-toggle="tab">Introducing the Hash </a></li>
+		
+	
+		
+		<li><a href="#2_iterating" data-toggle="tab">Iterating over a hash </a></li>
+		
+	
 </ul>
 
 <div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_introducing_hash">
+	
+
+		<h2>Introducing the Hash</h2>
+		<p>You&#8217;ve already met one of ruby&#8217;s common collection objects: the <code>Array</code>. In this session we&#8217;re going to have a look at the other basic type of collection: the <code>Hash</code>.</p>
+
+<p>In an array the objects were ordered, and referenced by their index:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>a</span> <span class='o'>=</span> <span class='o'>[</span><span class='s1'>&#39;zero&#39;</span><span class='p'>,</span> <span class='s1'>&#39;one&#39;</span><span class='p'>,</span> <span class='s1'>&#39;two&#39;</span><span class='o'>]</span>
+
+<span class='n'>a</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;zero&#39;</span>
+</code></pre></div>
+<p>In a hash the objects are stored in any particular order, but instead are stored with a key. The key can then be used to retrieve or modify the object.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>character</span> <span class='o'>=</span> <span class='p'>{</span><span class='s1'>&#39;name&#39;</span><span class='o'>=&gt;</span><span class='s1'>&#39;Bart&#39;</span><span class='p'>,</span> <span class='s1'>&#39;surname&#39;</span><span class='o'>=&gt;</span><span class='s1'>&#39;Simpson&#39;</span><span class='p'>,</span> <span class='s1'>&#39;age&#39;</span><span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>,</span> <span class='s1'>&#39;catchphrase&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Eat my shorts&#39;</span><span class='p'>}</span>
+
+<span class='n'>character</span><span class='o'>[</span><span class='s1'>&#39;name&#39;</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;Bart&#39;</span>
+<span class='n'>character</span><span class='o'>[</span><span class='s1'>&#39;catchphrase&#39;</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;Eat my shorts&#39;</span>
+</code></pre></div>
+<p>The above</p>
+	</div>
+
+	
+	<div class="tab-pane " id="2_iterating">
+	
+
+		<h2>Iterating over a hash</h2>
+		
+	</div>
 
 </div>
 
