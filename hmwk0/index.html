@@ -78,13 +78,47 @@
 		<h2>Welcome</h2>
 		<p>Welcome to the course preparation for the Code First Girls Summer 2013 programme!</p>
 
+<h3 id='course_content'>Course content</h3>
+
+<p>The aim of this course is to give you a taste of a number of different areas of web development. We don&#8217;t aim to make you an expert in any one of them; instead we want to give you a basic level of understanding and the tools to test things out, so that you can independently learn more.</p>
+
+<p>Over the next two months, among others, you will meet:</p>
+
+<ul>
+<li>HTML</li>
+
+<li>CSS</li>
+
+<li>git</li>
+
+<li>Ruby</li>
+
+<li>javascript</li>
+
+<li>Ruby on Rails</li>
+</ul>
+
+<p>There are many exellent resources on the web for learning a lot of this material. We don&#8217;t want to reinvent the wheel and will unashamedly point you towards better sources of information when they exist. Rather than teach you everything from scratch, we aim to guide and support your learning.</p>
+
+<h3 id='course_assessment'>Course assessment</h3>
+
+<p>There will be no formal assessment on the course - you can&#8217;t pass or fail. The only measure of success is the knowledge and skills that you take away.</p>
+
+<p>We will be setting you a fair amount of independent work in between sessions and it&#8217;s up to you to do this - we won&#8217;t always be checking. In many ways, the biggest value in this course comes from the access to support from our excellent TA team. Do not underestimate how important this is or what a unique opportunity you have! <strong>If you don&#8217;t keep up with the work, you will get little value from the course.</strong></p>
+
+<h3 id='installing_software'>Installing software</h3>
+
+<p>One of the biggest challenges in a course like this is dealing with the different operating systems and hardware that you&#8217;ll be working on. We have decided against getting everyone to run a linux virtual machine (or similar) for the course, as we believe it&#8217;s really important that web development is something that you can do in your natural computing environment.</p>
+
+<p>That does mean that there&#8217;s a fair amount of setting up that you will need to do to be ready for the first session next week. Please be patient with this - installing software is fiddly and not always predictable. Most of the work we get you to do won&#8217;t be like this!</p>
+
 <p>The tabs on the left hand side will take you through installing the software you&#8217;ll need for the course. Instructions are given in blue boxes.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <p>The blue boxes tell you what you need to do. Read them carefully!</p>
 </div>
-<p>If you have any problems, please let us know via the <a href='http://chat.code61.org'>course forum</a>. We would like people to sign up using their GitHub accounts (see the &#8220;GitHub and Course Forum&#8221; step) but if you&#8217;re having problems before that stage please feel free to give us a shout!</p>
+<p>If you have any problems, please let us know via the <a href='http://chat.code61.org'>course forum</a>. Your very first step will be to create a GitHub account and use it to sign up for the forum.</p>
 	</div>
 
 	
@@ -300,6 +334,8 @@ echo &#39;eval &quot;$(rbenv init -)&quot;&#39; &gt;&gt; ~/.bash_profile</code><
 </ol>
 </div>
 <h3 id='step_five_install_ruby'>Step Five: Install Ruby</h3>
+
+<p>Having installed rbenv with homebrew, we will now use rbenv to install the latest version of ruby.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -322,6 +358,8 @@ echo &#39;eval &quot;$(rbenv init -)&quot;&#39; &gt;&gt; ~/.bash_profile</code><
 </ol>
 </div>
 <h3 id='step_six_install_rails'>Step Six: Install Rails</h3>
+
+<p>Now we have the latest version of ruby, we can install rails using Rubygems. Rubygems is ruby&#8217;s excellent package manager, used for sharing projects written in ruby - more on this later in the course.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -375,7 +413,7 @@ gem install bundler</code></pre>
 </div>
 <h3 id='notes_for_windows_users'>Notes for Windows users</h3>
 
-<p>If you just ran RailsInstaller <strong>you don&#8217;t need to generate a key</strong> - they did it for you!</p>
+<p>If you just ran RailsInstaller <strong>you won&#8217;t need to generate a key</strong> - they did it for you!</p>
 
 <p>You will need to do <strong>Step 1</strong> on the <a href='https://help.github.com/articles/generating-ssh-keys'>GitHub ssh key instructions</a> then continue directly to <strong>Step 3</strong>.</p>
 
@@ -391,16 +429,22 @@ gem install bundler</code></pre>
 		<h2>Preparation exercises</h2>
 		<p>Well done for getting to this point! You should now have all the software you need to start the course.</p>
 
-<p>In the first session we&#8217;ll be looking at HTML: the markup language used for webpages. You might have seen some HTML before. If not, it would be useful if you were slightly familiar with it beforehand, as we won&#8217;t spend that much time on it. In order to do this you can try to do the following sections from Codeacademy. If you don&#8217;t manage to do them all, try to have a look at the first one at least!</p>
+<p>In the first session we&#8217;ll be looking at HTML: the markup language used for webpages. You might have seen some HTML before. If not, it would be useful if you were slightly familiar with it beforehand, as we won&#8217;t spend that much time on it.</p>
+
+<p>To make sure everyone&#8217;s roughly in the same place we&#8217;d like you all to do some of the exercises at <a href='http://www.codecademy.com'>Codecademy</a>. Codecademy is a free site that allows you to try out various programming languages directly in your browser. If you&#8217;ve already done some HTML, it might be slow going - because of this we <strong>only want you to do the project</strong> from each section. If you haven&#8217;t done any HTML before, please feel free to do the exercises too.</p>
+
+<p><img alt='Highlighting the project on Codecademy' src='/assets/codecademy_web.png' /></p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
+<p>On the <a href='http://www.codecademy.com/tracks/web'>Codecademy web track</a>:</p>
+
 <ol>
-<li>(Optional) Do the &#8220;1 Introduction to HTML&#8221; from the <a href='http://www.codecademy.com/tracks/web'>Codecademy web track</a></li>
+<li>Do the project from &#8220;1 Introduction to HTML&#8221;.</li>
 
-<li>(Optional) Do &#8220;2 HTML Structure: Using Lists&#8221;</li>
+<li>Do the project from &#8220;2 HTML Structure: Using Lists&#8221;.</li>
 
-<li>(Optional) Do &#8220;3 HTML Structure: Tables, Divs, and Spans&#8221;</li>
+<li>Do the project from &#8220;3 HTML Structure: Tables, Divs, and Spans&#8221;.</li>
 </ol>
 </div>
 <p>Look forward to seeing you on Tuesday!</p>
