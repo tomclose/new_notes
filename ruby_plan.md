@@ -59,10 +59,12 @@ layout: default
 - functions without return
 - function calling without brackets
 - yield
+- return values of blocks, each vs map
+- types of variables
 
 
 
-## Ruby 5: classes
+## Ruby 6: classes
 - classes as data and methods
 - characters, setting bart.father= homer, could also set homer.children << bart
 

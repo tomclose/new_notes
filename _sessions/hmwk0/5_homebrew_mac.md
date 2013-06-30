@@ -81,24 +81,28 @@ Note: if you have ever installed RVM you will need to uninstall it as it won't p
 2. Close the terminal and reopen it.
 {% endexercise %}
 
-### Step Five: Install Ruby 
+### Step Five: Install Ruby
+
+Having installed rbenv with homebrew, we will now use rbenv to install the latest version of ruby.
 
 {% exercise %}
 1. In the terminal type:
 
-		rbenv install 1.9.3-p329
+		rbenv install 1.9.3-p392
 
 	This will download and install ruby version 1.9.2-p392
 
 2. Then type:
 
-		rbenv global 1.9.3-p429
+		rbenv global 1.9.3-p392
 
 	This will set your system to use the new version of ruby by default.
 
 {% endexercise %}
 
 ### Step Six: Install Rails
+
+Now we have the latest version of ruby, we can install rails using Rubygems. Rubygems is ruby's excellent package manager, used for sharing projects written in ruby - more on this later in the course.
 
 {% exercise %}
 1. In the terminal type:

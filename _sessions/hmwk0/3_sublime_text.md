@@ -17,7 +17,7 @@ You probably already have a text editor, such as notepad or textedit, on your la
 
 ### Do I need to pay?
 
-Sublime Text costs $70 but has an indefinite evaluation period - **you can use it for free**, until you become crippled by guilt. The duration of the course seems like a pretty reasonable period of time to evaluate the software. If you go on to use it after that you should consider getting a license - it's a good product and the guys who make it have to eat!
+Sublime Text costs $70 but **you can use it for free** as it has an indefinite evaluation period. The duration of the course seems like a pretty reasonable period of time to evaluate the software. If you go on to use it after that you should consider getting a license - it's a good product and the guys who make it have to eat!
 
 ### Why Sublime Text?
 

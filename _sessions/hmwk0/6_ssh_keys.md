@@ -30,7 +30,7 @@ Create and upload an SSH key to GitHub by following the [instructions on GitHub]
 
 ### Notes for Windows users
 
-If you just ran RailsInstaller **you don't need to generate a key** - they did it for you!
+If you just ran RailsInstaller **you won't need to generate a key** - they did it for you!
 
 You will need to do **Step 1** on the [GitHub ssh key instructions](https://help.github.com/articles/generating-ssh-keys) then continue directly to **Step 3**.
 

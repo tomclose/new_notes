@@ -42,9 +42,7 @@ module Jekyll
         if Dir.exists?('_sessions')
           subdirs = Dir.entries('_sessions').reject{|x| %w{. ..}.include?(x)}
           subdirs.each do |dir_name|
-
-
- 
+            
             site.pages << SessionPage.new(site, site.source, dir_name)
           end
         end
