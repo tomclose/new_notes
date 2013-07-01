@@ -95,6 +95,7 @@ Having installed rbenv with homebrew, we will now use rbenv to install the lates
 2. Then type:
 
 		rbenv global 1.9.3-p392
+		rbenv rehash
 
 	This will set your system to use the new version of ruby by default.
 

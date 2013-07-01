@@ -14,6 +14,9 @@ Type `212.58.244.67` into your browser's address bar. What happens?
 
 One of the first things that happens when you type a URL into your browser is a _DNS lookup_: your computer contacts a DNS server (*Domain Name System server*), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. `bbc.co.uk`) into an address for a server (such as `212.57.244.67`).
 
+
+### Putting up a website
+
 If you want to put up your own website at your own domain name you need two things:
 
 1. A web server to serve your site

@@ -2,9 +2,17 @@
 title: Meet the Command Line
 ---
 
-If you are using a mac, open Terminal.app. If you are on windows, as part of the package you downloaded from  [RailsInstaller](www.railsinstaller.org) you should now have a program called `gitbash`. Open that!
 
 These terminals are a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the terminal, as many of the programmes you will use will be run from the terminal, instead of by clicking an icon.
+
+Note: when giving you instructions for the command line we will precede them with a `$` to represent the command prompt e.g.
+
+    $ mv file1 file2
+
+**You shouldn't type the `$` sign - just the stuff after it.** So for the above instruction you would just type `mv file1 file2` into the command line.
+
+
+### Moving around
 
 The first thing you will need to get used to is moving around. Start by printing the name of the directory you are in:
 
@@ -24,8 +32,45 @@ To move back do
 
 Your commandline will help you: <kbd>tab</kbd> can often be used to auto-complete names of files, the up arrow can be used to cycle through previous commands that you have typed.
 
-You should navigate to your `coding_course` folder that you created last week, using `cd`. When you get there create a new directory (_make directory_) for your site:
+### Creating a directory
 
-    $ mkdir first_site
+You can do a lot more on the command line than just move around. We'll be using the command line a lot over the course. For the time being we just need to create a folder:
+
+    $ mkdir coding_course
 
 Note: choosing names without spaces makes command line navigation easier.
+
+{% exercise %}
+1. Open your command line:
+    * On a Mac open Terminal (Applications > Terminal)
+    * On Windowns open Command Prompt with Ruby on Rails
+2. Find out where you are:
+
+        $ pwd
+
+3. See what is in the same folder:
+
+        $ ls
+
+4. If you are on a Mac move into `Documents`:
+
+        $ cd Documents
+
+5. Create the folder for the coding course:
+
+        $ mkdir coding_course
+
+6. Move into that folder:
+
+        $ cd coding_course
+
+7. Move back up to the folder above
+
+        $ cd ..
+
+8. Move back into the coding course folder. This time don't type out coding_course - just type out the first few letters and hit `Tab`:
+
+       $ cd coding_course
+
+9. In the Finder (Mac) or My Computer (Windows) find the folder that you just created.
+{% endexercise %}
