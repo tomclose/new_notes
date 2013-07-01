@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Expressive Ruby</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>Expressive Ruby <small>No more lies</small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_more_functions" data-toggle="tab">Functions again </a></li>
+		
+	
+		
+		<li><a href="#2_calling_functions" data-toggle="tab">Calling functions </a></li>
+		
+	
+		
+		<li><a href="#3_map" data-toggle="tab">Map & reduce </a></li>
+		
+	
+		
+		<li><a href="#4_yield" data-toggle="tab">Yield </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_more_functions">
+	
+
+		<h2>Functions again</h2>
+		<h3 id='functions_of_no_return'>Functions of no return</h3>
+
+<p>In ruby the return statement is optional. If no return statement is given the function returns the last statement executed.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>welcome_message</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>welcome_message</span><span class='p'>(</span><span class='s2'>&quot;Tom&quot;</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;Hello Tom&quot;</span>
+
+<span class='k'>def</span> <span class='nf'>is_even</span><span class='p'>(</span><span class='n'>n</span><span class='p'>)</span>
+    <span class='k'>if</span> <span class='n'>n</span><span class='o'>.</span><span class='n'>even?</span>
+        <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>n</span><span class='si'>}</span><span class='s2'> is even&quot;</span>
+    <span class='k'>else</span>
+        <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>n</span><span class='si'>}</span><span class='s2'> is odd&quot;</span>
+    <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='n'>is_even</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;2 is even&quot;</span>
+</code></pre></div>
+<h3 id='default_values'>Default values</h3>
+
+<p>As in other languages, it is possible to specify default values in ruby which will be used if no argument is provided:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>welcome_message2</span><span class='p'>(</span><span class='nb'>name</span><span class='o'>=</span><span class='s2'>&quot;World&quot;</span><span class='p'>)</span>
+    <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>welcome_message2</span> <span class='c1'>#=&gt; &quot;Hello World&quot;</span>
+<span class='n'>welcome_message2</span><span class='p'>(</span><span class='s2'>&quot;Tom&quot;</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;Hello Tom&quot;</span>
+</code></pre></div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_calling_functions">
+	
+
+		<h2>Calling functions</h2>
+		<p>Have you ever wondered how <code>puts</code> works?</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>puts</span> <span class='s2'>&quot;Hello Everyone!&quot;</span>
+</code></pre></div>
+<p><code>puts</code> is just a <em>function</em> that prints to the screen. But if we&#8217;re calling a function why don&#8217;t we use <code>()</code>?</p>
+
+<p><strong>In ruby the <code>()</code> are optional when calling functions.</strong></p>
+
+<p>So the <code>puts</code> example above is actually just a different way of writing</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>puts</span><span class='p'>(</span><span class='s2'>&quot;Hello Everyone!&quot;</span><span class='p'>)</span>
+</code></pre></div>
+<p>This is a nice feature, as it allows you to build expressive interfaces in ruby without the visual clutter of other languages. As a very simple example consider the following:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>say_hello_to</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>say_hello_to</span> <span class='s2'>&quot;Tom&quot;</span> <span class='c1'>#=&gt; &quot;Hello Tom&quot;</span>
+</code></pre></div>
+<h3 id='more_lies'>More lies</h3>
+
+<p>There are a few occasions where the two ways aren&#8217;t equivalent and you do actually need the brackets. As an example take the following function for displaying some information about a hash:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>summary</span><span class='p'>(</span><span class='n'>character</span><span class='p'>)</span>
+    <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>character</span><span class='o'>[</span><span class='ss'>:name</span><span class='o'>]</span><span class='si'>}</span><span class='s2'> </span><span class='si'>#{</span><span class='n'>character</span><span class='o'>[</span><span class='ss'>:surname</span><span class='o'>]</span><span class='si'>}</span><span class='s2'> is </span><span class='si'>#{</span><span class='n'>character</span><span class='o'>[</span><span class='ss'>:age</span><span class='o'>]</span><span class='si'>}</span><span class='s2'> years old.&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>summary</span> <span class='p'>{</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Bart&#39;</span><span class='p'>,</span> <span class='ss'>:surname</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Simpson&#39;</span><span class='p'>,</span> <span class='ss'>:age</span> <span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>}</span>
+<span class='c1'>#=&gt; SyntaxError: (irb):24: syntax error, unexpected tASSOC, expecting &#39;}&#39;</span>
+
+<span class='n'>summary</span><span class='p'>({</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Bart&#39;</span><span class='p'>,</span> <span class='ss'>:surname</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Simpson&#39;</span><span class='p'>,</span> <span class='ss'>:age</span> <span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>})</span>
+<span class='c1'>#=&gt; &quot;Bart Simpson is 10 years old.&quot;</span>
+
+<span class='n'>b</span> <span class='o'>=</span> <span class='p'>{</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Bart&#39;</span><span class='p'>,</span> <span class='ss'>:surname</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Simpson&#39;</span><span class='p'>,</span> <span class='ss'>:age</span> <span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>}</span>
+<span class='n'>summary</span> <span class='n'>b</span>
+<span class='c1'>#=&gt; &quot;Bart Simpson is 10 years old.&quot;</span>
+</code></pre></div>
+<p>The reason that it doesn&#8217;t work without the round brackets is that the function sees the <code>{}</code> and thinks you&#8217;re passing it a block. This really is an edge-case though - don&#8217;t worry about it until you have a problem! The no-brackets function calling is something that you&#8217;ll probably use a lot when writing ruby.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="3_map">
+	
+
+		<h2>Map & reduce</h2>
+		<p>So now we know about functions returning the last thing they executed, what will the following code give?</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>to_stars_each</span><span class='p'>(</span><span class='n'>array</span><span class='p'>)</span>
+    <span class='n'>array</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='s2'>&quot;*&quot;</span> <span class='o'>*</span> <span class='n'>n</span><span class='p'>}</span>
+<span class='k'>end</span>
+
+<span class='c1'># what will happen here</span>
+<span class='n'>to_stars_each</span><span class='p'>(</span><span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>3</span><span class='o'>]</span><span class='p'>)</span> <span class='c1'>#??=&gt; [&#39;*&#39;, &#39;**&#39;, &#39;***&#39;]</span>
+</code></pre></div>
+<p>Unfortunately this doesn&#8217;t happen. What we actually get is</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>to_stars_each</span><span class='p'>(</span><span class='n'>array</span><span class='p'>)</span>
+    <span class='n'>array</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='s2'>&quot;*&quot;</span> <span class='o'>*</span> <span class='n'>n</span><span class='p'>}</span>
+<span class='k'>end</span>
+
+<span class='c1'># this actually happens</span>
+<span class='n'>to_stars_each</span><span class='p'>(</span><span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>3</span><span class='o'>]</span><span class='p'>)</span> <span class='c1'>#=&gt; [1, 2, 3]</span>
+</code></pre></div>
+<p><strong>Each returns the object you were interating over, not the result of the iteration.</strong></p>
+
+<p>Thankfully, there is a way of doing what we want, using a different method called <code>map</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>to_stars</span><span class='p'>(</span><span class='n'>array</span><span class='p'>)</span>
+    <span class='n'>array</span><span class='o'>.</span><span class='n'>map</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='s2'>&quot;*&quot;</span> <span class='o'>*</span> <span class='n'>n</span><span class='p'>}</span>
+<span class='k'>end</span>
+
+<span class='n'>to_stars</span><span class='p'>(</span><span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>3</span><span class='o'>]</span><span class='p'>)</span> <span class='c1'>#=&gt; [&#39;*&#39;, &#39;**&#39;, &#39;***&#39;]</span>
+</code></pre></div>
+<p>Map takes each element of a collection and &#8216;maps&#8217; it to a new value, by running the block.</p>
+
+<h3 id='introducing_reduce'>Introducing reduce</h3>
+
+<p>We previously wrote a method to calculate the sum of an array:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>sum</span><span class='p'>(</span><span class='n'>array</span><span class='p'>)</span>
+    <span class='n'>s</span> <span class='o'>=</span> <span class='mi'>0</span>
+    <span class='n'>array</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='n'>s</span> <span class='o'>+=</span> <span class='n'>n</span><span class='p'>}</span>
+    <span class='n'>s</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>In fact there is a neater way to do this using a function called <code>reduce</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>sum</span><span class='p'>(</span><span class='n'>array</span><span class='p'>)</span>
+    <span class='n'>array</span><span class='o'>.</span><span class='n'>reduce</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>)</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>running_total</span><span class='p'>,</span> <span class='n'>n</span><span class='o'>|</span> <span class='n'>running_total</span> <span class='o'>+</span> <span class='n'>n</span><span class='p'>}</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Reduce moves along the array calculating a running total. At each stage the block is passed in the current total and the new element, and the result of running the block becomes the new total. The starting total (in this case <code>0</code>) is passed in as an argument.</p>
+
+<p>The function is called <code>reduce</code> as it moves along reducing the array to a value.</p>
+
+<h3 id='map_and_reduce'>Map and reduce</h3>
+
+<p>Map and reduce together is a very powerful idea. Many operations can be thought of as a map followed by a reduce and writing them in this way allows massive parallelisation across a distributed network of machines.</p>
+
+<p>Google uses map-reduce operations to a huge extent as described in their <a href='http://research.google.com/archive/mapreduce.html'>map-reduce paper</a></p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>map_reduce.rb</code> in Sublime Text</li>
+
+<li>Complete the three functions, by using map and reduce as appropriate.</li>
+
+<li>Test your solutions with <code>test_map_reduce.rb</code></li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_yield">
+	
+
+		<h2>Yield</h2>
+		<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>yield.rb</code> in Sublime Text</li>
+
+<li>Complete the two functions</li>
+
+<li>Test your solutions using <code>test_yield.rb</code></li>
+</ol>
+</div>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>

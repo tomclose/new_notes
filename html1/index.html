@@ -52,11 +52,15 @@
 		
 	
 		
-		<li><a href="#5_first_page" data-toggle="tab">Creating an HTML page </a></li>
+		<li><a href="#5_command_line" data-toggle="tab">Meet the Command Line </a></li>
 		
 	
 		
-		<li><a href="#6_more_html" data-toggle="tab">More HTML </a></li>
+		<li><a href="#6_first_page" data-toggle="tab">Creating an HTML page </a></li>
+		
+	
+		
+		<li><a href="#7_more_html" data-toggle="tab">More HTML </a></li>
 		
 	
 </ul>
@@ -104,7 +108,7 @@
 </strong>
 <p>Type <code>212.58.244.67</code> into your browser&#8217;s address bar. What happens?</p>
 </div>
-<p>One of the first things that happens when you type a URL into your browser is a <em>DNS lookup</em>: your computer contacts a DNS server (_Domain Name System server_), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. <code>bbc.co.uk</code>) into an address for a server (such as <code>212.57.244.67</code>).</p>
+<p>One of the first things that happens when you type a URL into your browser is a <em>DNS lookup</em>: your computer contacts a DNS server (<em>Domain Name System server</em>), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. <code>bbc.co.uk</code>) into an address for a server (such as <code>212.57.244.67</code>).</p>
 
 <p>If you want to put up your own website at your own domain name you need two things:</p>
 
@@ -130,27 +134,76 @@
 
 <p>When talking about web technology it is useful to split things up into server-side technology and client-side technology. Server-side relates to anything that happens on the web server. Client-side is anything the server sends back to your browser.</p>
 
-<p>The main three client-side technologies are HTML, CSS and Javascript. Client-side stuff has to be interpreted by your browser, so there are relatively few possibilities.</p>
+<h3 id='clientside'>Client-side</h3>
 
-<p>HTML (_HyperText Markup Language_) encodes the information that is sent back from the server. CSS (_Cascading Style Sheets_) tell your browser how to display that information. Javascript is a programming language that can be used to provide client-side interactivity. We&#8217;ll look at these in more detail later in the course.</p>
+<p>The main three client-side technologies are HTML, CSS and Javascript. Client-side stuff has to be interpreted by your browser, so there are relatively few possibilities.</p>
+<ul class='thumbnails'>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/html5_logo_128.png' style='height: 128px;' />
+      <h3>HTML</h3>
+      <p><em>HyperText Markup Language</em> encodes the information that is sent back from the server.</p>
+    </div>
+  </li>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/css.jpeg' style='height: 128px;' />
+      <h3>CSS</h3>
+      <p><em>Cascading Style Sheets</em> tell your browser how to display that information.</p>
+    </div>
+  </li>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/js.jpeg' style='height: 128px;' />
+      <h3>Javascript</h3>
+      <p>Javascript is a programming language that can be used to provide client-side interactivity.</p>
+    </div>
+</li>
+</ul>
+<p>We&#8217;ll look at these in more detail later in the course.</p>
+
+<h3 id='serverside'>Server-side</h3>
 
 <p>There are two main possibilities server-side: either your site is static or dynamic. In a static site all the pages are pre-prepared and the web server just sends them to the browser. In a dynamic site the pages are prepared on-the-fly pulling information out of a database depending on what the user asked for. Most of the sites you can think of will be dynamic sites (e.g. <span>facebook.com</span>, <span>reddit.com</span>, <span>amazon.com</span>, ..).</p>
 
 <p>There are many options for building a dynamic server-side site - you&#8217;re pretty much free to do what you like. Some common choices are:</p>
-
-<ul>
-<li>Ruby on Rails</li>
-
-<li>php</li>
-
-<li>python</li>
-
-<li>Node.js</li>
-
-<li>Wordpress</li>
+<ul class='thumbnails'>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/rails.jpeg' />
+      <h3>Ruby on Rails</h3>
+      <p>A web development framework written in the Ruby programming language.</p>
+    </div>
+  </li>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/php_logo.gif' style='height: 90px;' />
+      <h3>php</h3>
+      <p>A programming language that formed the basis of most dynamic websites in the early 2000s.</p>
+    </div>
+  </li>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/django_logo.png' style='height: 128px;' />
+      <h3>django</h3>
+      <p>A web development framework written in the Python programming language.</p>
+    </div>
+  </li>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/nodejs_logo.png' />
+      <h3>Node.js</h3>
+      <p>A web development framework written in javascript.</p>
+    </div>
+  </li>
+  <li class='span3'>
+    <div class='thumbnail'>
+      <img alt='' src='/assets/wordpress_logo.png' />
+      <h3>Wordpress</h3>
+      <p>A blogging platform (now capable of much more) written in php.</p>
+    </div>
+  </li>
 </ul>
-
-<p>We will now look in more detail at HTML</p>
 	</div>
 
 	
@@ -190,7 +243,41 @@
 	</div>
 
 	
-	<div class="tab-pane " id="5_first_page">
+	<div class="tab-pane " id="5_command_line">
+	
+
+		<h2>Meet the Command Line</h2>
+		<p>If you are using a mac, open Terminal.app. If you are on windows, as part of the package you downloaded from <a href='www.railsinstaller.org'>RailsInstaller</a> you should now have a program called <code>gitbash</code>. Open that!</p>
+
+<p>These terminals are a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the terminal, as many of the programmes you will use will be run from the terminal, instead of by clicking an icon.</p>
+
+<p>The first thing you will need to get used to is moving around. Start by printing the name of the directory you are in:</p>
+
+<pre><code>$ pwd</code></pre>
+
+<p>Then have a look at what&#8217;s in that directory ( <em>list</em> the contents):</p>
+
+<pre><code>$ ls</code></pre>
+
+<p>To move up a directory ( <em>change directory</em> ) do</p>
+
+<pre><code>$ cd ..</code></pre>
+
+<p>To move back do</p>
+
+<pre><code>$ cd name_of_the_directory</code></pre>
+
+<p>Your commandline will help you: <kbd>tab</kbd> can often be used to auto-complete names of files, the up arrow can be used to cycle through previous commands that you have typed.</p>
+
+<p>You should navigate to your <code>coding_course</code> folder that you created last week, using <code>cd</code>. When you get there create a new directory (_make directory_) for your site:</p>
+
+<pre><code>$ mkdir first_site</code></pre>
+
+<p>Note: choosing names without spaces makes command line navigation easier.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="6_first_page">
 	
 
 		<h2>Creating an HTML page</h2>
@@ -240,7 +327,7 @@
 	</div>
 
 	
-	<div class="tab-pane " id="6_more_html">
+	<div class="tab-pane " id="7_more_html">
 	
 
 		<h2>More HTML</h2>
