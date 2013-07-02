@@ -36,19 +36,15 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_command_line" data-toggle="tab">Intro to the command line </a></li>
+		<li class="active"><a href="#1_using_git" data-toggle="tab">Intro to Git </a></li>
 		
 	
 		
-		<li><a href="#2_using_git" data-toggle="tab">Intro to Git </a></li>
+		<li><a href="#2_pushing_to_github" data-toggle="tab">Pushing code to Github </a></li>
 		
 	
 		
 		<li><a href="#3_css" data-toggle="tab">CSS </a></li>
-		
-	
-		
-		<li><a href="#4_pushing_to_github" data-toggle="tab">Pushing code to Github </a></li>
 		
 	
 </ul>
@@ -56,41 +52,7 @@
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="1_command_line">
-	
-
-		<h2>Intro to the command line</h2>
-		<p>If you are using a mac, open Terminal.app. If you are on windows, as part of the package you downloaded from <a href='www.railsinstaller.org'>RailsInstaller</a> you should now have a program called <code>gitbash</code>. Open that!</p>
-
-<p>These terminals are a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the terminal, as many of the programmes you will use will be run from the terminal, instead of by clicking an icon.</p>
-
-<p>The first thing you will need to get used to is moving around. Start by printing the name of the directory you are in:</p>
-
-<pre><code>$ pwd</code></pre>
-
-<p>Then have a look at what&#8217;s in that directory ( <em>list</em> the contents):</p>
-
-<pre><code>$ ls</code></pre>
-
-<p>To move up a directory ( <em>change directory</em> ) do</p>
-
-<pre><code>$ cd ..</code></pre>
-
-<p>To move back do</p>
-
-<pre><code>$ cd name_of_the_directory</code></pre>
-
-<p>Your commandline will help you: <kbd>tab</kbd> can often be used to auto-complete names of files, the up arrow can be used to cycle through previous commands that you have typed.</p>
-
-<p>You should navigate to your <code>coding_course</code> folder that you created last week, using <code>cd</code>. When you get there create a new directory (_make directory_) for your site:</p>
-
-<pre><code>$ mkdir first_site</code></pre>
-
-<p>Note: choosing names without spaces makes command line navigation easier.</p>
-	</div>
-
-	
-	<div class="tab-pane " id="2_using_git">
+	<div class="tab-pane active" id="1_using_git">
 	
 
 		<h2>Intro to Git</h2>
@@ -140,6 +102,21 @@ $ git commit -m &quot;Imported first_html_page&quot;</code></pre>
 	</div>
 
 	
+	<div class="tab-pane " id="2_pushing_to_github">
+	
+
+		<h2>Pushing code to Github</h2>
+		<p>Github is a site which will host a git repo online for you, making it easy to collaborate with others. We&#8217;ll now put the first website online.</p>
+
+<p>Go to github, login, and click &#8220;Create New Repo&#8221; in the top left hand corner. Follow the instructions, calling it something like <code>first_site</code>. You&#8217;ll get to a page when it&#8217;ll describe how to get your code online. You want to follow the instructions for &#8220;Pushing an existing repository to github&#8221;. It&#8217;s probably best to use the http option, instead of ssh. You should end up doing something like:</p>
+
+<pre><code>$ git remote add origin https://github.com/yourusername/first_site.git
+$ git push -u origin master</code></pre>
+
+<p>You should now be prompted to add your github username and password. If all goes well, when you go to github you should see the <code>first_site</code> folder containing your html file.</p>
+	</div>
+
+	
 	<div class="tab-pane " id="3_css">
 	
 
@@ -174,21 +151,6 @@ $ git commit -m &quot;Imported first_html_page&quot;</code></pre>
 <pre><code>$ git add .
 $ git commit -m &quot;Added some css&quot;
 $ gitk --all</code></pre>
-	</div>
-
-	
-	<div class="tab-pane " id="4_pushing_to_github">
-	
-
-		<h2>Pushing code to Github</h2>
-		<p>Github is a site which will host a git repo online for you, making it easy to collaborate with others. We&#8217;ll now put the first website online.</p>
-
-<p>Go to github, login, and click &#8220;Create New Repo&#8221; in the top left hand corner. Follow the instructions, calling it something like <code>first_site</code>. You&#8217;ll get to a page when it&#8217;ll describe how to get your code online. You want to follow the instructions for &#8220;Pushing an existing repository to github&#8221;. It&#8217;s probably best to use the http option, instead of ssh. You should end up doing something like:</p>
-
-<pre><code>$ git remote add origin https://github.com/yourusername/first_site.git
-$ git push -u origin master</code></pre>
-
-<p>You should now be prompted to add your github username and password. If all goes well, when you go to github you should see the <code>first_site</code> folder containing your html file.</p>
 	</div>
 
 </div>
