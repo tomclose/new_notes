@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hmwk2</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>hmwk2 <small></small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_git_practice" data-toggle="tab">Git Practising! </a></li>
+		
+	
+		
+		<li><a href="#2_github_pages_custom_domain" data-toggle="tab">Set-up your domain name </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_git_practice">
+	
+
+		<h2>Git Practising!</h2>
+		<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Read through <a href='http://gitimmersion.com/lab_01.html'>Git Immersion</a> exercises 1 to 11.</p>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_github_pages_custom_domain">
+	
+
+		<h2>Set-up your domain name</h2>
+		<p>There are two things you need to do to get your domain name working with your github pages site</p>
+
+<ol>
+<li>Tell your domain registrar (e.g 123-reg or godaddy) to point towards github</li>
+
+<li>Tell github that your site should be matched with that domain name when the request gets to github Github explains this <a href='https://help.github.com/articles/setting-up-a-custom-domain-with-pages'>here</a></li>
+</ol>
+
+<p>The second bit is easy:</p>
+
+<ul>
+<li>
+<p>Open Sublime Text and create a new file</p>
+</li>
+
+<li>
+<p>Write your domain name on the first line of the new file e.g:</p>
+
+<pre><code>   mydomain.com</code></pre>
+</li>
+
+<li>
+<p>Save that file as <code>CNAME</code> (with no extension) in your <code>first_site</code> folder</p>
+</li>
+
+<li>
+<p>Add and commit your changes locally, then push to github:</p>
+
+<pre><code>   git add .
+   git commit -m &quot;Added CNAME&quot;
+   git push</code></pre>
+</li>
+</ul>
+
+<p>For the first bit you need to log in to your domain registrar and change the DNS settings. You want an <em>A-record</em> pointing to <code>204.232.175.78</code> (which is github.com). Note that it can take up to a couple of days for DNS changes to propagate.</p>
+
+<p>If you&#8217;re using 123-reg, your should log in, select your domain from the list, and click &#8220;Manage&#8221;. You should then go to &#8220;Manage DNS&#8221;.</p>
+
+<p><img alt='123-reg DNS Settings' src='/assets/dns_settings.png' /></p>
+
+<p>(The @ dns entry stands for the root or bare domain.)</p>
+
+<p>Your changes won&#8217;t take effect immediately. You can check by visiting your url (which should end you up at github), or by running</p>
+
+<pre><code>$ host yourdomain.com</code></pre>
+
+<p>at the command prompt (or <code>nslookup</code> on Windows).</p>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
