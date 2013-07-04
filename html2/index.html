@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>html2</title>
+  <title>Web Fundamentals 2</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,7 +29,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>html2 <small></small></h1>
+  <h1>Web Fundamentals 2 <small>Git and CSS</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -405,20 +405,49 @@ $ git push -u origin master</code></pre>
 
 <p>If you save the changes to the html file, then open (or refresh) the page in your browser you should see the changes. By opening the developer tools, and hovering over the <code>h1</code> you should be able to see your css rule at the side.</p>
 
-<p>Try out the following:</p>
-<div class='highlight'><pre><code class='css'><span class='nt'>p</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>blue</span><span class='p'>;</span> <span class='p'>}</span>
-<span class='nt'>div</span> <span class='p'>{</span> <span class='k'>background-color</span><span class='o'>:</span> <span class='nb'>pink</span><span class='p'>;</span> <span class='p'>}</span>
-<span class='nt'>div</span><span class='nf'>#lists</span> <span class='p'>{</span> <span class='k'>background-color</span><span class='o'>:</span> <span class='nb'>green</span><span class='p'>;</span> <span class='p'>}</span>
+<h3 id='a_few_more_properties'>A few more properties</h3>
+
+<p>In the example above we changed the color of the <code>h1</code> element. Here are a few examples of other simple properties you can try out while you&#8217;re getting the hang of css:</p>
+<div class='highlight'><pre><code class='css'><span class='nt'>p</span> <span class='p'>{</span> <span class='k'>font-family</span><span class='o'>:</span> <span class='s1'>&#39;Arial&#39;</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='nt'>h2</span> <span class='p'>{</span> <span class='k'>font-size</span><span class='o'>:</span> <span class='m'>20px</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='nt'>h3</span> <span class='p'>{</span>
+    <span class='k'>background-color</span><span class='o'>:</span> <span class='nb'>green</span><span class='p'>;</span>
+    <span class='k'>font-size</span><span class='o'>:</span> <span class='m'>2px</span><span class='p'>;</span>
+<span class='p'>}</span>
 </code></pre></div>
-<p>The <code>div#lists</code> bit selects only the div with the lists id: <code>&lt;div id=&quot;lists&quot;&gt;</code>.</p>
+<p>Note that you can specify multiple properties on one element. When you do this it&#8217;s nice to lay them out on multiple lines as done above.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Use git to clone the repo for this part of the session:</p>
 
-<p>If anything, these changes will have made your site look a lot worse - but I hope you get the idea!</p>
+<pre><code> $ git clone https://github.com/code61/html2.git</code></pre>
 
-<p>Now go back to the command line, commit these changes, and have a look at the repo:</p>
+<p>As well as the code, this has given you a local copy of the git repository I&#8217;m storing the exercise in. You&#8217;ll be adding to this repo in a minute.</p>
+</li>
 
-<pre><code>$ git add .
-$ git commit -m &quot;Added some css&quot;
-$ gitk --all</code></pre>
+<li>
+<p>Open <code>exercise1.html</code> in Sublime Text and in Chrome.</p>
+</li>
+
+<li>
+<p>Add some css in the <code>head</code> to make the <code>h1</code> turn red.</p>
+</li>
+
+<li>
+<p>Save the file, add and commit it (making sure you&#8217;re in the <code>html2</code> directory):</p>
+
+<pre><code> $ git add --all
+ $ git commit -m &quot;Made h1 red.&quot;</code></pre>
+</li>
+
+<li>
+<p>Continue with the exercise until <code>exercise1.html</code> looks like <code>exercise1_solution.png</code>. After each change, add and commit your work to the git repo.</p>
+</li>
+</ol>
+</div>
 	</div>
 
 	
@@ -428,7 +457,7 @@ $ gitk --all</code></pre>
 		<h2>Selectors and Attributes</h2>
 		<p>So far you have used html tags to specify CSS rules. For example,</p>
 <div class='highlight'><pre><code class='css'><span class='nt'>h2</span> <span class='p'>{</span> 
-  <span class='n'>fontsize</span><span class='o'>:</span> <span class='m'>40px</span><span class='p'>;</span>
+  <span class='k'>font-size</span><span class='o'>:</span> <span class='m'>40px</span><span class='p'>;</span>
   <span class='k'>color</span><span class='o'>:</span> <span class='nb'>pink</span><span class='p'>;</span>
 <span class='p'>}</span>
 </code></pre></div>
@@ -471,29 +500,26 @@ $ gitk --all</code></pre>
 
 <span class='c'>/* make any element with class=&quot;product_item blue&quot; */</span>
 <span class='nc'>.product_item</span> <span class='p'>{</span> <span class='k'>color</span><span class='o'>:</span> <span class='nb'>blue</span><span class='p'>;</span> <span class='p'>}</span>
-</code></pre></div><!-- <div class='exercise alert alert-info' markdown="1">
- --><div class='exercise alert alert-info'><strong>
+</code></pre></div>
+<h3 id='divs_and_spans'>Divs and spans</h3>
+
+<p>There are two important HTML tags, that we didn&#8217;t use last week: <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>. Both are really useful when it comes to using HTML attributes to target CSS classes.</p>
+
+<p><code>&lt;div&gt;</code> stands for <em>division</em> and is used to break the page up into different parts. It is a &#8216;block-level&#8217; element, which means that it will start a new line before and after it.</p>
+
+<p><code>&lt;span&gt;</code> can be used to apply classes and ids to certain bits of text. It is an &#8216;inline&#8217; element, which won&#8217;t start a new paragrah before or after.</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&#39;info_section&#39;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;p&gt;</span>This is a paragraph in the info section. We can use a span to target <span class='nt'>&lt;span</span> <span class='na'>class=</span><span class='s'>&#39;important&#39;</span><span class='nt'>&gt;</span>certain bits of important text<span class='nt'>&lt;/span&gt;</span>.<span class='nt'>&lt;p&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
-<li>
-<p>If you haven&#8217;t already, clone the git repository <a href='https://github.com/TomClose/learning_css'>https://github.com/TomClose/learning_css</a> into your <code>coding_course</code> folder:</p>
+<li>Open the file <code>html2/exercise2.html</code> in Sublime Text and Chrome.</li>
 
-<pre><code>git clone git://github.com/TomClose/learning_css.git</code></pre>
-</li>
+<li>Make the changes described. After each change <code>add</code> and <code>commit</code> your solution to the repo.</li>
 
-<li>
-<p>If you have previously made changes to the <code>learning_css</code> folder, save and commit them:</p>
-
-<pre><code>git add .
-git commit -m &quot;Description of changes&quot;</code></pre>
-</li>
-
-<li>
-<p>Switch to the <code>ex2</code> branch:</p>
-
-<pre><code>git checkout ex2</code></pre>
-</li>
+<li>Continue until your page looks like <code>html2/exercise2_solution.png</code></li>
 </ol>
 </div>
 	</div>

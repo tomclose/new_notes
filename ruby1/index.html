@@ -29,7 +29,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>Intro to Ruby 1 <small>Numbers, Strings and Things</small></h1>
+  <h1>Intro to Ruby 1 <small>Numbers, Strings and things</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -72,18 +72,21 @@
 	
 
 		<h2>Hello!</h2>
-		<div class='exercise alert alert-info'><strong>
+		<h3 id='what_is_ruby'>What is ruby?</h3>
+
+<p>Ruby is a programming language. It is different to HTML and CSS, which are just <em>markup</em> languages: in ruby you can do calculations. We&#8217;ll start off with a demonstration:</p>
+<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
 <li>
-<p>Navigate to your <code>coding_course</code> folder in the Terminal</p>
+<p>Navigate to your <code>coding_course</code> folder in the command line.</p>
 </li>
 
 <li>
 <p>Clone the repo for this session:</p>
 
-<pre><code>$ git clone git://github.com/TomClose/ruby1.git</code></pre>
+<pre><code>$ git clone https://github.com/code61/ruby1.git</code></pre>
 </li>
 
 <li>
@@ -91,7 +94,7 @@
 </li>
 
 <li>
-<p>In the Terminal move into the <code>ruby1</code> folder and run the <code>hello.rb</code> file:</p>
+<p>In the command line move into the <code>ruby1</code> folder and run the <code>hello.rb</code> file:</p>
 
 <pre><code>$ cd ruby1
 $ ruby hello.rb</code></pre>
@@ -122,7 +125,7 @@ $ ruby hello.rb</code></pre>
 </code></pre></div>
 <h4 id='puts_and_strings'>Puts and strings</h4>
 
-<p>The second line is where the magic is. <code>puts</code> stands for &#8220;put string&#8221;. A <em>string</em> is a programming term that is used to describe what you would probably call a piece of text. The second line displays the string &#8220;Hello&#8221; in the terminal.</p>
+<p>The second line is where the magic is. <code>puts</code> stands for &#8220;put string&#8221;. A <em>string</em> is a programming term that is used to describe what you would probably call a piece of text. The second line displays the string &#8220;Hello&#8221; in the command line.</p>
 
 <h4 id='running_the_program'>Running the program</h4>
 
@@ -315,6 +318,24 @@ $ ruby hello.rb</code></pre>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
+<p>a = 1 b = 10 a = b Which of the following is correct?:</p>
+
+<ol>
+<li>The value of a is 1. The value of b is 10.</li>
+
+<li>The value of a is 10. The value of b is 10.</li>
+
+<li>The value of a is 1. The value of b is 1.</li>
+
+<li>None of the above.</li>
+</ol>
+
+<p>If you&#8217;re not sure, try it out in <code>irb</code>!</p>
+</div><hr /><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p><span>Note: this exercise has a lot more to do with maths than programming. If you don&#8217;t get it don&#8217;t worry!</span></p>
+
 <p>Consider the expression</p>
 
 <pre><code> x = (2 + 5*x - x**2)/5</code></pre>
