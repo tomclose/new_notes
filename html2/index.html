@@ -101,9 +101,30 @@ $ cd ..</code></pre>
 #   index.html
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 
+<p>Adding files to a git repository is actually a two-stage process: you have to <strong>add</strong> them and then <strong>commit</strong> them. This is useful when you get more advanced, but we&#8217;ll usually do those things together for the time being. To add the changes to the repository do:</p>
+
+<pre><code>$ git add --all
+$ git status
+
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+#
+#   new file:   index.html
+#</code></pre>
+
+<p>It is possible to add files one at a time - again, useful when you get more advanced. For the time being the <code>--all</code> flag tells git to add everything to the folder. In other tutorials you might see <code>git add .</code>. This also adds everything in the folder <strong>but doesn&#8217;t remove files you have deleted</strong>. I&#8217;d encourage you to stick with <code>git add --all</code> for the time being.</p>
+
 <p>We will now commit these changes to our repository, along with a description of the changes we have made.</p>
 
-<pre><code>$ git commit -a -m &quot;Created index.html&quot;</code></pre>
+<pre><code>$ git commit -m &quot;Created index.html&quot;
+
+[master (root-commit) e91b6be] Created index.html
+0 files changed
+create mode 100644 index.html</code></pre>
 
 <p>Warning: if you forget to supply a message with the <code>-m</code> tag git will drop you into a text editor (probably vim) so that you can write one. If this happens you will need to do the following:</p>
 
@@ -116,8 +137,6 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 
 <li>Never forget your message again.</li>
 </ul>
-
-<p>Note: Adding files to a git repository is actually a two-stage process: you have to <strong>add</strong> them and then <strong>commit</strong> them. This is useful when you get more advanced, but we&#8217;ll usually do those things together for the time being. We&#8217;ve simplified this here by using the <code>-a</code> flag with the commit, which means &#8216;add everything and then commit&#8217;.</p>
 
 <p>You can check that the commit worked with git status:</p>
 
@@ -164,7 +183,8 @@ Date:   Tue Jul 2 14:19:30 2013 +0100
 <li>
 <p>Commit your changes to the repository:</p>
 
-<pre><code> $ git commit -a -m &quot;Created index.html&quot;</code></pre>
+<pre><code> $ git add --all
+ $ git commit -m &quot;Created index.html&quot;</code></pre>
 </li>
 
 <li>
@@ -202,7 +222,7 @@ Date:   Tue Jul 2 14:19:30 2013 +0100
 	
 
 		<h2>Pushing code to Github</h2>
-		<p>Github is a site which will host a git repo online for you, making it easy to collaborate with others. We&#8217;ll now put the first website online.</p>
+		<p>Github is a site which will host a git repo online for you, making it easy to collaborate with others. We&#8217;ll now see how to put some code online.</p>
 
 <p>Go to github, login, and click &#8220;Create New Repo&#8221; in the top left hand corner.</p>
 
@@ -218,6 +238,11 @@ Date:   Tue Jul 2 14:19:30 2013 +0100
 $ git push -u origin master</code></pre>
 
 <p>You might now be prompted to add your github username and password (if you&#8217;re doing the https method). If all goes well, when you go to github you should see the <code>first_site</code> folder containing your html file.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Push your <code>first_site</code> folder to GitHub!</p>
+</div>
 	</div>
 
 	
@@ -351,6 +376,8 @@ $ git push -u origin master</code></pre>
 
 		<h2>CSS</h2>
 		<p>Last time we looked at HTML, and saw how this was used to mark up the information in a webpage. Right now, your HTML pages don&#8217;t look very good, as you haven&#8217;t given any styling information. The way to do this is using CSS (Cascading Style Sheets).</p>
+
+<p>CSS is a way of separating the way your page looks from the content that it displays. As an extreme example of this check out <a href='http://www.csszengarden.com/'>CSS Zen Garden</a> - by clicking on the links you completely change how the site looks, but the html remains unchanged.</p>
 
 <p>There are a few ways to include CSS in an HTML file:</p>
 
