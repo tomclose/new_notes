@@ -17,7 +17,9 @@ A slightly nicer way to look at HTML is to use the Chrome Developer Tools.
 
 {% exercise %}
 1. Open this page in Google Chrome
-2. Look at the page using developer tools (View > Developer > Developer Tools)
+2. Look at the page using developer tools by doing one of the following:
+    * View > Developer > Developer Tools
+    * Tools > Developer Tools
 {% endexercise %}
 
 Using the magnifying glass (bottom left) You can hover over the bits of the page and it will show you the relevant bits of HTML. We will use Chrome Developer Tools a lot throughout the course.

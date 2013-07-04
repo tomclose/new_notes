@@ -1,6 +1,8 @@
 ---
-title: Set-up your domain name
+title: Set up your domain name
 ---
+
+The point of this exercise is to set up your domain name to point towards your new github pages site.
 
 There are two things you need to do to get your domain name working with your github pages site
 1. Tell your domain registrar (e.g 123-reg or godaddy) to point towards github
@@ -32,5 +34,5 @@ Your changes won't take effect immediately. You can check by visiting your url (
 
     $ host yourdomain.com
 
-at the command prompt (or `nslookup` on windows).
+at the command prompt (or `nslookup` on Windows).
 

@@ -20,4 +20,4 @@ We're not going to worry about precisely how the instruction works at the moment
 
 It is often possible to write ruby in a way that reads a lot like English. Hopefully you found this with the above example - even though you've only just met ruby you were probably able to have a reasonably guess at what the above code did.
 
-Ruby is an incredibly powerful and flexible language. It is a modern language - created in the 1990s by Yukihiro Matsumoto (Matz). A large part of his design philosophy is centered around optimizing for developer happiness - making a language that is a pleasure to program in. If you haven't already programmed in another language, you might not fully appreciate this, but - take it from me - ruby is awesome!
+Ruby is an incredibly powerful and flexible language. It is a modern language - created in the 1990s by Yukihiro Matsumoto (Matz). A large part of his design philosophy is centered around optimizing for developer happiness - making a language that is a pleasure to program in. If you haven't already programmed in another language, you might not fully appreciate this, but - take it from someone who has - ruby is awesome!

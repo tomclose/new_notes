@@ -5,9 +5,9 @@ title: Introducing the URL
 Many of our web interactions begin with a URL (*uniform resource locator*) being typed into our web browser address bar. Let's look at an example: `http://www.bbc.co.uk/news/`.
 
 This URL has several different parts to it:
-- `http` : the _protocol_ or *the how*
-- `www.bbc.co.uk` : the _host_ or *the where*
-- `/news` : the _path_ or *the what*
+- `http` : the _protocol_ or *how* to fetch the information
+- `www.bbc.co.uk` : the _host_ or *where* to fetch it from
+- `/news` : the _path_ or precisely *what* information to fetch
 
 When we type the URL into the address bar a request is sent over the internet and some information is returned to us.
 

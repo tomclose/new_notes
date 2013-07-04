@@ -5,7 +5,7 @@ title: Selectors and Attributes
 So far you have used html tags to specify CSS rules. For example,
 {% highlight css %}
 h2 { 
-  fontsize: 40px;
+  font-size: 40px;
   color: pink;
 }
 {% endhighlight %}
@@ -54,22 +54,24 @@ It is also possible to target any items with a given `class` or `id` by leaving 
 .product_item { color: blue; }
 {% endhighlight %}
 
-<!-- <div class='exercise alert alert-info' markdown="1">
- -->
+### Divs and spans
+
+There are two important HTML tags, that we didn't use last week: `<div>` and `<span>`. Both are really useful when it comes to using HTML attributes to target CSS classes.
+
+`<div>` stands for *division* and is used to break the page up into different parts. It is a 'block-level' element, which means that it will start a new line before and after it.
+
+`<span>` can be used to apply classes and ids to certain bits of text. It is an 'inline' element, which won't start a new paragrah before or after.
+
+{% highlight html %}
+<div id='info_section'>
+  <p>This is a paragraph in the info section. We can use a span to target <span class='important'>certain bits of important text</span>.<p>
+</div>
+{% endhighlight %}
+
 {% exercise %}
-1. If you haven't already, clone the git repository [https://github.com/TomClose/learning_css](https://github.com/TomClose/learning_css) into your `coding_course` folder:
-
-		git clone git://github.com/TomClose/learning_css.git
-		
-2. If you have previously made changes to the `learning_css` folder, save and commit them:
-
-		git add .
-		git commit -m "Description of changes"
-
-3. Switch to the `ex2` branch:
-
-		git checkout ex2
-
+1. Open the file `html2/exercise2.html` in Sublime Text and Chrome.
+2. Make the changes described. After each change `add` and `commit` your solution to the repo.
+3. Continue until your page looks like `html2/exercise2_solution.png`
 {% endexercise %}
 
 

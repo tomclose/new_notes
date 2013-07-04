@@ -4,7 +4,7 @@ title: More HTML
 
 {% exercise %}
 1. Make sure you are in your `coding_course` folder
-2. Clone the repo for this session
+2. Clone the repo for this session. In the command line type:
 
         $ git clone https://github.com/code61/learning_html.git
 
@@ -125,7 +125,18 @@ A few things to look out for
     </thead>
     <tbody>
         <tr>
-            <td>
+            <td>Row1, Column1</td>
+            <td>Row1, Column2</td>
+        </tr>
+        <tr>
+            <td>Row2, Column1</td>
+            <td>Row2, Column2</td>
+        </tr>
+        <tr>
+            <td>Row3, Column1</td>
+            <td>Row3, Column2</td>
+        </tr>
+    </tbody>
+</table>
 
 {% endhighlight %}
-    <

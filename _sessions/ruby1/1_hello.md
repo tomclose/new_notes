@@ -2,14 +2,18 @@
 title: Hello!
 ---
 
+### What is ruby?
+
+Ruby is a *programming language*. It is different to HTML and CSS, which are just *markup languages*: in ruby you can do calculations. We'll start off with a demonstration: 
+
 {% exercise %}
-1. Navigate to your `coding_course` folder in the Terminal
+1. Navigate to your `coding_course` folder in the command line.
 2. Clone the repo for this session:
 
-		$ git clone git://github.com/TomClose/ruby1.git
+		$ git clone https://github.com/code61/ruby1.git
 
 3. Open the file `coding_course/ruby1/hello.rb` in Sublime Text 
-4. In the Terminal move into the `ruby1` folder and run the `hello.rb` file:
+4. In the command line move into the `ruby1` folder and run the `hello.rb` file:
 
 		$ cd ruby1
 		$ ruby hello.rb
@@ -46,7 +50,7 @@ much in The Wild.
 
 #### Puts and strings
 
-The second line is where the magic is. `puts` stands for "put string". A *string* is a programming term that is used to describe what you would probably call a piece of text. The second line displays the string "Hello" in the terminal.
+The second line is where the magic is. `puts` stands for "put string". A *string* is a programming term that is used to describe what you would probably call a piece of text. The second line displays the string "Hello" in the command line.
 
 #### Running the program
 

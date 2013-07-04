@@ -3,13 +3,13 @@ title: Meet the Command Line
 ---
 
 
-These terminals are a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the terminal, as many of the programmes you will use will be run from the terminal, instead of by clicking an icon.
+The command line is a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the command line, as many of the programmes you will use will be run from the it, instead of by clicking an icon.
 
 Note: when giving you instructions for the command line we will precede them with a `$` to represent the command prompt e.g.
 
-    $ mv file1 file2
+    $ some_command
 
-**You shouldn't type the `$` sign - just the stuff after it.** So for the above instruction you would just type `mv file1 file2` into the command line.
+**You shouldn't type the `$` sign - just the stuff after it.** So for the above instruction you would just type `some_command` into the command line.
 
 
 ### Moving around
@@ -26,9 +26,9 @@ To move up a directory ( _change directory_ ) do
 
     $ cd ..
 
-To move back do
+To move back into the folder you just left do
 
-    $ cd name_of_the_directory
+    $ cd name_of_the_folder
 
 Your commandline will help you: <kbd>tab</kbd> can often be used to auto-complete names of files, the up arrow can be used to cycle through previous commands that you have typed.
 

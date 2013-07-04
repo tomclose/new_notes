@@ -24,6 +24,6 @@ If you want to put up your own website at your own domain name you need two thin
 
 There are many options for web servers - you don't have to physically have your own one. There are many companies that will offer web hosting, often providing you with space on a shared server. Later in the course we will use the free hosting offered by GitHub through GitHub Pages.
 
-To buy a domain name you need to use a domain registrar. Examples include [123-reg.co.uk], [godaddy.com] and [namecheap.com]. You pay the registrar to contact the body who manages a TLD (e.g. .com, .org., .co.uk) and put your server's IP address in their DNS address book. If someone else already owns the domain you might be able to buy it off them, but this can be expensive!
+To buy a domain name you need to use a domain registrar. Examples include [123-reg.co.uk](http://www.123-reg.co.uk/), [godaddy.com](http://www.godaddy.com/) and [namecheap.com](http://www.namecheap.com/). You pay the registrar to contact the body who manages a TLD (e.g. .com, .org., .co.uk) and put your server's IP address in their DNS address book. If someone else already owns the domain you might be able to buy it off them, but this can be expensive!
 
 Many domain registrars will try to sell you hosting and other site building tools when you buy a domain. It's important to remember that the domain name is completely separate from the hosting and you don't need to do them both through the same company - don't buy anything you're not going to use.
