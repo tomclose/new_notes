@@ -44,11 +44,11 @@
 		
 	
 		
-		<li><a href="#3_finishing_off" data-toggle="tab">Finishing off </a></li>
+		<li><a href="#3_diagnostics" data-toggle="tab">A few checks </a></li>
 		
 	
 		
-		<li><a href="#4_extra_resources" data-toggle="tab">Extra resources </a></li>
+		<li><a href="#4_extra_resources" data-toggle="tab">HTML/CSS resources </a></li>
 		
 	
 </ul>
@@ -69,6 +69,32 @@
 </strong>
 <p><strong>Every day this week</strong> make a small change to your <code>first_site</code> folder, add, commit and push to GitHub. GitHub should show you as having a &#8216;5 day streak&#8217; on your homepage.</p>
 </div>
+<h3 id='recap_on_how_to_push_to_github'>Recap on how to push to GitHub</h3>
+
+<ol>
+<li>
+<p>Make a change to a file in SublimeText. Save it.</p>
+</li>
+
+<li>
+<p>On the command line, in your <code>first_site</code> folder:</p>
+
+<pre><code> $ git add --all
+ $ git status
+ $ git commit -m &quot;Changed heading colours.&quot;
+ $ git status</code></pre>
+
+<p>This will add and commit the changes to your <em>local</em> repository - the one that lives in <code>first_site/.git</code>.</p>
+</li>
+
+<li>
+<p>Also on the command line, in your <code>first_site</code> folder:</p>
+
+<p>$ git push</p>
+</li>
+</ol>
+
+<p>This will take the committed changes and put them up onto the repository on GitHub.</p>
 	</div>
 
 	
@@ -78,39 +104,47 @@
 		<h2>Set up your domain name</h2>
 		<p>The point of this exercise is to set up your domain name to point towards your new github pages site.</p>
 
-<p>There are two things you need to do to get your domain name working with your github pages site</p>
+<p>As GitHub hosts many different pages at their IP address, it isn&#8217;t quite as simple as pointing your domain address towards that IP address. There are two things you need to do to get your domain name working with your GitHub pages site:</p>
 
 <ol>
-<li>Tell your domain registrar (e.g 123-reg or godaddy) to point towards github</li>
+<li>Tell your domain registrar (e.g 123-reg or godaddy) to point your domain name towards GitHub&#8217;s IP address.</li>
 
-<li>Tell github that your site should be matched with that domain name when the request gets to github Github explains this <a href='https://help.github.com/articles/setting-up-a-custom-domain-with-pages'>here</a></li>
+<li>Tell GitHub that requests to your domain name should come to your site.</li>
 </ol>
 
-<p>The second bit is easy:</p>
+<p>Github explains this <a href='https://help.github.com/articles/setting-up-a-custom-domain-with-pages'>here</a>.</p>
 
-<ul>
+<h3 id='telling_github_that_requests_for_your_domain_name_are_for_your_site'>Telling GitHub that requests for your domain name are for your site</h3>
+
+<p>Doing this is relatively simple. You just have to add a special file to your repository and push it up to GitHub:</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
 <li>
-<p>Open Sublime Text and create a new file</p>
+<p>Open Sublime Text and create a new file.</p>
 </li>
 
 <li>
 <p>Write your domain name on the first line of the new file e.g:</p>
 
-<pre><code>   mydomain.com</code></pre>
+<pre><code>  mydomain.com</code></pre>
 </li>
 
 <li>
-<p>Save that file as <code>CNAME</code> (with no extension) in your <code>first_site</code> folder</p>
+<p>Save that file as <code>CNAME</code> (uppercase, with no extension) in your <code>first_site</code> folder</p>
 </li>
 
 <li>
 <p>Add and commit your changes locally, then push to github:</p>
 
-<pre><code>   git add .
-   git commit -m &quot;Added CNAME&quot;
-   git push</code></pre>
+<pre><code>  git add --all
+  git commit -m &quot;Added CNAME&quot;
+  git push</code></pre>
 </li>
-</ul>
+</ol>
+</div>
+<h3 id='pointing_your_domain_name_towards_github'>Pointing your domain name towards GitHub</h3>
 
 <p>For the first bit you need to log in to your domain registrar and change the DNS settings. You want an <em>A-record</em> pointing to <code>204.232.175.78</code> (which is github.com). Note that it can take up to a couple of days for DNS changes to propagate.</p>
 
@@ -119,38 +153,66 @@
 <p><img alt='123-reg DNS Settings' src='/assets/dns_settings.png' /></p>
 
 <p>(The @ dns entry stands for the root or bare domain.)</p>
-
-<p>Your changes won&#8217;t take effect immediately. You can check by visiting your url (which should end you up at github), or by running</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Log in to your domain registrar and set an A-record to point towards GitHub.</p>
+</div>
+<p>Your changes won&#8217;t take effect immediately. You can check your DNS settings from the command line by running</p>
 
 <pre><code>$ host yourdomain.com</code></pre>
 
-<p>at the command prompt (or <code>nslookup</code> on Windows).</p>
+<p>at the command prompt on a Mac, or</p>
+
+<pre><code>$ nslookup yourdomain.com</code></pre>
+
+<p>on Windows.</p>
 	</div>
 
 	
-	<div class="tab-pane " id="3_finishing_off">
+	<div class="tab-pane " id="3_diagnostics">
 	
 
-		<h2>Finishing off</h2>
-		<div class='exercise alert alert-info'><strong>
+		<h2>A few checks</h2>
+		<h3 id='ruby_installation'>Ruby installation</h3>
+<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Finish off the <code>html2/exercise2.html</code> css task from class.</p>
-</div><hr /><div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<p>Finish off the <code>ruby1/advanced_hello.rb</code> and <code>ruby1/divide_cake.rb</code> exercises from class.</p>
+<p>In the terminal type:</p>
+
+<pre><code>ruby --version</code></pre>
+
+<p>If it says you have ruby 1.9 (for example ruby 1.9.3-p387 - the stuff after the 9 doesn&#8217;t matter) then you&#8217;re fine. If not, post to the forum.</p>
 </div>
+<h3 id='folder_structure'>Folder structure</h3>
+
+<p>This has caused a bit of confusion. Some where on your computer you should have a folder called <code>coding_course</code>. The contents should currently look like this:</p>
+
+<pre><code>coding_course
+    |
+    |-- first_site 
+    |
+    |-- learning_html
+    |
+    |-- html2</code></pre>
+
+<p>A lot of instructions are going to be something like &#8216;go to your <code>coding_course</code> folder &#8230;&#8217;, so it would be best if everyone had the same structure. If your files aren&#8217;t like this at the moment, let me know and we can sort it out in office hours.</p>
+
+<p>Each of the folders <code>first_site</code>, <code>learning_html</code> and <code>html2</code> should be a git repository. Check this by moving into them and doing</p>
+
+<pre><code>$ ls -a</code></pre>
+
+<p>you should see a <code>.git</code> folder. <span>The <code>first_site</code> one you made into a git repository. The other two you aquired via <code>git clone</code>.</span></p>
+
+<p>The <code>coding_course</code> folder should <strong>not</strong> be a git repository. Check that too.</p>
 	</div>
 
 	
 	<div class="tab-pane " id="4_extra_resources">
 	
 
-		<h2>Extra resources</h2>
-		<h3 id='htmlcss'>HTML/CSS</h3>
-
-<p>This is not quite the end of what we&#8217;ll be doing with HTML and CSS, but we probably won&#8217;t spend a lot more time on it. From now on we will be using it as a tool, rather than studying it in its own right. If you want to know more about HTML and CSS here are a few good resources:</p>
+		<h2>HTML/CSS resources</h2>
+		<p>This is not quite the end of what we&#8217;ll be doing with HTML and CSS, but we probably won&#8217;t spend a lot more time on it. From now on we will be using it as a tool, rather than studying it in its own right. If you want to know more about HTML and CSS here are a few good resources:</p>
 
 <ul>
 <li><a href='http://learn.shayhowe.com/html-css/'>HTML/CSS notes by Shay Howe</a>: this is an excellent and thorough set of HTML and CSS notes, by a guy who clearly knows his stuff. Well worth a look.</li>
@@ -162,18 +224,6 @@
 <li><a href='http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/'>More about CSS selectors</a>: Pretty much everything you could ever want to know about CSS selectors (and more)</li>
 
 <li><a href='http://coding.smashingmagazine.com/2009/08/17/taming-advanced-css-selectors/'>Taming advanced CSS selectors</a>: a detailed description of how browsers decide which CSS rules to apply.</li>
-</ul>
-
-<h3 id='ruby'>Ruby</h3>
-
-<p>We&#8217;ll be doing loads more Ruby over the course - it&#8217;ll be core to a lot of things we do, so it&#8217;s important to keep on top of it. If you need extra practice, or an alternative way of looking at things check out some of the resources below:</p>
-
-<ul>
-<li><a href='http://www.codecademy.com/tracks/ruby'>Codecademy Ruby Track</a>: we&#8217;ve currently covered the material from &#8220;Section 1: Introduction to Ruby&#8221;</li>
-
-<li><a href='http://tryruby.org'>Try Ruby</a>: you had a look at this last homework. You&#8217;re welcome to carry on through it.</li>
-
-<li><a href='http://it-ebooks.info/book/59/'>Progamming Ruby 1.9</a>: <em>the</em> Ruby 1.9 manual. Available for <strong>free download</strong> - get it quick. Probably a bit complicated as you&#8217;re starting out, but will be invaluable later in the course.</li>
 </ul>
 	</div>
 
