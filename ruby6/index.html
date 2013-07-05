@@ -36,7 +36,11 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_motivating_classes" data-toggle="tab"> </a></li>
+		<li class="active"><a href="#1_motivating_classes" data-toggle="tab">A hash as a data store </a></li>
+		
+	
+		
+		<li><a href="#2_a_different_approach" data-toggle="tab">A different approach </a></li>
 		
 	
 </ul>
@@ -47,30 +51,61 @@
 	<div class="tab-pane active" id="1_motivating_classes">
 	
 
-		<h2></h2>
-		<p>Student name, grade,</p>
+		<h2>A hash as a data store</h2>
+		<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Clone the repo for this session:</p>
 
-<p>character name, surname, age, display, increase_age</p>
+<pre><code> $ git clone https://github.com/TomClose/ruby6.git</code></pre>
+</li>
 
-<p>some collection of things Library and books : first do as an array of hashes find book, new book, all books by an author</p>
+<li>
+<p>Open the file <code>library_hash.rb</code> in Sublime Text.</p>
+</li>
 
-<p>motivating dbs</p>
+<li>
+<p>Complete the functions as described.</p>
+</li>
 
-<p>library books authors copy</p>
+<li>
+<p>Test your solution with <code>test_library_hash.rb</code>.</p>
+</li>
+</ol>
+</div>
+	</div>
 
-<p>olympic medals country, year, location, gsb?</p>
+	
+	<div class="tab-pane " id="2_a_different_approach">
+	
 
-<p>student results subject, name, exam, result</p>
+		<h2>A different approach</h2>
+		<p>The hash is a bit clunky. We have to pass the hash in to each function.</p>
 
-<p>finding pictures with the flikr api</p>
+<p>It would be nicer if we could tie the functions and data together. We can do this by using classes.</p>
 
-<p>events service - collecting responses, sending to caterers</p>
+<p>How would this work?</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>books</span> <span class='o'>=</span> <span class='o'>[</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span> <span class='o'>]</span>
+<span class='n'>l</span> <span class='o'>=</span> <span class='no'>Library</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='n'>books</span><span class='p'>)</span>
 
-<p>organising RAG blind date - take the first n matches https://github.com/gimite/google-drive-ruby</p>
 
-<p>mailmerge - mandrill?</p>
+<span class='c1'>#TODO</span>
+</code></pre></div>
+<h3 id='syntax_for_classes'>Syntax for classes</h3>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#TODO</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>ruby6/library_class.rb</code> in Sublime Text.</li>
 
-<p>bookings for an event</p>
+<li>Complete the definition of the class.</li>
+
+<li>Check your answers by running <code>test_library_class.rb</code>.</li>
+</ol>
+</div>
 	</div>
 
 </div>
