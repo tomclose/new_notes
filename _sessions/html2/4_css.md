@@ -53,7 +53,7 @@ Note that you can specify multiple properties on one element. When you do this i
 
     As well as the code, this has given you a local copy of the git repository I'm storing the exercise in. You'll be adding to this repo in a minute.
 2. Open `exercise1.html` in Sublime Text and in Chrome.
-3. Add some css in the `<head>` to make the `<h1>` turn red.
+3. Add some css in the `head` to make the `h1` turn red.
 4. Save the file, add and commit it (making sure you're in the `html2` directory):
 
         $ git add --all

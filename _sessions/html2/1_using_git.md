@@ -119,7 +119,7 @@ Enable your `first_site` folder as a git repository:
 
 8. Commit your changes but forget the `-m`:
 
-        $ git commit -a
+        $ git commit
 
 9. Use the warning above to add you commit message and escape from vim
 

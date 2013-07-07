@@ -1,33 +1,13 @@
-Student name, grade, 
+---
+title: A hash as a data store
+---
 
-character name, surname, age, display, increase_age
+{% exercise %}
+1. Clone the repo for this session:
 
+        $ git clone https://github.com/TomClose/ruby6.git
 
-some collection of things
-Library and books : first do as an array of hashes
-find book, new book, all books by an author
-
-
-motivating dbs
-
-library
-books authors copy
-
-olympic medals
-country, year, location, gsb?
-
-student results
-subject, name, exam, result
-
-
-finding pictures with the flikr api
-
-events service - collecting responses, sending to caterers
-
-organising RAG blind date
-- take the first n matches
-https://github.com/gimite/google-drive-ruby
-
-mailmerge - mandrill?
-
-bookings for an event
+2. Open the file `library_hash.rb` in Sublime Text.
+3. Complete the functions as described.
+4. Test your solution with `test_library_hash.rb`.
+{% endexercise %}

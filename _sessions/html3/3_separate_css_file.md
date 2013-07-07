@@ -50,6 +50,11 @@ To link to an external CSS file you can do the following:
 
 {% endexercise %}
 
+{% exercise %}
+Give a html page and two stylesheets in different locations. Get them to link them in. (Order matters.)
+Give an html page with css in the head. Get them to separate it.
+{% endexercise %}
+
 
 
 

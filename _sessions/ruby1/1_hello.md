@@ -4,7 +4,7 @@ title: Hello!
 
 ### What is ruby?
 
-Ruby is a *programming language*. It is different to HTML and CSS, which are just *markup languages*: in ruby you can do calculations. We'll start off with a demonstration: 
+Ruby is a programming language. It is different to HTML and CSS, which are just *markup* languages: in ruby you can do calculations. We'll start off with a demonstration: 
 
 {% exercise %}
 1. Navigate to your `coding_course` folder in the command line.

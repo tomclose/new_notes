@@ -107,7 +107,7 @@ A few things to look out for
 ### Images
 
 {% highlight html %}
-<src alt='my cat' src="my_cat.png">
+<img alt='my cat' src="my_cat.png">
 {% endhighlight %}
 
 * The `alt` tag is for providing a description of your image. This is useful for partially sighted people using screen readers, or in case the image doesn't load. 
