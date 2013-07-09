@@ -80,7 +80,6 @@
 
 <pre><code>$ cd .git
 $ ls
-....
 $ cd ..</code></pre>
 
 <p>All the data to allow git to version control your code will be stored inside this hidden folder. If you ever want to &#8216;un-version-control&#8217; your code all you have to do is delete this folder.</p>
@@ -264,48 +263,10 @@ $ git push -u origin master</code></pre>
 
 <p>We&#8217;ll do the second option, even though you don&#8217;t know what branches are. For the moment, most of this won&#8217;t make much sense - hopefully it will at some point in the future!</p>
 
-<p>To do the <code>gh-pages</code> approach first open the file <code>first_site/.git/config</code> in your code editor. This might be tricky, as it is a hidden folder and might not show up in the list when you do <code>File &gt; Open</code>. To find out how to do this google &#8220;windows show hidden files&#8221; or see the trick at the bottom of the page.</p>
+<p>To do this we need to set some configuration options for the repository:</p>
 
-<p>It should look something like this:</p>
-
-<pre><code>[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = false
-  logallrefupdates = true
-  ignorecase = true
-  precomposeunicode = false
-[remote &quot;origin&quot;]
-  url = https://github.com/TomClose/first_site.git
-  fetch = +refs/heads/*:refs/remotes/origin/*
-[branch &quot;master&quot;]
-  remote = origin
-  merge = refs/heads/master</code></pre>
-
-<p>You want to change it so that it looks like this:</p>
-
-<pre><code>[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = false
-  logallrefupdates = true
-  ignorecase = true
-  precomposeunicode = false
-[remote &quot;origin&quot;]
-  url = https://github.com/TomClose/first_site.git
-  fetch = +refs/heads/*:refs/remotes/origin/*
-  push = +refs/heads/master:refs/heads/gh-pages
-  push = +refs/heads/master:refs/heads/master
-[branch &quot;master&quot;]
-  remote = origin
-  merge = refs/heads/master</code></pre>
-
-<p>If you&#8217;re not very good at spot-the-difference you should just be adding the two lines</p>
-
-<pre><code>  push = +refs/heads/master:refs/heads/gh-pages
-  push = +refs/heads/master:refs/heads/master</code></pre>
-
-<p>Then save the file. Don&#8217;t worry about what this means right now.</p>
+<pre><code>$ git config remote.origin.push +ref/heads/master:refs/heads/master --add
+$ git config remote.origin.push +ref/heads/master:refs/heads/gh-pages --add</code></pre>
 
 <p>You will then need to</p>
 
@@ -334,40 +295,31 @@ $ git push -u origin master</code></pre>
 <p>Follow these instructions for your <code>first_site</code> folder. That is:</p>
 
 <ol>
-<li>Make the necessary changes to <code>first_site/.git/config</code>.</li>
+<li>
+<p>Set your repository up to push to the gh-pages branch:</p>
 
-<li>Make any change to <code>first_site/index.html</code> and save.</li>
+<pre><code> $ git config remote.origin.push +ref/heads/master:refs/heads/master --add
+ $ git config remote.origin.push +ref/heads/master:refs/heads/gh-pages --add</code></pre>
+</li>
 
-<li>Commit that change.</li>
+<li>
+<p>In Sublime Text, make any change to <code>first_site/index.html</code> and save.</p>
+</li>
 
-<li>Push it to GitHub.</li>
+<li>
+<p>Commit that change:</p>
+
+<pre><code> $ git add --all
+ $ git commit -m &quot;Made a small change.&quot;</code></pre>
+</li>
+
+<li>
+<p>Push it to GitHub.</p>
+
+<pre><code> $ git push</code></pre>
+</li>
 </ol>
 </div>
-<h3 id='a_cheat_to_edit_the_hidden_file'>A cheat to edit the hidden file</h3>
-
-<p>If you can&#8217;t work out how to edit the hidden file in Sublime Text, you can cheat by moving it out of the hidden folder:</p>
-
-<ol>
-<li>
-<p>Navigation to <code>first_site</code> on the command line.</p>
-</li>
-
-<li>
-<p>Move the <code>config</code> file out of the <code>.git</code> directory:</p>
-
-<pre><code> mv .git/config ./config</code></pre>
-</li>
-
-<li>
-<p>Edit the file in Sublime Text, as normal, then save.</p>
-</li>
-
-<li>
-<p>Move the <code>config</code> file back:</p>
-
-<pre><code> mv ./config .git/config</code></pre>
-</li>
-</ol>
 	</div>
 
 	

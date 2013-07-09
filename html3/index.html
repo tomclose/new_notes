@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>html3</title>
+  <title>Web Fundamentals 3</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,22 +29,30 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>html3 <small></small></h1>
+  <h1>Web Fundamentals 3 <small>Bootstrapping it up</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_css_recap" data-toggle="tab">CSS Recap </a></li>
-		
-	
-		
-		<li><a href="#3_separate_css_file" data-toggle="tab">Linking to an external stylesheet </a></li>
+		<li class="active"><a href="#3_separate_css_file" data-toggle="tab">External stylesheets </a></li>
 		
 	
 		
 		<li><a href="#4_twitter_bootstrap" data-toggle="tab">Twitter Bootstrap </a></li>
+		
+	
+		
+		<li><a href="#5_bootstrap_layout" data-toggle="tab">Bootstrap layout </a></li>
+		
+	
+		
+		<li><a href="#6_more_bootstrap" data-toggle="tab">More Bootstrap </a></li>
+		
+	
+		
+		<li><a href="#7_modifying_bootstrap" data-toggle="tab">Modifying Bootstrap </a></li>
 		
 	
 </ul>
@@ -52,42 +60,10 @@
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="1_css_recap">
+	<div class="tab-pane active" id="3_separate_css_file">
 	
 
-		<h2>CSS Recap</h2>
-		<p>CSS stands for Cascading Style Sheets. It is used to tell the web browser how to display the HTML it receives. Using CSS you can specify everything:</p>
-
-<ul>
-<li>fonts</li>
-
-<li>colours</li>
-
-<li>background images</li>
-
-<li>layout/positioning</li>
-
-<li>&#8230; and much more</li>
-</ul>
-
-<p>Last session we looked at adding CSS directly to the <code>&lt;head&gt;</code> section of the webpage. Later in this session we will see how to put the css in a different file, which is more efficient and easier to maintain.</p>
-
-<p>To remind yourself of what we did last week:</p>
-
-<ol>
-<li>Go to the folder <code>coding_course/learning_css</code></li>
-
-<li>Open <code>notes.html</code> in Sublime Text and also in Chrome</li>
-
-<li>See if you can change all the paragraph text to green</li>
-</ol>
-	</div>
-
-	
-	<div class="tab-pane " id="3_separate_css_file">
-	
-
-		<h2>Linking to an external stylesheet</h2>
+		<h2>External stylesheets</h2>
 		<p>So far you have written your CSS rules directly in the <code>head</code> section of your html page:</p>
 <div class='highlight'><pre><code class='html'><span class='cp'>&lt;!DOCTYPE html&gt;</span>
 <span class='nt'>&lt;html&gt;</span>
@@ -120,30 +96,45 @@
 </strong>
 <ol>
 <li>
-<p>If you have previously made changes to the <code>learning_css</code> folder, save and commit them:</p>
+<p>Move to your <code>coding_course</code> folder and clone the repository for this session:</p>
 
-<pre><code>git add .
-git commit -m &quot;Description of changes&quot;</code></pre>
+<pre><code>  git clone https://github.com/code61/html3.git</code></pre>
 </li>
 
 <li>
-<p>Switch to the <code>ex3</code> branch:</p>
-
-<pre><code>git checkout ex3</code></pre>
+<p>Open <code>example1.html</code> in Sublime Text and Chrome.</p>
 </li>
 
 <li>
-<p>Check you can see where the CSS file is linked in.</p>
+<p>Link in the external stylesheet <code>example1.css</code>. Save, add and commit. Make sure the results show up in Chrome when you refresh.</p>
 </li>
 
 <li>
-<p>Check that changes you make to the CSS file are reflected in the browser.</p>
+<p>Open <code>example2.html</code> in Sublime Text and Chrome.</p>
+</li>
+
+<li>
+<p>Move the css from the <code>head</code> into a separate stylesheet, which you should call <code>example2.css</code>. Link to this stylesheet in the head.</p>
+</li>
+
+<li>
+<p>Create another stylesheet called <code>example2-custom.css</code>.</p>
+</li>
+
+<li>
+<p>In this stylesheet write:</p>
+
+<pre><code> .color-info { border: 5px dotted purple; }</code></pre>
+</li>
+
+<li>
+<p>Link in this stylesheet too, so that the changes take effect.</p>
+</li>
+
+<li>
+<p>If you have time, move any styles you have added to your <code>first_site</code> into a separate stylesheet.</p>
 </li>
 </ol>
-</div><div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<p>Give a html page and two stylesheets in different locations. Get them to link them in. (Order matters.) Give an html page with css in the head. Get them to separate it.</p>
 </div>
 	</div>
 
@@ -154,16 +145,189 @@ git commit -m &quot;Description of changes&quot;</code></pre>
 		<h2>Twitter Bootstrap</h2>
 		<p>Last time we looked at how you can use CSS to change the appearance of your site. Making things look good with CSS is a bit of an art, which is only really acquired over time (or not, in my case!). Thankfully there are pre-existing solutions out there to make your life easier.</p>
 
-<p><a href='http://twitter.github.com/bootstrap/'>Twitter bootstrap</a> is set of CSS (&amp; Javascript) files, released by the makers of twitter. It makes a lot easier to produce websites that won&#8217;t make you want to sick up into your mouth everytime you look at them. We&#8217;ll now look at adding twitter bootstrap to your <code>first_site/index.html</code> page (you should have renamed your page to this as part of the homework).</p>
+<p><a href='http://twitter.github.com/bootstrap/'>Twitter Bootstrap</a> is set of CSS (&amp; Javascript) files, released by the makers of Twitter. It makes a lot easier to produce websites that won&#8217;t make you want to sick up into your mouth everytime you look at them. We&#8217;ll now look at adding Twitter Bootstrap to a page.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Go to the <a href='http://twitter.github.io/bootstrap'>Bootstrap</a> website (notice that it&#8217;s hosted at github, like your <code>first_site</code>) and click the download button.</p>
+</li>
 
-<p>To start with go to the <a href='http://twitter.github.com/bootstrap'>twitter bootstrap</a> website (notice that it&#8217;s hosted at github, like ours is!) and click the download button. When you&#8217;ve downloaded and unzipped the file, copy the <code>bootstrap</code> folder into your <code>first_site</code> folder.</p>
+<li>
+<p>Unzip and copy the <code>bootstrap</code> folder into the <code>html3</code> folder.</p>
+</li>
 
-<p>When we covered CSS last time I mentioned that there are a few different ways of including it in your webpage. We did it by putting the css inside a <code>&lt;style&gt;..&lt;/style&gt;</code> tags in the <code>&lt;head&gt;</code> of your page. This time we&#8217;re going to do it by linking to a separate css file. This is more efficient, as it means that when someone&#8217;s browsing your site they don&#8217;t have to download the css file for each new page. In the head section of your <code>first_site/index.html</code> put the following line:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;link</span> <span class='na'>href=</span><span class='s'>&#39;bootstrap/css/bootstrap.css&#39;</span> <span class='na'>rel=</span><span class='s'>&#39;stylesheet&#39;</span><span class='nt'>&gt;</span>
+<li>
+<p>Open <code>profile.html</code> in Sublime Text and Chrome.</p>
+</li>
+
+<li>
+<p>Add a link to the twitter bootstrap stylesheet into <code>profile.html</code></p>
+
+<pre><code>  &lt;link href=&#39;bootstrap/css/bootstrap.css&#39; rel=&#39;stylesheet&#39;&gt;</code></pre>
+
+<p>Note that you&#8217;re using a relative link to a file two subfolders down.</p>
+</li>
+
+<li>
+<p>Refresh the page in Chrome. Notice how the fonts have changed.</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="5_bootstrap_layout">
+	
+
+		<h2>Bootstrap layout</h2>
+		<p>Bootstrap gives you several options on how to layout your page. To find out more take a look at the <a href='http://twitter.github.io/bootstrap/scaffolding.html'>Scaffold docs</a> on the Bootstrap site. Some of these options will work out-of-the-box with <em>responsive design</em> - so that you can create a single html page which will look good whether viewed on a laptop, tablet or phone.</p>
+
+<p>We&#8217;ll just look at a few of the most important layout options here:</p>
+
+<h3 id='page_margins'>Page margins</h3>
+
+<p>Bootstrap makes it easy to center content on your page and provide sensible page margins. To do this make use of the <code>container</code> class:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;body&gt;</span>
+  <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;container&quot;</span><span class='nt'>&gt;</span>
+
+    <span class='c'>&lt;!-- page content goes here --&gt;</span>
+
+  <span class='nt'>&lt;/div&gt;</span>
+<span class='nt'>&lt;/body&gt;</span>
 </code></pre></div>
-<p>You can also remove the <code>&lt;style&gt;..&lt;/style&gt;</code> tags and delete your css from last time if you want.</p>
+<h3 id='columns'>Columns</h3>
 
-<p>When you go to your browser and press refresh, things should look slightly better - bootstrap chooses slightly nicer fonts than the browser does by default. To get the full effects of bootstrap we need to tweak our html.</p>
+<p>Bootstrap works on a grid layout, with 12 columns (by default). You can create a column layout with the <code>row</code> and <code>span</code> classes:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&#39;row&#39;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&#39;span3&#39;</span><span class='nt'>&gt;</span>
+        <span class='c'>&lt;!-- First column content --&gt;</span>
+    <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&#39;span5&#39;</span><span class='nt'>&gt;</span>
+        <span class='c'>&lt;!-- Second column content --&gt;</span>
+    <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&#39;span4&#39;</span><span class='nt'>&gt;</span>
+        <span class='c'>&lt;!-- Third column content --&gt;</span>
+    <span class='nt'>&lt;/div&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+</code></pre></div>
+<p>The number after the <code>span</code> determines how many of the 12 grid columns that page column takes up.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Add a <code>&lt; div class=&quot;container&quot; &gt;</code> around the page content.</li>
+
+<li>Set the page up as two columns (ratio 1:2), with the <code>profile_details</code> div on the left and everything else on the right.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="6_more_bootstrap">
+	
+
+		<h2>More Bootstrap</h2>
+		<h3 id='text_and_tables'>Text and Tables</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Surround the <code>h1</code> line in a <code>&lt; div class=&#39;page-header&#39; &gt;</code>.</li>
+
+<li>Change add the class <code>table</code> to the table. You could also experiment with <code>table-bordered</code> and/or <code>table-striped</code>.</li>
+
+<li>You might want to add a <code>&lt; br &gt;</code> around the text to space things out a bit.</li>
+</ol>
+</div>
+<h3 id='badges_and_buttons'>Badges and Buttons</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Add the class <code>btn</code> to all the edit links on the page:</p>
+
+<pre><code> &lt;a class=&#39;btn&#39; &gt;Edit &lt;\a&gt;</code></pre>
+</li>
+
+<li>
+<p>Make the delete links into <code>btn-danger</code>s.</p>
+</li>
+
+<li>
+<p>Change the items in the <code>awards</code> section to badges of different colours.</p>
+</li>
+</ol>
+</div>
+<h3 id='media_lists'>Media Lists</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Convert the &#8216;Recent Activity&#8217; list into a media list. You can use the included <code>dave.jpg</code> for the picture.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="7_modifying_bootstrap">
+	
+
+		<h2>Modifying Bootstrap</h2>
+		<div class='alert alert-error'>
+<strong>Warning</strong>: Bootstrap has been designed and heavily tested for good cross-browser compatibility. Unless you know what you're doing or have a lot of time, it's probably best to stick with their layout and tweak small things e.g. fonts and colours. Just because it looks great in your browser doesn't mean it will look great in everyone's!
+</div>
+<p>If you&#8217;re going to modify Bootstrap <strong>don&#8217;t touch the Bootstrap files</strong>. Instead create a new css file of your own to overwrite anything you don&#8217;t want. This means when a new version of Bootstrap comes out you can upgrade by dragging the new version over the top of the old, without losing any modifications.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>The red delete buttons make the <code>profile.html</code> page look a bit busy. Let&#8217;s change them so that they only display when we hover over the list item.</p>
+
+<ol>
+<li>
+<p>Create a file called <code>main.css</code> and write the following CSS:</p>
+
+<pre><code> li .btn {
+     visibility: hidden;
+ }
+ li:hover .btn {
+     visibility: visible;
+ }</code></pre>
+</li>
+
+<li>
+<p>Link this file into the <code>head</code> of <code>profile.html</code>.</p>
+</li>
+
+<li>
+<p>If this were a big project, the above rule might be picked up elsewhere with surprising consequences. What could you do to prevent this?</p>
+</li>
+</ol>
+</div>
+<h3 id='navbar'>Navbar</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Add a navbar to <code>profile.html</code> with links to &#8216;About&#8217; and &#8216;Members&#8217;.</p>
+</li>
+
+<li>
+<p>Make it a <code>navbar-fixed-top</code>. You will need to add</p>
+
+<pre><code> body { padding-top: 40px; }</code></pre>
+
+<p>to <code>main.css</code>.</p>
+</li>
+
+<li>
+<p>Add a search box to the navbar. Use the <code>pull-right</code> class to put it on the right hand side.</p>
+</li>
+</ol>
+</div>
 	</div>
 
 </div>
