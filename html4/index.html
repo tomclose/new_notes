@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Session 4</title>
+  <title>Web Fundamentals 4</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,7 +29,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>Session 4 <small>Collaborative Coding</small></h1>
+  <h1>Web Fundamentals 4 <small>Collaborative Coding</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -44,11 +44,11 @@
 		
 	
 		
-		<li><a href="#35_collaborating_using_github" data-toggle="tab">Github collaboration </a></li>
+		<li><a href="#3_collaborating_using_github" data-toggle="tab">Github collaboration </a></li>
 		
 	
 		
-		<li><a href="#3_joint_project" data-toggle="tab">Joint project </a></li>
+		<li><a href="#4_joint_project" data-toggle="tab">Joint project </a></li>
 		
 	
 </ul>
@@ -70,9 +70,9 @@
 </li>
 
 <li>
-<p>Clone the project <a href=''>https://github.com/TomClose/first_site2</a>:</p>
+<p>Clone the project <a href=''>https://github.com/TomClose/cfg_first_site.git</a>:</p>
 
-<pre><code> $ git clone git://github.com/TomClose/first_site2.git toms_site</code></pre>
+<pre><code> $ git clone https://github.com/TomClose/cfg_first_site.git toms_site</code></pre>
 </li>
 </ol>
 </div>
@@ -166,31 +166,47 @@ $ git commit -m &quot;Fixed conflicts&quot;</code></pre>
 	</div>
 
 	
-	<div class="tab-pane " id="35_collaborating_using_github">
+	<div class="tab-pane " id="3_collaborating_using_github">
 	
 
 		<h2>Github collaboration</h2>
-		<h3 id='forking'>Forking</h3>
+		<p>There are a few options for collaborating with others using Git.</p>
+
+<h3 id='oneway_sharing'> One-way sharing</h3>
+
+<p>As we all know, one-way sharing isn&#8217;t really sharing at all. Even so, this is the easiest example to look at - in fact we&#8217;ve been doing it almost from the first session of the course.</p>
+
+<p>In one-way sharing, there is one &#8216;master&#8217; repository on GitHub that everyone can read from, but only one person can write to:</p>
+<div class='row text-center' style='text-align: center;'>
+<img src='/assets/git_one_way_share.png' />
+</div>
+<h3 id='forking'>Forking</h3>
 
 <p>One of the options for sharing your changes with me, is for you to publish your repository too. I can then pull your changes down just as you pulled mine.</p>
-
+<div class='row' style='text-align: center;'>
+<img src='/assets/git_forking.png' />
+</div>
 <p>Notice that this situation is symmetric - my repositories are equivalent to yours. This makes it a suitable model for many open source projects, where the project maintainer might change over time.</p>
 
-<p>Github makes this model easy by providing a &#8216;forking&#8217; button. Go to <a href='github.com/TomClose/landing_page'>github.com/TomClose/landing_page</a> and press the &#8216;Fork&#8217; button. You now have a copy of my repository that you can push to if you want to. If you want to send me some changes you can do this by going back to <a href='github.com/TomClose/landing_page'>github.com/TomClose/landing_page</a> and submitting a &#8216;pull request&#8217;.</p>
+<p>Github makes this model easy by providing a &#8216;forking&#8217; button. Forking is a quick an easy way make a copy of my repository on GitHub so that you can then pull and push to it.</p>
 
 <h3 id='sharing'>Sharing</h3>
 
 <p>The other way or collaborating with git is the &#8216;sharing&#8217; model: one person puts the repository on github and gives other people permissions, so you can all push to the same place.</p>
-
+<div class='row text-center' style='text-align: center;'>
+<img src='/assets/git_sharing.png' />
+</div>
 <p>To do this on github, go to your forked landing page repository and click on &#8216;Settings&#8217; on the right hand side. Then go to &#8216;Collaborators&#8217; and add your team members&#8217; github usernames.</p>
+<br />
+<p>You can find out more about these different workflow option from the <a href='http://git-scm.com/book/en/Distributed-Git-Distributed-Workflows'>Git book</a>.</p>
 	</div>
 
 	
-	<div class="tab-pane " id="3_joint_project">
+	<div class="tab-pane " id="4_joint_project">
 	
 
 		<h2>Joint project</h2>
-		<p>For this part you will need to be in groups of at least two.</p>
+		<p>The purpose of this project is to create a shared html page to serve as a &#8216;cheat sheet&#8217; for all the different commands you&#8217;ve learnt in the course so far (e.g. <code>ls</code>, <code>git add --all</code> etc.). You will need to be in groups of three.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -199,7 +215,7 @@ $ git commit -m &quot;Fixed conflicts&quot;</code></pre>
 <p>Person A should set up a new project on their laptop:</p>
 
 <ol>
-<li>Create a new folder called <code>group_notes</code> in your <code>coding_course</code> folder</li>
+<li>Create a new folder called <code>group_cheatsheet</code> in your <code>coding_course</code> folder</li>
 
 <li>Create a file in that folder called <code>index.html</code> with some simple html in it.</li>
 </ol>
@@ -215,13 +231,14 @@ $ git commit -m &quot;Initial import&quot;</code></pre>
 </li>
 
 <li>
-<p>Person A creates a new repo on github. To do this you need to log in at <a href='http://github.com'>github.com</a> and select &#8220;Create a new repo&#8221;. You should call the repository <code>group_project</code>.</p>
+<p>Person A creates a new repo on github. To do this you need to log in at <a href='http://github.com'>github.com</a> and select &#8220;Create a new repo&#8221;. You should call the repository <code>group_cheatsheet</code>.</p>
 </li>
 
 <li>
 <p>Person A should then push their code up to github following the instructions on github. You want to &#8220;Push an existing repository from the command line&#8221; - the instructions at the <strong>bottom</strong> of the page. You should end up pasting a command like</p>
 
-<pre><code>git remote add origin https://github.com/username/blah.git
+<pre><code># Warning: these commands won&#39;t work. You need copy the right ones from GitHub.
+git remote add origin https://github.com/username/blah.git
 git push -u origin master</code></pre>
 </li>
 
@@ -250,7 +267,7 @@ git push -u origin master</code></pre>
 </li>
 
 <li>
-<p>Person B should then download <a href='http://twitter.github.io/bootstrap/'>Twitter Bootstrap</a> and put it in the <code>group_project</code> folder</p>
+<p>Person B should then download <a href='http://twitter.github.io/bootstrap/'>Twitter Bootstrap</a> and put it in the <code>group_cheatsheet</code> folder</p>
 </li>
 
 <li>
@@ -284,7 +301,7 @@ git push -u origin master</code></pre>
 </li>
 
 <li>
-<p>Continue to work on the site together!</p>
+<p>Continue to work on the cheatsheet together!</p>
 </li>
 </ol>
 </div>
