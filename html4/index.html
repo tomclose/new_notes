@@ -44,6 +44,10 @@
 		
 	
 		
+		<li><a href="#35_collaborating_using_github" data-toggle="tab">Github collaboration </a></li>
+		
+	
+		
 		<li><a href="#3_joint_project" data-toggle="tab">Joint project </a></li>
 		
 	
@@ -162,6 +166,26 @@ $ git commit -m &quot;Fixed conflicts&quot;</code></pre>
 	</div>
 
 	
+	<div class="tab-pane " id="35_collaborating_using_github">
+	
+
+		<h2>Github collaboration</h2>
+		<h3 id='forking'>Forking</h3>
+
+<p>One of the options for sharing your changes with me, is for you to publish your repository too. I can then pull your changes down just as you pulled mine.</p>
+
+<p>Notice that this situation is symmetric - my repositories are equivalent to yours. This makes it a suitable model for many open source projects, where the project maintainer might change over time.</p>
+
+<p>Github makes this model easy by providing a &#8216;forking&#8217; button. Go to <a href='github.com/TomClose/landing_page'>github.com/TomClose/landing_page</a> and press the &#8216;Fork&#8217; button. You now have a copy of my repository that you can push to if you want to. If you want to send me some changes you can do this by going back to <a href='github.com/TomClose/landing_page'>github.com/TomClose/landing_page</a> and submitting a &#8216;pull request&#8217;.</p>
+
+<h3 id='sharing'>Sharing</h3>
+
+<p>The other way or collaborating with git is the &#8216;sharing&#8217; model: one person puts the repository on github and gives other people permissions, so you can all push to the same place.</p>
+
+<p>To do this on github, go to your forked landing page repository and click on &#8216;Settings&#8217; on the right hand side. Then go to &#8216;Collaborators&#8217; and add your team members&#8217; github usernames.</p>
+	</div>
+
+	
 	<div class="tab-pane " id="3_joint_project">
 	
 
@@ -175,7 +199,7 @@ $ git commit -m &quot;Fixed conflicts&quot;</code></pre>
 <p>Person A should set up a new project on their laptop:</p>
 
 <ol>
-<li>Create a new folder called <code>group_project</code> in your <code>coding_course</code> folder</li>
+<li>Create a new folder called <code>group_notes</code> in your <code>coding_course</code> folder</li>
 
 <li>Create a file in that folder called <code>index.html</code> with some simple html in it.</li>
 </ol>
@@ -184,7 +208,7 @@ $ git commit -m &quot;Fixed conflicts&quot;</code></pre>
 <li>
 <p>Person A should then set it up as a git repository</p>
 
-<pre><code>$ cd group_project
+<pre><code>$ cd group_notes
 $ git init
 $ git add --all
 $ git commit -m &quot;Initial import&quot;</code></pre>
@@ -214,7 +238,7 @@ git push -u origin master</code></pre>
 </li>
 
 <li>
-<p>Copy the <code>HTTP</code> link from the box on the page</p>
+<p>Copy the <code>ssh</code> link from the box on the page</p>
 </li>
 
 <li>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>ruby2</title>
+  <title>Intro to Ruby 2</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,7 +29,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>ruby2 <small></small></h1>
+  <h1>Intro to Ruby 2 <small>Functions and Conditionals</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -40,23 +40,27 @@
 		
 	
 		
-		<li><a href="#2_conditionals" data-toggle="tab">Conditionals </a></li>
+		<li><a href="#2_more_functions" data-toggle="tab">Parameters </a></li>
 		
 	
 		
-		<li><a href="#3_more_conditionals" data-toggle="tab">More conditionals </a></li>
+		<li><a href="#3_conditionals" data-toggle="tab">Conditionals </a></li>
 		
 	
 		
-		<li><a href="#4_boolean_ops" data-toggle="tab">Logical operations </a></li>
+		<li><a href="#4_more_conditionals" data-toggle="tab">More conditionals </a></li>
 		
 	
 		
-		<li><a href="#5_truthy_falsey" data-toggle="tab">Truthy and falsey </a></li>
+		<li><a href="#5_boolean_ops" data-toggle="tab">Logical operations </a></li>
 		
 	
 		
-		<li><a href="#6_wrapping_up" data-toggle="tab"> </a></li>
+		<li><a href="#6_truthy_falsey" data-toggle="tab">Truthy and falsey </a></li>
+		
+	
+		
+		<li><a href="#7_wrapping_up" data-toggle="tab">Rounding up </a></li>
 		
 	
 </ul>
@@ -69,52 +73,145 @@
 
 		<h2>Functions</h2>
 		<p>Quite often when writing code you find that you have some operation that you have to do over and over again. As an example consider a simple interactive command line program:</p>
-<div class='highlight'><pre><code class='console'><span class='go'>Enter your name: homer</span>
-<span class='go'>Enter your guest&#39;s name: margE</span>
-<span class='go'>Welcome Homer and Marge!</span>
+<div class='highlight'><pre><code class='console'><span class='go'>Enter your name: margE</span>
+<span class='go'>Enter your guest&#39;s name: homer</span>
+<span class='go'>Welcome Marge and Homer!</span>
 </code></pre></div>
 <p>One way of doing this would be to write the following code:</p>
 <div class='highlight'><pre><code class='ruby'><span class='nb'>print</span> <span class='s2'>&quot;Enter your name: &quot;</span>
-<span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+<span class='c1'># Wait for user input:</span>
+<span class='n'>main_name</span> <span class='o'>=</span> <span class='nb'>gets</span>
+<span class='c1'># Remove the &#39;newline&#39; caused by pressing enter:</span>
+<span class='n'>main_name</span> <span class='o'>=</span> <span class='n'>main_name</span><span class='o'>.</span><span class='n'>chomp</span>
+<span class='c1'># Capitalize the string:</span>
+<span class='n'>main_name</span> <span class='o'>=</span> <span class='n'>main_name</span><span class='o'>.</span><span class='n'>capitalize</span>
 
 <span class='nb'>print</span> <span class='s2'>&quot;Enter your guest&#39;s name: &quot;</span>
-<span class='n'>guest</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+<span class='c1'># Wait for user input:</span>
+<span class='n'>guest_name</span> <span class='o'>=</span> <span class='nb'>gets</span>
+<span class='c1'># Remove the &#39;newline&#39; caused by pressing enter:</span>
+<span class='n'>guest_name</span> <span class='o'>=</span> <span class='n'>guest_name</span><span class='o'>.</span><span class='n'>chomp</span>
+<span class='c1'># Capitalize the string:</span>
+<span class='n'>guest_name</span> <span class='o'>=</span> <span class='n'>guest</span><span class='o'>.</span><span class='n'>capitalize</span>
 
-<span class='nb'>puts</span> <span class='s2'>&quot;Welcome </span><span class='si'>#{</span><span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span><span class='si'>}</span><span class='s2'> and </span><span class='si'>#{</span><span class='n'>guest</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span><span class='si'>}</span><span class='s2'>!&quot;</span>
+<span class='nb'>puts</span> <span class='s2'>&quot;Welcome </span><span class='si'>#{</span><span class='n'>main_name</span><span class='si'>}</span><span class='s2'> and </span><span class='si'>#{</span><span class='n'>guest_name</span><span class='si'>}</span><span class='s2'>!&quot;</span>
 </code></pre></div>
-<p>You&#8217;ll notice that we call <code>.downcase.capitalize</code> on each input to prepare it for displaying - we do the exact same action in two different places. As it is, this is almost ok, as what we&#8217;re doing is very simple. If this action got much more complicated (for example if we wanted to cope with names like &#8216;Mary-Jane&#8217;) it would be good to separate it out into a different bit of code. Like most languages, Ruby allows you to do this by writing a <em>function</em>.</p>
+<p>You&#8217;ll notice that we&#8217;re basically doing the same stuff to <code>main_name</code> and <code>guest_name</code>. It would be nice to not have to duplicate this logic in our code. This will be especially important when our code examples become longer and more complicated.</p>
+
+<p>Like most languages, Ruby allows you to reuse bits of code by writing a <em>function</em>. For the case above we&#8217;re going to write a function called <code>get_name</code>, which will (a) wait until the user inputs a string and (b) prepare that string using <code>chomp</code> and <code>capitalize</code>.</p>
 
 <h3 id='writing_a_function'>Writing a function</h3>
 
 <p>Writing a function in ruby goes something like this:</p>
-<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>prepare_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
-	<span class='k'>return</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>get_name</span>
+    <span class='c1'># Wait for user input:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span>
+    <span class='c1'># Remove the &#39;newline&#39; caused by pressing enter:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>chomp</span>
+    <span class='c1'># Capitalize the string:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>capitalize</span>
+    <span class='k'>return</span> <span class='nb'>name</span>
 <span class='k'>end</span>
 </code></pre></div>
-<p>The <code>def</code> and <code>end</code> keywords are used to tell the interpreter where the function starts and finishes. Here <code>prepare_name</code> is the name of the function and <code>name</code> is a <em>parameter</em>, which represents the value that we&#8217;ll pass in to the function. The <code>return</code> value tells the function what to give back when it is called.</p>
-
-<p>Notice that, unlike in some other languages, in ruby you don&#8217;t have to tell the function what type of object to expect the parameter to be. All that matters is that the object you pass in has the methods you want to call on it. This idea is called <strong>duck-typing</strong> - it doesn&#8217;t matter what an object is, all that matters is how it behaves: <em>&#8220;When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.&#8221;<a href='http://books.google.co.uk/books?id=j7zds6xx7S0C&amp;pg=PA68&amp;dq=%22james+Riley%22+OR+%22James+Whitcomb+Riley%22+bird++duck&amp;num=100&amp;redir_esc=y#v=onepage&amp;q=%22james%20Riley%22%20OR%20%22James%20Whitcomb%20Riley%22%20bird%20%20duck&amp;f=false'>(James Whitcomb Riley)</a></em>.</p>
+<p>The <code>def</code> and <code>end</code> keywords are used to tell the interpreter where the function starts and finishes. Here <code>get_name</code> is the name of the function. The <code>return</code> value tells the function what to give back when it is called.</p>
 
 <p>The above code can then be re-written:</p>
-<div class='highlight'><pre><code class='ruby'><span class='c1'># define prepare_name</span>
-<span class='k'>def</span> <span class='nf'>prepare_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
-	<span class='k'>return</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase</span><span class='o'>.</span><span class='n'>capitalize</span>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># Define get_name</span>
+<span class='k'>def</span> <span class='nf'>get_name</span>
+    <span class='c1'># Wait for user input:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span>
+    <span class='c1'># Remove the &#39;newline&#39; caused by pressing enter:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>chomp</span>
+    <span class='c1'># Capitalize the string:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>capitalize</span>
+    <span class='k'>return</span> <span class='nb'>name</span>
 <span class='k'>end</span>
 
 <span class='nb'>print</span> <span class='s2'>&quot;Enter your name: &quot;</span>
-<span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+<span class='n'>main_name</span> <span class='o'>=</span> <span class='n'>get_name</span>
 
 <span class='nb'>print</span> <span class='s2'>&quot;Enter your guest&#39;s name: &quot;</span>
-<span class='n'>guest</span> <span class='o'>=</span> <span class='nb'>gets</span><span class='o'>.</span><span class='n'>chomp</span>
+<span class='n'>guest_name</span> <span class='o'>=</span> <span class='n'>get_name</span>
 
-<span class='nb'>puts</span> <span class='s2'>&quot;Welcome </span><span class='si'>#{</span><span class='n'>prepare_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span><span class='si'>}</span><span class='s2'> and </span><span class='si'>#{</span><span class='n'>prepare_name</span><span class='p'>(</span><span class='n'>guest</span><span class='p'>)</span><span class='si'>}</span><span class='s2'>!&quot;</span>
-</code></pre></div>
-<p>Note that to call the function we pass it a value inside <code>()</code>: e.g. <code>prepare_name(&#39;tom&#39;)</code>.</p>
-<div class='exercise alert alert-info'><strong>
+<span class='nb'>puts</span> <span class='s2'>&quot;Welcome </span><span class='si'>#{</span><span class='n'>main_name</span><span class='si'>}</span><span class='s2'> and </span><span class='si'>#{</span><span class='n'>guest_name</span><span class='si'>}</span><span class='s2'>!&quot;</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Copy and paste the <code>prepare_name</code> function definition into irb. Try calling it on some strings.</p>
+<ol>
+<li>
+<p>Grab the code for this session:</p>
+
+<pre><code>git clone https://github.com/TomClose/ruby2.git</code></pre>
+</li>
+
+<li>
+<p>Open the file <code>function_example.rb</code>.</p>
+</li>
+
+<li>
+<p>Write the <code>get_name</code> function and modify the code to use it.</p>
+</li>
+
+<li>
+<p>Copy and paste the function into <code>irb</code> and try it on a few strings.</p>
+</li>
+</ol>
 </div>
+<h3 id='a_note_on_scope'>A note on scope</h3>
+
+<p>In the <code>get_name</code> function, we defined a variable called <code>name</code>. Because it was defined inside the function the variable won&#8217;t exist outside the function:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>get_name</span>
+    <span class='c1'># Wait for user input:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>gets</span>
+    <span class='c1'># Remove the &#39;newline&#39; caused by pressing enter:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>chomp</span>
+    <span class='c1'># Capitalize the string:</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>capitalize</span>
+    <span class='k'>return</span> <span class='nb'>name</span>
+<span class='k'>end</span>
+
+<span class='c1'># the variable &#39;name&#39; only exists inside the function get_name</span>
+
+<span class='nb'>name</span> <span class='c1'>#=&gt; NameError: undefined local variable or method `name&#39; for main:Object</span>
+</code></pre></div>
+<p>We say that the <em>scope</em> of the variable <code>name</code> is the function <code>get_name</code>. Outside that function the variable is <em>out of scope</em> and can&#8217;t be called.</p>
+
+<p>So <strong>variables defined inside functions can&#8217;t be seen outside</strong>.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="2_more_functions">
+	
+
+		<h2>Parameters</h2>
+		<p>So far the functions we&#8217;ve seen have just given us information. We haven&#8217;t yet seen how to give information to functions. Let&#8217;s do that now!</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>greet</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+  <span class='k'>return</span> <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>!&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>greet</span><span class='p'>(</span><span class='s2'>&quot;Tom&quot;</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;Hello Tom!&quot;</span>
+</code></pre></div>
+<p>The <code>greet</code> function accepts a <em>parameter</em> called <code>name</code>. It then inserts <code>name</code> into a string and returns that to the user.</p>
+
+<p>To <em>call</em> the function we have to pass in a value for the parameter. In this case we pass in the string <code>&quot;Tom&quot;</code>.</p>
+
+<p>Notice that, unlike in some other languages, in ruby you don&#8217;t have to tell the function what type of object to expect the parameter to be. All that matters is that the object you pass in has the methods you want to call on it. This idea is called <strong>duck-typing</strong> - it doesn&#8217;t matter what an object is, all that matters is how it behaves:</p>
+<blockquote>
+<p>When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.</p>
+<small>James Whitcomb Riley</small>
+</blockquote>
+<h3 id='default_parameters'>Default parameters</h3>
+
+<p>Sometimes we want to specify a default value for a parameter. If the parameter is missing it will take this default value:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>greet</span><span class='p'>(</span><span class='nb'>name</span> <span class='o'>=</span> <span class='s2'>&quot;everyone&quot;</span><span class='p'>)</span>
+  <span class='k'>return</span> <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>!&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>greet</span><span class='p'>(</span><span class='s2'>&quot;Tom&quot;</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;Hello Tom!&quot;</span>
+<span class='n'>greet</span><span class='p'>()</span> <span class='c1'>#=&gt; &quot;Hello everyone!&quot;</span>
+</code></pre></div>
+<p>If we pass in <code>&quot;Tom&quot;</code> as the parameter, the function works as before. If we don&#8217;t pass anything in, the function gets the default value <code>&quot;everyone&quot;</code>.</p>
+
 <h3 id='functions_with_irb'>Functions with irb</h3>
 
 <p>You&#8217;ll often want to try out the functions you are working on in irb. There are two ways of doing this:</p>
@@ -134,28 +231,28 @@
 </strong>
 <ol>
 <li>
-<p>Grab the code for this session:</p>
-
-<pre><code>git clone https://github.com/TomClose/ruby2.git</code></pre>
+<p>The file <code>functions.rb</code> contains several broken functions that need your help!</p>
 </li>
 
 <li>
-<p>Open <code>double.rb</code> in Sublime Text</p>
+<p>Open <code>functions.rb</code> in Sublime Text.</p>
 </li>
 
 <li>
-<p>Run <code>test_double.rb</code> in the console:</p>
-
-<pre><code>ruby test_double.rb</code></pre>
+<p>Fix all the functions in the file.</p>
 </li>
 
 <li>
-<p>Complete the code in <code>double.rb</code> so that the test passes.</p>
+<p>Run <code>test_functions.rb</code> in the console to check your answers.</p>
+
+<pre><code> ruby test_functions.rb</code></pre>
 </li>
 </ol>
-</div><div class='exercise alert alert-info'><strong>
+</div><hr /><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
+<p>(Extension)</p>
+
 <ol>
 <li>Open <code>encode.rb</code> in Sublime Text</li>
 
@@ -171,16 +268,16 @@
 	</div>
 
 	
-	<div class="tab-pane " id="2_conditionals">
+	<div class="tab-pane " id="3_conditionals">
 	
 
 		<h2>Conditionals</h2>
 		<p>Often when writing code it is useful to test for certain conditions and respond accordingly.</p>
 <div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>old_enough?</span><span class='p'>(</span><span class='n'>age</span><span class='p'>)</span>
-	<span class='k'>if</span> <span class='n'>age</span> <span class='o'>&gt;=</span> <span class='mi'>18</span>
-		<span class='nb'>puts</span> <span class='s2'>&quot;You can buy alcohol&quot;</span>
-	<span class='k'>end</span>
-	<span class='k'>return</span> <span class='kp'>nil</span>
+  <span class='k'>if</span> <span class='n'>age</span> <span class='o'>&gt;=</span> <span class='mi'>18</span>
+    <span class='nb'>puts</span> <span class='s2'>&quot;You can buy alcohol&quot;</span>
+  <span class='k'>end</span>
+  <span class='k'>return</span> <span class='kp'>nil</span>
 <span class='k'>end</span>
 </code></pre></div>
 <p>In the above code we use an <code>if</code> statement to write a function to tell us if someone can buy alcohol. The if statement starts with an <code>if</code> and ends with an <code>end</code>:</p>
@@ -210,16 +307,14 @@
 
 <p>It is often useful to have the ability to run some code only if the condition isn&#8217;t true. Ruby allows you to do this with an <code>if .. else</code> statement:</p>
 <div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>old_enough?</span><span class='p'>(</span><span class='n'>age</span><span class='p'>)</span>
-	<span class='k'>if</span> <span class='n'>age</span> <span class='o'>&gt;=</span> <span class='mi'>18</span>
-		<span class='nb'>puts</span> <span class='s2'>&quot;You can buy alcohol&quot;</span>
-	<span class='k'>else</span>
-		<span class='nb'>puts</span> <span class='s2'>&quot;No alcohol for you child. Move along please.&quot;</span>
-	<span class='k'>end</span>
-	<span class='k'>return</span> <span class='kp'>nil</span>
+  <span class='k'>if</span> <span class='n'>age</span> <span class='o'>&gt;=</span> <span class='mi'>18</span>
+	<span class='nb'>puts</span> <span class='s2'>&quot;You can buy alcohol&quot;</span>
+  <span class='k'>else</span>
+	<span class='nb'>puts</span> <span class='s2'>&quot;No alcohol for you child. Move along please.&quot;</span>
+  <span class='k'>end</span>
+  <span class='k'>return</span> <span class='kp'>nil</span>
 <span class='k'>end</span>
-</code></pre></div>
-<h1 id='todo_explain_about_'>TODO explain about <code>load &#39;pass_fail.rb&#39;</code></h1>
-<div class='exercise alert alert-info'><strong>
+</code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
@@ -235,7 +330,7 @@
 	</div>
 
 	
-	<div class="tab-pane " id="3_more_conditionals">
+	<div class="tab-pane " id="4_more_conditionals">
 	
 
 		<h2>More conditionals</h2>
@@ -283,7 +378,7 @@
 	</div>
 
 	
-	<div class="tab-pane " id="4_boolean_ops">
+	<div class="tab-pane " id="5_boolean_ops">
 	
 
 		<h2>Logical operations</h2>
@@ -303,31 +398,25 @@
 <h4 id='and_'>and (<code>&amp;&amp;</code>)</h4>
 
 <p>If you use an <code>&amp;&amp;</code> the output is true only if both inputs are true. You can write this in terms of a <em>truth table</em>:</p>
-<table><thead><tr><th>x</th><th>y</th><th>x &amp;&amp; y</th></tr></thead><tbody><tr><td style='text-align: left;'>false</td><td style='text-align: left;'>false</td><td style='text-align: left;'>false</td>
-</tr><tr><td style='text-align: left;'>false</td><td style='text-align: left;'>true</td><td style='text-align: left;'>false</td>
-</tr><tr><td style='text-align: left;'>true</td><td style='text-align: left;'>false</td><td style='text-align: left;'>false</td>
-</tr><tr><td style='text-align: left;'>true</td><td style='text-align: left;'>true</td><td style='text-align: left;'>true</td>
-</tr></tbody></table>
+<div class='highlight'><pre><code class='ruby'><span class='kp'>false</span> <span class='o'>&amp;&amp;</span> <span class='kp'>false</span> <span class='c1'>#=&gt; false</span>
+<span class='kp'>false</span> <span class='o'>&amp;&amp;</span> <span class='kp'>true</span>  <span class='c1'>#=&gt; false</span>
+<span class='kp'>true</span>  <span class='o'>&amp;&amp;</span> <span class='kp'>false</span> <span class='c1'>#=&gt; false</span>
+<span class='kp'>true</span>  <span class='o'>&amp;&amp;</span> <span class='kp'>true</span>  <span class='c1'>#=&gt; true</span>
+</code></pre></div>
 <h4 id='or_'>or (<code>||</code>)</h4>
 
 <p>If you use the <code>||</code> the output is true if at least one of the inputs is true. <code>||</code> means one or the other <strong>or both</strong>:</p>
-<table class='table'>
-	<thead>
-		<tr><th>x</th><th>y</th><th>x || y</th></tr>
-	</thead>
-	<tbody>
-		<tr><td>false</td><td>false</td><td>false</td></tr>
-		<tr><td>false</td><td>true</td><td>true</td></tr>
-		<tr><td>true</td><td>false</td><td>true</td></tr>
-		<tr><td>true</td><td>true</td><td>true</td></tr>
-	</tbody>
-</table>
+<div class='highlight'><pre><code class='ruby'><span class='kp'>false</span> <span class='o'>||</span> <span class='kp'>false</span> <span class='c1'>#=&gt; false</span>
+<span class='kp'>false</span> <span class='o'>||</span> <span class='kp'>true</span>  <span class='c1'>#=&gt; true</span>
+<span class='kp'>true</span>  <span class='o'>||</span> <span class='kp'>false</span> <span class='c1'>#=&gt; true</span>
+<span class='kp'>true</span>  <span class='o'>||</span> <span class='kp'>true</span>  <span class='c1'>#=&gt; true</span>
+</code></pre></div>
 <h3 id='not_'>not (<code>!</code>)</h3>
 
 <p>The <code>!</code> is not. It is a quick way of reversing the truth of the condition:</p>
-<table><thead><tr><th>x</th><th>!x</th></tr></thead><tbody><tr><td style='text-align: left;'>false</td><td style='text-align: left;'>true</td>
-</tr><tr><td style='text-align: left;'>true</td><td style='text-align: left;'>false</td>
-</tr></tbody></table><div class='exercise alert alert-info'><strong>
+<div class='highlight'><pre><code class='ruby'><span class='o'>!</span><span class='kp'>false</span> <span class='c1'>#=&gt; true</span>
+<span class='o'>!</span><span class='kp'>true</span>  <span class='c1'>#=&gt; false</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <p>Open the file <code>boolean_ops.rb</code> in Sublime Text. For each of the expressions discuss with your partner what you think the expression will evaluate to. Check by pasting them in to irb.</p>
@@ -335,7 +424,7 @@
 	</div>
 
 	
-	<div class="tab-pane " id="5_truthy_falsey">
+	<div class="tab-pane " id="6_truthy_falsey">
 	
 
 		<h2>Truthy and falsey</h2>
@@ -369,14 +458,20 @@
 	</div>
 
 	
-	<div class="tab-pane " id="6_wrapping_up">
+	<div class="tab-pane " id="7_wrapping_up">
 	
 
-		<h2></h2>
+		<h2>Rounding up</h2>
 		<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
-</strong> 
+</strong>
+<ol>
+<li>Open <code>bouncer.rb</code> in Sublime Text.</li>
 
+<li>Read the examples in the file and then create a program to recreate them.</li>
+
+<li>Test your answer with <code>test_bouncer.rb</code>.</li>
+</ol>
 </div>
 	</div>
 
