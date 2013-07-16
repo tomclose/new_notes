@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>ruby3</title>
+  <title>Intro to Ruby 3</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,30 +29,34 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>ruby3 <small></small></h1>
+  <h1>Intro to Ruby 3 <small>Arrays and blocks</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_blocks" data-toggle="tab">Iterators </a></li>
+		<li class="active"><a href="#0_functions_of_no_return" data-toggle="tab">Functions of no return </a></li>
 		
 	
 		
-		<li><a href="#2_arrays" data-toggle="tab">Arrays </a></li>
+		<li><a href="#1_arrays" data-toggle="tab">Arrays </a></li>
 		
 	
 		
-		<li><a href="#3_more_arrays" data-toggle="tab">More arrays </a></li>
+		<li><a href="#2_more_arrays" data-toggle="tab">More arrays </a></li>
 		
 	
 		
-		<li><a href="#4_sort_and_filter" data-toggle="tab">Sorting and Filtering </a></li>
+		<li><a href="#3_blocks" data-toggle="tab">Blocks </a></li>
 		
 	
 		
-		<li><a href="#5_finishing_off" data-toggle="tab">Bringing together </a></li>
+		<li><a href="#4_sort_and_filter" data-toggle="tab">Blocks with arrays </a></li>
+		
+	
+		
+		<li><a href="#5_finishing_off" data-toggle="tab">Rounding up </a></li>
 		
 	
 </ul>
@@ -60,91 +64,35 @@
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="1_blocks">
+	<div class="tab-pane active" id="0_functions_of_no_return">
 	
 
-		<h2>Iterators</h2>
-		<p>The following bit of ruby code will print out the numbers 3, 6, &#8230; , 36:</p>
-<div class='highlight'><pre><code class='ruby'> 
-<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>12</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span> <span class='nb'>puts</span> <span class='mi'>3</span> <span class='o'>*</span> <span class='n'>number</span> <span class='p'>}</span>
-</code></pre></div>
-<p>Let&#8217;s split this up into its different pieces:</p>
-
-<ul>
-<li><code>(1..12)</code> is a <code>Range</code> representing the numbers 1 to 12</li>
-
-<li><code>.each</code> is a method on that <code>Range</code> that pulls out the numbers one-by-one</li>
-
-<li><code>{ |number| puts 3 * number }</code> is a <strong>block</strong>. After pulling a number out of the range the <code>each</code> method gives it to the block, which executes the code inside on that number.</li>
-</ul>
-
-<p>Blocks are a very powerful tool in ruby. A different way of thinking about the above example is, instead of considering <code>each</code> as passing values to the block, to consider the block as passing code into the <code>each</code> to change its behaviour. Blocks allow you to write functions that accept code to be executed later.</p>
-
-<h3 id='blocks'>Blocks</h3>
-
-<p>There are two ways of writing blocks in Ruby:</p>
-<div class='highlight'><pre><code class='ruby'> 
-<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>12</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span> <span class='nb'>puts</span> <span class='mi'>3</span> <span class='o'>*</span> <span class='n'>number</span> <span class='p'>}</span>
-
-<span class='c1'># or </span>
-
-<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>12</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span>
-	<span class='nb'>puts</span> <span class='mi'>3</span> <span class='o'>*</span> <span class='n'>number</span>
+		<h2>Functions of no return</h2>
+		<p>In ruby the return statement is optional. If no return statement is given the function returns the last statement executed.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>welcome_message</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='s2'>&quot;Hello </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'>&quot;</span>
 <span class='k'>end</span>
+
+<span class='n'>welcome_message</span><span class='p'>(</span><span class='s2'>&quot;Tom&quot;</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;Hello Tom&quot;</span>
+
+<span class='k'>def</span> <span class='nf'>is_even</span><span class='p'>(</span><span class='n'>n</span><span class='p'>)</span>
+    <span class='k'>if</span> <span class='n'>n</span><span class='o'>.</span><span class='n'>even?</span>
+        <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>n</span><span class='si'>}</span><span class='s2'> is even&quot;</span>
+    <span class='k'>else</span>
+        <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>n</span><span class='si'>}</span><span class='s2'> is odd&quot;</span>
+    <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='n'>is_even</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>)</span> <span class='c1'>#=&gt; &quot;2 is even&quot;</span>
 </code></pre></div>
-<p>The two ways are completely equivalent. The second is useful when your code inside the block becomes more complicated (more than a couple of lines).</p>
-
-<p>Both of them declare the block parameters inside vertical bars <code>|number|</code>. Just like function parameters, when a value is passed to the block it is set to be this variable.</p>
-<div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<ol>
-<li>
-<p>Grab the code for this session:</p>
-
-<pre><code>git clone https://github.com/TomClose/ruby3.git</code></pre>
-</li>
-
-<li>
-<p>Open <code>squares.rb</code> in Sublime Text</p>
-</li>
-
-<li>
-<p>Rewrite the function to use the <code>do .. end</code> block syntax</p>
-</li>
-
-<li>
-<p>Change the function to accept a parameter i.e so <code>display_squares(3)</code> displays 1, 4, 9.</p>
-</li>
-
-<li>
-<p>Check the function by running <code>test_squares</code> in the console.</p>
-</li>
-</ol>
-</div><div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<ol>
-<li>Open <code>triangles.rb</code> in Sublime Text</li>
-
-<li>Complete the function <code>display_triangles</code></li>
-
-<li>Check the function by running <code>test_triangles</code></li>
-</ol>
-</div>
 	</div>
 
 	
-	<div class="tab-pane " id="2_arrays">
+	<div class="tab-pane " id="1_arrays">
 	
 
 		<h2>Arrays</h2>
-		<p>Sometimes we don&#8217;t just want to iterate over numbers:</p>
-<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='s1'>&#39;pizza&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pasta&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>food</span><span class='o'>|</span>
-	<span class='nb'>puts</span> <span class='s2'>&quot;I love </span><span class='si'>#{</span><span class='n'>food</span><span class='si'>}</span><span class='s2'>&quot;</span>
-<span class='k'>end</span>
-</code></pre></div>
-<p>Ruby provides a collection called an array, which can hold a list of objects. Unlike in some other languages in ruby you don&#8217;t need to specify which sort of object the array will hold - it can even hold objects of different types.</p>
+		<p>An array is a way of storing a list of objects. Unlike in some other languages in ruby you don&#8217;t need to specify which sort of object the array will hold - it can even hold objects of different types.</p>
 
 <p>Arrays are written with square brackets.</p>
 <div class='highlight'><pre><code class='ruby'><span class='n'>my_array</span> <span class='o'>=</span> <span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>3</span><span class='o'>]</span>
@@ -153,16 +101,28 @@
 </code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>With your partner work through the file <code>array_ops.rb</code>. See if you can guess what each line does, then check in irb.</p>
+<ol>
+<li>
+<p>Grab the code for this session:</p>
+
+<pre><code> git clone https://github.com/code61/ruby3.git</code></pre>
+</li>
+
+<li>
+<p>With your partner work through the file <code>array_examples.rb</code>. See if you can guess what each line does, then check in irb.</p>
+</li>
+</ol>
 </div>
 	</div>
 
 	
-	<div class="tab-pane " id="3_more_arrays">
+	<div class="tab-pane " id="2_more_arrays">
 	
 
 		<h2>More arrays</h2>
-		<h3 id='accessing_elements'>Accessing elements</h3>
+		<p>Here are some things you learnt in the last exercise:</p>
+
+<h3 id='accessing_elements'>Accessing elements</h3>
 
 <ul>
 <li>Arrays start from 0, so that the first elements is <code>a[0]</code></li>
@@ -185,11 +145,7 @@
 
 <li><code>include?(x)</code> - is <code>x</code> in the array</li>
 
-<li><code>min</code>, <code>max</code></li>
-
 <li><code>reverse</code>, <code>reverse!</code> - as with strings the <code>!</code> permanenty changes the array</li>
-
-<li><code>shuffle</code> - perform a random permutation</li>
 </ul>
 
 <h3 id='adding_to_an_array'> Adding to an array</h3>
@@ -222,42 +178,185 @@ a #=&gt; [1, 2, nil, nil, nil, nil, 5]</code></pre>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Write a sum function that takes an array (of numbers) and returns the sum of its elements.</p>
-</div><div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
 <ol>
-<li>Open the file <code>marks.rb</code> in Sublime Text</li>
+<li>Open the file <code>array_exercises.rb</code> in Sublime Text.</li>
 
-<li>Fix the mistakes in the <code>display_marks</code> function. You&#8217;ll probably want to try some bits out in irb to see what&#8217;s going on.</li>
+<li>Complete as many of the functions as you can.</li>
 
-<li>Check your solution by running <code>test_marks.rb</code> in the console.</li>
+<li>Check your solution by running <code>test_array_exercises.rb</code> in the console.</li>
 </ol>
 </div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_blocks">
+	
+
+		<h2>Blocks</h2>
+		<p>Blocks are a really useful and powerful feature of the ruby language. They allow you to pass an extra bit of code into an operation. Consider the following example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='s1'>&#39;pizza&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pasta&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>food</span><span class='o'>|</span> <span class='nb'>puts</span> <span class='s2'>&quot;I love </span><span class='si'>#{</span><span class='n'>food</span><span class='si'>}</span><span class='s2'>&quot;</span> <span class='p'>}</span>
+</code></pre></div>
+<p>Let&#8217;s split this up into its different pieces:</p>
+
+<ul>
+<li><code>[&#39;pizza&#39;, &#39;pasta&#39;]</code> is an <code>Array</code> containing two words</li>
+
+<li><code>.each</code> is a method on that <code>Array</code> that pulls out the numbers one-by-one</li>
+
+<li><code>{ |food| puts &quot;I love #{food}&quot; }</code> is a <strong>block</strong>. After pulling a word out of the array the <code>each</code> method gives it to the block, which executes the code inside on that word.</li>
+</ul>
+
+<p>Blocks are a very powerful tool in ruby. A different way of thinking about the above example is, instead of considering <code>each</code> as passing values to the block, to consider the block as passing code into the <code>each</code> to change its behaviour. Blocks allow you to write functions that accept code to be executed later.</p>
+
+<h3 id='ways_of_writing_blocks'>Ways of writing blocks</h3>
+
+<p>There are two ways of writing blocks in Ruby:</p>
+<div class='highlight'><pre><code class='ruby'> 
+<span class='o'>[</span><span class='s1'>&#39;pizza&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pasta&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>food</span><span class='o'>|</span> <span class='nb'>puts</span> <span class='s2'>&quot;I love </span><span class='si'>#{</span><span class='n'>food</span><span class='si'>}</span><span class='s2'>&quot;</span> <span class='p'>}</span>
+
+<span class='c1'># or </span>
+
+<span class='o'>[</span><span class='s1'>&#39;pizza&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pasta&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>food</span><span class='o'>|</span>
+    <span class='nb'>puts</span> <span class='s2'>&quot;I love </span><span class='si'>#{</span><span class='n'>food</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The two ways are completely equivalent. The second is useful when your code inside the block becomes more complicated (more than a couple of lines).</p>
+
+<p>Both of them declare the block parameters inside vertical bars <code>|food|</code>. Just like function parameters, when a value is passed to the block it is set to be this variable.</p>
 	</div>
 
 	
 	<div class="tab-pane " id="4_sort_and_filter">
 	
 
-		<h2>Sorting and Filtering</h2>
-		<h3 id='sorting'>Sorting</h3>
-<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>1</span><span class='o'>].</span><span class='n'>sort</span>
+		<h2>Blocks with arrays</h2>
+		<h3 id='each'>Each</h3>
 
-<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='o'>].</span><span class='n'>sort</span>
-
-<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='o'>].</span><span class='n'>sort</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>a</span><span class='p'>,</span> <span class='n'>b</span><span class='o'>|</span> <span class='n'>a</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&lt;=&gt;</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>length</span> <span class='p'>}</span>
+<p>Each is a way of <em>iterating</em> over an array: it pulls values out of the array one-by-one and passes them to the block.</p>
+<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>3</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>number</span><span class='o'>|</span>
+    <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>number</span><span class='si'>}</span><span class='s2'> x 12 = </span><span class='si'>#{</span><span class='n'>number</span> <span class='o'>*</span> <span class='mi'>12</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
 </code></pre></div>
-<h3 id='filtering'>Filtering</h3>
-<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>1</span><span class='o'>].</span><span class='n'>select</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>x</span><span class='o'>|</span> <span class='n'>x</span> <span class='o'>&lt;</span> <span class='mi'>2</span><span class='p'>}</span>
+<h3 id='map'>Map</h3>
 
-<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='o'>].</span><span class='n'>select</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>w</span><span class='o'>|</span> <span class='n'>w</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&lt;=</span> <span class='mi'>5</span> <span class='p'>}</span>
+<p>Map is very like each, with one key difference:</p>
+
+<ul>
+<li><code>each</code> returns the original array.</li>
+
+<li><code>map</code> returns a new array with the values replaced by the value of the block execution.</li>
+</ul>
+<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>3</span><span class='o'>].</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='mi'>2</span> <span class='o'>*</span> <span class='n'>n</span> <span class='p'>}</span>  <span class='c1'>#=&gt; [1,2,3]</span>
+
+<span class='o'>[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>3</span><span class='o'>].</span><span class='n'>map</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='mi'>2</span> <span class='o'>*</span> <span class='n'>n</span> <span class='p'>}</span>  <span class='c1'>#=&gt; [2,4,6]</span>
+</code></pre></div>
+<p><strong>Map maps the array onto a new array.</strong></p>
+
+<h3 id='select'>Select</h3>
+
+<p>Select is a way of selecting certain values from an array. It keeps only those values for which the block evaluates to <code>true</code>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>1</span><span class='o'>].</span><span class='n'>select</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>x</span><span class='o'>|</span> <span class='n'>x</span> <span class='o'>&lt;</span> <span class='mi'>2</span><span class='p'>}</span> <span class='c1'>#=&gt; [1]</span>
+
+<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='o'>].</span><span class='n'>select</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>w</span><span class='o'>|</span> <span class='n'>w</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&lt;=</span> <span class='mi'>5</span> <span class='p'>}</span> <span class='c1'>#=&gt; [&#39;apple&#39;, &#39;pear&#39;]</span>
+</code></pre></div>
+<h3 id='sort'>Sort</h3>
+
+<p>Sort is used to sort an array. It is probably the most complicated method of the 4.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># sort by size</span>
+<span class='o'>[</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>1</span><span class='o'>].</span><span class='n'>sort</span> <span class='c1'>#=&gt; [1,2,3]</span>
+
+<span class='c1'># sort alphabetically</span>
+<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='o'>].</span><span class='n'>sort</span> <span class='c1'>#=&gt; [&#39;apple&#39;, &#39;banana&#39;, &#39;pear&#39;]</span>
+
+<span class='c1'># sort by length, by providing a block</span>
+<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='o'>].</span><span class='n'>sort</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>a</span><span class='p'>,</span> <span class='n'>b</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='n'>a</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>length</span>
+        <span class='mi'>1</span>
+    <span class='k'>elsif</span> <span class='n'>a</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>==</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>length</span>
+        <span class='mi'>0</span>
+    <span class='k'>else</span>
+        <span class='o'>-</span><span class='mi'>1</span>
+    <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Sort has some sensible defaults for numbers and words. If you want to do a custom sort you need to provide a block that takes two parameters. The block you pass to sort should return:</p>
+
+<ul>
+<li><code>1</code> if the first parameter is bigger than the second</li>
+
+<li><code>0</code> if the first parameter is equal to the second</li>
+
+<li><code>-1</code> if the first parameter is smaller than the second</li>
+</ul>
+
+<p>There&#8217;s a special operator that will help you do this: <code>&lt;=&gt;</code>. For example, the final example can be rewritten:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># sort by length, by providing a block</span>
+<span class='o'>[</span><span class='s1'>&#39;apple&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pear&#39;</span><span class='p'>,</span> <span class='s1'>&#39;banana&#39;</span><span class='o'>].</span><span class='n'>sort</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>a</span><span class='p'>,</span> <span class='n'>b</span><span class='o'>|</span> <span class='n'>a</span> <span class='o'>&lt;=&gt;</span> <span class='n'>b</span> <span class='p'>}</span>
 </code></pre></div><div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
+<li>Open <code>array_block_exercises.rb</code> in Sublime Text.</li>
+
+<li>Complete as many of the functions as you can.</li>
+
+<li>Check the function by running <code>test_array_block_exercises</code>.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="5_finishing_off">
+	
+
+		<h2>Rounding up</h2>
+		<p>Today we learnt about arrays and blocks. Both are really important and we&#8217;ll be using them heavily from now on. The following methods are the ones you will use the most. Make sure you know them by heart and how to use them:</p>
+
+<ul>
+<li><code>[1,2,3] &lt;&lt; &#39;cat&#39;</code></li>
+
+<li><code>split</code> (on a string)</li>
+
+<li><code>join</code></li>
+
+<li><code>each</code></li>
+
+<li><code>map</code></li>
+
+<li><code>select</code></li>
+
+<li><code>sort</code></li>
+</ul>
+
+<p>You can find out more about all the different array methods by browing the <a href='http://www.ruby-doc.org/core-1.9.3/Array.html'>ruby array docs</a> (to find this just Google &#8216;ruby array&#8217;).</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
 <li>
-<p>Go back to the file <code>marks.rb</code></p>
+<p>Open the file <code>marks.rb</code>.</p>
+</li>
+
+<li>
+<p>Fix the mistakes in the <code>display_marks</code> function. <strong>Only the code below <code>TODO</code> needs changing.</strong> You will probably need to experiment with the line</p>
+
+<pre><code> marks = CSV.read(&#39;marks.csv&#39;, :headers =&gt; true).to_a</code></pre>
+
+<p>in <code>irb</code> to figure out what&#8217;s going on. This line uses Ruby&#8217;s <code>csv</code> library, used for dealing with csv (comma-separated value) files. You will need to load in this library by first running <code>require &#39;csv&#39;</code> (as is done at the top of the file).</p>
+</li>
+
+<li>
+<p>Test your solution with <code>test_marks.rb</code>.</p>
+</li>
+</ol>
+</div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>(extension)</p>
+
+<ol>
+<li>
+<p>Go back to the file <code>marks.rb</code>.</p>
 </li>
 
 <li>
@@ -275,14 +374,6 @@ a #=&gt; [1, 2, nil, nil, nil, nil, 5]</code></pre>
 </li>
 </ol>
 </div>
-	</div>
-
-	
-	<div class="tab-pane " id="5_finishing_off">
-	
-
-		<h2>Bringing together</h2>
-		
 	</div>
 
 </div>
