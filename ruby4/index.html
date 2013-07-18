@@ -64,7 +64,7 @@
 	
 
 		<h2>Hashes</h2>
-		<p>A <code>Hash</code> is ruby&#8217;s basic <em>key-value store</em>. The <code>Hash</code> and the <code>Array</code> are ruby&#8217;s two common ways of storing a collection of objects. The key differences between &#8216;Hash&#8217; and &#8216;Array&#8217; are:</p>
+		<p>A <code>Hash</code> is ruby&#8217;s basic <em>key-value store</em>: a place where you can store values, and look them up by a key. The <code>Hash</code> and the <code>Array</code> are ruby&#8217;s two common ways of storing a collection of objects. The key differences between &#8216;Hash&#8217; and &#8216;Array&#8217; are:</p>
 
 <ul>
 <li>In an <code>Array</code> objects are stored in order. You can think of an <code>Array</code> as a list.</li>
@@ -201,7 +201,7 @@
     <span class='k'>end</span>
 <span class='k'>end</span> <span class='c1'>#=&gt; {&#39;a&#39; =&gt; 3, &#39;b&#39; =&gt; 1}</span>
 </code></pre></div>
-<p>You can make this example a bit shorter by using a hash with a <strong>default value</strong>: normally a hash will return <code>nil</code> if the key isn&#8217;t there, but we can set it up to return something else. In particular we&#8217;ss set it up to return 0:</p>
+<p>You can make this example a bit shorter by using a hash with a <strong>default value</strong>: normally a hash will return <code>nil</code> if the key isn&#8217;t there, but we can set it up to return something else. In particular we&#8217;ll set it up to return 0:</p>
 <div class='highlight'><pre><code class='ruby'><span class='c1'># set up a hash with default value 0</span>
 <span class='n'>h</span> <span class='o'>=</span> <span class='no'>Hash</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>)</span>
 
@@ -342,7 +342,7 @@
 </li>
 
 <li>
-<p>Fix the function <code>remove_stopwords</code> in <code>i_have_a_dream.rb</code>. You can test your solution using <code>test_i_have_a_dream.rb</code>. Have a look at the <code>index.html</code> that your new version creates.</p>
+<p>Fix the function <code>remove_stop_words</code> in <code>i_have_a_dream.rb</code>. You can test your solution using <code>test_i_have_a_dream.rb</code>. Have a look at the <code>index.html</code> that your new version creates.</p>
 </li>
 </ol>
 </div>
@@ -355,7 +355,7 @@
 
 <li>The function <code>frequencies</code> is meant to count the words using a hash.</li>
 
-<li>The function <code>remove_stopwords</code> should filter out common english words like &#8216;a&#8217; and &#8216;the&#8217;.</li>
+<li>The function <code>remove_stop_words</code> should filter out common english words like &#8216;a&#8217; and &#8216;the&#8217;.</li>
 
 <li>The function <code>write_html</code> takes the filtered words and frequencies and writes them into the html template <code>index.html.erb</code>.</li>
 
