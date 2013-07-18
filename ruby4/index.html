@@ -36,7 +36,7 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_introducing_hash" data-toggle="tab">Introducing the Hash </a></li>
+		<li class="active"><a href="#1_introducing_hash" data-toggle="tab">Hashes </a></li>
 		
 	
 		
@@ -44,15 +44,15 @@
 		
 	
 		
-		<li><a href="#3_symbols" data-toggle="tab">Symbols </a></li>
+		<li><a href="#3_hash_array_conversion" data-toggle="tab">Arrays and back </a></li>
 		
 	
 		
-		<li><a href="#4_hash_array_conversion" data-toggle="tab">Arrays and back </a></li>
+		<li><a href="#4_symbols" data-toggle="tab">Symbols </a></li>
 		
 	
 		
-		<li><a href="#5_wrapping_up" data-toggle="tab">Wrapping up </a></li>
+		<li><a href="#5_wrapping_up" data-toggle="tab">Rounding up </a></li>
 		
 	
 </ul>
@@ -63,21 +63,36 @@
 	<div class="tab-pane active" id="1_introducing_hash">
 	
 
-		<h2>Introducing the Hash</h2>
-		<p>You&#8217;ve already met one of ruby&#8217;s common collection objects: the <code>Array</code>. In this session we&#8217;re going to have a look at the other basic type of collection: the <code>Hash</code>.</p>
+		<h2>Hashes</h2>
+		<p>A <code>Hash</code> is ruby&#8217;s basic <em>key-value store</em>. The <code>Hash</code> and the <code>Array</code> are ruby&#8217;s two common ways of storing a collection of objects. The key differences between &#8216;Hash&#8217; and &#8216;Array&#8217; are:</p>
 
-<p>In an array the objects were ordered, and referenced by their index:</p>
-<div class='highlight'><pre><code class='ruby'><span class='n'>a</span> <span class='o'>=</span> <span class='o'>[</span><span class='s1'>&#39;zero&#39;</span><span class='p'>,</span> <span class='s1'>&#39;one&#39;</span><span class='p'>,</span> <span class='s1'>&#39;two&#39;</span><span class='o'>]</span>
+<ul>
+<li>In an <code>Array</code> objects are stored in order. You can think of an <code>Array</code> as a list.</li>
 
-<span class='n'>a</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;zero&#39;</span>
-</code></pre></div>
-<p>In a hash the objects are stored in any particular order, but instead are stored with a key. The key can then be used to retrieve or modify the object.</p>
+<li>In an <code>Array</code> we reference objects by a numerical index.</li>
+
+<li>In a <code>Hash</code> there is no order on the objects. You can think of a <code>Hash</code> as a general collection.</li>
+
+<li>In a <code>Hash</code> objects are referenced by a <code>key</code>. The key can be a number or a word (or several other things).</li>
+</ul>
+
+<p>Here is an example of a simple hash:</p>
 <div class='highlight'><pre><code class='ruby'><span class='n'>character</span> <span class='o'>=</span> <span class='p'>{</span><span class='s1'>&#39;name&#39;</span><span class='o'>=&gt;</span><span class='s1'>&#39;Bart&#39;</span><span class='p'>,</span> <span class='s1'>&#39;surname&#39;</span><span class='o'>=&gt;</span><span class='s1'>&#39;Simpson&#39;</span><span class='p'>,</span> <span class='s1'>&#39;age&#39;</span><span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>,</span> <span class='s1'>&#39;catchphrase&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Eat my shorts&#39;</span><span class='p'>}</span>
 
 <span class='n'>character</span><span class='o'>[</span><span class='s1'>&#39;name&#39;</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;Bart&#39;</span>
 <span class='n'>character</span><span class='o'>[</span><span class='s1'>&#39;catchphrase&#39;</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;Eat my shorts&#39;</span>
 </code></pre></div>
-<p>The above code creates a hash using the curly brackets <code>{ }</code>. Each element of the hash has a key e.g. <code>&#39;name&#39;</code> and a value e.g. <code>&#39;Bart&#39;</code>.</p>
+<p>In particular:</p>
+
+<ul>
+<li>You write a <code>Hash</code> using the curly brackets <code>{ }</code>.</li>
+
+<li>Each element of the hash has a key e.g. <code>&#39;name&#39;</code> and a value e.g. <code>&#39;Bart&#39;</code>.</li>
+
+<li>When you write the hash you put the keys and values using the <code>=&gt;</code> symbol: <code>key =&gt; value</code>.</li>
+
+<li>To pull values out of a hash you put the key inside <code>[ ]</code>.</li>
+</ul>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -90,6 +105,10 @@
 
 <li>
 <p>With your partner work through <code>ruby4/hash_examples.rb</code>. See if you can guess what each expression will do, then test by pasting into irb.</p>
+</li>
+
+<li>
+<p>If you finish early, make a start on <code>hash_exercises.rb</code>.</p>
 </li>
 </ol>
 </div>
@@ -139,7 +158,7 @@
 
 <h3 id='iterating'>Iterating</h3>
 
-<p>Just like an Array, you can iterate over a Hash using the <code>each</code> method. Unlike array iteration, in hash iteration the block accepts two parameters: the key and the value:</p>
+<p>Just like an <code>Array</code>, you can iterate over a <code>Hash</code> using the <code>each</code> method. Unlike array iteration, in hash iteration the block accepts two parameters: the key and the value:</p>
 <div class='highlight'><pre><code class='ruby'><span class='n'>h</span> <span class='o'>=</span> <span class='p'>{</span><span class='s1'>&#39;one&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>1</span><span class='p'>,</span> <span class='s1'>&#39;two&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>2</span><span class='p'>,</span> <span class='s1'>&#39;three&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>3</span><span class='p'>}</span>
 
 <span class='n'>h</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>key</span><span class='p'>,</span> <span class='n'>value</span><span class='o'>|</span>
@@ -149,7 +168,11 @@
 <h3 id='combining_hashes'>Combining hashes</h3>
 
 <p>Combining hashes is done by using the <code>merge</code> method. The values from the second hash are added to the first, replacing them if they already exist. You will often see this used in rails for specifying default options to a function:</p>
-<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>print_names</span><span class='p'>(</span><span class='n'>opts</span><span class='p'>)</span>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># note how the first version of b gets overwritten</span>
+<span class='p'>{</span><span class='s1'>&#39;a&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>1</span><span class='p'>,</span> <span class='s1'>&#39;b&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>2</span><span class='p'>}</span><span class='o'>.</span><span class='n'>merge</span><span class='p'>({</span><span class='s1'>&#39;b&#39;</span><span class='o'>=&gt;</span><span class='mi'>3</span><span class='p'>,</span> <span class='s1'>&#39;c&#39;</span><span class='o'>=&gt;</span><span class='mi'>4</span><span class='p'>})</span> <span class='c1'>#=&gt; {&#39;a&#39;=&gt;1, &#39;b&#39;=&gt;3, &#39;c&#39;=&gt;4}</span>
+
+<span class='c1'># real life example</span>
+<span class='k'>def</span> <span class='nf'>print_names</span><span class='p'>(</span><span class='n'>opts</span><span class='p'>)</span>
 	<span class='n'>default_opts</span> <span class='o'>=</span> <span class='p'>{</span><span class='s1'>&#39;fancy_format&#39;</span> <span class='o'>=&gt;</span> <span class='kp'>true</span><span class='p'>,</span> <span class='s1'>&#39;max_length&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>20</span><span class='p'>}</span>
 
 	<span class='c1'># replace the defaults with options supplied</span>
@@ -162,70 +185,48 @@
 	<span class='c1'>#...</span>
 <span class='k'>end</span>
 </code></pre></div>
-<h3 id='hashes_with_defaults'>Hashes with defaults</h3>
+<p>The options example above is a common use of a hash in real life code.</p>
 
-<p>It is possible to specify a default value (or even a default block) which will be used when the key doesn&#8217;t exist, by creating a hash using <code>Hash.new</code></p>
-<div class='highlight'><pre><code class='ruby'><span class='n'>player_levels</span> <span class='o'>=</span> <span class='no'>Hash</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='s1'>&#39;Beginner&#39;</span><span class='p'>)</span>
+<h3 id='using_a_hash_for_counting'>Using a hash for counting</h3>
 
-<span class='n'>player_levels</span><span class='o'>[</span><span class='s1'>&#39;Tom&#39;</span><span class='o'>]</span> <span class='c1'>#=&gt; &#39;Beginner&#39;</span>
-
-<span class='n'>player_levels</span> <span class='c1'>#=&gt; {&#39;Tom&#39; =&gt; &#39;Beginner&#39;}</span>
+<p>One special use of a hash is for counting things. The following code is an example of how to do this.</p>
+<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;b&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>letter</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='n'>h</span><span class='o'>.</span><span class='n'>has_key?</span><span class='p'>(</span><span class='n'>letter</span><span class='p'>)</span>
+        <span class='c1'># if the letter is already in the hash, increase</span>
+        <span class='c1'># its count by 1</span>
+        <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>+=</span> <span class='mi'>1</span>
+    <span class='k'>else</span> <span class='c1'># letter isn&#39;t in the hash</span>
+        <span class='c1'># so put it in and set the count to 1</span>
+        <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>=</span> <span class='mi'>1</span>
+    <span class='k'>end</span>
+<span class='k'>end</span> <span class='c1'>#=&gt; {&#39;a&#39; =&gt; 3, &#39;b&#39; =&gt; 1}</span>
 </code></pre></div>
-<p>Note how the new value is added to the hash.</p>
+<p>You can make this example a bit shorter by using a hash with a <strong>default value</strong>: normally a hash will return <code>nil</code> if the key isn&#8217;t there, but we can set it up to return something else. In particular we&#8217;ss set it up to return 0:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># set up a hash with default value 0</span>
+<span class='n'>h</span> <span class='o'>=</span> <span class='no'>Hash</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>)</span>
 
-<p>You can also specify a default block, which will be called on each missing value:</p>
-<div class='highlight'><pre><code class='ruby'><span class='n'>square_numbers</span> <span class='o'>=</span> <span class='no'>Hash</span><span class='o'>.</span><span class='n'>new</span> <span class='p'>{</span><span class='o'>|</span><span class='nb'>hash</span><span class='p'>,</span> <span class='n'>key</span><span class='o'>|</span> <span class='nb'>hash</span><span class='o'>[</span><span class='n'>key</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>key</span><span class='o'>**</span><span class='mi'>2</span> <span class='p'>}</span>
-
-<span class='n'>square_numbers</span><span class='o'>[</span><span class='mi'>5</span><span class='o'>]</span> <span class='c1'>#=&gt; 25</span>
-<span class='n'>square_numbers</span><span class='o'>[</span><span class='mi'>6</span><span class='o'>]</span> <span class='c1'>#=&gt; 36</span>
-
-<span class='n'>square_numbers</span> <span class='c1'>#=&gt; {5 =&gt; 25, 6 =&gt; 36}</span>
+<span class='o'>[</span><span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;b&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>letter</span><span class='o'>|</span>
+    <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>+</span> <span class='mi'>1</span>
+<span class='k'>end</span>
 </code></pre></div>
-<p>The above could be used to save the results of an expensive calculation: if you do <code>square_numbers[5]</code> again it doesn&#8217;t need to work it out - it just looks up the result.</p>
+<p>If the letter isn&#8217;t in the hash yet, the default value of 0 will be returned. Otherwise the current count will be returned. Either way, we just need to increase the value by 1.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
-<li>Complete the three functions in <code>ruby4/character.rb</code></li>
+<li>Open <code>hash_exercises.rb</code> in Sublime Text.</li>
 
-<li>Test your solutions using <code>test_character.rb</code></li>
+<li>Work through the file fixing the functions to work as described.</li>
+
+<li>Check your work by running <code>test_hash_exercises.rb</code> on the command line.</li>
+
+<li>If you finish early move on to <code>array_conversion_examples.rb</code>.</li>
 </ol>
 </div>
 	</div>
 
 	
-	<div class="tab-pane " id="3_symbols">
-	
-
-		<h2>Symbols</h2>
-		<p>Symbols save space</p>
-<div class='highlight'><pre><code class='ruby'><span class='s2'>&quot;hello&quot;</span>
-<span class='ss'>:hello</span>
-</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='ss'>:hello</span><span class='o'>.</span><span class='n'>to_s</span>
-<span class='s2'>&quot;hello&quot;</span><span class='o'>.</span><span class='n'>to_sym</span>
-
-
-<span class='s2'>&quot;hello&quot;</span> <span class='o'>&lt;&lt;</span> <span class='s2'>&quot; world&quot;</span>
-<span class='ss'>:hello</span> <span class='o'>&lt;&lt;</span> <span class='ss'>:&quot; world&quot;</span>
-
-<span class='s2'>&quot;hello&quot;</span><span class='o'>.</span><span class='n'>object_id</span>
-
-<span class='ss'>:hello</span><span class='o'>.</span><span class='n'>object_id</span>
-</code></pre></div><div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<p>(Optional)</p>
-
-<ol>
-<li>Do <code>ruby4/symbolize_keys.rb</code>.</li>
-
-<li>Test your answers using <code>test_symbolize_keys.rb</code></li>
-</ol>
-</div>
-	</div>
-
-	
-	<div class="tab-pane " id="4_hash_array_conversion">
+	<div class="tab-pane " id="3_hash_array_conversion">
 	
 
 		<h2>Arrays and back</h2>
@@ -262,15 +263,106 @@
 	</div>
 
 	
+	<div class="tab-pane " id="4_symbols">
+	
+
+		<h2>Symbols</h2>
+		<p>Symbols are a bit like strings that can&#8217;t be changed. They&#8217;re primarily used to save space and time:</p>
+
+<ul>
+<li>Every time you write a string in ruby it has to store a new copy of it in case it is changed.</li>
+
+<li>Every time you compare two strings it has to check every letter to see if they&#8217;re the same.</li>
+
+<li>As symbols can&#8217;t be changed, it allows ruby to only store them once.</li>
+
+<li>This makes it quick to compare, as you can just check to see if it&#8217;s in the same storage location.</li>
+</ul>
+
+<p>So far we&#8217;ve used strings for our hash keys. As we write and compare hash keys a lot, it makes sense to use symbols instead.</p>
+<div class='highlight'><pre><code class='ruby'><span class='s2'>&quot;hello&quot;</span>
+<span class='ss'>:hello</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='ss'>:hello</span><span class='o'>.</span><span class='n'>to_s</span>
+<span class='s2'>&quot;hello&quot;</span><span class='o'>.</span><span class='n'>to_sym</span>
+
+
+<span class='s2'>&quot;hello&quot;</span> <span class='o'>&lt;&lt;</span> <span class='s2'>&quot; world&quot;</span>
+<span class='ss'>:hello</span> <span class='o'>&lt;&lt;</span> <span class='ss'>:&quot; world&quot;</span>
+
+<span class='s2'>&quot;hello&quot;</span><span class='o'>.</span><span class='n'>object_id</span>
+
+<span class='ss'>:hello</span><span class='o'>.</span><span class='n'>object_id</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>(Optional)</p>
+
+<ol>
+<li>Do <code>ruby4/symbolize_keys.rb</code>.</li>
+
+<li>Test your answers using <code>test_symbolize_keys.rb</code></li>
+</ol>
+</div>
+	</div>
+
+	
 	<div class="tab-pane " id="5_wrapping_up">
 	
 
-		<h2>Wrapping up</h2>
-		<div class='exercise alert alert-info'><strong>
+		<h2>Rounding up</h2>
+		<p>Today we learnt about hashes (and symbols). Hashes are really important and we&#8217;ll be using them heavily from now on. The following methods are the ones you will use the most. Make sure you know them by heart and how to use them:</p>
+
+<ul>
+<li><code>h[key]</code>, <code>h[key]=</code></li>
+
+<li><code>keys</code>, <code>values</code></li>
+
+<li><code>has_key?</code>, <code>has_value?</code></li>
+
+<li><code>each</code></li>
+
+<li><code>select</code></li>
+</ul>
+
+<p>You can find out more about all the different hash methods by browing the <a href='http://www.ruby-doc.org/core-1.9.3/Hash.html'>ruby hash docs</a> (to find this just Google &#8216;ruby hash&#8217;).</p>
+<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>Work through <code>i_have_a_dream.rb</code>. Test your solution using <code>test_i_have_a_dream.rb</code>.</p>
+<ol>
+<li>
+<p>Run <code>i_have_a_dream.rb</code> from the command line:</p>
+
+<pre><code> ruby i_have_a_dream.rb</code></pre>
+
+<p>Have a look at the file <code>index.html</code> it created using chrome.</p>
+</li>
+
+<li>
+<p>Fix the function <code>frequencies</code> in <code>i_have_a_dream.rb</code> so it works as stated. You can test your solution using <code>test_i_have_a_dream.rb</code>. Have a look at the <code>index.html</code> that your new version creates.</p>
+</li>
+
+<li>
+<p>Fix the function <code>remove_stopwords</code> in <code>i_have_a_dream.rb</code>. You can test your solution using <code>test_i_have_a_dream.rb</code>. Have a look at the <code>index.html</code> that your new version creates.</p>
+</li>
+</ol>
 </div>
+<h3 id='quick_explanation_of_i_have_a_dream'>Quick explanation of I have a dream</h3>
+
+<p>I have a dream is a program that reads in a file and produces an html word cloud.</p>
+
+<ul>
+<li>The function <code>text</code> reads in the text from <code>i_have_a_dream.txt</code> and removes all punctuation.</li>
+
+<li>The function <code>frequencies</code> is meant to count the words using a hash.</li>
+
+<li>The function <code>remove_stopwords</code> should filter out common english words like &#8216;a&#8217; and &#8216;the&#8217;.</li>
+
+<li>The function <code>write_html</code> takes the filtered words and frequencies and writes them into the html template <code>index.html.erb</code>.</li>
+
+<li>In that file there is some javascript that generates the tag cloud, using a library called <a href='http://d3js.org/'>d3.js</a></li>
+</ul>
+
+<p>Feel free to poke around with stuff. If you commit all your changes using git, you should always be able to get back to a working version!</p>
 	</div>
 
 </div>

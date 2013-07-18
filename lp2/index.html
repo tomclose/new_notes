@@ -322,9 +322,7 @@
 </div>
 <p>It should be something like this:</p>
 <div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span><span class='kd'>var</span> <span class='nx'>submitted</span><span class='o'>=</span><span class='kc'>false</span><span class='p'>;</span><span class='nt'>&lt;/script&gt;</span>
-<span class='nt'>&lt;iframe</span> <span class='na'>name=</span><span class='s'>&quot;hidden_iframe&quot;</span> <span class='na'>id=</span><span class='s'>&quot;hidden_iframe&quot;</span>
-<span class='na'>style=</span><span class='s'>&quot;display:none;&quot;</span> <span class='na'>onload=</span><span class='s'>&quot;if(submitted)</span>
-<span class='s'>{window.location=&#39;thanks.html&#39;;}&quot;</span><span class='nt'>&gt;&lt;/iframe&gt;</span>
+<span class='nt'>&lt;iframe</span> <span class='na'>name=</span><span class='s'>&quot;hidden_iframe&quot;</span> <span class='na'>id=</span><span class='s'>&quot;hidden_iframe&quot;</span> <span class='na'>style=</span><span class='s'>&quot;display:none;&quot;</span> <span class='na'>onload=</span><span class='s'>&quot;if(submitted) {window.location=&#39;thanks.html&#39;;}&quot;</span><span class='nt'>&gt;&lt;/iframe&gt;</span>
 
 <span class='nt'>&lt;form</span> <span class='na'>action=</span><span class='s'>&quot;https://docs.google.com/forms/d/16faBBpyeqEBbHDyhM2K6s0i6UXBckz9vOQGwKrJKyN0/formResponse&quot;</span> <span class='na'>method=</span><span class='s'>&quot;POST&quot;</span> <span class='na'>target=</span><span class='s'>&quot;hidden_iframe&quot;</span> <span class='na'>onsubmit=</span><span class='s'>&quot;submitted=true;&quot;</span><span class='nt'>&gt;</span>
   <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1087713693&quot;</span><span class='nt'>&gt;</span>
@@ -416,7 +414,7 @@
 <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;date&#39;</span><span class='nt'>&gt;</span>
 <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;time&#39;</span><span class='nt'>&gt;</span>
 </code></pre></div>
-<p>There are several other options for html input types. For a complete list see <a href='http://www.w3schools.com/tags/tag_input.asp'>here</a>. I don&#8217;t know how well supported these &#8216;other&#8217; types are across browsers - I haven&#8217;t seen them widely used, so they could be new. Probably worth checking before you start relying on them!</p>
+<p>There are several other options for html input types. For a complete list see <a href='http://www.w3schools.com/tags/tag_input.asp'>here</a>. I don&#8217;t know how well supported these &#8216;other&#8217; types are across browsers - I think they&#8217;re probably new in <a href='http://www.html5rocks.com/en/'>html5</a>. Probably worth testing in multiple browsers (or googling to find out which browsers support them) before you start relying on them!</p>
 
 <p>For more information about styling forms have a look at the <a href='http://twitter.github.io/bootstrap/base-css.html#forms'>Twitter Bootstrap forms section</a>.</p>
 	</div>
