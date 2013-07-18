@@ -36,7 +36,19 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_forms" data-toggle="tab">HTML Forms </a></li>
+		<li class="active"><a href="#1_forms" data-toggle="tab">Basic forms </a></li>
+		
+	
+		
+		<li><a href="#2_form_submissions" data-toggle="tab">Form submissions </a></li>
+		
+	
+		
+		<li><a href="#3_google_forms" data-toggle="tab">Google forms trick </a></li>
+		
+	
+		
+		<li><a href="#4_more_elements" data-toggle="tab">More form elements </a></li>
 		
 	
 </ul>
@@ -47,7 +59,187 @@
 	<div class="tab-pane active" id="1_forms">
 	
 
-		<h2>HTML Forms</h2>
+		<h2>Basic forms</h2>
+		<div class='highlight'><pre><code class='html'><span class='nt'>&lt;form&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;text&#39;</span> <span class='na'>name=</span><span class='s'>&#39;name&#39;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;text&#39;</span> <span class='na'>name=</span><span class='s'>&#39;email&#39;</span><span class='nt'>&gt;</span>
+
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;submit&#39;</span><span class='nt'>&gt;</span>
+<span class='nt'>&lt;/form&gt;</span>
+</code></pre></div>
+<h3 id='forms_with_labels'>Forms with labels</h3>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;form&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;text&#39;</span> <span class='na'>name=</span><span class='s'>&#39;name&#39;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;text&#39;</span> <span class='na'>name=</span><span class='s'>&#39;email&#39;</span><span class='nt'>&gt;</span>
+
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;submit&#39;</span><span class='nt'>&gt;</span>
+<span class='nt'>&lt;/form&gt;</span>
+</code></pre></div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_form_submissions">
+	
+
+		<h2>Form submissions</h2>
+		<p>So far we&#8217;ve just looked at</p>
+
+<h3 id='input_names'>Input names</h3>
+
+<p><img alt='dev tools form submit get' src='/assets/dev_tools_form_submit_get.png' /></p>
+
+<p><img alt='dev tools form submit' src='/assets/dev_tools_form_submit.png' /></p>
+
+<h3 id='get_and_post'>GET and POST</h3>
+
+<p>The other bit was the GET.</p>
+
+<p>GET and POST are two <em>http verbs</em>.</p>
+<div class='highlight'><pre><code class='html'>    <span class='nt'>&lt;form</span> <span class='na'>method=</span><span class='s'>&#39;post&#39;</span><span class='nt'>&gt;</span>
+</code></pre></div>
+<p><img alt='dev tools form submit post' src='/assets/dev_tools_form_submit_post.png' /></p>
+
+<p><strong>Warning:</strong> Just because POST parameters aren&#8217;t sent in the URL <strong>doesn&#8217;t</strong> mean they are private. Unless you are using https, anyone watching your traffic can read all the information you&#8217;re submitting.</p>
+
+<h3 id='submitting_to_a_different_url'>Submitting to a different url</h3>
+<div class='highlight'><pre><code class='html'>    <span class='nt'>&lt;form</span> <span class='na'>method=</span><span class='s'>&#39;post&#39;</span> <span class='na'>action=</span><span class='s'>&#39;thanks.html&#39;</span><span class='nt'>&gt;</span>
+</code></pre></div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_google_forms">
+	
+
+		<h2>Google forms trick</h2>
+		<p>In order to have a working form on a website there needs to be somewhere for the information to go when the user clicks submit. So far we have only looked at <em>static</em> webpages: we have a dumb server that just hands out our hand-created HTML and CSS files. We have no way of accepting information from the user.</p>
+
+<p>Later in the course we will build <em>dynamic</em> sites, using Ruby on Rails. In a <em>dynamic</em> site the server builds the pages depending on information stored in a database and details provided by the user. When we have a dynamic site we will just submit the form information back to the server.</p>
+
+<p>In the meantime we will use a trick to submit the data from our form to a Google spreadsheet. We&#8217;ll be using our server (GitHub pages) to provide the form, but Google&#8217;s servers (for their spreadsheet) to collect the information. We&#8217;ll be roughly following the instructions from the <a href='http://morning.am/tutorials/how-to-style-google-forms/'>morning.am google form post</a>. You might want to read this through first!</p>
+
+<h3 id='setting_up_a_google_form'>Setting up a Google form</h3>
+
+<p>To set up a Google form you need a Google drive account. When you have one:</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Log in to Google drive.</li>
+
+<li>Create a form. <img alt='Create Google form.' src='/assets/google_drive_create_form.png' /></li>
+
+<li>Add a few text fields (e.g. name, email) to your form. <img alt='Google form add fields' src='/assets/google_form_add_questions.png' /></li>
+
+<li>Go to view the live form. <img alt='View live form' src='/assets/google_form_view_live.png' /></li>
+
+<li>Inspect the page source. Find the bit relating to the form.</li>
+</ol>
+</div>
+<p>The bit of source relating to the form should look something like this:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;form</span> <span class='na'>action=</span><span class='s'>&quot;https://docs.google.com/forms/d/16faBBpyeqEBbHDyhM2K6s0i6UXBckz9vOQGwKrJKyN0/formResponse&quot;</span> <span class='na'>method=</span><span class='s'>&quot;POST&quot;</span> <span class='na'>id=</span><span class='s'>&quot;ss-form&quot;</span> <span class='na'>target=</span><span class='s'>&quot;_self&quot;</span> <span class='na'>onsubmit=</span><span class='s'>&quot;&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;ol</span> <span class='na'>style=</span><span class='s'>&quot;padding-left: 0&quot;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-form-question errorbox-good&quot;</span><span class='nt'>&gt;</span>
+      <span class='nt'>&lt;div</span> <span class='na'>dir=</span><span class='s'>&quot;ltr&quot;</span> <span class='na'>class=</span><span class='s'>&quot;ss-item  ss-text&quot;</span><span class='nt'>&gt;</span>
+        <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-form-entry&quot;</span><span class='nt'>&gt;</span>
+          <span class='nt'>&lt;label</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-item-label&quot;</span> <span class='na'>for=</span><span class='s'>&quot;entry_1087713693&quot;</span><span class='nt'>&gt;</span>
+            <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-title&quot;</span><span class='nt'>&gt;</span>Name<span class='nt'>&lt;/div&gt;</span>
+            <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-help ss-secondary-text&quot;</span> <span class='na'>dir=</span><span class='s'>&quot;ltr&quot;</span><span class='nt'>&gt;</span>
+            <span class='nt'>&lt;/div&gt;</span>
+          <span class='nt'>&lt;/label&gt;</span>
+          <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1087713693&quot;</span> <span class='na'>value=</span><span class='s'>&quot;&quot;</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-short&quot;</span> <span class='na'>id=</span><span class='s'>&quot;entry_1087713693&quot;</span> <span class='na'>dir=</span><span class='s'>&quot;auto&quot;</span><span class='nt'>&gt;</span>
+        <span class='nt'>&lt;/div&gt;</span>
+      <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-form-question errorbox-good&quot;</span><span class='nt'>&gt;</span>
+      <span class='nt'>&lt;div</span> <span class='na'>dir=</span><span class='s'>&quot;ltr&quot;</span> <span class='na'>class=</span><span class='s'>&quot;ss-item  ss-text&quot;</span><span class='nt'>&gt;</span>
+        <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-form-entry&quot;</span><span class='nt'>&gt;</span>
+          <span class='nt'>&lt;label</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-item-label&quot;</span> <span class='na'>for=</span><span class='s'>&quot;entry_1239878056&quot;</span><span class='nt'>&gt;</span>
+            <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-title&quot;</span><span class='nt'>&gt;</span>Email
+            <span class='nt'>&lt;/div&gt;</span>
+            <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-help ss-secondary-text&quot;</span> <span class='na'>dir=</span><span class='s'>&quot;ltr&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+          <span class='nt'>&lt;/label&gt;</span>
+          <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1239878056&quot;</span> <span class='na'>value=</span><span class='s'>&quot;&quot;</span> <span class='na'>class=</span><span class='s'>&quot;ss-q-short&quot;</span> <span class='na'>id=</span><span class='s'>&quot;entry_1239878056&quot;</span> <span class='na'>dir=</span><span class='s'>&quot;auto&quot;</span><span class='nt'>&gt;</span>
+        <span class='nt'>&lt;/div&gt;</span>
+      <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;hidden&quot;</span> <span class='na'>name=</span><span class='s'>&quot;draftResponse&quot;</span> <span class='na'>value=</span><span class='s'>&quot;[]&quot;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;hidden&quot;</span> <span class='na'>name=</span><span class='s'>&quot;pageHistory&quot;</span> <span class='na'>value=</span><span class='s'>&quot;0&quot;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-item ss-navigate&quot;</span><span class='nt'>&gt;</span>
+      <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-form-entry&quot;</span> <span class='na'>id=</span><span class='s'>&quot;navigation-buttons&quot;</span> <span class='na'>dir=</span><span class='s'>&quot;ltr&quot;</span> <span class='na'>style=</span><span class='s'>&quot;display: inline-block&quot;</span><span class='nt'>&gt;</span>
+        <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;submit&quot;</span> <span class='na'>name=</span><span class='s'>&quot;submit&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Submit&quot;</span> <span class='na'>id=</span><span class='s'>&quot;ss-submit&quot;</span><span class='nt'>&gt;</span>
+        <span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ss-secondary-text&quot;</span><span class='nt'>&gt;</span>Never submit passwords through Google Forms.<span class='nt'>&lt;/div&gt;</span>
+      <span class='nt'>&lt;/div&gt;</span>
+    <span class='nt'>&lt;/div&gt;</span>
+  <span class='nt'>&lt;/ol&gt;</span>
+<span class='nt'>&lt;/form&gt;</span>
+</code></pre></div>
+<h3 id='create_your_own_form'>Create your own form</h3>
+
+<p>You&#8217;re now going to take the important bits from the form that Google created and create your own form containing them. The important bits are:</p>
+
+<ul>
+<li>The form <code>action</code>.</li>
+
+<li>The form <code>method</code> (which should be &#8216;POST&#8217;).</li>
+
+<li>The <code>name</code>s (and <code>type</code>s) from each of the input elements.</li>
+</ul>
+
+<p>If we copy all of these we will end up submitting the same parameters to the same place and our responses will be recorded in the spreadsheet.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Create your own form using the &#8216;important bits&#8217; of the Google form.</p>
+</div>
+<p>It should look something like this:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;form</span> <span class='na'>action=</span><span class='s'>&quot;https://docs.google.com/forms/d/16faBBpyeqEBbHDyhM2K6s0i6UXBckz9vOQGwKrJKyN0/formResponse&quot;</span> <span class='na'>method=</span><span class='s'>&quot;POST&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1087713693&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1239878056&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;submit&quot;</span> <span class='na'>name=</span><span class='s'>&quot;submit&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Submit&quot;</span><span class='nt'>&gt;</span>
+<span class='nt'>&lt;/form&gt;</span>
+</code></pre></div>
+<p>When you submit this form from your browser, you should end up at the Google &#8216;form submitted&#8217; screen and your response should be in the spreadsheet.</p>
+
+<p><img alt='Google form response' src='/assets/google_form_response.png' /></p>
+
+<h3 id='redirecting_the_submission'>Redirecting the submission</h3>
+
+<p>It isn&#8217;t ideal that after the submission the user is sent to a Google &#8216;form submitted&#8217; page. Fortunately it is possible to change this. Again, following the instructions from the <a href='http://morning.am/tutorials/how-to-style-google-forms/'>morning.am google form post</a>:</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Add the required iframe and javascript snippet to redirect your form after submission, from the <a href='http://morning.am/tutorials/how-to-style-google-forms/'>morning.am google form post</a>.</p>
+</div>
+<p>It should be something like this:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span><span class='kd'>var</span> <span class='nx'>submitted</span><span class='o'>=</span><span class='kc'>false</span><span class='p'>;</span><span class='nt'>&lt;/script&gt;</span>
+<span class='nt'>&lt;iframe</span> <span class='na'>name=</span><span class='s'>&quot;hidden_iframe&quot;</span> <span class='na'>id=</span><span class='s'>&quot;hidden_iframe&quot;</span>
+<span class='na'>style=</span><span class='s'>&quot;display:none;&quot;</span> <span class='na'>onload=</span><span class='s'>&quot;if(submitted)</span>
+<span class='s'>{window.location=&#39;thanks.html&#39;;}&quot;</span><span class='nt'>&gt;&lt;/iframe&gt;</span>
+
+<span class='nt'>&lt;form</span> <span class='na'>action=</span><span class='s'>&quot;https://docs.google.com/forms/d/16faBBpyeqEBbHDyhM2K6s0i6UXBckz9vOQGwKrJKyN0/formResponse&quot;</span> <span class='na'>method=</span><span class='s'>&quot;POST&quot;</span> <span class='na'>target=</span><span class='s'>&quot;hidden_iframe&quot;</span> <span class='na'>onsubmit=</span><span class='s'>&quot;submitted=true;&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1087713693&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;text&quot;</span> <span class='na'>name=</span><span class='s'>&quot;entry.1239878056&quot;</span><span class='nt'>&gt;</span>
+  <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;submit&quot;</span> <span class='na'>name=</span><span class='s'>&quot;submit&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Submit&quot;</span><span class='nt'>&gt;</span>
+<span class='nt'>&lt;/form&gt;</span>
+</code></pre></div>
+<p>Don&#8217;t worry about too much about how this works at this stage. When the user submits the form, they should now be sent to your <code>thanks.html</code> page.</p>
+
+<h3 id='a_few_things_about_google_forms'>A few things about Google forms</h3>
+
+<p>Two things to know about Google forms:</p>
+
+<ol>
+<li>You need to check that your form is accepting responses. On Form &gt; Responses make sure that &#8216;Accepting Responses&#8217; is ticked.</li>
+
+<li>You can set it up to notify you when someone fills in the form. On <em>the spreadsheet for</em> your form go to Tools &gt; Notification Rules.</li>
+</ol>
+	</div>
+
+	
+	<div class="tab-pane " id="4_more_elements">
+	
+
+		<h2>More form elements</h2>
 		
 	</div>
 
