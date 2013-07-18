@@ -190,7 +190,9 @@
 <h3 id='using_a_hash_for_counting'>Using a hash for counting</h3>
 
 <p>One special use of a hash is for counting things. The following code is an example of how to do this.</p>
-<div class='highlight'><pre><code class='ruby'><span class='o'>[</span><span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;b&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>letter</span><span class='o'>|</span>
+<div class='highlight'><pre><code class='ruby'><span class='n'>h</span> <span class='o'>=</span> <span class='p'>{}</span>
+
+<span class='o'>[</span><span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;b&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>letter</span><span class='o'>|</span>
     <span class='k'>if</span> <span class='n'>h</span><span class='o'>.</span><span class='n'>has_key?</span><span class='p'>(</span><span class='n'>letter</span><span class='p'>)</span>
         <span class='c1'># if the letter is already in the hash, increase</span>
         <span class='c1'># its count by 1</span>
@@ -199,7 +201,9 @@
         <span class='c1'># so put it in and set the count to 1</span>
         <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>=</span> <span class='mi'>1</span>
     <span class='k'>end</span>
-<span class='k'>end</span> <span class='c1'>#=&gt; {&#39;a&#39; =&gt; 3, &#39;b&#39; =&gt; 1}</span>
+<span class='k'>end</span>
+
+<span class='n'>h</span> <span class='c1'>#=&gt; {&#39;a&#39; =&gt; 3, &#39;b&#39; =&gt; 1}</span>
 </code></pre></div>
 <p>You can make this example a bit shorter by using a hash with a <strong>default value</strong>: normally a hash will return <code>nil</code> if the key isn&#8217;t there, but we can set it up to return something else. In particular we&#8217;ll set it up to return 0:</p>
 <div class='highlight'><pre><code class='ruby'><span class='c1'># set up a hash with default value 0</span>
@@ -208,6 +212,8 @@
 <span class='o'>[</span><span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;b&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='s1'>&#39;a&#39;</span><span class='o'>].</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>letter</span><span class='o'>|</span>
     <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>h</span><span class='o'>[</span><span class='n'>letter</span><span class='o'>]</span> <span class='o'>+</span> <span class='mi'>1</span>
 <span class='k'>end</span>
+
+<span class='n'>h</span> <span class='c1'>#=&gt; {&#39;a&#39; =&gt; 3, &#39;b&#39; =&gt; 1}</span>
 </code></pre></div>
 <p>If the letter isn&#8217;t in the hash yet, the default value of 0 will be returned. Otherwise the current count will be returned. Either way, we just need to increase the value by 1.</p>
 <div class='exercise alert alert-info'><strong>
