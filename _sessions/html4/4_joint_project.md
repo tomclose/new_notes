@@ -2,22 +2,23 @@
 title: Joint project
 ---
 
-For this part you will need to be in groups of at least two.
+The purpose of this project is to create a shared html page to serve as a 'cheat sheet' for all the different commands you've learnt in the course so far (e.g. `ls`, `git add --all` etc.). You will need to be in groups of three. 
 
 {% exercise %}
 1. Person A should set up a new project on their laptop:
-	1. Create a new folder called `group_project` in your `coding_course` folder
+	1. Create a new folder called `group_cheatsheet` in your `coding_course` folder
 	2. Create a file in that folder called `index.html` with some simple html in it.
 2. Person A should then set it up as a git repository
 	
-		cd group_project
-		git init
-		git add .
-		git commit -m "Initial import"
+		$ cd group_cheatsheet
+		$ git init
+		$ git add --all
+		$ git commit -m "Initial import"
 
-3. Person A creates a new repo on github. To do this you need to log in at [github.com](http://github.com) and select "Create a new repo". You should call the repository `group_project`.
+3. Person A creates a new repo on github. To do this you need to log in at [github.com](http://github.com) and select "Create a new repo". You should call the repository `group_cheatsheet`.
 4. Person A should then push their code up to github following the instructions on github. You want to "Push an existing repository from the command line" - the instructions at the **bottom** of the page. You should end up pasting a command like
 
+		# Warning: these commands won't work. You need copy the right ones from GitHub.
 		git remote add origin https://github.com/username/blah.git
 		git push -u origin master
 
@@ -25,12 +26,12 @@ For this part you will need to be in groups of at least two.
 5. Person A then needs to add everyone else as collaborators by going to `Settings > Collaborators` on the repo page
 6. Everyone else should then clone the project:
 	1. Go to the repo's github page
-	2. Copy the `HTTP` link from the box on the page
+	2. Copy the `ssh` link from the box on the page
 	3. In your `coding_course` folder do
 
 			git clone paste_the_repo_link_here
 
-7. Person B should then download [Twitter Bootstrap](http://twitter.github.io/bootstrap/) and put it in the `group_project` folder
+7. Person B should then download [Twitter Bootstrap](http://twitter.github.io/bootstrap/) and put it in the `group_cheatsheet` folder
 8. Meanwhile Person C should add more content to the page's html
 9. Person B should add their changes and push up to github:
 
@@ -52,6 +53,6 @@ For this part you will need to be in groups of at least two.
 
 		 git push
 
-12. Continue to work on the site together!
+12. Continue to work on the cheatsheet together!
 
 {% endexercise %}

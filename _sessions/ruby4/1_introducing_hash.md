@@ -26,7 +26,7 @@ The above code creates a hash using the curly brackets `{ }`. Each element of th
 {% exercise %}
 1. Grab the code for the session:
 
-		git clone https://github.com/TomClose/ruby4.git
+		git clone https://github.com/code61/ruby4.git
 
-2. With your partner work through `ruby4/hash.rb`. See if you can guess what each expression will do, then test by pasting into irb.
+2. With your partner work through `ruby4/hash_examples.rb`. See if you can guess what each expression will do, then test by pasting into irb.
 {% endexercise %}

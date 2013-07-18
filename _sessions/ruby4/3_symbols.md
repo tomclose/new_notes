@@ -24,6 +24,7 @@ Symbols save space
 {% endhighlight %}
 
 {% exercise %}
+(Optional)
 1. Do `ruby4/symbolize_keys.rb`.
 2. Test your answers using `test_symbolize_keys.rb`
 {% endexercise %}

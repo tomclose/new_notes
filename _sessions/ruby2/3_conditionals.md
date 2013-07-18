@@ -6,10 +6,10 @@ Often when writing code it is useful to test for certain conditions and respond 
 
 {% highlight ruby %}
 def old_enough?(age)
-	if age >= 18
-		puts "You can buy alcohol"
-	end
-	return nil
+  if age >= 18
+    puts "You can buy alcohol"
+  end
+  return nil
 end
 {% endhighlight %}
 
@@ -48,16 +48,14 @@ It is often useful to have the ability to run some code only if the condition is
 
 {% highlight ruby %}
 def old_enough?(age)
-	if age >= 18
-		puts "You can buy alcohol"
-	else
-		puts "No alcohol for you child. Move along please."
-	end
-	return nil
+  if age >= 18
+	puts "You can buy alcohol"
+  else
+	puts "No alcohol for you child. Move along please."
+  end
+  return nil
 end
 {% endhighlight %}
-
-# TODO explain about `load 'pass_fail.rb'`
 
 {% exercise %}
 1. Open `pass_fail.rb` in Sublime Text

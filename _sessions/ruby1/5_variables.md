@@ -43,9 +43,12 @@ Local variables start with a lower case letter. That's all we'll be dealing with
 Usual in ruby to use underscored names, e.g. `user_name` or `this_is_a_stupidly_long_variable_name`.
 
 {% exercise %}
-    a = 1
-    b = 10
-    a = b
+Below is some code containing variables a and b
+
+     a = 1
+     b = 10
+     a = b
+
 Which of the following is correct?:
 1. The value of a is 1. The value of b is 10.
 2. The value of a is 10. The value of b is 10.

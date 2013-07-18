@@ -14,7 +14,7 @@ T | P | Session | Content
 -|-|hwk 1.1 | HTML exercise inc. read resources. Read about git. Buy domain name. Try ruby.
 -|-|[1.2.1](/html2) | **html2**: Using git, push to github, CSS
 -|-|1.2.2   | **ruby1**: files, irb, sums, variables, strings, puts? (inc. pull from github)
--|-|hwk 1.2 | Ruby exercises. Add CSS to site. Practise pushing. Git tutorial  (gitlab 1-11).
+-|-|hwk 1.2 | Ruby exercises. Add CSS to site. Practise pushing. Git tutorial (gitlab 1-11).
 -|-|[2.1.1](/html3) | **html3**: css recap, selectors, twitter bs, github pages
 -|-|2.1.2   | **ruby2**: methods &amp; scope, if, booleans &amp; operations, case
 -|-|hwk 2.1 | Ruby exercises. Read about CSS &amp; and to site. Custom domain to ghp.
@@ -64,3 +64,22 @@ T | P | Session | Content
 -|-|9.2.2   | **jsapp6**:
 
 </div>
+
+
+Week | Content
+---- | -------
+1    | HTML, CSS, git add, git commit, buy domain name, gh pages
+2    | twitter bootstrap, git push/pull/conflict (cheatsheet), ruby intro, ruby methods
+3    | ruby arrays/hashes, start joint project, forms
+4    | git branching, analytics, ruby up to classes
+5    | databases, rubygems, bootstrap js, js in console
+6    | sinatra, own js, mobile app, RESTful services, HTTP verbs
+7    | rails
+8    | own project + more rails
+9    | 
+
+
+
+
+
+

@@ -31,7 +31,6 @@ Hashes have a number of methods, which behave as you would expect e.g.
 * `empty?`
 * `keys`, `values`
 * `has_key?`, `has_value?`
-* `invert` (swaps keys with values)
 
 ### Iterating
 
@@ -91,29 +90,7 @@ square_numbers #=> {5 => 25, 6 => 36}
 
 The above could be used to save the results of an expensive calculation: if you do `square_numbers[5]` again it doesn't need to work it out - it just looks up the result.
 
-### Converting to arrays and back
 
-You can convert a hash to an array using the `to_a` method and use the `Hash[ ]` syntax to convert it back:
-
-{% highlight ruby %}
-h = {'a' => 1, 'b' => 2}
-
-h.to_a #=> [['a', 1], ['b', 2]]
-
-h2 = Hash[['a', 1], ['b', 2]]
-{% endhighlight %}
-
-The `Hash[ ]` is also useful for creating a hash from arrays of keys and values (which is surprisingly useful).
-
-{% highlight ruby %}
-keys = [1, 2, 3]
-values = ['one', 'two', 'three']
-
-# use Array#zip to get the arrays in the right format
-zipped = keys.zip(values)  #=> [[1, 'one'], [2, 'two'], [3, 'three']]
-
-h = Hash[zipped]  #=> {1 => 'one', 2 => 'two', 3 => 'three'}
-{% endhighlight %}
 
 {% exercise %}
 1. Complete the three functions in `ruby4/character.rb`

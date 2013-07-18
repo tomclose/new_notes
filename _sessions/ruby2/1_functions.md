@@ -5,91 +5,108 @@ title: Functions
 Quite often when writing code you find that you have some operation that you have to do over and over again. As an example consider a simple interactive command line program:
 
 {% highlight console %}
-Enter your name: homer
-Enter your guest's name: margE
-Welcome Homer and Marge!
+Enter your name: margE
+Enter your guest's name: homer
+Welcome Marge and Homer!
 {% endhighlight %}
 
 One way of doing this would be to write the following code:
 
 {% highlight ruby %}
 print "Enter your name: "
-name = gets.chomp
+# Wait for user input:
+main_name = gets
+# Remove the 'newline' caused by pressing enter:
+main_name = main_name.chomp
+# Capitalize the string:
+main_name = main_name.capitalize
 
 print "Enter your guest's name: "
-guest = gets.chomp
+# Wait for user input:
+guest_name = gets
+# Remove the 'newline' caused by pressing enter:
+guest_name = guest_name.chomp
+# Capitalize the string:
+guest_name = guest.capitalize
 
-puts "Welcome #{name.downcase.capitalize} and #{guest.downcase.capitalize}!"
+puts "Welcome #{main_name} and #{guest_name}!"
 {% endhighlight %}
 
-You'll notice that we call `.downcase.capitalize` on each input to prepare it for displaying - we do the exact same action in two different places. As it is, this is almost ok, as what we're doing is very simple. If this action got much more complicated (for example if we wanted to cope with names like 'Mary-Jane') it would be good to separate it out into a different bit of code. Like most languages, Ruby allows you to do this by writing a *function*.
+You'll notice that we're basically doing the same stuff to `main_name` and `guest_name`. It would be nice to not have to duplicate this logic in our code. This will be especially important when our code examples become longer and more complicated.
+
+Like most languages, Ruby allows you to reuse bits of code by writing a *function*. For the case above we're going to write a function called `get_name`, which will (a) wait until the user inputs a string and (b) prepare that string using `chomp` and `capitalize`.
 
 ### Writing a function
 
 Writing a function in ruby goes something like this:
 
 {% highlight ruby %}
-def prepare_name(name)
-	return name.downcase.capitalize
+def get_name
+    # Wait for user input:
+    name = gets
+    # Remove the 'newline' caused by pressing enter:
+    name = name.chomp
+    # Capitalize the string:
+    name = name.capitalize
+    return name
 end
 {% endhighlight %}
 
-The `def` and `end` keywords are used to tell the interpreter where the function starts and finishes. Here `prepare_name` is the name of the function and `name` is a *parameter*, which represents the value that we'll pass in to the function. The `return` value tells the function what to give back when it is called.
-
-Notice that, unlike in some other languages, in ruby you don't have to tell the function what type of object to expect the parameter to be. All that matters is that the object you pass in has the methods you want to call on it. This idea is called **duck-typing** - it doesn't matter what an object is, all that matters is how it behaves: *"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."[(James Whitcomb Riley)](http://books.google.co.uk/books?id=j7zds6xx7S0C&pg=PA68&dq=%22james+Riley%22+OR+%22James+Whitcomb+Riley%22+bird++duck&num=100&redir_esc=y#v=onepage&q=%22james%20Riley%22%20OR%20%22James%20Whitcomb%20Riley%22%20bird%20%20duck&f=false)*.
+The `def` and `end` keywords are used to tell the interpreter where the function starts and finishes. Here `get_name` is the name of the function. The `return` value tells the function what to give back when it is called.
 
 The above code can then be re-written:
 {% highlight ruby %}
-# define prepare_name
-def prepare_name(name)
-	return name.downcase.capitalize
+# Define get_name
+def get_name
+    # Wait for user input:
+    name = gets
+    # Remove the 'newline' caused by pressing enter:
+    name = name.chomp
+    # Capitalize the string:
+    name = name.capitalize
+    return name
 end
 
 print "Enter your name: "
-name = gets.chomp
+main_name = get_name
 
 print "Enter your guest's name: "
-guest = gets.chomp
+guest_name = get_name
 
-puts "Welcome #{prepare_name(name)} and #{prepare_name(guest)}!"
+puts "Welcome #{main_name} and #{guest_name}!"
 {% endhighlight %}
-
-Note that to call the function we pass it a value inside `()`: e.g. `prepare_name('tom')`.
-
-{% exercise %}
-Copy and paste the `prepare_name` function definition into irb. Try calling it on some strings.
-{% endexercise %}
-
-### Functions with irb
-
-You'll often want to try out the functions you are working on in irb. There are two ways of doing this:
-1. copy and paste the function into irb
-2. load in the file that the function is written in
-
-Option 2 is the better option when your functions become bigger and more complicated. To do this do
-{% highlight irb %}
-> load 'my_file.rb'
-{% endhighlight %}
-
-Irb will look for the file **in the folder that you started irb in** (and then on your path).
 
 {% exercise %}
 1. Grab the code for this session:
 
 		git clone https://github.com/TomClose/ruby2.git
 
-2. Open `double.rb` in Sublime Text
-3. Run `test_double.rb` in the console:
-
-		ruby test_double.rb
-
-4. Complete the code in `double.rb` so that the test passes.
+2. Open the file `function_example.rb`.
+3. Write the `get_name` function and modify the code to use it.
+4. Copy and paste the function into `irb` and try it on a few strings.
 {% endexercise %}
 
-{% exercise %}
-1. Open `encode.rb` in Sublime Text
-2. Run `test_encode.rb` in the console
-3. Change the encode to use the bitwise_xor operation (`^`) for encoding
-4. Write the decode function so that the tests pass
-5. In the code you've been given, the `encode` function does a bitwise xor with the number 6. Get your partner to write an encode that uses a different (unknown) number and paste it into your irb. How can you find out which number they use? Can you write the `decode` function so that it will work no matter which function they give you?
-{% endexercise %}
+### A note on scope
+
+In the `get_name` function, we defined a variable called `name`. Because it was defined inside the function the variable won't exist outside the function:
+
+{% highlight ruby %}
+def get_name
+    # Wait for user input:
+    name = gets
+    # Remove the 'newline' caused by pressing enter:
+    name = name.chomp
+    # Capitalize the string:
+    name = name.capitalize
+    return name
+end
+
+# the variable 'name' only exists inside the function get_name
+
+name #=> NameError: undefined local variable or method `name' for main:Object
+{% endhighlight %}
+
+We say that the *scope* of the variable `name` is the function `get_name`. Outside that function the variable is *out of scope* and can't be called.
+
+So **variables defined inside functions can't be seen outside**.
+

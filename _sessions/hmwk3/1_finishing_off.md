@@ -1,10 +1,11 @@
 ---
 title: Finishing off
 ---
-
 {% exercise %}
-Finish off the `html2/exercise2.html` css task from class.
+Finish the off the `html3/profile.html` exercise from class.
 {% endexercise %}
+
+
 
 <hr>
 

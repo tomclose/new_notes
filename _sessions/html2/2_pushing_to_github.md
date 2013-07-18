@@ -9,7 +9,7 @@ Go to github, login, and click "Create New Repo" in the top left hand corner.
 
 ![Creating a repo on GitHub](/assets/create_repo.png)
 
-Follow the instructions, calling it something like `first_site`. You'll get to a page when it'll describe how to get your code online. You want to follow the instructions for "Pushing an existing repository to github".
+Follow the instructions, calling it something like `first_site`. **Do not** click the box which says 'Create a readme with this repository'. You'll get to a page when it'll describe how to get your code online. You want to follow the instructions for "Pushing an existing repository to github".
 
 ![Push repo to GitHub](/assets/push_repo_github.png)
 

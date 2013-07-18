@@ -18,7 +18,6 @@ The `-a` is a flag which tells the `ls` command to show hidden files and folders
 
     $ cd .git
     $ ls
-    ....
     $ cd ..
 
 All the data to allow git to version control your code will be stored inside this hidden folder. If you ever want to 'un-version-control' your code all you have to do is delete this folder.

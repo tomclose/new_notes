@@ -2,13 +2,14 @@
 title: More arrays
 ---
 
+Here are some things you learnt in the last exercise:
+
 ### Accessing elements
 
 * Arrays start from 0, so that the first elements is `a[0]`
 * Arrays also allow indexing from the back, giving the last element as `a[-1]`
 * If try to access beyond the end of the array it gives `nil` (instead of an error in other languages)
 * You can access multiple elements by specifying a range, e.g. `a[1..-1]` is everything but the first element
-
 
 ### Array methods
 
@@ -17,9 +18,7 @@ Arrays have many useful (and largely self-explanatory) methods, including:
 * `empty?` - does the array have any elements, or is it the empty array `[]`
 * `length`
 * `include?(x)` - is `x` in the array
-* `min`, `max`
 * `reverse`, `reverse!` - as with strings the `!` permanenty changes the array
-* `shuffle` - perform a random permutation
 
 ### Adding to an array
 
@@ -39,11 +38,7 @@ Arrays have many useful (and largely self-explanatory) methods, including:
 
 
 {% exercise %}
-Write a sum function that takes an array (of numbers) and returns the sum of its elements.
-{% endexercise %}
-
-{% exercise %}
-1. Open the file `marks.rb` in Sublime Text
-2. Fix the mistakes in the `display_marks` function. You'll probably want to try some bits out in irb to see what's going on.
-3. Check your solution by running `test_marks.rb` in the console.
+1. Open the file `array_exercises.rb` in Sublime Text.
+2. Complete as many of the functions as you can.
+3. Check your solution by running `test_array_exercises.rb` in the console.
 {% endexercise %}
