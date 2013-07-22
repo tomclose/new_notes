@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>lp3</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>lp3 <small></small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_git_branching_intro" data-toggle="tab">Git branching </a></li>
+		
+	
+		
+		<li><a href="#2_commit_merge_branch" data-toggle="tab">Committing and merging </a></li>
+		
+	
+		
+		<li><a href="#3_collaborative_branching" data-toggle="tab">Collaborative branching </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_git_branching_intro">
+	
+
+		<h2>Git branching</h2>
+		<p>Quick and easy branching is one of Git&#8217;s top features. You&#8217;ve already seen some examples of branches (e.g. the solutions branch for the class exercises and the gh-pages branch trick). In this session we&#8217;ll learn more about branching and when it should be used.</p>
+
+<h3 id='why_branch'>Why branch?</h3>
+
+<p>Branching is a way of holding several different versions of your code in the same repository at one time. It allows you to work on the different versions independently and then merge them back together at a later date.</p>
+
+<p>As a concrete example, suppose you are working on a static website as a team. One member of your team (Bob) wants to try out a different site design, while the rest of you want to continue to work on the site content.</p>
+
+<ul>
+<li>Bob creates a new branch to try out the new design.</li>
+
+<li>When he is finished he pushes the new branch up to GitHub.</li>
+
+<li>Everyone else can then pull down the new branch to have a look.</li>
+
+<li>It the team like Bob&#8217;s new design they can merge his branch into the main branch. If not they can discard it or ask him to do some more work.</li>
+</ul>
+
+<p>Branches allow you to quickly try out and share new ideas, without affecting the main version of your code. They allow you to pick and choose which of these experiments you want to use and which to discard. Branches are an invaluable tool when it comes to developing, both in teams and alone.</p>
+
+<h3 id='creating_a_branch'>Creating a branch</h3>
+
+<p>To create a branch you use the <code>git checkout -b</code> command.</p>
+
+<pre><code>$ git checkout -b redesign</code></pre>
+
+<p>This will create a new branch starting from the current version of your code. You can see this new branch by running</p>
+
+<pre><code>$ git branch
+  master
+* redesign</code></pre>
+
+<p>You will see that you have two branches: <code>master</code> and <code>redesign</code>. The <code>*</code> tells you that you are currently on the <code>redesign</code> branch.</p>
+
+<p>The <code>master</code> branch is the default branch that is set up when you create the repository. So far all the work you have done has been on your repo&#8217;s <code>master</code> branch.</p>
+
+<p>Another useful tool for viewing the different branches is <code>gitk</code>:</p>
+
+<pre><code>$ gitk --all</code></pre>
+
+<p>This will show you the current state of your repository, including all the different branches. (If you are on a Mac, you should consider downloading <a href='http://gitx.frim.nl/'>gitx</a>, which is basically a much nicer version of <code>gitk</code>.)</p>
+
+<h3 id='switching_back_and_forth'>Switching back and forth</h3>
+
+<p>To switch between branches use the <code>git checkout</code> command (<strong>without</strong> the <code>-b</code>). If you&#8217;ve made any changes to the branch you were on, you will need to add and commit them before you move.</p>
+
+<pre><code>$ git checkout master
+$ git checkout redesign</code></pre>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Navigate to the <code>ruby4</code> folder on the command line.</p>
+</li>
+
+<li>
+<p>Add and commit any changes you have made:</p>
+
+<pre><code> $ git add --all
+ $ git commit -m &quot;Work on exercises.&quot;</code></pre>
+</li>
+
+<li>
+<p>Checkout the solutions branch and do another <code>git branch</code> to check it has worked.</p>
+
+<pre><code> $ git checkout solutions
+ $ git branch</code></pre>
+</li>
+
+<li>
+<p>Run the <code>i_have_a_dream</code> solution</p>
+
+<pre><code> $ ruby `i_have_a_dream.rb`</code></pre>
+
+<p>and have a look at <code>index.html</code> in your browser.</p>
+</li>
+
+<li>
+<p>Move back to the master branch.</p>
+
+<pre><code> $ git checkout master</code></pre>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_commit_merge_branch">
+	
+
+		<h2>Committing and merging</h2>
+		<p>We&#8217;ve seen how to create a branch and how to move between branches. In this section we look at how to add code to a branch and how to combine two branches.</p>
+
+<h3 id='committing_to_a_branch'>Committing to a branch</h3>
+
+<p>You&#8217;ve actually done this loads of times before. What you before thought of as &#8216;committing to the repository&#8217; was actually &#8216;committing to a branch in the repository&#8217;. In particular, you were committing to the default <code>master</code> branch.</p>
+
+<pre><code>$ git add --all
+$ git commit -m &quot;Made commits to new design&quot;</code></pre>
+
+<p>You use <code>gitk</code> to view the new state of the repository.</p>
+
+<h3 id='merging_branches'>Merging branches</h3>
+
+<p>Merging is the process by which you take the changes you&#8217;ve made on one branch and pull them into another. To merge:</p>
+
+<ol>
+<li>You need to be on the branch that you want to pull the changes into.</li>
+
+<li>Use the <code>git merge</code> command specifying the branch that you want to pull in.</li>
+</ol>
+
+<p>For example to merge <code>redesign</code> into <code>master</code>:</p>
+
+<pre><code>$ git checkout master
+$ git merge redesign</code></pre>
+
+<p>This might work straight away or you might have a merge conflict to fix. You do this just like when using <code>git pull</code>:</p>
+
+<ul>
+<li>First fix the files, taking out the <code>&lt;&lt;&lt;&lt;</code> bits.</li>
+
+<li>Add and commit the changes.</li>
+</ul>
+
+<h3 id='deleting_branches'>Deleting branches</h3>
+
+<p>After you&#8217;ve merged in a branch you might want to delete that branch, to keep things tidy. To do this do</p>
+
+<pre><code>$ git branch -d redesign</code></pre>
+
+<p>If you haven&#8217;t already merged it this</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Make a new folder called <code>branching_test</code> in your <code>coding_course</code> folder.</p>
+</li>
+
+<li>
+<p>Set it up as a git repository: in the <code>branching_test</code> folder run</p>
+
+<pre><code> $ git init</code></pre>
+</li>
+
+<li>
+<p>Add an <code>index.html</code> with some simple text in it. Save, add and commit:</p>
+
+<pre><code> $ git add --all
+ $ git commit -m &quot;Initial commit&quot;</code></pre>
+</li>
+
+<li>
+<p>Create a new branch called <code>redesign</code>:</p>
+
+<pre><code> $ git checkout -b redesign</code></pre>
+</li>
+
+<li>
+<p>Add a new file called <code>about.html</code> with some simple text in it. Save and and commit (on the redesign branch):</p>
+
+<pre><code> $ git add --all
+ $ git commit -m &quot;Added about.html&quot;</code></pre>
+</li>
+
+<li>
+<p>Checkout <code>master</code>. Notice how <code>about.html</code> has gone.</p>
+
+<pre><code> $ git checkout master</code></pre>
+
+<p>You might also want to try <code>gitk</code> at this point.</p>
+</li>
+
+<li>
+<p>Merge <code>redesign</code> into <code>master</code>. Notice that you should now see <code>about.html</code> in the same folder.</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_collaborative_branching">
+	
+
+		<h2>Collaborative branching</h2>
+		<h3 id='about_remotes'> About remotes</h3>
+
+<p>A git remote stores the location of another repository. It is possible to have mutiple remotes for a single repositry. You can see a list of the remotes by running the command</p>
+
+<pre><code>$ git remote -v</code></pre>
+
+<p>The default remote is called <code>origin</code>. When you clone a repository it will automatically set up the <code>origin</code> to point to the repository (e.g. on GitHub) that you cloned it from and will use this for future <code>pull</code> operations.</p>
+
+<h3 id='about_upstream_branches'>About upstream branches</h3>
+
+<h3 id='pushing_up_a_branch'>Pushing up a branch</h3>
+
+<pre><code>git push -u origin redesign</code></pre>
+
+<h3 id='working_on_someone_elses_branch'>Working on someone else&#8217;s branch</h3>
+
+<pre><code>git fetch</code></pre>
+
+<p>Will pull branches down into &#8216;remote-tracking&#8217; branches. You can see these by doing:</p>
+
+<pre><code>git branch --all</code></pre>
+
+<p>The remote-tracking branches are</p>
+
+<pre><code>git checkout branchname</code></pre>
+
+<p>The <code>git checkout</code> will create the new branch from the remote-tracking branches.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong> 
+
+
+</div>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
