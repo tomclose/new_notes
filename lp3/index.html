@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>lp3</title>
+  <title>Landing Page 3</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,7 +29,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>lp3 <small></small></h1>
+  <h1>Landing Page 3 <small>Branching out</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -45,6 +45,10 @@
 	
 		
 		<li><a href="#3_collaborative_branching" data-toggle="tab">Collaborative branching </a></li>
+		
+	
+		
+		<li><a href="#4_more_collaborative_branching" data-toggle="tab">More on remote branches </a></li>
 		
 	
 </ul>
@@ -71,7 +75,7 @@
 
 <li>Everyone else can then pull down the new branch to have a look.</li>
 
-<li>It the team like Bob&#8217;s new design they can merge his branch into the main branch. If not they can discard it or ask him to do some more work.</li>
+<li>If the team like Bob&#8217;s new design they can merge his branch into the main branch. If not they can discard it or ask him to do some more work.</li>
 </ul>
 
 <p>Branches allow you to quickly try out and share new ideas, without affecting the main version of your code. They allow you to pick and choose which of these experiments you want to use and which to discard. Branches are an invaluable tool when it comes to developing, both in teams and alone.</p>
@@ -120,7 +124,7 @@ $ git checkout redesign</code></pre>
 </li>
 
 <li>
-<p>Checkout the solutions branch and do another <code>git branch</code> to check it has worked.</p>
+<p>Check out the solutions branch and do another <code>git branch</code> to check it has worked.</p>
 
 <pre><code> $ git checkout solutions
  $ git branch</code></pre>
@@ -161,12 +165,12 @@ $ git commit -m &quot;Made commits to new design&quot;</code></pre>
 
 <h3 id='merging_branches'>Merging branches</h3>
 
-<p>Merging is the process by which you take the changes you&#8217;ve made on one branch and pull them into another. To merge:</p>
+<p>Merging is the process by which you take the changes you&#8217;ve made on one branch and incorporate them into another. To merge:</p>
 
 <ol>
-<li>You need to be on the branch that you want to pull the changes into.</li>
+<li>You need to be on the branch that you want to incorporate the changes into.</li>
 
-<li>Use the <code>git merge</code> command specifying the branch that you want to pull in.</li>
+<li>Use the <code>git merge</code> command specifying the branch that you want to bring in.</li>
 </ol>
 
 <p>For example to merge <code>redesign</code> into <code>master</code>:</p>
@@ -188,7 +192,7 @@ $ git merge redesign</code></pre>
 
 <pre><code>$ git branch -d redesign</code></pre>
 
-<p>If you haven&#8217;t already merged it this</p>
+<p>If you haven&#8217;t already merged the branch it won&#8217;t let you delete it. If you really want to get rid of it you can use <code>-D</code> instead of <code>-d</code>, but this will remove the work in the branch for good!</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -234,6 +238,10 @@ $ git merge redesign</code></pre>
 <li>
 <p>Merge <code>redesign</code> into <code>master</code>. Notice that you should now see <code>about.html</code> in the same folder.</p>
 </li>
+
+<li>
+<p>Delete the <code>redesign</code> branch.</p>
+</li>
 </ol>
 </div>
 	</div>
@@ -247,35 +255,223 @@ $ git merge redesign</code></pre>
 
 <p>A git remote stores the location of another repository. It is possible to have mutiple remotes for a single repositry. You can see a list of the remotes by running the command</p>
 
-<pre><code>$ git remote -v</code></pre>
+<pre><code>$ git remote -v
+origin  git@github.com:tomclose/git_test.git (fetch)
+origin  git@github.com:tomclose/git_test.git (push)</code></pre>
 
 <p>The default remote is called <code>origin</code>. When you clone a repository it will automatically set up the <code>origin</code> to point to the repository (e.g. on GitHub) that you cloned it from and will use this for future <code>pull</code> operations.</p>
 
-<h3 id='about_upstream_branches'>About upstream branches</h3>
+<p>You can add a remote by using the <code>git remote add</code> command:</p>
+
+<pre><code>$ git remote add origin git@github.com:my_username/my_repo.git</code></pre>
+
+<p>You might recognise this - it&#8217;s the first of the two lines you use when you push an existing repository up to github!</p>
 
 <h3 id='pushing_up_a_branch'>Pushing up a branch</h3>
 
-<pre><code>git push -u origin redesign</code></pre>
+<p>Once you have a remote you can push your branches up. The following command will push the <code>master</code> branch up to the <code>origin</code> (<strong>for the first time</strong>):</p>
+
+<pre><code>$ git push -u origin master
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 216 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:tomclose/git_test.git
+ * [new branch]      master -&gt; master</code></pre>
+
+<p>We will say more about the <code>-u</code> bit on the next page - it basically sets things up so that <code>git pull</code> and <code>git push</code> will work automatically. If you make some changes and want to push them up (after the first time) you just need to do</p>
+
+<pre><code>$ git push</code></pre>
+
+<p>and it will know what to do.</p>
 
 <h3 id='working_on_someone_elses_branch'>Working on someone else&#8217;s branch</h3>
 
-<pre><code>git fetch</code></pre>
+<p>In this section we will be talking about three different types of branches:</p>
 
-<p>Will pull branches down into &#8216;remote-tracking&#8217; branches. You can see these by doing:</p>
+<ul>
+<li><strong>remote branches</strong>: exist in the remote repository.</li>
 
-<pre><code>git branch --all</code></pre>
+<li><strong>remote-tracking branches</strong>: exist on your local machine, mirror the states of the remote branches exactly.</li>
 
-<p>The remote-tracking branches are</p>
+<li><strong>local branches</strong>: exist on your local machine, these are the branches that you can work on directly.</li>
+</ul>
 
-<pre><code>git checkout branchname</code></pre>
+<p>Before you work on someone else&#8217;s (remote) branch you have to get it from the remote repository. To do this you need to use the <code>git fetch</code> command. By default this will fetch all the remote branches from the <code>origin</code> remote.</p>
 
-<p>The <code>git checkout</code> will create the new branch from the remote-tracking branches.</p>
+<pre><code>$ git fetch</code></pre>
+
+<p>All the remote branches will be pulled down into &#8216;remote-tracking&#8217; branches. You can see these by doing:</p>
+
+<pre><code>$ git branch --all
+* master
+  remotes/origin/HEAD -&gt; origin/redesign
+  remotes/origin/master
+  remotes/origin/redesign</code></pre>
+
+<p>The remote-tracking branches are the ones that start <code>remotes/origin</code>. Remote-tracking branches are special - they exist only to store the branches from the remote repository. You can&#8217;t do any work on them directly. If you want to work on one of these branches you first need to create a local branch. To do this use the <code>git checkout</code> command:</p>
+
+<pre><code>$ git checkout redesign
+Branch master set up to track remote branch redesign from origin.
+Switched to a new branch &#39;redesign&#39;</code></pre>
+
+<p>Normally this would switch to the local <code>redesign</code> branch. As you don&#8217;t have a local <code>redesign</code> branch, git does a clever thing: it sees you have a <code>remote/origin/redesign</code> and so creates a local branch from that instead. You can see this by doing a <code>git branch --all</code>:</p>
+
+<pre><code>$ git branch --all
+  master
+* redesign
+  remotes/origin/HEAD -&gt; origin/redesign
+  remotes/origin/master
+  remotes/origin/redesign</code></pre>
+
+<p>You can then work on this branch. To push your changes to the branch back to the repository just do</p>
+
+<pre><code>$ git push</code></pre>
+
+<p>(with the <code>redesign</code> branch open).</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
-</strong> 
+</strong>
+<ol>
+<li>
+<p>In your <code>landing_page</code> folder, try the following commands:</p>
 
+<pre><code> $ git remote -v
+ $ git branch --all</code></pre>
+</li>
 
+<li>
+<p>Choose one person in your team. Everyone in the team watch while they create a branch called <code>gh-pages</code> and push it to GitHub:</p>
+
+<pre><code> # (starting on the master branch)
+ $ git checkout -b gh-pages
+ $ git push -u origin gh-pages</code></pre>
+</li>
+
+<li>
+<p>Everyone else in the team should then pull this branch down and check it out:</p>
+
+<pre><code> $ git fetch
+ $ git checkout gh-pages</code></pre>
+</li>
+
+<li>
+<p>Get someone on your team to check out the <code>master</code> branch and do some work on it. They should then add, commit and push their work.</p>
+</li>
+
+<li>
+<p>Get another member of your team to pull their changes, merge them into <code>gh-pages</code> and then push the <code>gh-pages</code> branch up.</p>
+</li>
+</ol>
 </div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_more_collaborative_branching">
+	
+
+		<h2>More on remote branches</h2>
+		<p>The material on this page is purely to explain remote branches in slightly more detail. Feel free to ignore it if you&#8217;ve heard enough already!</p>
+
+<h3 id='pulling_and_upstream_branches'>Pulling and upstream branches</h3>
+
+<p>We&#8217;ve essentially seen two ways of getting information from one branch into another:</p>
+
+<ul>
+<li><code>git pull</code> incorporates the contents of a remote branch into your current branch.</li>
+
+<li><code>git merge</code> incorporates the contents of a local branch into your current branch.</li>
+</ul>
+
+<p>In fact, <code>git pull</code> is really build using <code>git merge</code>. The following two things are (roughly) equivalent:</p>
+
+<pre><code>(on branch master)
+$ git pull
+
+$ git fetch
+$ git merge origin/master</code></pre>
+
+<p>A <code>pull</code> is just a <code>fetch</code> followed by a <code>merge</code> with a remote-tracking branch.</p>
+
+<p>Unfortunately this doesn&#8217;t quite make sense: when we do the <code>fetch</code>+<code>merge</code> we specify which branch to merge; when we do the git pull we don&#8217;t. How does git know which branch to fetch and merge when you do the pull?</p>
+
+<p>When doing a pull, git will automatically fetch and merge your current branches <em>upstream branch</em>. Consider the following chain of events:</p>
+
+<pre><code>(in an existing git repository)
+$ git remote add origin git@github.com:tomclose/git_test.git
+$ git push -u origin master
+$ git push origin redesign</code></pre>
+
+<p>First we set up the remote repository <code>origin</code>. We then push master to the origin with the <code>-u</code> flag. This sets the upstream of our <code>master</code> to be <code>origin/master</code>. We then push <code>redesign</code> to the <code>origin</code>. This doesn&#8217;t set the upstream. You can see what this has done with the <code>git remote show</code> command:</p>
+
+<pre><code>$ git remote show origin
+* remote origin
+  Fetch URL: git@github.com:tomclose/git_test.git
+  Push  URL: git@github.com:tomclose/git_test.git
+  HEAD branch: master
+  Remote branches:
+    master   tracked
+    redesign tracked
+  Local branch configured for &#39;git pull&#39;:
+    master merges with remote master
+  Local refs configured for &#39;git push&#39;:
+    master   pushes to master   (up to date)
+    redesign pushes to redesign (up to date)</code></pre>
+
+<p>There are two remote branches on the <code>origin</code>. We&#8217;re tracking both of them (i.e. we have remote-tracking branches for each). Our local <code>master</code> branch knows to push to the remote <code>master</code> and merge from the remote <code>master</code>. The local <code>redesign</code> branch only knows to push to the remote <code>redesign</code>. It doesn&#8217;t know about merging.</p>
+
+<p>Let&#8217;s see what happens when we try to pull:</p>
+
+<pre><code>(after checking out redesign)
+$ git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream redesign origin/&lt;branch&gt;</code></pre>
+
+<p>It doesn&#8217;t know what to do.</p>
+
+<p>We can fix this using the command:</p>
+
+<pre><code>$ git branch -u redesign origin/redesign</code></pre>
+
+<p>In summary, the following two things are equivalent:</p>
+
+<pre><code>$ git push -u origin redesign
+
+$ git push origin redesign
+$ git branch -u redesign origin/redesign</code></pre>
+
+<h3 id='checking_out_remote_branches'>Checking out remote branches</h3>
+
+<p>Another thing that set the upstream on the branch was using <code>git checkout</code> to get a local version of a remote branch.</p>
+
+<p>Say we&#8217;re in the following state:</p>
+
+<pre><code>$ git branch --all
+* master
+  remotes/origin/HEAD -&gt; origin/redesign
+  remotes/origin/master
+  remotes/origin/redesign</code></pre>
+
+<p>we have a local and remote <code>master</code> branch, but only a remote <code>redesign</code> branch. The following three sets of commands are then equivalent:</p>
+
+<pre><code>$ git checkout redesign
+
+$ git checkout --track redesign origin/redesign
+
+$ git checkout redesign origin/redesign
+$ git branch -u redesign origin/redesign</code></pre>
+
+<p>This is useful to know because it allows you to call your local branches something different e.g.</p>
+
+<pre><code>$ git checkout --track bobs_redesign origin/redesign</code></pre>
+
+<p>which you wouldn&#8217;t be able to do with the first version. This becomes most useful if you have several remotes - if you only have <code>origin</code> it makes most sense to keep the names the same.</p>
 	</div>
 
 </div>
