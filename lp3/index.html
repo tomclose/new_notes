@@ -382,7 +382,7 @@ Switched to a new branch &#39;redesign&#39;</code></pre>
 <li><code>git merge</code> incorporates the contents of a local branch into your current branch.</li>
 </ul>
 
-<p>In fact, <code>git pull</code> is really build using <code>git merge</code>. The following two things are (roughly) equivalent:</p>
+<p>In fact, <code>git pull</code> is really built using <code>git merge</code>. The following two things are (roughly) equivalent:</p>
 
 <pre><code>(on branch master)
 $ git pull
@@ -394,7 +394,7 @@ $ git merge origin/master</code></pre>
 
 <p>Unfortunately this doesn&#8217;t quite make sense: when we do the <code>fetch</code>+<code>merge</code> we specify which branch to merge; when we do the git pull we don&#8217;t. How does git know which branch to fetch and merge when you do the pull?</p>
 
-<p>When doing a pull, git will automatically fetch and merge your current branches <em>upstream branch</em>. Consider the following chain of events:</p>
+<p>When doing a pull, git will automatically fetch and merge your current branch&#8217;s <em>upstream branch</em>. Consider the following chain of events:</p>
 
 <pre><code>(in an existing git repository)
 $ git remote add origin git@github.com:tomclose/git_test.git
