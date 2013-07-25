@@ -5,6 +5,24 @@ layout: default
 
 # Code First: Girls 2013
 
+### Session 8 - 25/7/2013
+
+* [Sinatra 1](/sinatra1)
+* [Landing Page 4](/lp4)
+* [Homework 8](/hmwk8)
+
+
+### Session 7 - 23/7/2013
+
+* [Landing Page 3](/lp3)
+* [Homework 7](/hmwk7)
+
+### Session 6 - 18/7/2013
+
+* [Intro to Ruby 4](/ruby4)
+* [Landing Page 2](/lp2)
+* [Homework 6](/hmwk6)
+
 ### Session 5 - 16/7/2013
 
 * [Intro to Ruby 3](/ruby3)

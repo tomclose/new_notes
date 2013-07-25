@@ -1,0 +1,9 @@
+---
+title: Extra Ruby
+---
+
+We've now done enough ruby for you to go up to Exercise 7 in the [codecademy ruby track](http://www.codecademy.com/tracks/ruby).
+
+{% exercise %}
+(Optional) Do any parts of the [codecademy ruby track](http://www.codecademy.com/tracks/ruby) that you haven't done, up to section 7.
+{% endexercise %}

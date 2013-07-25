@@ -71,9 +71,9 @@ Week | Content
 1    | HTML, CSS, git add, git commit, buy domain name, gh pages
 2    | twitter bootstrap, git push/pull/conflict (cheatsheet), ruby intro, ruby methods
 3    | ruby arrays/hashes, start joint project, forms
-4    | git branching, analytics, ruby up to classes
-5    | databases, rubygems, bootstrap js, js in console
-6    | sinatra, own js, mobile app, RESTful services, HTTP verbs
+4    | forms, git branching, google analytics, sinatra
+5    | AB testing, more sinatra, classes, database structure??
+6    | databases, activerecord
 7    | rails
 8    | own project + more rails
 9    | 

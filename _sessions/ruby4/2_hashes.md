@@ -34,7 +34,7 @@ Hashes have a number of methods, which behave as you would expect e.g.
 
 ### Iterating
 
-Just like an Array, you can iterate over a Hash using the `each` method. Unlike array iteration, in hash iteration the block accepts two parameters: the key and the value:
+Just like an `Array`, you can iterate over a `Hash` using the `each` method. Unlike array iteration, in hash iteration the block accepts two parameters: the key and the value:
 
 {% highlight ruby %}
 h = {'one' => 1, 'two' => 2, 'three' => 3}
@@ -49,6 +49,10 @@ end
 Combining hashes is done by using the `merge` method. The values from the second hash are added to the first, replacing them if they already exist. You will often see this used in rails for specifying default options to a function:
 
 {% highlight ruby %}
+# note how the first version of b gets overwritten
+{'a' => 1, 'b' => 2}.merge({'b'=>3, 'c'=>4}) #=> {'a'=>1, 'b'=>3, 'c'=>4}
+
+# real life example
 def print_names(opts)
 	default_opts = {'fancy_format' => true, 'max_length' => 20}
 
@@ -63,36 +67,48 @@ def print_names(opts)
 end
 {% endhighlight %}
 
-### Hashes with defaults
+The options example above is a common use of a hash in real life code.
 
-It is possible to specify a default value (or even a default block) which will be used when the key doesn't exist, by creating a hash using `Hash.new`
+### Using a hash for counting
 
-{% highlight ruby %}
-player_levels = Hash.new('Beginner')
-
-player_levels['Tom'] #=> 'Beginner'
-
-player_levels #=> {'Tom' => 'Beginner'}
-{% endhighlight %}
-
-Note how the new value is added to the hash.
-
-You can also specify a default block, which will be called on each missing value:
+One special use of a hash is for counting things. The following code is an example of how to do this.
 
 {% highlight ruby %}
-square_numbers = Hash.new {|hash, key| hash[key] = key**2 }
+h = {}
 
-square_numbers[5] #=> 25
-square_numbers[6] #=> 36
+['a', 'b', 'a', 'a'].each do |letter|
+    if h.has_key?(letter)
+        # if the letter is already in the hash, increase
+        # its count by 1
+        h[letter] += 1
+    else # letter isn't in the hash
+        # so put it in and set the count to 1
+        h[letter] = 1
+    end
+end
 
-square_numbers #=> {5 => 25, 6 => 36}
+h #=> {'a' => 3, 'b' => 1}
 {% endhighlight %}
 
-The above could be used to save the results of an expensive calculation: if you do `square_numbers[5]` again it doesn't need to work it out - it just looks up the result.
+You can make this example a bit shorter by using a hash with a **default value**: normally a hash will return `nil` if the key isn't there, but we can set it up to return something else. In particular we'll set it up to return 0:
 
+{% highlight ruby %}
+# set up a hash with default value 0
+h = Hash.new(0)
+
+['a', 'b', 'a', 'a'].each do |letter|
+    h[letter] = h[letter] + 1
+end
+
+h #=> {'a' => 3, 'b' => 1}
+{% endhighlight %}
+
+If the letter isn't in the hash yet, the default value of 0 will be returned. Otherwise the current count will be returned. Either way, we just need to increase the value by 1.
 
 
 {% exercise %}
-1. Complete the three functions in `ruby4/character.rb`
-2. Test your solutions using `test_character.rb`
+1. Open `hash_exercises.rb` in Sublime Text.
+2. Work through the file fixing the functions to work as described.
+3. Check your work by running `test_hash_exercises.rb` on the command line.
+4. If you finish early move on to `array_conversion_examples.rb`.
 {% endexercise %}
