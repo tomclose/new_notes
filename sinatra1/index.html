@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Sinatra 1</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>Sinatra 1 <small>A simple web app</small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_sinatra" data-toggle="tab">Introducing sinatra </a></li>
+		
+	
+		
+		<li><a href="#2_basic_app" data-toggle="tab">Basic app </a></li>
+		
+	
+		
+		<li><a href="#3_templates" data-toggle="tab">HTML templates </a></li>
+		
+	
+		
+		<li><a href="#4_project" data-toggle="tab">Project 1 </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_sinatra">
+	
+
+		<h2>Introducing sinatra</h2>
+		<p>Sinatra is a lightweight web framework written in ruby.</p>
+
+<h3 id='getting_sinatra'>Getting sinatra</h3>
+
+<p>You can install sinatra on your laptop using <a href='http://rubygems.org/'>rubygems</a> - ruby&#8217;s excellent package manager. When people write their own ruby libraries, they usually release them as a gem, so that others can quickly and easily install them. Sinatra is one of these libraries. To install it do:</p>
+
+<pre><code>$ gem install sinatra</code></pre>
+
+<p>at the command line.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Install sinatra: at the command line run</p>
+
+<pre><code> $ gem install sinatra</code></pre>
+</li>
+
+<li>
+<p>Download the code for the session:</p>
+
+<pre><code> $ git clone https://github.com/code61/sinatra1.git</code></pre>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_basic_app">
+	
+
+		<h2>Basic app</h2>
+		<p>We&#8217;re now going to look at how to create a very simple web application using sinatra.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in app.rb:</span>
+
+<span class='nb'>require</span> <span class='s1'>&#39;sinatra&#39;</span>
+
+<span class='n'>get</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+    <span class='s2'>&quot;hello&quot;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>This file is very simple. The first line imports the <code>sinatra</code> library. The next bit tells sinatra how to respond to a certain type of request. In particular it says that if it receives a <code>GET</code> request to the root url it should send back the text &#8220;hello&#8221;.</p>
+
+<p>To run this app first <code>cd</code> into the <code>app1</code> directory and then ruby the <code>app.rb</code> file.</p>
+
+<pre><code>$ cd app1
+$ ruby app.rb
+== Sinatra/1.3.3 has taken the stage on 4567 for development with backup from Thin
+&gt;&gt; Thin web server (v1.3.1 codename Triple Espresso)
+&gt;&gt; Maximum connections set to 1024
+&gt;&gt; Listening on 0.0.0.0:4567, CTRL+C to stop</code></pre>
+
+<p>Sinatra has started a webserver on your computer, which you can view in your browser. It will be displayed at the IP address <code>0.0.0.0</code> on port <code>4567</code>. <code>0.0.0.0</code> always points to the machine you are currently using. Another way of saying this is to use the word <code>localhost</code>. You will be able to view the site by typing one of the following into your browser address bar:</p>
+
+<ul>
+<li><code>0.0.0.0:4567</code></li>
+
+<li><code>localhost:4567</code></li>
+</ul>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Run the app. In the <code>app1</code> directory:</p>
+
+<pre><code> $ ruby app.rb</code></pre>
+
+<p>Check you can see the page in your webbrowser at <a href='http://localhost:4567'>localhost:4567</a>.</p>
+</li>
+
+<li>
+<p>Make a change to <code>app1/app.rb</code> so that it instead says &#8220;Hello there!&#8221;. Check you can see the change in your browser (you will have to stop the server with <code>Crtl-C</code> then restart it again with <code>ruby app.rb</code>).</p>
+</li>
+
+<li>
+<p>Test your solution by running</p>
+
+<pre><code> $ ruby test1.rb</code></pre>
+</li>
+
+<li>
+<p>Try visiting a different url (e.g. <a href='http://localhost:4567/about'>localhost:4567/about</a>). What happens?</p>
+</li>
+</ol>
+</div>
+<h3 id='taking_parameters_from_the_url'>Taking parameters from the url</h3>
+
+<p>Take a look at the following code:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in app.rb:</span>
+
+<span class='nb'>require</span> <span class='s1'>&#39;sinatra&#39;</span>
+
+<span class='n'>get</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+    <span class='s2'>&quot;hello&quot;</span>
+<span class='k'>end</span>
+
+<span class='n'>get</span> <span class='s1'>&#39;/:name&#39;</span> <span class='k'>do</span>
+    <span class='s2'>&quot;hello </span><span class='si'>#{</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:name</span><span class='o'>]</span><span class='si'>}</span><span class='s2'>&quot;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The <code>/:name</code> is a URL matcher. It will match <code>/</code> followed by any word, for example <code>/tom</code>, <code>/gertrude</code> or <code>/this_isnt_a_name</code>. The value that is matched is made available in a hash called params as <code>params[:name]</code>.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Open <code>app1/app.rb</code> in Sublime text.</p>
+</li>
+
+<li>
+<p>Change it so that visiting <a href='http://localhost:4567/tom'>localhost:4567/tom</a> shows &#8220;Hello Tom!&#8221; in the browser (and similarly for other names).</p>
+</li>
+
+<li>
+<p>See if you can make it so that <a href='http://localhost:4567/tom/bye'>localhost:4567/tom/bye</a> shows &#8220;Goodbye Tom&#8221; in the browser (and similarly for other names).</p>
+</li>
+
+<li>
+<p>Change the code by adding a <code>raise</code> right before <code>end</code> to:</p>
+
+<pre><code> get &#39;/:name&#39; do
+     # keep the stuff you&#39;ve written here
+     # ...
+
+     # add a raise just before the end
+     raise
+ end</code></pre>
+
+<p>What happens?</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_templates">
+	
+
+		<h2>HTML templates</h2>
+		<p>So far we&#8217;ve just returned text to the browser. It would be better if we could return proper HTML pages. We can do this by using HTML templates.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in app.rb</span>
+
+<span class='nb'>require</span> <span class='s1'>&#39;sinatra&#39;</span>
+
+<span class='n'>get</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+    <span class='n'>erb</span> <span class='ss'>:index</span>
+<span class='k'>end</span>
+</code></pre></div><div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- in views/index.erb --&gt;</span>
+
+<span class='cp'>&lt;!DOCTYPE html&gt;</span>
+<span class='nt'>&lt;html&gt;</span>
+<span class='nt'>&lt;head&gt;</span>
+    <span class='nt'>&lt;title&gt;</span>hello<span class='nt'>&lt;/title&gt;</span>
+<span class='nt'>&lt;/head&gt;</span>
+<span class='nt'>&lt;body&gt;</span>
+    <span class='nt'>&lt;h1&gt;</span>hello<span class='nt'>&lt;/h1&gt;</span>
+<span class='nt'>&lt;/body&gt;</span>
+<span class='nt'>&lt;/html&gt;</span>
+</code></pre></div>
+<p>The line <code>erb :index</code> tells sinatra to look for a file called <code>index.erb</code> in a folder called <code>views</code>. It then processes that file using the <code>erb</code> (<strong>e</strong>mbedded <strong>r</strong>u<strong>b</strong>y) templating language and returns the result to the user.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Move into the <code>sinatra1/app2</code> folder.</li>
+
+<li>Run the app with <code>ruby app.rb</code>.</li>
+
+<li>Change the app so that the page it shows says &#8220;Hello everyone!&#8221; (inside the <code>h1</code>).</li>
+</ol>
+</div>
+<p>The <code>index.erb</code> above isn&#8217;t very interesting: it doesn&#8217;t have any ruby embedded in it. Let&#8217;s look at a slightly better example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in app.rb</span>
+
+<span class='nb'>require</span> <span class='s1'>&#39;sinatra&#39;</span>
+
+<span class='n'>get</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+    <span class='n'>erb</span> <span class='ss'>:index</span>
+<span class='k'>end</span>
+
+
+<span class='n'>get</span> <span class='s1'>&#39;/:name&#39;</span> <span class='k'>do</span>
+    <span class='vi'>@name</span> <span class='o'>=</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:name</span><span class='o'>]</span>
+    <span class='n'>erb</span> <span class='ss'>:greet</span>
+<span class='k'>end</span>
+</code></pre></div><div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- in views/greet.erb  --&gt;</span>
+
+<span class='cp'>&lt;!DOCTYPE html&gt;</span>
+<span class='nt'>&lt;html&gt;</span>
+<span class='nt'>&lt;head&gt;</span>
+    <span class='nt'>&lt;title&gt;</span>hello<span class='nt'>&lt;/title&gt;</span>
+<span class='nt'>&lt;/head&gt;</span>
+<span class='nt'>&lt;body&gt;</span>
+    <span class='nt'>&lt;h1&gt;</span>hello <span class='err'>&lt;</span>%= @name %&gt;<span class='nt'>&lt;/h1&gt;</span>
+<span class='nt'>&lt;/body&gt;</span>
+<span class='nt'>&lt;/html&gt;</span>
+</code></pre></div>
+<p>The important bits are:</p>
+
+<ul>
+<li>In <code>app.rb</code> we assign <code>params[:name]</code> to a special type of variable <code>@name</code>. The special type of variable is an <em>instance variable</em> which <strong>has to begin with a single <code>@</code></strong>.</li>
+
+<li>We use the instance variable in the <code>views/greet.erb</code> inside a special erb tag <code>&lt;%= ... %&gt;</code>. The erb templater looks for these tags and interprets the inside as ruby.</li>
+</ul>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Open <code>app2/views/greet.erb</code> and <code>app2/app.rb</code> in Sublime Text.</li>
+
+<li>Change it so that instead of saying &#8220;hello tom&#8221; it says &#8220;Hello Tom!&#8221; in the <code>h1</code> (when you visit <a href='http://localhost:4567/tom'>localhost:4567/tom</a>, and similarly for other names).</li>
+
+<li>Change it so that the page title (in the browser bar) is &#8220;Greet Tom&#8221; (and similarly for other names).</li>
+
+<li>Link twitter bootstrap into your page and add a <code>div class=&#39;container&#39;</code> just inside the <code>body</code> so that things look nicer.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_project">
+	
+
+		<h2>Project 1</h2>
+		<p>Take a look at <a href='http://foaas.herokuapp.com/'>Fuck Off as a Service - FOAAS</a> for example <a href='http://foaas.herokuapp.com/off/boris/dave'>foaas.herokuapp.com/off/boris/dave</a> or <a href='http://foaas.herokuapp.com/shakespeare/boris/dave'>foaas.herokuapp.com/shakespeare/boris/dave</a>.</p>
+
+<p>Your task is to implement something similar using Sinatra. For example:</p>
+
+<ul>
+<li>An alternative insult site.</li>
+
+<li>A complement site.</li>
+
+<li>.. use your imagination!</li>
+</ul>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Go to <a href='https://github.com/code61/sinatra_project_1'>https://github.com/code61/sinatra_project_1</a> and press the fork button. This will give you your own copy of the project on GitHub.</p>
+</li>
+
+<li>
+<p>Clone your forked version of the repo down onto your laptop (using the <strong>ssh</strong> clone URL on the bottom right of the repo page): in your <code>coding_course</code> folder run</p>
+
+<pre><code> $ git clone paste_the_clone_URL_here</code></pre>
+</li>
+
+<li>
+<p>Use the outline project as a starting point for your work.</p>
+</li>
+
+<li>
+<p>Once you&#8217;ve written a simple URL matcher, see if you can write a test for it in <code>tests.rb</code> (by copying examples from class).</p>
+</li>
+
+<li>
+<p>At each stage <code>add</code>, <code>commit</code> and <code>push</code> your changes. (It should have automatically set itself up to push back up to your forked version on github.)</p>
+</li>
+</ol>
+</div>
+<p>Please make this project as good as you can. We&#8217;ll be deploying it online next time, so it&#8217;ll be nice to have something to be proud of. You will probably want to consider adding bootstrap to your HTML templates and things.</p>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>

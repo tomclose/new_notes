@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>lp4</title>
+  <title>Landing Page 4</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,14 +29,30 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>lp4 <small></small></h1>
+  <h1>Landing Page 4 <small>Measure!</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_sinatra" data-toggle="tab">Introducing sinatra </a></li>
+		<li class="active"><a href="#0_gitignore" data-toggle="tab">gitignore </a></li>
+		
+	
+		
+		<li><a href="#1_aarrr" data-toggle="tab">AARRR metrics </a></li>
+		
+	
+		
+		<li><a href="#2_google_analytics" data-toggle="tab"> </a></li>
+		
+	
+		
+		<li><a href="#3_setting_a_goal" data-toggle="tab"> </a></li>
+		
+	
+		
+		<li><a href="#4_running_an_experiment" data-toggle="tab"> </a></li>
 		
 	
 </ul>
@@ -44,19 +60,120 @@
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="1_sinatra">
+	<div class="tab-pane active" id="0_gitignore">
 	
 
-		<h2>Introducing sinatra</h2>
-		<p>Sinatra is a lightweight web framework written in ruby.</p>
+		<h2>gitignore</h2>
+		<p>A few of you have been having problems with your <code>.DS_Store</code> when you merge different git branches. The <code>.DS_Store</code> is a hidden file that OS X adds to folders, apparently to help the way that Finder works. The <code>.DS_Store</code> file doesn&#8217;t really have anything to do with the website you&#8217;re building at all. Because of this it shouldn&#8217;t really be in the git repository.</p>
 
-<h3 id='getting_sinatra'>Getting sinatra</h3>
+<p>There are other situations where you don&#8217;t want to put everything in a folder into the git repository. To cover these situations git has way of excluding certain files from a git repo: the <code>.gitignore</code> file.</p>
 
-<p>You can install sinatra on your laptop using <a href='http://rubygems.org/'>rubygems</a> - ruby&#8217;s excellent package manager. When people write their own ruby libraries, they usually release them as a gem, so that others can quickly and easily install them. Sinatra is one of these libraries. To install it do:</p>
+<h3 id='setting_up_a_gitignore'>Setting up a .gitignore</h3>
 
-<pre><code>$ gem install sinatra</code></pre>
+<p>The <code>.gitignore</code> file sits inside a folder and tells git which files/folders not to version control.</p>
 
-<p>at the command line.</p>
+<p>To set up a <code>.gitignore</code> file to ignore the <code>.DS_Store</code> files do the following</p>
+
+<ol>
+<li>
+<p>Open Sublime Text. In a new file write the line</p>
+
+<pre><code> .DS_Store</code></pre>
+</li>
+
+<li>
+<p>Save that file in your <code>landing_page</code> folder.</p>
+</li>
+
+<li>
+<p>Remove the version of the <code>.DS_Store</code> currently in your repository by doing:</p>
+
+<pre><code> git rm --cached .DS_Store</code></pre>
+</li>
+
+<li>
+<p>Do a <code>git add --all</code> and a <code>git commit</code>.</p>
+</li>
+</ol>
+
+<h3 id='using_a_global_gitignore'>Using a global gitignore</h3>
+
+<p>It is also possible to set up a global <code>.gitignore</code> file on your computer. This is useful for excluding things like the <code>.DS_Store</code>, which you will never want in your repository. To do this:</p>
+
+<ol>
+<li>
+<p>Go to your home directory:</p>
+
+<pre><code> cd ~</code></pre>
+
+<p>(This might not work on windows. If not, you could put your .gitignore in <code>/Sites</code> instead. You will need to replace <code>~</code> with <code>/Sites</code> throughout these instructions).</p>
+</li>
+
+<li>
+<p>Open Sublime Text. In a new file put the <a href='https://github.com/github/gitignore/blob/master/Global/OSX.gitignore'>standard OS X gitignore</a> if you&#8217;re on a mac, or the <a href='https://github.com/github/gitignore/blob/master/Global/Windows.gitignore'>standard Windows gitignore</a> if you&#8217;re on windows. Save the file in your home directory as <code>.gitignore</code>.</p>
+</li>
+
+<li>
+<p>Configure git to use this gitinore file:</p>
+
+<pre><code> git config --global core.excludesfile &#39;~/.gitignore&#39;</code></pre>
+</li>
+</ol>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Set up a <code>.gitignore</code> to ignore <code>.DS_Store</code> in your <code>landing_page</code> folder.</li>
+
+<li>Set up a global gitignore for your operating system.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="1_aarrr">
+	
+
+		<h2>AARRR metrics</h2>
+		<p>The <a href='http://theleanstartup.com/'>lean startup</a> views a startup as a <blockquote>
+    <p> temporary organization designed to search for a repeatable and scalable business model.</p>
+</blockquote></p>
+
+<p>Searching for a repeatable and scalable business model is an iterative procedure, involving many cycles of the feedback loop:</p>
+
+<p><img alt='Build-Measure-Learn' src='/assets/leanstartup_loop.png' /></p>
+
+<p>In this session we will be looking at the &#8216;measure/data&#8217; components of the loop.</p>
+
+<h3 id='actionable_metrics_vs_vanity_metrics'>Actionable metrics vs vanity metrics</h3>
+
+<p>It is</p>
+
+<p><a href='http://500hats.typepad.com/500blogs/2007/09/startup-metrics.html'>Startup metrics for pirates</a></p>
+	</div>
+
+	
+	<div class="tab-pane " id="2_google_analytics">
+	
+
+		<h2></h2>
+		
+	</div>
+
+	
+	<div class="tab-pane " id="3_setting_a_goal">
+	
+
+		<h2></h2>
+		
+	</div>
+
+	
+	<div class="tab-pane " id="4_running_an_experiment">
+	
+
+		<h2></h2>
+		
 	</div>
 
 </div>
