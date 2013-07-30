@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>sinatra2</title>
+  <title>Sinatra 2</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,7 +29,7 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>sinatra2 <small></small></h1>
+  <h1>Sinatra 2 <small>Deploying and posting</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
@@ -47,6 +47,10 @@
 		<li><a href="#3_post_requests" data-toggle="tab">Post requests </a></li>
 		
 	
+		
+		<li><a href="#4_project" data-toggle="tab">Project </a></li>
+		
+	
 </ul>
 
 <div class="tab-content">
@@ -56,17 +60,35 @@
 	
 
 		<h2>Heroku</h2>
-		<h3 id='what_is_heroku'>What is Heroku</h3>
+		<p><a href='https://www.heroku.com/'>Heroku</a> is a cloud-based web hosting solution, specifically designed for hosting web applications. It started out as a Rails host, but has since branched out into other frameworks (e.g. Sinatra, Node.js) and languages (e.g. Java, Python).</p>
+
+<p>They aim to completely manage your apps online infrastructure: you provide them with the code, they set it up and run it online. If you have a lot of users and want to scale your app up, they make it easy to allocate more resources so you can handle the increased traffic (for a price!).</p>
 
 <h3 id='setting_up_an_account'>Setting up an account</h3>
 
+<p>Before you deploy your app to heroku you need to create an account.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Sign up for an account at <a href='https://www.heroku.com/'>Heroku</a>.</li>
+
+<li>After you log in, download and install the heroku toolbelt. (This will allow you to interact with heroku from the command line).</li>
+</ol>
+</div>
 <h3 id='setting_up_ssh_with_heroku'> Setting up ssh with heroku</h3>
 
-<pre><code>heroku keys:add</code></pre>
+<p>The final part of the set up is to upload your ssh keys to Heroku. You might remember about ssh keys from the initial installation instructions: they&#8217;re basically a way of identifying yourself to a server without typing in your password each time.</p>
 
-<p>Check it worked:</p>
+<p>The heroku toolbelt makes this very easy. On the commanline (in any folder) type:</p>
 
-<pre><code>heroku keys</code></pre>
+<pre><code>$ heroku keys:add</code></pre>
+
+<p>You can check it worked by typing:</p>
+
+<pre><code>$ heroku keys</code></pre>
+
+<p>It should list the ssh key that you just added.</p>
 	</div>
 
 	
@@ -74,7 +96,11 @@
 	
 
 		<h2>App deployment</h2>
-		<h3 id='preparation'>Preparation</h3>
+		<p>Now that you have heroku set up, we can deploy your <code>sinatra_project1</code> application from last time.</p>
+
+<h3 id='preparation'>Preparation</h3>
+
+<p>There are a few files in <code>sinatra_project1</code> that we haven&#8217;t talked about yet:</p>
 
 <ul>
 <li>config.ru</li>
@@ -82,32 +108,48 @@
 <li>Gemfile</li>
 </ul>
 
-<p>Need to run</p>
+<p><code>config.ru</code> contains the lines</p>
+<div class='highlight'><pre><code class='ruby'>    <span class='nb'>require</span> <span class='s1'>&#39;./app.rb&#39;</span>
+    <span class='n'>run</span> <span class='ss'>Sinatra</span><span class='p'>:</span><span class='ss'>:Application</span>
+</code></pre></div>
+<p>These lines are to tell Heroku which file to find your application (<code>app.rb</code>) and how to run it (using Sinatra).</p>
+
+<p>The <code>Gemfile</code> is a way of specifying which gems your project uses. Heroku needs to know this so it knows which libraries it needs to run your app. The <code>Gemfile</code> is also really helpful way of remembering yourself which gems you need and is invaluable when working with others.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># Gemfile</span>
+
+<span class='n'>source</span> <span class='s1'>&#39;https://rubygems.org&#39;</span>
+
+<span class='n'>gem</span> <span class='s1'>&#39;sinatra&#39;</span>
+</code></pre></div>
+<p>Along with rubygems, ruby has a tool called bundler. Bundler helps you manage your ruby gems. If you run <code>bundle install</code> it will look in the <code>Gemfile</code> and install any gems that you don&#8217;t already have.</p>
 
 <pre><code>$ bundle install</code></pre>
 
-<p>This will create a <code>Gemfile.lock</code> which specifies the exact version of the gems (e.g. the sinatra library) that you are using. This means that heroku now knows exactly which gems you are using and can pick to use the same versions. You need to check this in to your repository:</p>
+<p>will also create a <code>Gemfile.lock</code> which specifies the exact version of the gems (e.g. the sinatra library) that you are using. This means that heroku (and anyone else you&#8217;re collaborating with using git) now knows exactly which gems you are using and can pick to use the same versions. You need to check this in to your repository:</p>
 
 <pre><code>$ git add --all
-$ git commit -m &quot;Added Gemfile.lock&quot;
+$ git commit -m &quot;Added Gemfile.lock&quot;</code></pre>
 
+<h3 id='deploying_to_heroku'>Deploying to Heroku</h3>
 
+<p>Once your app is prepared, the first thing you need to do is create a new empty heroku application. To do this you use the <code>heroku create</code> command:</p>
 
-$ heroku create
+<pre><code>$ heroku create
 Creating arcane-gorge-2129... done, stack is cedar
 http://arcane-gorge-2129.herokuapp.com/ | git@heroku.com:arcane-gorge-2129.git
-Git remote heroku added
+Git remote heroku added</code></pre>
 
+<p>You&#8217;ll see that it created an app for you. In my case the app is called <code>arcane-gorge-2129</code> and can be found at http://arcane-gorge-2129.herokuapp.com. It also added a git remote for you.</p>
 
-
-$ git remote -v
+<pre><code>$ git remote -v
 heroku  git@heroku.com:arcane-gorge-2129.git (fetch)
 heroku  git@heroku.com:arcane-gorge-2129.git (push)
 origin  git@github.com:code61/sinatra_project_1.git (fetch)
-origin  git@github.com:code61/sinatra_project_1.git (push)
+origin  git@github.com:code61/sinatra_project_1.git (push)</code></pre>
 
+<p>You deploy your repository by pushing to this remote. Heroku will serve whatever is in the <code>master</code> branch. Here we push the <code>master</code> branch up to the <code>heroku</code> remote:</p>
 
-$ git push heroku master
+<pre><code>$ git push heroku master
 Counting objects: 11, done.
 Delta compression using up to 2 threads.
 Compressing objects: 100% (6/6), done.
@@ -142,6 +184,38 @@ Total 11 (delta 1), reused 0 (delta 0)
 
 To git@heroku.com:arcane-gorge-2129.git
  * [new branch]      master -&gt; master</code></pre>
+
+<p>After you push, heroku automatically updates the app and launches it for you. You can now see the app by visiting the url (in this case http://arcane-gorge-2129.herokuapp.com).</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Deploy your <code>sinatra_project1</code> app to Heroku: 1. Install your bundle to get a <code>Gemfile.lock</code>. In your <code>sintara_project1</code> directory run:</p>
+
+<pre><code>    $ bundle install</code></pre>
+
+<ol>
+<li>
+<p>Add your work (and new <code>Gemfile.lock</code>) to your repository:</p>
+
+<pre><code> $ git add --all
+ $ git commit -m &quot;Added Gemfile.lock&quot;</code></pre>
+</li>
+
+<li>
+<p>Create a new heroku app:</p>
+
+<pre><code> $ heroku create</code></pre>
+</li>
+
+<li>
+<p>Push your work to Heroku</p>
+
+<pre><code> $ git push heroku master</code></pre>
+
+<p>(for subsequent updates you should be ok with just <code>git push heroku</code>).</p>
+</li>
+</ol>
+</div>
 	</div>
 
 	
@@ -149,7 +223,27 @@ To git@heroku.com:arcane-gorge-2129.git
 	
 
 		<h2>Post requests</h2>
-		<div class='exercise alert alert-info'><strong>
+		<p>Last time we looked at responding to <code>POST</code> requests:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>get</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+    <span class='n'>erb</span> <span class='ss'>:index</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>As mentioned in <a href='/lp3'>Landing Page 3</a>, <code>GET</code> is only one of several types of web requests. Another is the <code>POST</code> request, which is commonly used for submitting data from a web form.</p>
+
+<p>Suppose we have the following HTML form:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;form</span> <span class='na'>method=</span><span class='s'>&quot;post&quot;</span> <span class='na'>action=</span><span class='s'>&#39;/&#39;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;text&#39;</span> <span class='na'>name=</span><span class='s'>&#39;user_name&#39;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&#39;submit&#39;</span><span class='nt'>&gt;</span>
+<span class='nt'>&lt;/form&gt;</span>
+</code></pre></div>
+<p>The form will submit via a <code>POST</code> request to the root url, <code>/</code>. We can respond to this using the following sinatra block:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>post</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+    <span class='vi'>@name</span> <span class='o'>=</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:user_name</span><span class='o'>]</span>
+    <span class='n'>erb</span> <span class='ss'>:page</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Note that, like the words matched in the url, the value of the <code>user_name</code> field is made available in the <code>params</code> hash. If you want to have a look at the params hash you could put a <code>raise params.inspect</code> at the beginning of the method.</p>
+<div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
 <ol>
@@ -160,7 +254,56 @@ To git@heroku.com:arcane-gorge-2129.git
 </li>
 
 <li>
-<p>Add more options to the <code>form.erb</code> and display them in the <code>page.erb</code>. Have a look at the <a href='http://twitter.github.io/bootstrap/2.3.2/base-css.html#forms'>twitter bootstrap docs</a> for more examples.</p>
+<p>Change the form so that it also asks for a user email (call it <code>user_email</code>), the user&#8217;s operating system (windows/mac/linux) (<code>user_os</code>).</p>
+</li>
+
+<li>
+<p>Make it so that after submitting the form the user is sent to a page that displays all the details they supplied.</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_project">
+	
+
+		<h2>Project</h2>
+		<p>This project is completely optional. It is meant for those who feel they already have a good understanding of sinatra and want to stretch themselves.</p>
+
+<p>Take a look at this <a href='http://calm-savannah-9937.herokuapp.com/'>simple word cloud maker</a>.</p>
+
+<p>Your challenge is to build something similar (hopfully better!).</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Fork the project on github: <a href='https://github.com/code61/sinatra_project2'>https://github.com/code61/sinatra_project2</a></p>
+</li>
+
+<li>
+<p>Clone your fork onto your laptop.</p>
+</li>
+
+<li>
+<p>Read the notes in <code>app.rb</code>.</p>
+</li>
+
+<li>
+<p>Using <code>ruby4/i_have_a_dream.rb</code> as a reference, create a sinatra app that creates a word cloud.</p>
+</li>
+
+<li>
+<p>Improve your site. You might like to consider:</p>
+
+<ul>
+<li>adding twitter bootstrap;</li>
+
+<li>reading through the <a href='http://d3js.org/'>d3</a> code in <code>word_cloud.erb</code> and changing bits to see what they do;</li>
+
+<li>take a look at <a href='http://www.jasondavies.com/wordcloud/#'>other d3 wordcloud examples</a> (currently seems a bit broken - try going to the &#8216;custom&#8217; tag and pasting in some text).</li>
+</ul>
 </li>
 </ol>
 </div>
