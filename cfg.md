@@ -5,6 +5,12 @@ layout: default
 
 # Code First: Girls 2013
 
+### Session 9 - 30/7/2013
+
+* [Sinatra 2](/sinatra2)
+* [Homework 9](/hmwk9)
+
+
 ### Session 8 - 25/7/2013
 
 * [Sinatra 1](/sinatra1)
