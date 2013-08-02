@@ -1,0 +1,89 @@
+<p>Next session we will begin looking at databases. In particular we will be using a database called <a href='http://www.mongodb.org/'>MongoDB</a>. It is vital that you get MongoDB installed before the start of the session on Tuesday, or you won&#8217;t be able to participate.</p>
+<div class='alert alert-warning'>
+<p>To use MongoDB you will need to be running ruby 1.9. If you aren&#8217;t, you need to try and sort that out first. (To check your version, follow instructions <a href='http://code61.org/hmwk2/#!3_diagnostics'>here</a>).</p>
+</div>
+<h3 id='what_you_need_to_do'>What you need to do</h3>
+
+<p>To use mongodb you need to have it running on your laptop. The database will run on one of your localhost ports (like sinatra), so that other processes can connect to it.</p>
+
+<p>The preparation falls into four parts:</p>
+
+<ol>
+<li>Install MongoDB.</li>
+
+<li>Start running the database.</li>
+
+<li>Install the gems to allow ruby to connect to MongoDB.</li>
+
+<li>Test your installation.</li>
+</ol>
+
+<p>We will look at these parts separately.</p>
+
+<h3 id='install_mongodb'>Install MongoDB</h3>
+
+<p>If you installed <code>homebrew</code> (&#8220;The Hard Way&#8221;), your task is now easy. At the command line write:</p>
+
+<pre><code>brew install mongo</code></pre>
+
+<p>If you didn&#8217;t install homebrew (i.e. try doing the above and it doens&#8217;t work), you will need to <a href='http://www.mongodb.org/downloads'>download MongoDB</a> from the site and follow the installation instructions for your system.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Install MongoDB either via</p>
+
+<pre><code>$ brew install mongo</code></pre>
+
+<p>or by downloading and installing from the <a href='http://www.mongodb.org/downloads'>MongoDB website</a>.</p>
+</div>
+<h3 id='start_mongodb_running'>Start MongoDB running</h3>
+
+<p>You can start MongoDB running from the command line:</p>
+
+<pre><code>$ mongo</code></pre>
+
+<p>By default mongo will run on <a href='http://localhost:28017/'>localhost:28017</a>. If you visit that link in your browser you should see a mongo stats page.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Start MongoDB:</p>
+
+<pre><code> $ mongo</code></pre>
+</li>
+
+<li>
+<p>Check the service is running at <a href='http://localhost:28017/'>localhost:28017</a>.</p>
+</li>
+</ol>
+</div>
+<h3 id='install_the_gems_and_test'>Install the gems and test</h3>
+
+<p>I&#8217;ve set up a project with the gems you need, so this should be straightforward:</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Clone the project:</p>
+
+<pre><code> $ git clone https://github.com/code61/mongo_test.git</code></pre>
+</li>
+
+<li>
+<p>Move into that folder and install the gems:</p>
+
+<pre><code> $ cd mongo_test
+ $ bundle install</code></pre>
+</li>
+
+<li>
+<p>Test your installation:</p>
+
+<pre><code> $ ruby main.rb</code></pre>
+
+<p>If you see the text &#8220;Everything worked ok!&#8221;, you&#8217;re good to go!</p>
+</li>
+</ol>
+</div>
