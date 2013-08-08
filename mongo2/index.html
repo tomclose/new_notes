@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mongo 2</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>Mongo 2 <small>Sending emails</small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_email" data-toggle="tab">Sending email </a></li>
+		
+	
+		
+		<li><a href="#2_configuration_variables" data-toggle="tab">Configuration variables </a></li>
+		
+	
+		
+		<li><a href="#3_email_templates" data-toggle="tab">Email templates </a></li>
+		
+	
+		
+		<li><a href="#4_project" data-toggle="tab">Project </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_email">
+	
+
+		<h2>Sending email</h2>
+		<p>Today we&#8217;ll be looking at sending email from a ruby program. To do this we&#8217;ll be using a library called <a href='https://github.com/benprew/pony'>Pony</a>. Pony is a light-weight, simple library (in comparison more fully fledged options like <a href='http://guides.rubyonrails.org/action_mailer_basics.html'>ActionMailer</a>). After a small amount of configuration, it allows you to send emails with a single function call.</p>
+
+<p>We&#8217;ll be using a google account to send the email - you will need to input your username and password, and it will look like the email came from your gmail account. Using gmail is a good solution for a small test app like this. When you get bigger you will start hitting gmails sending limits, and you will want to investigate other solutions e.g. <a href='http://sendgrid.com/'>sendgrid</a> or <a href='http://mandrill.com/'>mandrill</a>. For further options see the <a href='https://addons.heroku.com/'>heroku addons page</a>.</p>
+
+<p>Before sending an email we need to set up some configuration. We do this by setting the <code>Pony.options</code> hash:</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Pony</span><span class='o'>.</span><span class='n'>options</span> <span class='o'>=</span> <span class='p'>{</span>
+  <span class='ss'>:via</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;smtp&#39;</span><span class='p'>,</span>
+  <span class='ss'>:via_options</span> <span class='o'>=&gt;</span> <span class='p'>{</span>
+    <span class='ss'>:address</span>              <span class='o'>=&gt;</span> <span class='s1'>&#39;smtp.gmail.com&#39;</span><span class='p'>,</span>
+    <span class='ss'>:port</span>                 <span class='o'>=&gt;</span> <span class='s1'>&#39;587&#39;</span><span class='p'>,</span>
+    <span class='ss'>:enable_starttls_auto</span> <span class='o'>=&gt;</span> <span class='kp'>true</span><span class='p'>,</span>
+    <span class='ss'>:user_name</span>            <span class='o'>=&gt;</span> <span class='s1'>&#39;yourusername&#39;</span><span class='p'>,</span>
+    <span class='ss'>:password</span>             <span class='o'>=&gt;</span> <span class='s1'>&#39;yourpassword&#39;</span><span class='p'>,</span>
+    <span class='ss'>:authentication</span>       <span class='o'>=&gt;</span> <span class='ss'>:plain</span><span class='p'>,</span> <span class='c1'># :plain, :login, :cram_md5, no auth by default</span>
+    <span class='ss'>:domain</span>               <span class='o'>=&gt;</span> <span class='s2'>&quot;localhost.localdomain&quot;</span> <span class='c1'># the HELO domain provided by the client to the server</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>To send the email is then very simple:</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Pony</span><span class='o'>.</span><span class='n'>mail</span><span class='p'>(</span><span class='ss'>:to</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;example@example.com&#39;</span><span class='p'>,</span> <span class='ss'>:subject</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;Wow - an email&quot;</span><span class='p'>,</span> <span class='ss'>:body</span><span class='o'>=&gt;</span><span class='s2'>&quot;Hi. This is your program speaking. Bye.&quot;</span><span class='p'>)</span>
+</code></pre></div>
+<p>You can find out more about the different options you can use on the <a href='https://github.com/benprew/pony'>pony github page</a>.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>If you don&#8217;t already have one create a <a href='https://mail.google.com/mail/'>Gmail account</a>.</p>
+</li>
+
+<li>
+<p>Clone the example email code:</p>
+
+<pre><code> $ git clone https://github.com/code61/email1.git</code></pre>
+</li>
+
+<li>
+<p>Install the pony gem</p>
+
+<pre><code> $ cd email1
+ $ bundle install</code></pre>
+</li>
+
+<li>
+<p>Check you understand how the configuration is working in the example (it isn&#8217;t exactly like the example above).</p>
+</li>
+
+<li>
+<p>Run the program, follow the instructions and check that you receive the email:</p>
+
+<pre><code> $ ruby email.rb</code></pre>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_configuration_variables">
+	
+
+		<h2>Configuration variables</h2>
+		<p>The purpose of this next part is to add an email notification to the sign-up form you worked on last time.</p>
+
+<h3 id='problem_where_to_store_the_password'>Problem: where to store the password</h3>
+
+<p>In the example email script you were prompted for your gmail username and password. This meant we side-stepped the issue of where to write this (sensitive) information down.</p>
+
+<p>The problem of where in your program to store sensitive, application-specific configuration data is one that you will come across often. For example, you may want to store:</p>
+
+<ul>
+<li>An email username/password for your app.</li>
+
+<li>Database configuration, username and passwords.</li>
+
+<li>Amazon webservices api tokens and secret key (e.g. Amazon S3 etc.).</li>
+
+<li>Facebook integration token and key.</li>
+
+<li>GitHub integration token and key.</li>
+
+<li>&#8230; tokens and keys to connect to many other services.</li>
+</ul>
+
+<p>Quite often these keys will have different values in different <em>environments</em>: you probably won&#8217;t want to use your live production database when developing or testing.</p>
+
+<p>A tempting (but non-ideal) place to put this information is in the code in your git repository (i.e. just write them into the source code files). This is bad for a few reasons including:</p>
+
+<ol>
+<li>Anyone with access to your git repository has access to your email password etc.</li>
+
+<li>It&#8217;s hard to manage different versions for different environment - you will need to remember to replace your development info with your production info everytime before you do a &#8216;git push heroku&#8217;.</li>
+</ol>
+
+<p>In general <strong>it is bad practice to put passwords/tokens/keys in your git repo</strong>.</p>
+
+<h3 id='using_env_variables'>Using ENV variables</h3>
+
+<p>A good solution for this situation is to use environment variables. All ruby programs have access to an <code>ENV</code> hash containing options from the environment where the program is run. You can see the environment variables set on your computer by running</p>
+
+<pre><code>$ env
+TERM_PROGRAM=Apple_Terminal
+SHELL=/bin/bash
+TERM=xterm-256color
+...</code></pre>
+
+<p>You can then check that you can access these in irb:</p>
+<div class='highlight'><pre><code class='ruby'><span class='o'>&gt;</span> <span class='no'>ENV</span><span class='o'>[</span><span class='s1'>&#39;SHELL&#39;</span><span class='o'>]</span>
+<span class='c1'>#=&gt; &quot;/bin/bash&quot;</span>
+</code></pre></div>
+<p>We are going to store the configuration values (e.g. email username and password) as environment variables for our program. Heroku makes it easy for you to manage ENV variables on their servers, as described <a href='https://devcenter.heroku.com/articles/config-vars'>here</a>. To replicate the situation on your laptop you can use a gem called <code>foreman</code>.</p>
+
+<p>You can install <code>foreman</code> via rubygems. If you use <code>rbenv</code> (i.e. if you followed &#8216;The Hard Way&#8217; installation instructions) you will then need to do a <code>rbenv rehash</code>. (This is because the foreman gem comes with a command line tool, which we need to tell rbenv about.)</p>
+
+<pre><code>gem install foreman
+rbenv rehash</code></pre>
+
+<p>Foreman manages your app processes for you. It becomes more useful when you might have several services that you need to remember to start for you application e.g. a Mongo database, a web server, a queue manager etc. We will be using it mainly to set environment variables.</p>
+
+<p>To run your app with foreman you need to create a <code>Procfile</code> with the command you usually use to start your app (e.g. <code>ruby app.rb</code>):</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in Procfile</span>
+<span class='ss'>app</span><span class='p'>:</span>  <span class='n'>ruby</span> <span class='n'>app</span><span class='o'>.</span><span class='n'>rb</span>
+</code></pre></div>
+<p>To start your app you then run</p>
+
+<pre><code>$ foreman start</code></pre>
+
+<p>(instead of the usual <code>ruby app.rb</code>). To set the environment variables you use a <code>.env</code> file:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in .env</span>
+<span class='no'>GMAIL_USER_NAME</span><span class='o'>=</span><span class='n'>yourgmailusername</span>
+<span class='no'>GMAIL_PASSWORD</span><span class='o'>=</span><span class='n'>password12345</span>
+</code></pre></div>
+<p>You can then access these variables in your ruby program by the <code>ENV</code> hash:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>user_name</span> <span class='o'>=</span> <span class='no'>ENV</span><span class='o'>[</span><span class='s1'>&#39;GMAIL_USER_NAME&#39;</span><span class='o'>]</span>
+<span class='n'>password</span> <span class='o'>=</span> <span class='no'>ENV</span><span class='o'>[</span><span class='s1'>&#39;GMAIL_PASSWORD&#39;</span><span class='o'>]</span>
+</code></pre></div>
+<p>In order to keep your <code>.env</code> configuration secret you need to make sure it doesn&#8217;t get added to the git repo. If you want to deploy to Heroku, it is also important that your <code>Procfile</code> <strong>isn&#8217;t</strong> in your git repo (otherwise it will mess with Heroku&#8217;s settings when it gets up there). To do this you need to make sure both of them are in your <code>.gitignore</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in .gitignore</span>
+<span class='no'>Procfile</span>
+<span class='o'>.</span><span class='n'>env</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Fetch down the changes to <code>mongo1</code>. In the <code>mongo1</code> directory:</p>
+
+<pre><code> $ git fetch</code></pre>
+</li>
+
+<li>
+<p>Checkout the <code>email</code> branch:</p>
+
+<pre><code> $ git checkout email</code></pre>
+
+<p>This has the solution from last time along with some email examples. If you spent a lot of time making your solution from last session look nice, you might instead want to merge the <code>email</code> branch into your <code>master</code> - up to you!</p>
+</li>
+
+<li>
+<p>Do a <code>bundle install</code> (and a <code>rbenv rehash</code> if necessary):</p>
+
+<pre><code> $ bundle install
+ $ rbenv rehash</code></pre>
+</li>
+
+<li>
+<p>Copy the contents of <code>mongo1/example_app/Procfile.sample</code> and <code>mongo1/example_app/.env.sample</code> and save them as <code>mongo1/example_app/Procfile</code> and <code>mongo1/example_app/.env</code> filling in your gmail details in <code>.env</code>.</p>
+</li>
+
+<li>
+<p>Start the app with <code>foreman start</code>. Check that the app sends you a fruity email.</p>
+</li>
+</ol>
+</div>
+<h3 id='env_variables_on_heroku'>ENV variables on heroku</h3>
+
+<p>As the settings in <code>.env</code> aren&#8217;t in the git repo, they won&#8217;t be pushed to heroku. You will need to set these variables separately. Heroku makes it easy to do this. Assuming your app is already on heroku you can set environment variables as:</p>
+
+<pre><code>    $ heroku config:set GMAIL_USER_NAME=yourgmailusername
+    $ heroku config:set GMAIL_PASSWORD=password12345</code></pre>
+
+<p>You can check the values you have set by running</p>
+
+<pre><code>    $ heroku config</code></pre>
+
+<p>There are other tools you can use to manage heroku configuration variables, which might be useful if you end up setting a lot of options. See <a href='https://github.com/ddollar/heroku-config'>here</a> for more details.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="3_email_templates">
+	
+
+		<h2>Email templates</h2>
+		<p>You might have noticed that the <code>mongo1/example_app</code> application uses an email template.</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='no'>Pony</span><span class='o'>.</span><span class='n'>mail</span><span class='p'>(</span> <span class='ss'>:to</span> <span class='o'>=&gt;</span> <span class='n'>email</span><span class='p'>,</span>
+             <span class='ss'>:subject</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;Congratulations, you added a fruit!&quot;</span><span class='p'>,</span>
+             <span class='ss'>:body</span> <span class='o'>=&gt;</span> <span class='n'>erb</span><span class='p'>(</span><span class='ss'>:email</span><span class='p'>,</span> <span class='ss'>:layout</span> <span class='o'>=&gt;</span> <span class='kp'>false</span><span class='p'>)</span>   <span class='p'>)</span>
+</code></pre></div>
+<p>The important bit is <code>erb(:email, :layout =&gt; false)</code>, which tells sinatra to find <code>views/email.erb</code> and run it through erb (to replace any <code>&lt;%= %&gt;</code> tags). The <code>:layout =&gt; false</code> tells sintra to skip the normal layout file: we want to send the user the raw text, not an html page! The result is then used as the email&#8217;s body.</p>
+
+<p>The template looks like this:</p>
+
+<pre><code>Hello there!
+
+&lt;%= @name %&gt; is a great fruit!
+
+Best,
+
+The FruitApp team</code></pre>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Add a signup email to your <code>mongo1/app.rb</code> signup form from last time: when a user signs up they should be sent a welcome email as well as being sent to the thanks page.</li>
+
+<li>(Optional extension) deploy your app to heroku.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="4_project">
+	
+
+		<h2>Project</h2>
+		<p>In the last few sessions we have learnt about:</p>
+
+<ul>
+<li>Responding to <code>post</code> requests and receiving data from web forms.</li>
+
+<li>Storing data in a database and retrieving it.</li>
+
+<li>Sending emails using ruby.</li>
+</ul>
+
+<p>Your challenge is to build a simple (web) application that uses one or more of these techniques.</p>
+
+<p>Here are a few ideas to get started:</p>
+
+<ul>
+<li>Add a &#8216;Email this to a friend&#8217; option to your FOAAS-type app: - On each of your pages add a link to a form. - Users enter an email address on the form and click &#8216;Send&#8217;. - The app sends a link to the page to the email address given.</li>
+
+<li>Make a URL shortener app (think tiny.cc): - The user enters a url and a keystring on a form and presses &#8216;create&#8217;. - Subsequently, when users visit <code>/keystring</code> they get redirected to the url.</li>
+
+<li>Create a mail-merge type app to send emails to those who sign up to the conding course on your langing page: - You export the signups from gmail as a <code>csv</code> file (File &gt; Export &gt; csv). - You save the csv in your ruby project. - Your ruby program reads in the data and sends a welcome email to each applicant.</li>
+</ul>
+
+<p>The key thing here is to <strong>keep it simple</strong> - you only have until Tuesday to work on this: try and get something working!</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Choose a project to work on, either on your own or with a friend, to practice the techniques listed above.</li>
+
+<li>Set up your project on github. It should be in a repository called <code>cfg_project1</code>.</li>
+
+<li>Make it go!</li>
+</ol>
+</div>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
