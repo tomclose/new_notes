@@ -36,7 +36,11 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_check_rails_installation" data-toggle="tab">Install rails </a></li>
+		<li class="active"><a href="#1_check_rails_installation" data-toggle="tab">Check your rails </a></li>
+		
+	
+		
+		<li><a href="#2_work_on_project" data-toggle="tab">Work on project </a></li>
 		
 	
 </ul>
@@ -47,7 +51,7 @@
 	<div class="tab-pane active" id="1_check_rails_installation">
 	
 
-		<h2>Install rails</h2>
+		<h2>Check your rails</h2>
 		<p>Most of you should already have rails set up on your laptops from the intial installation instructions. It&#8217;s worth doing a check though to make sure everything is in order for next session.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
@@ -56,20 +60,41 @@
 <li>
 <p>Download the <code>rails_test</code> code:</p>
 
-<pre><code> git clone ...</code></pre>
+<pre><code> $ git clone https://github.com/code61/rails_test.git</code></pre>
 </li>
 
 <li>
 <p>Install the gems:</p>
 
-<pre><code> bundle install</code></pre>
+<pre><code> $ bundle install</code></pre>
 </li>
 
 <li>
-<p>Run the test:</p>
+<p>Migrate your database:</p>
+
+<pre><code> $ rake db:migrate</code></pre>
+</li>
+
+<li>
+<p>Start the server:</p>
+
+<pre><code> $ rails server</code></pre>
+</li>
+
+<li>
+<p>Go to <a href='http://localhost:3000/'>localhost:3000</a> in your browser. If you see &#8220;Listing posts&#8221;, everything is ok! You can now experiment with creating/editing/deleting a post.</p>
 </li>
 </ol>
 </div>
+<p>You might also want to have a browse through the <a href='http://ruby.railstutorial.org/ruby-on-rails-tutorial-book'>Rails tutorial book</a>. In particular, have a read through Section 1.2.6 and Chapter 2.</p>
+	</div>
+
+	
+	<div class="tab-pane " id="2_work_on_project">
+	
+
+		<h2>Work on project</h2>
+		<p>Work on your project from the end of <a href='/mongo2'>Mongo 2</a>. Your aim is to have a simple thing that actually works by Tuesday.</p>
 	</div>
 
 </div>
