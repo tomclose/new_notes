@@ -102,7 +102,7 @@ A few things to look out for
     * absolute local link e.g. "/about". This links to a file relative to the root of your webserver. For example if your site is at `www.example.com` the link will point to `www.example.com/about`
     * relative local link e.g. "about". This links to a file relative to the current html document. In this case it will link to the file called `about` in the same folder as your current html file.
 * You can also link to places in the same document using `href="#my_tag"`. This 
-* You can get the link to open in a new tag like this: `<a href="http://www.facebook.com" target="_blank">
+* You can get the link to open in a new tag like this: `<a href="http://www.facebook.com" target="_blank">`
 
 ### Images
 

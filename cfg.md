@@ -5,6 +5,16 @@ layout: default
 
 # Code First: Girls 2013
 
+### Session 12 - 8/8/2013
+
+* [Sending email](/mongo2)
+* [Homework 12](/hmwk12)
+
+### Session 11 - 6/8/2013
+
+* [Databases 1](/mongo1)
+* [Homework 11](/hmwk11)
+
 ### Session 10 - 1/8/2013
 
 * [Sinatra 3](/sinatra3)

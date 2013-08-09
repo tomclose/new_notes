@@ -12,13 +12,13 @@ layout: default
 - hello.rb, run, change to make it print their name
 - a more complicated but readable example ?
 - introduce to irb
-- +, -, *, /, % (inc dividing integers), expressions, numbers evaluate to themselves
+- `+`, `-`,`*`, `/`, `%` (inc dividing integers), expressions, numbers evaluate to themselves
 - what does % do?
 - numbers are objects - even?, odd?, methods 
 - variables, x = x + 1
-- strings, methods, interpolating strings, "tom"*3
+- strings, methods, interpolating strings, `"tom"*3`
 - interactive hello (print vs puts), sanitizing name, entering other details
-- enter a pair of numbers (5, 2) and print 5 = 2*2 + 1
+- enter a pair of numbers (5, 2) and `print 5 = 2*2 + 1`
 
 
 ## Ruby 2: methods and scopes, ifs, booleans, case?

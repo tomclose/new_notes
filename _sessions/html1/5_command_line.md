@@ -3,7 +3,7 @@ title: Meet the Command Line
 ---
 
 
-The command line is a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the command line, as many of the programmes you will use will be run from the it, instead of by clicking an icon.
+The command line is a way to interact with your computer programmatically. If you are doing any software development you will need to get to grips with using the command line, as many of the programs you will use will be run from the it, instead of by clicking an icon.
 
 Note: when giving you instructions for the command line we will precede them with a `$` to represent the command prompt e.g.
 
