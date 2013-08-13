@@ -366,7 +366,7 @@ vendor</code></pre>
 <div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>Task</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
 
   <span class='k'>def</span> <span class='nf'>overdue?</span>
-    <span class='n'>due_date</span> <span class='o'>&gt;</span> <span class='no'>Date</span><span class='o'>.</span><span class='n'>today</span> <span class='o'>&amp;&amp;</span> <span class='o'>!</span><span class='n'>completed?</span>
+    <span class='n'>due_date</span> <span class='o'>&lt;</span> <span class='no'>Date</span><span class='o'>.</span><span class='n'>today</span> <span class='o'>&amp;&amp;</span> <span class='o'>!</span><span class='n'>completed?</span>
   <span class='k'>end</span>
 
 <span class='k'>end</span>
