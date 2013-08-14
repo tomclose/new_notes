@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>rails2</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>rails2 <small></small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_relations" data-toggle="tab">Data relationships </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_relations">
+	
+
+		<h2>Data relationships</h2>
+		<p>In our application so far we have a single Model, corresponding to a single table in the database. We can view the fields of this table by looking at a new <code>Task</code> in the <code>rails console</code>:</p>
+
+<pre><code>&gt; Task.new
+=&gt; #&lt;Task id: nil, name: nil, due_date: nil, description: nil, project: nil, completed: nil, created_at: nil, updated_at: nil&gt;</code></pre>
+
+<p>The <code>id</code> field was added by rails and will be used as the <em>primary key</em> for the row. (Rails always adds an id column to each table - it means the tables aren&#8217;t truly normalised, but sidesteps a lot of the complexity caused by composite primary keys.) Rails also added the <code>created_at</code> and <code>updated_at</code> fields, which it sets and maintains on its own. The other columns: <code>name</code>, <code>due_date</code>, <code>description</code>, <code>project</code> and <code>completed</code> are the fields we specified with <code>rails generate scaffold</code>.</p>
+
+<p>There&#8217;s currently a problem with the <code>project</code> column: at the moment you have to write the project in each time as a string. It would make far more sense if you could select the project from a list of existing projects, or alternatively, create a new project and add tasks to them. In other words it would make more sense if there was also a <code>Project</code> model, with a one-to-many relationship between projects and tasks (a project can have many tasks, a task belongs to a single project).</p>
+
+<p>To do this we&#8217;re going to change the structure of the tables in our database to something like this (ignoring the created_at/updated_at fields):</p>
+
+<ul>
+<li><strong>Task</strong>: id, name, due_date, description, project_id, completed</li>
+
+<li><strong>Project</strong>: id, name</li>
+</ul>
+
+<p>The projects table will contain only the rails-generated <code>id</code> and a <code>name</code>. The tasks table will now contain a <code>project_id</code> integer field (instead of a <code>project</code> string field). This <code>project_id</code> field will store the <code>id</code> of the relevant project from the projects table.</p>
+
+<p>We will now go through how to set this up.</p>
+
+<h3 id='creating_the_project_model'>Creating the project model</h3>
+
+<p>Creating the project model is very similar to how we created the task model in the first place. In the <code>project_manager</code> folder we will run a new <code>rails generate scaffold</code> command:</p>
+
+<pre><code>$ rails generate scaffold project name:string</code></pre>
+
+<p>Here we specify only one attribute - the name, which we want to be a string. We now need to migrate the database to create the new table:</p>
+
+<pre><code>$ rake db:migrate</code></pre>
+
+<p>If you restart your server, you should now be able to view the new project pages in your browser at <a href='http://localhost:3000/projects'>localhost:3000/projects</a>. You have a working project model, but it isn&#8217;t connected to the task model in any way.</p>
+
+<h3 id='modifying_the_tasks_table'>Modifying the tasks table</h3>
+
+<p>The next step we need to do is change the <code>project</code> string column to a <code>project_id</code> integer column in the databse. In rails it is important to call the column <code>project_id</code> - if you do this rails will know that its the column for specifying a relationship with the tasks and projects table. (It is possible to call it something else, but this will require more work later. You should embrace rails&#8217; philosophy of convention over configuration!) To change the column we need to generate a database migration:</p>
+
+<pre><code>$ rails generate migration change_product_to_product_id
+invoke  active_record
+create    db/migrate/20130814112241_change_product_to_product_id.rb</code></pre>
+
+<p>Rails has created an empty database migration file in <code>db/migrate/20130814112241_change_product_to_product_id.rb</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>ChangeProductToProductId</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Migration</span>
+  <span class='k'>def</span> <span class='nf'>change</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>In this we need to write the code to</p>
+
+<ul>
+<li>remove the project column</li>
+
+<li>add the project_id column</li>
+</ul>
+
+<p>I found out what these command were by reading the <a href='http://edgeguides.rubyonrails.org/migrations.html#changing-tables'>Rails migrations guide</a>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>ChangeProductToProductId</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Migration</span>
+  <span class='k'>def</span> <span class='nf'>change</span>
+    <span class='n'>remove_column</span> <span class='ss'>:tasks</span><span class='p'>,</span> <span class='ss'>:project</span><span class='p'>,</span> <span class='ss'>:string</span>
+    <span class='n'>add_column</span> <span class='ss'>:tasks</span><span class='p'>,</span> <span class='ss'>:project_id</span><span class='p'>,</span> <span class='ss'>:integer</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Notice how in the <code>remove_column</code> line we specify that the column we&#8217;re removing is a <code>:string</code>. This isn&#8217;t strictly necessary for the removal, but will make our migration <em>reversible</em> - after migrating we will be able to undo it by running <code>rake db:rollback</code> if needed.</p>
+
+<p>We now need to run this migration to update the table:</p>
+
+<pre><code>$ rake db:migrate</code></pre>
+
+<h3 id='telling_the_models_about_each_other'> Telling the models about each other</h3>
+
+<p>Our database tables are now correctly set up. The final thing we have to do is let the models in the code know that they are related to one another. To do this you need to make changes to the <code>app/models/task.rb</code> and <code>app/models/project.rb</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in task.rb</span>
+<span class='k'>class</span> <span class='nc'>Task</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>belongs_to</span> <span class='ss'>:project</span>
+
+  <span class='k'>def</span> <span class='nf'>overdue?</span>
+    <span class='n'>due_date</span> <span class='o'>&lt;</span> <span class='no'>Date</span><span class='o'>.</span><span class='n'>today</span> <span class='o'>&amp;&amp;</span> <span class='o'>!</span><span class='n'>completed?</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'># in project.rb</span>
+<span class='k'>class</span> <span class='nc'>Project</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>has_many</span> <span class='ss'>:tasks</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>These statements add some methods to the <code>Task</code> and <code>Project</code> models to do with the relationship. You can try out the following in the <code>rails console</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># first set up some models to play with</span>
+<span class='nb'>p</span> <span class='o'>=</span> <span class='no'>Project</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;Housework&quot;</span><span class='p'>)</span>
+<span class='nb'>p</span><span class='o'>.</span><span class='n'>save</span>
+
+<span class='n'>t1</span> <span class='o'>=</span> <span class='no'>Task</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;Washing up&quot;</span><span class='p'>)</span>
+<span class='n'>t2</span> <span class='o'>=</span> <span class='no'>Task</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;Ironing&quot;</span><span class='p'>)</span>
+
+<span class='c1'># set t1&#39;s project, notice how the project_id has been updated on t1</span>
+<span class='n'>t1</span><span class='o'>.</span><span class='n'>project</span> <span class='o'>=</span> <span class='nb'>p</span>
+<span class='n'>t1</span><span class='o'>.</span><span class='n'>save</span>
+
+<span class='c1'># look at p&#39;s tasks</span>
+<span class='nb'>p</span><span class='o'>.</span><span class='n'>tasks</span>
+
+<span class='c1'># set t2&#39;s project (and save it) by adding it to p&#39;s tasks</span>
+<span class='nb'>p</span><span class='o'>.</span><span class='n'>tasks</span> <span class='o'>&lt;&lt;</span> <span class='n'>t2</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Create the project model and migrate the database:</p>
+
+<pre><code> $ rails generate scaffold project name:string
+ $ rake db:migrate</code></pre>
+</li>
+
+<li>
+<p>Change the <code>project</code> column in the <code>tasks</code> table to <code>project_id</code>:</p>
+
+<pre><code> $ rails generate migration change_product_to_product_id</code></pre>
+</li>
+</ol>
+
+<p>and then change the generated migration file to:</p>
+
+<pre><code>    class ChangeProductToProductId &lt; ActiveRecord::Migration
+      def change
+        remove_column :tasks, :project, :string
+        add_column :tasks, :project_id, :integer
+      end
+    end</code></pre>
+
+<p>and then migrate the database:</p>
+
+<pre><code>    $ rake db:migrate</code></pre>
+
+<ol>
+<li>
+<p>Make the changes to app/models/task.rb and app/models/project.rb:</p>
+
+<pre><code> # in task.rb
+ class Task &lt; ActiveRecord::Base
+   belongs_to :project
+
+   def overdue?
+     due_date &lt; Date.today &amp;&amp; !completed?
+   end
+ end
+
+ # in project.rb
+ class Project &lt; ActiveRecord::Base
+   has_many :tasks
+ end</code></pre>
+</li>
+
+<li>
+<p>Try out the methods given above in the <code>rails console</code>.</p>
+</li>
+</ol>
+</div>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
