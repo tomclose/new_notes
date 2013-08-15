@@ -266,8 +266,13 @@ create    db/migrate/20130814112241_change_product_to_product_id.rb</code></pre>
 <p>This was fine when project was just a string, but there are better options now. We&#8217;re going to use a <code>collection_select</code> form element to let the user pick an existing project from a list:</p>
 <div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;field&quot;</span><span class='nt'>&gt;</span>
   <span class='err'>&lt;</span>%= f.label :project %&gt;<span class='nt'>&lt;br&gt;</span>
-  <span class='err'>&lt;</span>%= f.collection_select :project, Project.all, :id, :name %&gt;
+  <span class='err'>&lt;</span>%= f.collection_select :project_id, Project.all, :id, :name %&gt;
 <span class='nt'>&lt;/div&gt;</span>
+</code></pre></div>
+<p>As we&#8217;re now setting the <code>project_id</code> instead of the <code>project</code> we also need to make a small change in <code>app/controllers/task_controller.rb</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>task_params</span>
+  <span class='n'>params</span><span class='o'>.</span><span class='n'>require</span><span class='p'>(</span><span class='ss'>:task</span><span class='p'>)</span><span class='o'>.</span><span class='n'>permit</span><span class='p'>(</span><span class='ss'>:name</span><span class='p'>,</span> <span class='ss'>:due_date</span><span class='p'>,</span> <span class='ss'>:description</span><span class='p'>,</span> <span class='ss'>:project_id</span><span class='p'>,</span> <span class='ss'>:completed</span><span class='p'>)</span>
+<span class='k'>end</span>
 </code></pre></div>
 <p>You can find out more about collection select from the <a href='http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-collection_select'>Rails docs</a> (which I found by googling &#8216;rails collection_select&#8217;).</p>
 <div class='exercise alert alert-info'><strong>
@@ -351,7 +356,25 @@ create    db/migrate/20130814112241_change_product_to_product_id.rb</code></pre>
 </div>
 <h3 id='adding_tags_to_the_user_interface'>Adding tags to the user interface</h3>
 
-<p>We&#8217;re going to add the ability to add tags on the</p>
+<p>We&#8217;re going to add the ability to add tags to the task on the task form. To do this we&#8217;re going to use a feature that&#8217;s new to Rails 4.0: the <code>collection_check_boxes</code>.</p>
+
+<p>To <code>app/views/tasks/_form.erb</code> add the following lines:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;field&quot;</span><span class='nt'>&gt;</span>
+  <span class='err'>&lt;</span>%= f.collection_check_boxes :tag_ids, Tags.all, :id, :name %&gt;
+<span class='nt'>&lt;/div&gt;</span>
+</code></pre></div>
+<p>As we&#8217;ve now added a new element to our form we need to allow it through in the controller:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># Never trust parameters from the scary internet, only allow the white list through.</span>
+<span class='k'>def</span> <span class='nf'>task_params</span>
+  <span class='n'>params</span><span class='o'>.</span><span class='n'>require</span><span class='p'>(</span><span class='ss'>:task</span><span class='p'>)</span><span class='o'>.</span><span class='n'>permit</span><span class='p'>(</span><span class='ss'>:name</span><span class='p'>,</span> <span class='ss'>:due_date</span><span class='p'>,</span> <span class='ss'>:description</span><span class='p'>,</span> <span class='ss'>:project_id</span><span class='p'>,</span> <span class='ss'>:completed</span><span class='p'>,</span> <span class='ss'>:tag_ids</span> <span class='o'>=&gt;</span> <span class='o'>[]</span><span class='p'>)</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>We need the <code>:tag_ids =&gt; []</code> as tag_ids is an array of values. (This bit is new in Rails 4.0 and has been added to improve security. You can find out more about it at on the <a href='https://github.com/rails/strong_parameters'>strong parameters github site</a>. To work out what to do here I used the following <a href='http://stackoverflow.com/questions/16549382/how-to-permit-an-array-with-strong-parameters'>stackoverflow post</a>.)</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Follow the instructions above to add tags to your tasks.</p>
+</div>
 	</div>
 
 </div>
