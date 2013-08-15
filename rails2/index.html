@@ -176,23 +176,21 @@ create    db/migrate/20130814112241_change_product_to_product_id.rb</code></pre>
 <p>Change the <code>project</code> column in the <code>tasks</code> table to <code>project_id</code>:</p>
 
 <pre><code> $ rails generate migration change_product_to_product_id</code></pre>
-</li>
-</ol>
 
 <p>and then change the generated migration file to:</p>
 
-<pre><code>    class ChangeProductToProductId &lt; ActiveRecord::Migration
-      def change
-        remove_column :tasks, :project, :string
-        add_column :tasks, :project_id, :integer
-      end
-    end</code></pre>
+<pre><code> class ChangeProductToProductId &lt; ActiveRecord::Migration
+   def change
+     remove_column :tasks, :project, :string
+     add_column :tasks, :project_id, :integer
+   end
+ end</code></pre>
 
 <p>and then migrate the database:</p>
 
-<pre><code>    $ rake db:migrate</code></pre>
+<pre><code> $ rake db:migrate</code></pre>
+</li>
 
-<ol>
 <li>
 <p>Make the changes to app/models/task.rb and app/models/project.rb:</p>
 
