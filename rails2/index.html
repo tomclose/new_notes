@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>rails2</title>
+  <title>Rails 2</title>
   <meta name="viewport" content="width=device-width">
   <!-- Twitter bootstrap basic styles -->
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -29,14 +29,22 @@
   <div class="container">
 
     <div class="page-header">
-  <h1>rails2 <small></small></h1>
+  <h1>Rails 2 <small>Creating relationships</small></h1>
 </div>
 
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_relations" data-toggle="tab">Data relationships </a></li>
+		<li class="active"><a href="#1_relations" data-toggle="tab">One-to-many relationship </a></li>
+		
+	
+		
+		<li><a href="#2_relationship_views" data-toggle="tab">One-to-many views </a></li>
+		
+	
+		
+		<li><a href="#3_many_to_many" data-toggle="tab">Many-to-many </a></li>
 		
 	
 </ul>
@@ -47,8 +55,10 @@
 	<div class="tab-pane active" id="1_relations">
 	
 
-		<h2>Data relationships</h2>
-		<p>In our application so far we have a single Model, corresponding to a single table in the database. We can view the fields of this table by looking at a new <code>Task</code> in the <code>rails console</code>:</p>
+		<h2>One-to-many relationship</h2>
+		<p>In this session we&#8217;re going to be looking at relationships between models. All this is explained pretty clearly in the <a href='http://guides.rubyonrails.org/association_basics.html'>Active Record Associations</a> RailsGuide. You may want to refer to this during/after the session.</p>
+
+<p>In our application so far we have a single Model, corresponding to a single table in the database. We can view the fields of this table by looking at a new <code>Task</code> in the <code>rails console</code>:</p>
 
 <pre><code>&gt; Task.new
 =&gt; #&lt;Task id: nil, name: nil, due_date: nil, description: nil, project: nil, completed: nil, created_at: nil, updated_at: nil&gt;</code></pre>
@@ -206,6 +216,142 @@ create    db/migrate/20130814112241_change_product_to_product_id.rb</code></pre>
 </li>
 </ol>
 </div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_relationship_views">
+	
+
+		<h2>One-to-many views</h2>
+		<p>Having changed the structure of the models, we now need to update the views. The first think you might notice is the <a href='http://localhost:3000/tasks'>tasks list</a> (<code>:index</code>) now looks a bit weird - you might see things like <code>#&lt;Project:0x007f9dfb03f228&gt;</code> on your page. This is due to the following line:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;td&gt;</span><span class='err'>&lt;</span>%= task.project %&gt;<span class='nt'>&lt;/td&gt;</span>
+</code></pre></div>
+<p>and is because <code>task.project</code> is now a <code>Project</code> object instead of a string. What we really want instead is to display the name of the <code>task.project</code> <code>Project</code> object:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;td&gt;</span><span class='err'>&lt;</span>%= task.project.name %&gt;<span class='nt'>&lt;/td&gt;</span>
+</code></pre></div>
+<p>This might work for you, but it might not - it isn&#8217;t very robust. In particular, if you have a task which you haven&#8217;t yet set a project for, you&#8217;ll end up with an error:</p>
+
+<pre><code>undefined method `name&#39; for nil:NilClass</code></pre>
+
+<p>This is because if a <code>task</code> doesn&#8217;t have a project, <code>task.project</code> returns <code>nil</code> and <code>nil</code> doesn&#8217;t have a <code>name</code> method. We need to check whether the <code>project</code> exists before we call name. The best thing to do here is to create a new method on the <code>Task</code> model to sort this out for us:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># in models/task.rb</span>
+<span class='k'>class</span> <span class='nc'>Task</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='c1'># other methods</span>
+  <span class='c1'># ....</span>
+
+  <span class='k'>def</span> <span class='nf'>project_name</span>
+    <span class='k'>if</span> <span class='n'>project</span>
+      <span class='n'>project</span><span class='o'>.</span><span class='n'>name</span> 
+    <span class='k'>else</span>
+      <span class='s2'>&quot;&quot;</span>
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>If the project exists (remember that <code>nil</code> is falsey) it will return the project&#8217;s name, if not it will return the empty string. We can now use this method in the index template:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;td&gt;</span><span class='err'>&lt;</span>%= task.project_name %&gt;<span class='nt'>&lt;/td&gt;</span>
+</code></pre></div>
+<p>You might want to do something similar in <code>app/views/tasks/show.html.erb</code>.</p>
+
+<h3 id='onetomany_form_using_collection_select'>One-to-many form using collection_select</h3>
+
+<p>We also need to change our forms a bit to reflect the new relationship. There&#8217;s a design decision to be made here: do you want to be able to add tasks to a project (i.e. on the project form) or do you want to be able to assign a task to a project (i.e. on the task form) (or both)? We&#8217;re going to go for the second option here, as it&#8217;s the easier of the two. If you want to have a go at the former you should have a look at these <a href='http://railscasts.com/episodes/196-nested-model-form-part-1'>two</a> <a href='http://railscasts.com/episodes/196-nested-model-form-part-2'>railscasts</a>.</p>
+
+<p>We&#8217;re now going to look at how to select an existing <code>Project</code> on the new/edit <code>Task</code> form. Currently the project field in <code>app/views/task/_form.html.erb</code> looks like this:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;field&quot;</span><span class='nt'>&gt;</span>
+  <span class='err'>&lt;</span>%= f.label :project %&gt;<span class='nt'>&lt;br&gt;</span>
+  <span class='err'>&lt;</span>%= f.text_field :project %&gt;
+<span class='nt'>&lt;/div&gt;</span>
+</code></pre></div>
+<p>This was fine when project was just a string, but there are better options now. We&#8217;re going to use a <code>collection_select</code> form element to let the user pick an existing project from a list:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;field&quot;</span><span class='nt'>&gt;</span>
+  <span class='err'>&lt;</span>%= f.label :project %&gt;<span class='nt'>&lt;br&gt;</span>
+  <span class='err'>&lt;</span>%= f.collection_select :project, Project.all, :id, :name %&gt;
+<span class='nt'>&lt;/div&gt;</span>
+</code></pre></div>
+<p>You can find out more about collection select from the <a href='http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-collection_select'>Rails docs</a> (which I found by googling &#8216;rails collection_select&#8217;).</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Update <code>app/views/tasks/index.html.erb</code> as above.</li>
+
+<li>Update <code>app/views/tasks/_form.html.erb</code> as above.</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_many_to_many">
+	
+
+		<h2>Many-to-many</h2>
+		<p>We&#8217;re now going to look at adding tags to the tasks. Since a task can be tagged with many things and each tag can be applied to many tasks, this is a many-to-many relationship. We will be dealing with the following tables:</p>
+
+<ul>
+<li><strong>Task</strong>: id, name, due_date, description, project_id, completed</li>
+
+<li><strong>Tag</strong>: id, name</li>
+
+<li><strong>TaskTag</strong>: id, task_id, tag_id</li>
+</ul>
+
+<p>The <code>TaskTag</code> table will be a join table, which will keep track of which tags each task has been tagged with. Note that, unlike adding a project, we won&#8217;t have to modify the <code>Task</code> table.</p>
+
+<p>To begin with we set up the <code>Tags</code> models, views and controllers using <code>rails generate scaffold</code>:</p>
+
+<pre><code>$ rails generate scaffold tags name:string</code></pre>
+
+<p>We then set up the <code>TaskTag</code> model. Note that here we do <code>rails generate model</code>. This will just set up the model and database migration, skipping the controllers and views. This makes sense: we&#8217;ll be adding tags through the tasks page - we don&#8217;t need separate pages just for this.</p>
+
+<pre><code>$ rails generate model task_tags task_id:integer tag_id:integer</code></pre>
+
+<p>We then need to create these new tables in the database:</p>
+
+<pre><code>$ rake db:migrate</code></pre>
+
+<p>With the database now set up, we need to tell the code about this new relationship. You do this as follows in <code>app/models/task.rb</code>, <code>app/models/task_tag.rb</code> and <code>app/models/tag.rb</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>Task</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>has_many</span> <span class='ss'>:task_tags</span>
+  <span class='n'>has_many</span> <span class='ss'>:tags</span><span class='p'>,</span> <span class='ss'>:through</span> <span class='o'>=&gt;</span> <span class='ss'>:task_tags</span>
+
+  <span class='c1'>## Rest of contents of Task class ...</span>
+
+  <span class='c1'># ...</span>
+
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>TaskTag</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>belongs_to</span> <span class='ss'>:task</span> 
+  <span class='n'>belongs_to</span> <span class='ss'>:tag</span>
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>Tag</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>has_many</span> <span class='ss'>:task_tags</span>
+  <span class='n'>has_many</span> <span class='ss'>:tasks</span><span class='p'>,</span> <span class='ss'>:through</span> <span class='o'>=&gt;</span> <span class='ss'>:task_tags</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>You can now test out the new relationship in the <code>rails console</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># create some tags</span>
+<span class='n'>tags</span> <span class='o'>=</span> <span class='sx'>%w(urgent important tomorrow bug feature)</span><span class='o'>.</span><span class='n'>map</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>t</span><span class='o'>|</span> <span class='no'>Tag</span><span class='o'>.</span><span class='n'>create</span><span class='p'>(</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='n'>t</span><span class='p'>)</span> <span class='p'>}</span>
+
+<span class='c1'># find a task</span>
+<span class='n'>t</span> <span class='o'>=</span> <span class='no'>Task</span><span class='o'>.</span><span class='n'>last</span>
+<span class='n'>t</span><span class='o'>.</span><span class='n'>tags</span> <span class='c1'># =&gt; []</span>
+
+<span class='c1'># add a tag to a task</span>
+<span class='n'>urgent</span> <span class='o'>=</span> <span class='n'>tags</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span>
+<span class='n'>t</span><span class='o'>.</span><span class='n'>tags</span> <span class='o'>&lt;&lt;</span> <span class='n'>urgent</span>
+<span class='n'>t</span><span class='o'>.</span><span class='n'>tags</span>
+<span class='n'>urgent</span><span class='o'>.</span><span class='n'>tasks</span>
+</code></pre></div><div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Follow the steps above to allow tasks to be tagged.</p>
+</div>
+<h3 id='adding_tags_to_the_user_interface'>Adding tags to the user interface</h3>
+
+<p>We&#8217;re going to add the ability to add tags on the</p>
 	</div>
 
 </div>
