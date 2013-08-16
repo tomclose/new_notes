@@ -303,11 +303,11 @@ create    db/migrate/20130814112241_change_product_to_product_id.rb</code></pre>
 
 <p>To begin with we set up the <code>Tags</code> models, views and controllers using <code>rails generate scaffold</code>:</p>
 
-<pre><code>$ rails generate scaffold tags name:string</code></pre>
+<pre><code>$ rails generate scaffold tag name:string</code></pre>
 
 <p>We then set up the <code>TaskTag</code> model. Note that here we do <code>rails generate model</code>. This will just set up the model and database migration, skipping the controllers and views. This makes sense: we&#8217;ll be adding tags through the tasks page - we don&#8217;t need separate pages just for this.</p>
 
-<pre><code>$ rails generate model task_tags task_id:integer tag_id:integer</code></pre>
+<pre><code>$ rails generate model task_tag task_id:integer tag_id:integer</code></pre>
 
 <p>We then need to create these new tables in the database:</p>
 
