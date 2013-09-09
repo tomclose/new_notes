@@ -37,8 +37,8 @@ Follow these instructions for your `first_site` folder. That is:
 
 1. Set your repository up to push to the gh-pages branch:
 
-        $ git config remote.origin.push +ref/heads/master:refs/heads/master --add
-        $ git config remote.origin.push +ref/heads/master:refs/heads/gh-pages --add
+        $ git config remote.origin.push +refs/heads/master:refs/heads/master --add
+        $ git config remote.origin.push +refs/heads/master:refs/heads/gh-pages --add
 
 2. In Sublime Text, make any change to `first_site/index.html` and save. 
 3. Commit that change:

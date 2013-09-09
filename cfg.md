@@ -5,6 +5,15 @@ layout: default
 
 # Code First: Girls 2013
 
+### Session 14 - 15/8/2013
+
+* [Rails 2 - Relationships](/rails2)
+
+### Session 13 - 13/8/2013
+
+* [Intro to Rails](/rails1)
+* [Homework 13](/hmwk13)
+
 ### Session 12 - 8/8/2013
 
 * [Sending email](/mongo2)

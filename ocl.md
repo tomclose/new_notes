@@ -11,7 +11,7 @@ layout: default
 * [3: CSS and Bootstrap](/html3)
 * [4: GitHub and collaboration](/html4)
 * [5: HTML Forms](/lp2)
-* [6: Google analytics](/lp3)
+* [6: Google analytics](/lp4)
 * [7: What next?]()
 
 

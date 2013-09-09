@@ -3,6 +3,10 @@ title: Teaching Ruby Plan
 layout: default
 ---
 
+
+
+.
+
 # Teaching Ruby
 
 ## Ruby 1: files, irb, sums, variables, strings, puts
