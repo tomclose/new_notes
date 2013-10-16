@@ -216,12 +216,12 @@
 <h3 id='mac_notes'>Mac notes:</h3>
 
 <p>You will need to know which version of OS X you are running: 10.8 (Mountain Lion), 10.7 (Lion), or 10.6 (Snow Leopard). To check this click on the apple symbol in the top left of your screen and select &#8216;About This Mac&#8217;.</p>
+
+<h3 id='did_it_work'>Did it work?</h3>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p><strong>Did it work?</strong></p>
-
-<p>This step should have installed git and ruby on your laptop. Check it worked with the following steps:</p>
+<p>You should now have installed git and ruby on your laptop. Check it worked with the following steps:</p>
 
 <ol>
 <li>
@@ -349,9 +349,13 @@
 </li>
 
 <li>
-<p>Check it worked. In the terminal type:</p>
+<p>Close the terminal programme and reopen it.</p>
+</li>
 
-<p>git &#8211;version</p>
+<li>
+<p>To check it worked, in the terminal type:</p>
+
+<pre><code>git --version</code></pre>
 
 <p>It should look something like this</p>
 
@@ -363,7 +367,7 @@
 </li>
 
 <li>
-<p>Close the terminal and reopen it. Configure your git details by typing</p>
+<p>Configure your git details by typing</p>
 
 <pre><code>git config --global user.name &quot;Your Full Name&quot;
 git config --global user.email &quot;Your Email Address&quot;</code></pre>
@@ -392,6 +396,16 @@ echo &#39;eval &quot;$(rbenv init -)&quot;&#39; &gt;&gt; ~/.bash_profile</code><
 <li>
 <p>Close the terminal and reopen it.</p>
 </li>
+
+<li>
+<p>To check it worked, in the terminal type:</p>
+
+<pre><code> rbenv --version</code></pre>
+
+<p>It should look something like this</p>
+
+<p>$ rbenv &#8211;version rbenv 0.4.0 $</p>
+</li>
 </ol>
 </div>
 <h3 id='step_five_install_ruby'>Step Five: Install Ruby</h3>
@@ -416,6 +430,16 @@ echo &#39;eval &quot;$(rbenv init -)&quot;&#39; &gt;&gt; ~/.bash_profile</code><
 rbenv rehash</code></pre>
 
 <p>This will set your system to use the new version of ruby by default.</p>
+</li>
+
+<li>
+<p>To check it worked, in the terminal type:</p>
+
+<pre><code> ruby --version</code></pre>
+
+<p>It should look something like this</p>
+
+<p>$ ruby &#8211;version ruby 1.9.3p448 (2013-06-27 revision 41675) <span>x86_64-darwin12.4.1</span> $</p>
 </li>
 </ol>
 </div>
@@ -491,15 +515,21 @@ gem install bundler</code></pre>
 		<h2>Preparation exercises</h2>
 		<p>Well done for getting to this point! You should now have all the software you need to start the course.</p>
 
-<p>In the first session we&#8217;ll be looking at HTML: the markup language used for webpages. You might have seen some HTML before. If not, it would be useful if you were slightly familiar with it beforehand, as we won&#8217;t spend that much time on it.</p>
-
-<p>To make sure everyone&#8217;s roughly in the same place we&#8217;d like you all to do some of the exercises at <a href='http://www.codecademy.com'>Codecademy</a>. Codecademy is a free site that allows you to try out various programming languages directly in your browser. If you&#8217;ve already done some HTML, it might be slow going - because of this we <strong>only want you to do the project</strong> from each section. If you haven&#8217;t done any HTML before, please feel free to do the exercises too.</p>
-
-<p><img alt='Highlighting the project on Codecademy' src='/assets/codecademy_web.png' /></p>
+<p>In the first session we will be looking at HTML and the overall structure of the internet. We won&#8217;t be spending much time on these, so it will help if you&#8217;ve at least seen then before. To help everyone has a basic amount of knowledge to start, please do the following:</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>On the <a href='http://www.codecademy.com/tracks/web'>Codecademy web track</a>:</p>
+<ol>
+<li>
+<p>Watch <a href='http://www.youtube.com/watch?v=72snZctFFtA'>these</a> <a href='http://www.youtube.com/watch?v=oN7ripK5uGM'>two</a> videos about the DNS system: <a href='http://www.youtube.com/watch?v=72snZctFFtA'>video1</a> (excuse the political overtones), <a href='http://www.youtube.com/watch?v=oN7ripK5uGM'>video2</a></p>
+</li>
+
+<li>
+<p>Sign up to <a href='https://dash.generalassemb.ly/projects'>General Assembly Dash</a> and complete the whole of Project 1. (Will probably take about 30mins).</p>
+</li>
+
+<li>
+<p>(Optional) Sign up to <a href='http://www.codecademy.com/'>Codecademy</a>. On the <a href='http://www.codecademy.com/tracks/web'>Codecademy web track</a>:</p>
 
 <ol>
 <li>Do the project from &#8220;1 Introduction to HTML&#8221;.</li>
@@ -507,6 +537,8 @@ gem install bundler</code></pre>
 <li>Do the project from &#8220;2 HTML Structure: Using Lists&#8221;.</li>
 
 <li>Do the project from &#8220;3 HTML Structure: Tables, Divs, and Spans&#8221;.</li>
+</ol>
+</li>
 </ol>
 </div>
 <p>Look forward to seeing you on Tuesday!</p>
