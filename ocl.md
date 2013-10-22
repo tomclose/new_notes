@@ -5,14 +5,20 @@ layout: default
 
 ### Intro to Web Programming
 
-* [0: Course Preparation](/hmwk0)
-* [1: Domain names and HTML](/html1)
-* [2: Git and site deployment](/html2)
-* [3: CSS and Bootstrap](/html3)
-* [4: GitHub and collaboration](/html4)
-* [5: HTML Forms](/lp2)
-* [6: Google analytics](/lp4)
-* [7: What next?]()
+* [0: Course Preparation](/hmwk00)
+* [1: Sites, Servers and HTML](/ocl1)
+    * What is a web page?
+    * About servers
+    * URLs and DNS
+    * Meet the command line
+    * Developing with HTML locally
+    * HTML exercise
+* 2: Git and CSS
+* 3: Site deployment
+* 4: GitHub and collaboration
+* 5: Collecting analytics
+* 6: Gathering input
+* 7: What next?
 
 
 #### Example pages
