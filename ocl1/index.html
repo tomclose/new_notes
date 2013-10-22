@@ -36,19 +36,15 @@
 <ul class="nav nav-tabs" id="myTab">
 	
 		
-		<li class="active"><a href="#1_urls" data-toggle="tab">Introducing the URL </a></li>
+		<li class="active"><a href="#1_what_is_a_webpage" data-toggle="tab">What is a web page? </a></li>
 		
 	
 		
-		<li><a href="#2_dns_and_servers" data-toggle="tab">Domain Names and Servers </a></li>
+		<li><a href="#2_servers" data-toggle="tab">Web servers </a></li>
 		
 	
 		
-		<li><a href="#3_web_technologies" data-toggle="tab">Web technologies </a></li>
-		
-	
-		
-		<li><a href="#4_investigating_html" data-toggle="tab">Investigating HTML </a></li>
+		<li><a href="#3_urls_and_dns" data-toggle="tab">Introducing the URL </a></li>
 		
 	
 		
@@ -63,82 +59,22 @@
 		<li><a href="#7_more_html" data-toggle="tab">More HTML </a></li>
 		
 	
+		
+		<li><a href="#8_homework" data-toggle="tab">Homework </a></li>
+		
+	
 </ul>
 
 <div class="tab-content">
 
 	
-	<div class="tab-pane active" id="1_urls">
+	<div class="tab-pane active" id="1_what_is_a_webpage">
 	
 
-		<h2>Introducing the URL</h2>
-		<p>Many of our web interactions begin with a URL (<em>uniform resource locator</em>) being typed into our web browser address bar. Let&#8217;s look at an example: <code>http://www.bbc.co.uk/news/</code>.</p>
+		<h2>What is a web page?</h2>
+		<p>A webpage is just a set of files that your web browser knows how to display.</p>
 
-<p>This URL has several different parts to it:</p>
-
-<ul>
-<li><code>http</code> : the <em>protocol</em> or <em>how</em> to fetch the information</li>
-
-<li><code>www.bbc.co.uk</code> : the <em>host</em> or <em>where</em> to fetch it from</li>
-
-<li><code>/news</code> : the <em>path</em> or precisely <em>what</em> information to fetch</li>
-</ul>
-
-<p>When we type the URL into the address bar a request is sent over the internet and some information is returned to us.</p>
-
-<p>The protocol describes how the information is transmitted. Other possibilities include <code>https</code> for secured communication, <code>ftp</code> for file transfer and <code>git</code> which we&#8217;ll learn about later.</p>
-
-<p>The host describes where the information should come from and the path tells that location precisely what information to send.</p>
-
-<p>In general a URL can be more complicated than this. URLs can also contain <em>query parameters</em>, <em>fragments</em> and <em>port information</em>. We will leave these for now but will point them out when we meet them later. Instead we will focus on exactly what information is being sent and who is sending it.</p>
-	</div>
-
-	
-	<div class="tab-pane " id="2_dns_and_servers">
-	
-
-		<h2>Domain Names and Servers</h2>
-		<p>You can think of the internet as a massive network of computers that can send files to one another. The computers that hold web pages are called <em>servers</em>. In general they are large, specialised computers that are permanently connected to the internet.</p>
-
-<p>Each computer on the internet has an address (an <em>IP address</em>) so that requests can be sent to it and files returned - much like a telephone number. The backbone of the internet is a network of <em>routers</em> that are responsible for routing files from one IP address to another.</p>
-
-<p>IP addresses are a sequence of numbers and &#8217;.&#8217;s such as <code>212.58.244.67</code>. These aren&#8217;t very easy to remember. Instead the internet works on a domain name system, that matches domain names such as <code>bbc.co.uk</code> to IP addresses.</p>
-<div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<p>Type <code>212.58.244.67</code> into your browser&#8217;s address bar. What happens?</p>
-</div>
-<p>One of the first things that happens when you type a URL into your browser is a <em>DNS lookup</em>: your computer contacts a DNS server (<em>Domain Name System server</em>), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. <code>bbc.co.uk</code>) into an address for a server (such as <code>212.57.244.67</code>).</p>
-
-<h3 id='putting_up_a_website'>Putting up a website</h3>
-
-<p>If you want to put up your own website at your own domain name you need two things:</p>
-
-<ol>
-<li>A web server to serve your site</li>
-
-<li>A domain name to point towards it</li>
-</ol>
-
-<p>There are many options for web servers - you don&#8217;t have to physically have your own one. There are many companies that will offer web hosting, often providing you with space on a shared server. Later in the course we will use the free hosting offered by GitHub through GitHub Pages.</p>
-
-<p>To buy a domain name you need to use a domain registrar. Examples include <a href='http://www.123-reg.co.uk/'>123-reg.co.uk</a>, <a href='http://www.godaddy.com/'>godaddy.com</a> and <a href='http://www.namecheap.com/'>namecheap.com</a>. You pay the registrar to contact the body who manages a TLD (e.g. .com, .org., .co.uk) and put your server&#8217;s IP address in their DNS address book. If someone else already owns the domain you might be able to buy it off them, but this can be expensive!</p>
-
-<p>Many domain registrars will try to sell you hosting and other site building tools when you buy a domain. It&#8217;s important to remember that the domain name is completely separate from the hosting and you don&#8217;t need to do them both through the same company - don&#8217;t buy anything you&#8217;re not going to use.</p>
-	</div>
-
-	
-	<div class="tab-pane " id="3_web_technologies">
-	
-
-		<h2>Web technologies</h2>
-		<p>Once the address of the web server has been found your request is forwarded on to it. The web server will interpret your request and send back one or more files. We now look at the technology involved in this process.</p>
-
-<p>When talking about web technology it is useful to split things up into server-side technology and client-side technology. Server-side relates to anything that happens on the web server. Client-side is anything the server sends back to your browser.</p>
-
-<h3 id='clientside'>Client-side</h3>
-
-<p>The main three client-side technologies are HTML, CSS and Javascript. Client-side stuff has to be interpreted by your browser, so there are relatively few possibilities.</p>
+<p>There are three possibilities for the types of files they could be: HTML, CSS and Javascript. Most web pages will be a mixture of all three. Because the files have to be able to be interpreted by all web browsers on all operating systems, the choices are limited and don&#8217;t change very often.</p>
 <ul class='thumbnails'>
   <li class='span3'>
     <div class='thumbnail'>
@@ -162,11 +98,98 @@
     </div>
 </li>
 </ul>
-<p>We&#8217;ll look at these in more detail later in the course.</p>
+<p>HTML, CSS and Javascript are known as <strong>client-side</strong> technologies, because they are sent to your web browser (the client).</p>
 
-<h3 id='serverside'>Server-side</h3>
+<h4 id='programming_language_vs_markup_language'>Programming language vs markup language</h4>
 
-<p>There are two main possibilities server-side: either your site is static or dynamic. In a static site all the pages are pre-prepared and the web server just sends them to the browser. In a dynamic site the pages are prepared on-the-fly pulling information out of a database depending on what the user asked for. Most of the sites you can think of will be dynamic sites (e.g. <span>facebook.com</span>, <span>reddit.com</span>, <span>amazon.com</span>, ..).</p>
+<p>HTML (<em>HyperText Markup Language</em>) is a way of writing information so that it can be interpreted by a web browser. It is <em>not</em> a programming language - you can&#8217;t do calculations in it - it is a <em>markup</em> language. CSS is also a markup language. Javascript is a programming language.</p>
+
+<h4 id='contentstyle_separation'>Content/style separation</h4>
+
+<p>Back in the early days of the web HTML would both store the information and tell the browser how to display it. People then realised that this was a bad idea - making a small change such as changing the colour of a heading would require edits all over the place, which made sites hard to maintain. HTML is now used just to display the information (text etc.) that is stored in the page. CSS is used to tell the browser how to display the information.</p>
+
+<h4 id='viewing_html_css_and_js'>Viewing HTML, CSS and js</h4>
+
+<p>Because the HTML, CSS and js are sent you your browser, it is easy for you to look at them. <strong>There are no secrets in HTML, CSS or js.</strong> If there&#8217;s a part of a webpage that you like, it&#8217;s easy to find out how it is coded and use the technique yourself.</p>
+
+<p>Every browser provides a way to look at the source of the page you&#8217;re currently viewing. In Chrome you do <code>View &gt; Developer &gt; View Source</code>. This will show you the raw HTML but isn&#8217;t always the easiest thing to look at.</p>
+
+<p>Several browsers also provide developer tools, which allow you to <em>interactively</em> view the page source. In Chrome you can access these by doing <code>View &gt; Developer &gt; Developer Tools</code>. If you use Firefox, you can get similar functionality with the Firebug plugin. These tools are the best way to investigate a web page. Over the course you will be using them a lot on your own pages, especially when things aren&#8217;t working exactly as you expect.</p>
+
+<p>There are a few features of the Chrome developer tools that it is worth pointing out now.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Open this page in Google Chrome</p>
+</li>
+
+<li>
+<p>View the page source by doing one of the following:</p>
+
+<ul>
+<li><code>View &gt; Developer &gt; View Source</code></li>
+
+<li><code>Tools &gt; View Source</code></li>
+</ul>
+</li>
+
+<li>
+<p>Open the developer tools by doing one of the following:</p>
+
+<ul>
+<li><code>View &gt; Developer &gt; Developer Tools</code></li>
+
+<li><code>Tools &gt; Developer Tools</code></li>
+</ul>
+</li>
+
+<li>
+<p>Use the magnifying glass in the bottom left to hover over bits of the page and find the related HTML.</p>
+</li>
+
+<li>
+<p>Hover over the HTML code in the developer tools box and watch as different parts of the page are highlighted.</p>
+</li>
+
+<li>
+<p>Try changing some of the CSS on the right hand side. To undo any changes just refresh the page.</p>
+</li>
+
+<li>
+<p>Have a look on the <code>Resources</code> tab. See if you can find the CSS, javascript and image files used on this page.</p>
+</li>
+
+<li>
+<p>Visit a few of your favourite websites and repeat this process.</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="2_servers">
+	
+
+		<h2>Web servers</h2>
+		<p>You can think of the internet as a massive network of computers that can send files to one another. The computers that hold web pages are called <em>servers</em>. <strong>Servers are large, specialised computers that are permanently connected to the internet.</strong></p>
+
+<p>Once the address of the web server has been found your request is forwarded on to it, the web server will interpret your request and send back one or more files. We now look at the technology involved in this process.</p>
+
+<h3 id='static_vs_dynamic_sites'>Static vs dynamic sites</h3>
+
+<p>There are two main possibilities server-side: either your site is static or dynamic.</p>
+
+<ul>
+<li>In a static site all the pages are pre-prepared and the web server just sends them to the browser.</li>
+
+<li>In a dynamic site the pages are prepared on-the-fly pulling information out of a database depending on what the user asked for.</li>
+</ul>
+
+<p>Most of the sites you can think of will be dynamic sites (e.g. <span>facebook.com</span>, <span>reddit.com</span>, <span>amazon.com</span>, ..).</p>
+
+<h3 id='serverside_technologies'>Server-side technologies</h3>
 
 <p>There are many options for building a dynamic server-side site - you&#8217;re pretty much free to do what you like. Some common choices are:</p>
 <ul class='thumbnails'>
@@ -209,45 +232,57 @@
 	</div>
 
 	
-	<div class="tab-pane " id="4_investigating_html">
+	<div class="tab-pane " id="3_urls_and_dns">
 	
 
-		<h2>Investigating HTML</h2>
-		<p>HTML (<em>HyperText Markup Language</em>) is a way of writing information so that it can be interpreted by a web browser. It is <em>not</em> a programming language - you can&#8217;t do calculations in it - it is a <em>markup</em> language.</p>
+		<h2>Introducing the URL</h2>
+		<p>Many of our web interactions begin with a URL (<em>uniform resource locator</em>) being typed into our web browser address bar. Let&#8217;s look at an example: <code>http://www.bbc.co.uk/news/</code>.</p>
 
-<p>Back in the early days of the web HTML would both store the information and tell the browser how to display it. People then realised that this was a bad idea - making a small change such as changing the colour of a heading would require edits all over the place, which made sites hard to maintain. HTML is now used just to display the information (text etc.) that is stored in the page.</p>
-<div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<ol>
-<li>Open this page in Google Chrome</li>
-
-<li>View the page source (View &gt; Developer &gt; View Source)</li>
-</ol>
-</div>
-<p>HTML probably won&#8217;t make a lot of sense to you at first but you might be able to see some of the words from the page.</p>
-
-<p>A slightly nicer way to look at HTML is to use the Chrome Developer Tools.</p>
-<div class='exercise alert alert-info'><strong>
-<p>Task:</p>
-</strong>
-<ol>
-<li>
-<p>Open this page in Google Chrome</p>
-</li>
-
-<li>
-<p>Look at the page using developer tools by doing one of the following:</p>
+<p>This URL has several different parts to it:</p>
 
 <ul>
-<li>View &gt; Developer &gt; Developer Tools</li>
+<li><code>http</code> : the <em>protocol</em> or <em>how</em> to fetch the information</li>
 
-<li>Tools &gt; Developer Tools</li>
+<li><code>www.bbc.co.uk</code> : the <em>host</em> or <em>where</em> to fetch it from</li>
+
+<li><code>/news</code> : the <em>path</em> or precisely <em>what</em> information to fetch</li>
 </ul>
-</li>
-</ol>
+
+<p>When we type the URL into the address bar a request is sent over the internet and some information is returned to us.</p>
+
+<p>The protocol describes how the information is transmitted. Other possibilities include <code>https</code> for secured communication, <code>ftp</code> for file transfer and <code>git</code> which we&#8217;ll learn about later.</p>
+
+<p>The host describes where the information should come from and the path tells that location precisely what information to send.</p>
+
+<p>In general a URL can be more complicated than this. URLs can also contain <em>query parameters</em>, <em>fragments</em> and <em>port information</em>. We will leave these for now but will point them out when we meet them later. Instead we will focus on exactly what information is being sent and who is sending it.</p>
+
+<p>Each computer on the internet has an address (an <em>IP address</em>) so that requests can be sent to it and files returned - much like a telephone number. The backbone of the internet is a network of <em>routers</em> that are responsible for routing files from one IP address to another.</p>
+
+<h3 id='dns'>DNS</h3>
+
+<p>IP addresses are a sequence of numbers and &#8217;.&#8217;s such as <code>212.58.244.67</code>. These aren&#8217;t very easy to remember. Instead the internet works on a domain name system, that matches domain names such as <code>bbc.co.uk</code> to IP addresses.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Type <code>212.58.244.67</code> into your browser&#8217;s address bar. What happens?</p>
 </div>
-<p>Using the magnifying glass (bottom left) You can hover over the bits of the page and it will show you the relevant bits of HTML. We will use Chrome Developer Tools a lot throughout the course.</p>
+<p>One of the first things that happens when you type a URL into your browser is a <em>DNS lookup</em>: your computer contacts a DNS server (<em>Domain Name System server</em>), which is basically a massive address book of IP addresses. The DNS server converts the domain name from the URL (e.g. <code>bbc.co.uk</code>) into an address for a server (such as <code>212.57.244.67</code>).</p>
+
+<h3 id='putting_up_a_website'>Putting up a website</h3>
+
+<p>If you want to put up your own website at your own domain name you need two things:</p>
+
+<ol>
+<li>A web server to serve your site</li>
+
+<li>A domain name to point towards it</li>
+</ol>
+
+<p>There are many options for web servers - you don&#8217;t have to physically have your own one. There are many companies that will offer web hosting, often providing you with space on a shared server. Later in the course we will use the free hosting offered by GitHub through GitHub Pages.</p>
+
+<p>To buy a domain name you need to use a domain registrar. Examples include <a href='http://www.123-reg.co.uk/'>123-reg.co.uk</a>, <a href='http://www.godaddy.com/'>godaddy.com</a> and <a href='http://www.namecheap.com/'>namecheap.com</a>. You pay the registrar to contact the body who manages a TLD (e.g. .com, .org., .co.uk) and put your server&#8217;s IP address in their DNS address book. If someone else already owns the domain you might be able to buy it off them, but this can be expensive!</p>
+
+<p>Many domain registrars will try to sell you hosting and other site building tools when you buy a domain. It&#8217;s important to remember that the domain name is completely separate from the hosting and you don&#8217;t need to do them both through the same company - don&#8217;t buy anything you&#8217;re not going to use.</p>
 	</div>
 
 	
@@ -585,6 +620,57 @@
     <span class='nt'>&lt;/tbody&gt;</span>
 <span class='nt'>&lt;/table&gt;</span>
 </code></pre></div>
+	</div>
+
+	
+	<div class="tab-pane " id="8_homework">
+	
+
+		<h2>Homework</h2>
+		<h3 id='finishing_off'>Finishing off</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Finish the HTML exercise from the last section.</p>
+</div>
+<h3 id='buy_a_domain_name'>Buy a domain name</h3>
+
+<p>Your domain name will be used to point towards your personal website for the course - it&#8217;s up to you exactly what this will be about. You might want to use this opportunity to create a basic &#8216;personal landing page&#8217; saying a bit about yourself and where to find more information. Or you might want to put up a blog. Alternatively if you want you can put up a page about something you are interested in (or <a href='http://jamfly.info/'>your dog</a>). You will need to pick a domain name accordingly!</p>
+
+<p>To buy a domain name you need to visit a domain registrar. Examples are:</p>
+
+<ul>
+<li><a href='http://www.123-reg.co.uk/'>123-reg</a></li>
+
+<li><a href='http://www.godaddy.com/'>Godaddy</a></li>
+
+<li><a href='http://www.namecheap.com/'>Namecheap</a></li>
+</ul>
+
+<p>There probably won&#8217;t be a huge difference in price between these sites. You might be able to find a special offer on one of them if you shop around a bit though. Ultimately the domain you choose isn&#8217;t that important for the course - the whole point is to practice pointing a domain name towards a server.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Buy your own domain name.</p>
+</div>
+<h3 id='preparation_for_next_time'>Preparation for next time</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Complete the whole of Project 2 on the <a href='https://dash.generalassemb.ly/projects'>General Assembly Dash</a> site.</li>
+
+<li><a href='http://try.github.io/levels/1/challenges/1'>Try git</a> (up to stage 1.9).</li>
+
+<li>(Optional) Do the projects from the <a href='http://www.codecademy.com/tracks/web'>Codecademy Web Track</a> Sections 4, 5 &amp; 6.</li>
+</ol>
+</div>
+<h3 id='make_a_start_on_your_own_site'>Make a start on your own site</h3>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<p>Use what you&#8217;ve learnt from the HTML exercise and the Dash projects to improve your <code>first_site/index.html</code>. Maybe add some content about yourself. Don&#8217;t worry if it doesn&#8217;t look great yet - we&#8217;ll be working on it more in the next few weeks. Just make sure it says something more than &#8216;Hello&#8217;!</p>
+</div>
 	</div>
 
 </div>
