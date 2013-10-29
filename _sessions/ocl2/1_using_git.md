@@ -74,11 +74,17 @@ We will now commit these changes to our repository, along with a description of 
     0 files changed
     create mode 100644 index.html
 
-Warning: if you forget to supply a message with the `-m` tag git will drop you into a text editor (probably vim) so that you can write one. If this happens you will need to do the following:
+<div class='alert alert-error' markdown="1">
+#### How to get out of vim
+
+If you forget to supply a message with the `-m` tag git will drop you into a text editor (probably vim) so that you can write one. If this happens you will need to do the following:
 * Press `i` to get into insert mode, so you can write.
 * Write your message.
 * Press `esc` then `:` then `wq` then `Enter`.
-* Never forget your message again.
+* Never forget your message again...
+* ... or make a note of these instructions!
+
+</div>
 
 You can check that the commit worked with git status:
 
@@ -107,6 +113,10 @@ Enable your `first_site` folder as a git repository:
 2. Type 
 
         $ git init
+
+2. **If you are on a mac**, tell git to ignore your `.DS_Store` files:
+    1. Open Sublime Text and write `.DS_Store` in a new window.
+    2. Save this file as `.gitignore` in your `first_site` folder.
 
 3. Do a git status to see what it says
 

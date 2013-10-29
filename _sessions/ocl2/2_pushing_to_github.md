@@ -22,4 +22,7 @@ You might now be prompted to add your github username and password (if you're do
 
 {% exercise %}
 Push your `first_site` folder to GitHub!
+
+1. Create the new repository on GitHub. (**Don't** create it with a README.)
+2. Follow the instructions for "Pushing an existing repository to github" to push your repository up.
 {% endexercise %}

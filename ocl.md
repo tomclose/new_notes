@@ -7,7 +7,7 @@ layout: default
 
 * [0: Course Preparation](/hmwk00)
 * [1: Sites, Servers and HTML](/ocl1)
-* 2: Git and CSS
+* [2: Git and CSS](/ocl2)
 * 3: Site deployment
 * 4: GitHub and collaboration
 * 5: Collecting analytics
