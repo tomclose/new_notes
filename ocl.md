@@ -7,12 +7,6 @@ layout: default
 
 * [0: Course Preparation](/hmwk00)
 * [1: Sites, Servers and HTML](/ocl1)
-    * What is a web page?
-    * About servers
-    * URLs and DNS
-    * Meet the command line
-    * Developing with HTML locally
-    * HTML exercise
 * 2: Git and CSS
 * 3: Site deployment
 * 4: GitHub and collaboration

@@ -32,12 +32,14 @@ layout: default
 Finish for home work
 Buy a domain name
 
+TODO use imgur for hosting
+
 ### Session 2
 
 * Preparation: Dash project 2, Try git
 * Use Dash instructions to create own site (including extra stuff)
 
-* git add, commit
+* git add, commit (gitignore done hackily)
 * git push (own site)
 * HTML attributes
 * CSS selectors

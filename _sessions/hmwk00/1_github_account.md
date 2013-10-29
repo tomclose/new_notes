@@ -8,7 +8,7 @@ Sign up for a GitHub account at [https://github.com/](https://github.com/). Make
 
 {% exercise %}
 1. Using your GitHub account, sign up for the course forum at [chat.code61.org/](http://chat.code61.org/).
-2. Introduce yourself in the 'Oxford MT 2013 course' post.
+2. Introduce yourself in the 'Code First:Girls Oxford MT 2013 course' post.
 {% endexercise %}
 
 ### What is GitHub?
