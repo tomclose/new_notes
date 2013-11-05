@@ -415,7 +415,9 @@
 </ol>
 </div>
 <h3 id='changing_the_background'>Changing the background</h3>
-
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
 <ol>
 <li>
 <p>Change the background of the <code>jumbotron</code> to be the image <code>fruit-and-veg.png</code> by adding the css</p>
@@ -429,26 +431,60 @@
 </li>
 
 <li>
-<p>This doesn&#8217;t look quite right. The problem is that the jumbotron is it is inside the <code>div class=&quot;container&quot;</code>. You can change this by moving it inside.</p>
+<p>This doesn&#8217;t look quite right. The problem is that the jumbotron is it is inside the <code>div class=&quot;container&quot;</code>. You can change this by moving it inside:</p>
+
+<pre><code> &lt;div class=&quot;jumbotron&quot;&gt;
+   &lt;div class=&quot;container&quot;&gt;
+
+   &lt;/div&gt;
+ &lt;/div&gt;</code></pre>
+
+<p>Similarly you will now need to create new <code>container</code>s inside the <code>div id=&quot;buzz&quot;</code> and <code>div id=&quot;mission&quot;</code>.</p>
+</li>
+
+<li>
+<p>Change the background color of the <code>mission</code> section to <code>rgba(32, 35, 41, 0.9)</code> and the font colour to <code>#ddd</code></p>
 </li>
 </ol>
-
+</div>
 <h3 id='navbar'>Navbar</h3>
 
 <p>Browse through the <a href='http://getbootstrap.com/components/#navbar'>navbar section</a> of the Bootstrap docs.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
-<p>1. 2. Make it a <code>navbar-fixed-top</code>. You will need to add</p>
-
-<pre><code>    body { padding-top: 40px; }
-
-to `main.css`.</code></pre>
-
 <ol>
-<li>Add a search box to the navbar. Use the <code>pull-right</code> class to put it on the right hand side.</li>
+<li>
+<p>Look at the html for the <a href='http://getbootstrap.com/examples/starter-template/'>basic starter template</a>.</p>
+</li>
 
-<li>Check your result against <code>step5.png</code>.</li>
+<li>
+<p>Use it to add a navbar to your site.</p>
+</li>
+
+<li>
+<p>Make it a <code>navbar-fixed-top</code>. You will need to add</p>
+
+<pre><code> body { padding-top: 70px; }</code></pre>
+
+<p>to <code>main.css</code>.</p>
+</li>
+
+<li>
+<p>Add a search box to the navbar. Use the <code>pull-right</code> class to put it on the right hand side.</p>
+</li>
+</ol>
+</div>
+<h3 id='other_things'>Other things</h3>
+
+<p>There are various other changes you will need to make your site look like the example. Try and figure out what these are by examining the html in the Developer tools.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>Make any other changes necessary to make your site look like <a href='http://code61.github.io/bootstrap_exercise/'>the example</a></li>
+
+<li>If you get stuck check by looking at the <a href='https://github.com/code61/bootstrap_exercise/tree/gh-pages'>gh-pages branch</a> on the github repo.</li>
 </ol>
 </div>
 	</div>
