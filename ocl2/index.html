@@ -487,33 +487,13 @@ $ git push -u origin master</code></pre>
 
 <p>We&#8217;ll do the second option, even though you don&#8217;t know what branches are. For the moment, most of this won&#8217;t make much sense - hopefully it will at some point in the future!</p>
 
-<p>To do this we need to set some configuration options for the repository:</p>
+<p>To do this we need to run the command</p>
 
-<pre><code>$ git config remote.origin.push +refs/heads/master:refs/heads/master --add
-$ git config remote.origin.push +refs/heads/master:refs/heads/gh-pages --add</code></pre>
+<pre><code>$ git push origin master:gh-pages</code></pre>
 
-<p>You will then need to</p>
+<p>(and do this whenever you want changes you&#8217;ve made to show up on your site).</p>
 
-<ol>
-<li>
-<p>Make any change to your file</p>
-</li>
-
-<li>
-<p>Add that change:</p>
-
-<pre><code> $ git commit --all
- $ git commit -m &quot;Small change&quot;</code></pre>
-</li>
-
-<li>
-<p>Push it to GitHub:</p>
-
-<pre><code> $ git push</code></pre>
-</li>
-</ol>
-
-<p>it should say that it pushed both to origin/master and origin/gh-pages. After waiting a few minutes for github to get ready, you should be able to see your site at <code>yourusername.github.io/first_site</code>.</p>
+<p>After waiting a few minutes for github to get ready, you should be able to see your site at <code>yourusername.github.io/first_site</code>.</p>
 <div class='exercise alert alert-info'><strong>
 <p>Task:</p>
 </strong>
@@ -523,45 +503,7 @@ $ git config remote.origin.push +refs/heads/master:refs/heads/gh-pages --add</co
 <li>
 <p>Set your repository up to push to the gh-pages branch. In your <code>first_site</code> folder run:</p>
 
-<pre><code> $ git config remote.origin.push +refs/heads/master:refs/heads/master --add
- $ git config remote.origin.push +refs/heads/master:refs/heads/gh-pages --add</code></pre>
-
-<p>Make sure you only run this command once. To see if it worked you can run <code>git remote show origin</code> and check you get something similar to the following</p>
-
-<pre><code> $ git remote show origin
- * remote origin
- Fetch URL: git@github.com:tomclose/first_site.git
- Push  URL: git@github.com:tomclose/first_site.git
- HEAD branch (remote HEAD is ambiguous, may be one of the following):
-   gh-pages
-   master
- Remote branches:
-   gh-pages tracked
-   master   tracked
- Local branch configured for &#39;git pull&#39;:
-   master merges with remote master
- Local refs configured for &#39;git push&#39;:
-    master forces to gh-pages (up to date)
-    master forces to master   (up to date)</code></pre>
-
-<p>The important bit is the final two lines.</p>
-</li>
-
-<li>
-<p>In Sublime Text, make any change to <code>first_site/index.html</code> and save.</p>
-</li>
-
-<li>
-<p>Commit that change:</p>
-
-<pre><code> $ git add --all
- $ git commit -m &quot;Made a small change.&quot;</code></pre>
-</li>
-
-<li>
-<p>Push it to GitHub.</p>
-
-<pre><code> $ git push</code></pre>
+<pre><code> $ git push origin master:gh-pages</code></pre>
 </li>
 
 <li>
