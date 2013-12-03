@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ocl7</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- Twitter bootstrap basic styles -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+  <!-- Google webfont link -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:700|Titillium+Web:900' rel='stylesheet' type='text/css'>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="/assets/jquery-1.10.0.js"></script>
+
+  <script type="text/javascript" src='/bootstrap/js/bootstrap.js'></script>
+  <script type="text/javascript" src='/assets/custom.js'></script>
+
+</head>
+<body class="">
+
+  <div class="container">
+
+    <div class="page-header">
+  <h1>ocl7 <small></small></h1>
+</div>
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs" id="myTab">
+	
+		
+		<li class="active"><a href="#1_cloudflare" data-toggle="tab"> </a></li>
+		
+	
+		
+		<li><a href="#2_jquery" data-toggle="tab">jQuery </a></li>
+		
+	
+		
+		<li><a href="#3_jquery_resources" data-toggle="tab">jQuery resources </a></li>
+		
+	
+</ul>
+
+<div class="tab-content">
+
+	
+	<div class="tab-pane active" id="1_cloudflare">
+	
+
+		<h2></h2>
+		
+	</div>
+
+	
+	<div class="tab-pane " id="2_jquery">
+	
+
+		<h2>jQuery</h2>
+		<p>This is meant to serve as a really quick introduction to jQuery - more to enable you to learn more, rather than to teach you anything in particular.</p>
+
+<h3 id='what_is_jquery'>What is jQuery</h3>
+
+<p>Javascript is the third main client side technology (along with HTML and CSS). Unlike HTML and CSS, which are mark-up languages, Javascript is a programming language - you can use it to do calculations (and pretty much anything you want!).</p>
+
+<p>jQuery is a <strong>javascript library</strong> that is useful for building interactive webpages. When you use jQuery, it&#8217;s a bit like you&#8217;re using a special version of javascript.</p>
+
+<p>jQuery is so common in webpages that, for beginners, &#8216;learning javascript&#8217; has in many cases become &#8216;learning jQuery&#8217;. This is the approach that we&#8217;re going to take in this course.</p>
+
+<h3 id='getting_jquery'>Getting jQuery</h3>
+
+<p>jQuery is just a javascript file that can be downloaded from the <a href='http://jquery.com/download/'>jquery downloads page</a>. There are a couple of different versions - I&#8217;d go for the latest. For each version you can either get the normal code, which is useful for development, or the minified code, which has had all the space (and other stuff) taken out to make it as small as possibile, so it downloads quicker.</p>
+
+<p>Once you&#8217;ve downloaded the file and saved it in your site folder, you need to link to it in your page. For the time being we&#8217;ll do this in the <code>head</code> (you can improve page-load times by moving your javascript to the bottom of the page, but we won&#8217;t bother with this at the moment).</p>
+<div class='highlight'><pre><code class='html'><span class='cp'>&lt;!DOCTYPE html&gt;</span>
+<span class='nt'>&lt;head&gt;</span>
+  <span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+  <span class='c'>&lt;!-- any other stuff e.g. stylesheet links --&gt;</span>
+</code></pre></div>
+<h3 id='using_jquery'>Using jQuery</h3>
+
+<p>You can do a lot of stuff with jQuery. Here we&#8217;ll just look at the basics: selecting elements on the page and doing stuff with them.</p>
+
+<p>You can experiment with jQuery using the <code>Console</code> section of the Chrome developer tools. You will need to be on a page where jQuery is loaded (e.g. these course notes or the demo page you will download in the exercise).</p>
+
+<p>One of the nice things about jQuery is its ability to select elements via their CSS selectors. To select elements jQuery uses the <code>$()</code> function. For example:</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;li&#39;</span><span class='p'>)</span>               <span class='c1'>// selects all the li elements on the page</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;li.important&#39;</span><span class='p'>)</span>     <span class='c1'>// selects all the li with class=&quot;important&quot;</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;#main-title&#39;</span><span class='p'>)</span>      <span class='c1'>// selects the element with id=&quot;main-title&quot;</span>
+</code></pre></div>
+<p>jQuery then has several ways of manipulating those elements:</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>hide</span><span class='p'>()</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>show</span><span class='p'>()</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;color&#39;</span><span class='p'>,</span> <span class='s1'>&#39;#f00&#39;</span><span class='p'>)</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;color&#39;</span><span class='p'>,</span> <span class='s1'>&#39;#ff0&#39;</span><span class='p'>)</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;font-size&#39;</span><span class='p'>,</span> <span class='s1'>&#39;80px&#39;</span><span class='p'>)</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;font-size&#39;</span><span class='p'>,</span> <span class='s1'>&#39;8px&#39;</span><span class='p'>)</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;text-align&#39;</span><span class='p'>,</span> <span class='s1'>&#39;right&#39;</span><span class='p'>)</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>fadeOut</span><span class='p'>()</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;h1&#39;</span><span class='p'>).</span><span class='nx'>fadeIn</span><span class='p'>()</span>
+</code></pre></div>
+<p>You can find out more about the options available to you in the <a href='http://api.jquery.com/'>jQuery docs</a>.</p>
+<div class='exercise alert alert-info'><strong>
+<p>Task:</p>
+</strong>
+<ol>
+<li>
+<p>Clone down the jQuery demo code:</p>
+
+<pre><code> git clone https://github.com/tomclose/jquery_intro.git</code></pre>
+</li>
+
+<li>
+<p>Open <code>index.html</code> in Chrome.</p>
+</li>
+
+<li>
+<p>Open the Chrome developer tools and switch to the <code>Console</code> panel.</p>
+</li>
+
+<li>
+<p>In the console try the following:</p>
+
+<pre><code> $(&#39;h1&#39;).hide()
+ $(&#39;h1&#39;).show()
+ $(&#39;h1&#39;).css(&#39;color&#39;, &#39;#f00&#39;)
+ $(&#39;h1&#39;).css(&#39;color&#39;, &#39;#ff0&#39;)
+ $(&#39;h1&#39;).css(&#39;font-size&#39;, &#39;80px&#39;)
+ $(&#39;h1&#39;).css(&#39;font-size&#39;, &#39;8px&#39;)
+ $(&#39;h1&#39;).css(&#39;text-align&#39;, &#39;right&#39;)
+ $(&#39;h1&#39;).fadeOut()
+ $(&#39;h1&#39;).fadeIn()</code></pre>
+</li>
+
+<li>
+<p>Can you make the list items go green?</p>
+</li>
+</ol>
+</div>
+	</div>
+
+	
+	<div class="tab-pane " id="3_jquery_resources">
+	
+
+		<h2>jQuery resources</h2>
+		<p>Obviously, we&#8217;ve only just scratched the surface of what&#8217;s possible with javascript/jQuery. Things get a lot more interesting when you can create bits of javascript to be run in response to a user action. This allows you to build up interactions like &#8220;when the user clicks the submit button, check that their email is a valid email, if it isn&#8217;t make the field go red and add the words &#8216;email is invalid&#8217; at the bottom of the form&#8221;.</p>
+
+<h3 id='learning_more_jquery'>Learning more jQuery</h3>
+
+<p>We won&#8217;t be spending any more time on jQuery this course, and will be moving onto backend stuff next term. If you want to learn more about jQuery you might want to try some of the following resources:</p>
+
+<ul>
+<li>The <a href='http://www.codecademy.com/tracks/jquery'>Codecademy jQuery course</a></li>
+
+<li>The <a href='http://learn.jquery.com/'>jQuery learning center</a></li>
+
+<li>The <a href='https://www.codeschool.com/courses/try-jquery'>Codeschool jQuery course</a></li>
+</ul>
+
+<h3 id='jsfiddle'>jsFiddle</h3>
+
+<p>jsFiddle is a site which allows you to try out small bits of HTML, CSS and Javascript. It&#8217;s a really useful tool for getting good help with javascript (and HTML/CSS) online: If you&#8217;re having a problem:</p>
+
+<ol>
+<li>Create a jsFiddle showing what you&#8217;ve tried.</li>
+
+<li>Post on StackOverflow describing the problem, with a link to the jsFiddle.</li>
+</ol>
+
+<p>People will be able to help you better if they can see the code themselves. Often they will respond with a working jsFiddle (as in <a href='http://stackoverflow.com/questions/11489037/add-and-remove-attribute-with-jquery'>this example</a>)</p>
+
+<p>http://www.codecademy.com/tracks/jquery</p>
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+  </div> <!-- /container -->
+
+</body>
+</html>
